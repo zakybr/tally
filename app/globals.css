@@ -1,26 +1,116 @@
 @import "tailwindcss";
 
+/*
+  Tally design tokens: dark-first, institutional.
+  Accent locked to #D9711A / panel #16191D / text #FFFFFF per spec §7.
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-primary: #0b0b0a;
+  --bg-secondary: #16191d;
+  --bg-card-overlay: rgba(11, 11, 10, 0.55);
+  --text-primary: #ffffff;
+  --text-secondary: #a8a49a;
+  --accent-amber: #d9711a;
+  --accent-amber-dim: #6b4a1f;
+  --border-hairline: rgba(245, 242, 234, 0.08);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg-primary);
+  --color-panel: var(--bg-secondary);
+  --color-ink: var(--text-primary);
+  --color-ink-2: var(--text-secondary);
+  --color-amber: var(--accent-amber);
+  --color-amber-dim: var(--accent-amber-dim);
+  --color-hairline: var(--border-hairline);
+  --font-sans: var(--font-grotesk);
+  --font-mono: var(--font-jbmono);
+  --radius: 0px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: auto; /* Lenis owns scroll */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-grotesk), system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent-amber);
+  color: #0b0b0a;
+}
+
+/* Monospace eyebrow and label treatment, used site-wide */
+.eyebrow {
+  font-family: var(--font-jbmono), monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-amber);
+}
+
+.mono-label {
+  font-family: var(--font-jbmono), monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Photographic grade applied to every image, matches the dark theme */
+.img-grade {
+  filter: grayscale(20%) contrast(1.1) brightness(0.9);
+}
+
+/* Sector ticker: dense manifest strip */
+@keyframes ticker-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 42s linear infinite;
+}
+
+/* Diagonal hatch for reserved / locked case slots */
+.hatch {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(245, 242, 234, 0.05) 0px,
+    rgba(245, 242, 234, 0.05) 1px,
+    transparent 1px,
+    transparent 10px
+  );
+}
+
+/* Capability card image scale: slow, heavy, deliberate */
+.cap-img {
+  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.group\/cap:hover .cap-img {
+  transform: scale(1.03);
+}
+
+/* Tally mark strokes in the scoreboard */
+.tally-mark {
+  width: 3px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.tally-mark.over {
+  background: var(--accent-amber);
 }

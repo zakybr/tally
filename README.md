@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tally marketing site
 
-## Getting Started
+Outcome-guaranteed marketing for NZ's primary sector. Dark, institutional visual system referenced on anduril.com: sharp corners, hairline dividers, monospace instrument labels, full-bleed graded photography.
 
-First, run the development server:
+## Stack
+
+- Next.js (App Router) + TypeScript
+- Tailwind CSS v4 (tokens defined in `app/globals.css` via `@theme`)
+- Framer Motion for scroll reveals (`components/Reveal.tsx`)
+- Lenis for heavy, damped smooth scroll (`components/SmoothScroll.tsx`). Installed as `lenis` (the current name of `@studio-freight/lenis`).
+- `next/image` with static imports for automatic sharp blur placeholders
+
+## Run
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Deploy target: Vercel, with no config needed beyond the repo.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Design tokens
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Defined once in `app/globals.css`:
 
-## Learn More
+| Token | Value | Use |
+| --- | --- | --- |
+| `--bg-primary` | `#0b0b0a` | page background |
+| `--bg-secondary` | `#16191d` | lifted panels (pricing, gate, footer CTA) |
+| `--text-primary` | `#ffffff` | headlines, key copy |
+| `--text-secondary` | `#a8a49a` | body copy |
+| `--accent-amber` | `#d9711a` | the only CTA/accent colour on screen |
+| `--accent-amber-dim` | `#6b4a1f` | amber rules/borders |
+| `--border-hairline` | `rgba(245,242,234,0.08)` | all dividers |
 
-To learn more about Next.js, take a look at the following resources:
+Fonts: General Sans (self-hosted, `app/fonts/`, Fontshare Free Font License) for headlines/body; JetBrains Mono via `next/font/google` for every eyebrow, tag, stat and label (`.eyebrow` / `.mono-label`).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Core component
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+`components/CapabilityCard.tsx` is the Anduril-style card: full-bleed image, bottom gradient for label legibility only, mono tag top-left, large name bottom-left, one-line subhead revealed on hover (600ms ease-out, image scales 1.00 to 1.03). Cards butt together with hairline dividers, so parent grids use `gap-px bg-hairline`. A `reserved` variant (diagonal hatch plus RESERVED tag) is used for the unpublished case slots in The Record.
 
-## Deploy on Vercel
+## Imagery
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**All photography in `public/images/` is AI-generated placeholder material**, graded to the target treatment (backlit silhouettes, industrial close-ups, desaturated/near-black). Each usage site is flagged with a `PLACEHOLDER IMAGERY` comment, so swap files 1:1 as real sprint capture lands. A global `.img-grade` filter (`grayscale(20%) contrast(1.1) brightness(0.9)`) keeps mixed sources on the same grade.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Page structure
+
+Single page (`app/page.tsx`): Hero (with Proof Sprint HUD readout) → sector ticker strip → The accountability gap → work triptych → guarantee mechanism → tracks capability grid → miss-clause spec tables → sectors capability grid → The Record (reserved slots) → method rail → pricing ladder → the gate → footer CTA. All copy migrated verbatim from the previous site.
