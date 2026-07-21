@@ -7,7 +7,6 @@ import Guarantee from "@/components/Guarantee";
 import TracksGrid from "@/components/TracksGrid";
 import MissClause from "@/components/MissClause";
 import SectorsGrid from "@/components/SectorsGrid";
-import Record from "@/components/Record";
 import Method from "@/components/Method";
 import Pricing from "@/components/Pricing";
 import Gate from "@/components/Gate";
@@ -25,7 +24,6 @@ export default function Home() {
       <TracksGrid />
       <MissClause />
       <SectorsGrid />
-      <Record />
       <Method />
       <Pricing />
       <Gate />

@@ -4,7 +4,6 @@ import TallyMark from "@/components/TallyMark";
 const links = [
   { href: "#guarantee", label: "The guarantee" },
   { href: "#sectors", label: "Sectors" },
-  { href: "#record", label: "The record" },
   { href: "#pricing", label: "Pricing" },
 ];
 
