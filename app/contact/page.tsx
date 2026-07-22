@@ -5,10 +5,21 @@ import ContactForm from "@/components/ContactForm";
 import TallyMark from "@/components/TallyMark";
 
 export const metadata: Metadata = {
-  title: "Start the Proof",
+  title: "Contact | Primary Industries Marketing NZ",
   description:
-    "Tell us the outcome you need moved and we'll tell you straight whether we can guarantee it. Qualification brief for recruitment, reach and enquiry campaigns across New Zealand's primary sector.",
+    "Qualify for Tally's outcome-guaranteed primary industries marketing in New Zealand. Recruitment, reach and enquiry campaigns for seafood, forestry, horticulture, processing and agritech.",
+  keywords: [
+    "contact primary industries marketing NZ",
+    "recruitment marketing agency New Zealand",
+    "agribusiness marketing enquiry",
+  ],
   alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact Tally | Primary Industries Marketing NZ",
+    description:
+      "Qualification brief for outcome-guaranteed marketing across New Zealand's primary sector.",
+    url: "/contact",
+  },
 };
 
 const qualify = [

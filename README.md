@@ -46,7 +46,7 @@ Fonts: General Sans (self-hosted, `app/fonts/`, Fontshare Free Font License) for
 
 ## Page structure
 
-Home (`app/page.tsx`): Hero (with Proof Sprint HUD readout) → sector ticker strip → The accountability gap → work triptych → guarantee mechanism → tracks capability grid → miss-clause spec tables → sectors capability grid → method rail → pricing ladder → the gate → footer CTA. Contact (`app/contact/page.tsx`): the qualification questionnaire that every CTA routes to.
+Home (`app/page.tsx`): Hero → sector ticker → SEO overview → accountability gap → work triptych → guarantee → tracks → miss clause → sectors → method → pricing → gate → footer CTA. Pillar page at `/primary-industries-marketing` for search/AI intent. Contact (`/contact`): qualification questionnaire.
 
 ## Contact form (email delivery)
 
@@ -60,9 +60,15 @@ The questionnaire at `/contact` posts to `app/api/contact/route.ts`, which email
 
 Submissions set `reply-to` to the enquirer's email, so replying goes straight back to them.
 
-## SEO
+## SEO & AI discoverability
 
-Metadata, keywords, JSON-LD (`ProfessionalService`), `sitemap.xml`, `robots.txt`, and a generated OpenGraph card (`app/opengraph-image.tsx`) target New Zealand primary-sector search. Set `NEXT_PUBLIC_SITE_URL` to the live domain (e.g. `https://tallynz.co`) so canonical URLs, the sitemap, and social cards point at the right origin.
+- Canonical host defaults to `https://www.tallynz.co` (`lib/seo.ts`). Override with `NEXT_PUBLIC_SITE_URL` if needed.
+- Titles, descriptions and keywords target queries like "marketing for primary industries NZ", "primary industries marketing New Zealand", and "best NZ marketing agencies".
+- Structured data: Organization + ProfessionalService, WebSite, FAQPage, BreadcrumbList.
+- Pillar page: `/primary-industries-marketing` (sector coverage + FAQ written for Google and AI answer engines).
+- `/llms.txt` curated map for ChatGPT, Claude, Perplexity and similar agents.
+- `robots.txt` explicitly allows major AI crawlers; `sitemap.xml` lists all indexable routes.
+- After deploy: submit the sitemap in [Google Search Console](https://search.google.com/search-console) for `www.tallynz.co` (and the apex if used).
 
 ## Performance
 

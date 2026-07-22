@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import SmoothScroll from "@/components/SmoothScroll";
+import {
+  DEFAULT_DESCRIPTION,
+  DEFAULT_TITLE,
+  KEYWORDS,
+  SITE_NAME,
+  SITE_URL,
+  organizationJsonLd,
+  websiteJsonLd,
+} from "@/lib/seo";
 import "./globals.css";
-
-/* Canonical site origin. Set NEXT_PUBLIC_SITE_URL to the live domain (e.g. https://tallynz.co) in Vercel. */
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://tallyweb-plum.vercel.app";
 
 /* Headline and body grotesk: General Sans, self-hosted (Fontshare FFL). */
 const grotesk = localFont({
@@ -30,65 +36,35 @@ const alliance = localFont({
   display: "swap",
 });
 
-const DESCRIPTION =
-  "Tally is New Zealand's outcome-guaranteed marketing agency for the primary sector. Recruitment, reach and enquiry campaigns for seafood, aquaculture, forestry, wood processing, horticulture, viticulture, food and beverage processing, meat processing and agritech, with the result written into the contract.";
-
-/* Primary-sector keyword coverage for New Zealand search. */
-const KEYWORDS = [
-  "marketing agency New Zealand",
-  "primary sector marketing",
-  "primary industries marketing NZ",
-  "recruitment marketing New Zealand",
-  "employer brand primary sector",
-  "outcome guaranteed marketing",
-  "performance marketing New Zealand",
-  "seafood marketing",
-  "aquaculture marketing",
-  "commercial fishing recruitment",
-  "forestry marketing",
-  "wood processing marketing",
-  "horticulture marketing",
-  "kiwifruit marketing",
-  "pipfruit apple marketing",
-  "viticulture marketing",
-  "wine marketing New Zealand",
-  "dairy marketing",
-  "red meat marketing",
-  "sheep and beef marketing",
-  "food processing marketing",
-  "food and beverage marketing NZ",
-  "meat processing recruitment",
-  "agritech marketing",
-  "agribusiness marketing",
-  "seasonal labour recruitment campaigns",
-];
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Tally | Outcome-Guaranteed Marketing for NZ's Primary Sector",
+    default: DEFAULT_TITLE,
     template: "%s | Tally",
   },
-  description: DESCRIPTION,
+  description: DEFAULT_DESCRIPTION,
   keywords: KEYWORDS,
-  applicationName: "Tally",
-  authors: [{ name: "Tally" }],
-  creator: "Tally",
-  publisher: "Tally",
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
   category: "Marketing",
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    languages: { "en-NZ": "/", en: "/" },
+  },
   openGraph: {
     type: "website",
     locale: "en_NZ",
     url: "/",
-    siteName: "Tally",
-    title: "Tally | Outcome-Guaranteed Marketing for NZ's Primary Sector",
-    description: DESCRIPTION,
+    siteName: SITE_NAME,
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tally | Outcome-Guaranteed Marketing for NZ's Primary Sector",
-    description: DESCRIPTION,
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
   },
   robots: {
     index: true,
@@ -101,45 +77,17 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+  other: {
+    "geo.region": "NZ",
+    "geo.placename": "New Zealand",
+  },
 };
 
 export const viewport = {
   themeColor: "#0b0b0a",
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "Tally",
-  slogan: "We sell the tally, not the footage.",
-  description: DESCRIPTION,
-  url: SITE_URL,
-  logo: `${SITE_URL}/tally-logo.png`,
-  image: `${SITE_URL}/images/hero-boat.jpg`,
-  email: "zak@tallynz.co",
-  areaServed: { "@type": "Country", name: "New Zealand" },
-  serviceType: [
-    "Recruitment marketing",
-    "Employer brand",
-    "Reach and awareness campaigns",
-    "Lead generation and enquiry campaigns",
-  ],
-  knowsAbout: [
-    "Seafood and aquaculture",
-    "Commercial fishing",
-    "Forestry and wood processing",
-    "Horticulture",
-    "Kiwifruit",
-    "Pipfruit",
-    "Viticulture and wine",
-    "Dairy",
-    "Red meat, sheep and beef",
-    "Food and beverage processing",
-    "Meat processing",
-    "Agritech",
-    "Agribusiness",
-  ],
-};
+const jsonLd = [organizationJsonLd(), websiteJsonLd()];
 
 export default function RootLayout({
   children,

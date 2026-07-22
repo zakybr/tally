@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Tally — Outcome-guaranteed marketing for NZ's primary sector";
+export const alt =
+  "Tally: primary industries marketing agency New Zealand, outcome-guaranteed";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -28,7 +29,7 @@ export default function OpengraphImage() {
             fontFamily: "monospace",
           }}
         >
-          NZ Primary Sector · Outcome-Guaranteed
+          Primary Industries Marketing · New Zealand
         </div>
         <div
           style={{
