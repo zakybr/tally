@@ -5,23 +5,23 @@ const tiers = [
   {
     k: "Step 1 · Qualifier",
     name: "Proof",
-    price: "$12–18k fixed",
+    terms: "Fixed-scope sprint",
     body: "8 weeks. One role family, one site, baseline agreed up front. The sprint that earns the roster.",
-    cta: { label: "See what qualifies", href: "#qualify", primary: false },
+    cta: { label: "See what qualifies", href: "/contact", primary: false },
   },
   {
     k: "Step 2 · Retained",
     name: "Engine",
-    price: "$8–15k / month",
+    terms: "Monthly retainer",
     body: "6-month minimum. The roster held quarter after quarter, guarantee re-set each cycle.",
-    cta: { label: "Start the Proof", href: "#contact", primary: true },
+    cta: { label: "Start the Proof", href: "/contact", primary: true },
   },
   {
     k: "Step 3 · Later",
     name: "Playbook",
-    price: "Per sub-sector",
+    terms: "Licensed method",
     body: "The proven method, licensed. Opens once the sprint record exists to back it.",
-    cta: { label: "Register interest", href: "#contact", primary: false },
+    cta: { label: "Register interest", href: "/contact", primary: false },
   },
 ];
 
@@ -33,7 +33,7 @@ export default function Pricing() {
         <SectionHeader
           eyebrow="Pricing"
           title="The ladder"
-          note="Fixed fees, tabular figures, and a guarantee that is never discounted."
+          note="Three steps, scoped to the outcome, with a guarantee that is never discounted. Figures are set in discovery once the target is agreed."
         />
 
         <Reveal delay={0.1}>
@@ -44,8 +44,8 @@ export default function Pricing() {
                 <h3 className="mt-6 font-sans text-3xl font-semibold tracking-tight text-ink">
                   {t.name}
                 </h3>
-                <div className="mt-2 border-b border-hairline pb-6 font-mono text-xl tabular-nums text-ink">
-                  {t.price}
+                <div className="mono-label mt-3 border-b border-hairline pb-6 text-ink-2">
+                  {t.terms}
                 </div>
                 <p className="mt-6 flex-1 text-[0.9375rem] leading-[1.7] text-ink-2">{t.body}</p>
                 <a

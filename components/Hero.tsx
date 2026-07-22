@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Scoreboard from "@/components/Scoreboard";
 import heroImg from "@/public/images/hero-boat.jpg";
 
@@ -32,12 +33,12 @@ export default function Hero() {
               the product.
             </p>
             <div className="mt-9 flex flex-wrap gap-4">
-              <a
-                href="#contact"
+              <Link
+                href="/contact"
                 className="mono-label border border-amber bg-amber px-6 py-3.5 text-bg transition-colors duration-300 hover:bg-transparent hover:text-amber"
               >
                 Start the Proof
-              </a>
+              </Link>
               <a
                 href="#guarantee"
                 className="mono-label border border-hairline px-6 py-3.5 text-ink transition-colors duration-300 hover:border-ink"

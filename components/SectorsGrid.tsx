@@ -73,6 +73,7 @@ export default function SectorsGrid() {
               label={`SECTOR ${String(i + 1).padStart(2, "0")}`}
               name={s.name}
               subhead={s.subhead}
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
           ))}
         </div>

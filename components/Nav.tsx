@@ -26,12 +26,12 @@ export default function Nav() {
             </a>
           ))}
         </div>
-        <a
-          href="#contact"
+        <Link
+          href="/contact"
           className="mono-label border border-amber bg-amber px-4 py-2.5 text-bg transition-colors duration-300 hover:bg-transparent hover:text-amber"
         >
           Start the Proof
-        </a>
+        </Link>
       </div>
     </nav>
   );

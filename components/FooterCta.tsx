@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import TallyMark from "@/components/TallyMark";
 
@@ -17,12 +18,12 @@ export default function FooterCta() {
               outcome, and exactly what it would take if we can.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <a
-                href="mailto:rees@reesvinsen.com?subject=Tally%20Proof%20enquiry"
+              <Link
+                href="/contact"
                 className="mono-label border border-amber bg-amber px-6 py-3.5 text-bg transition-colors duration-300 hover:bg-transparent hover:text-amber"
               >
                 Start the Proof
-              </a>
+              </Link>
               <a
                 href="#guarantee"
                 className="mono-label border border-hairline px-6 py-3.5 text-ink transition-colors duration-300 hover:border-ink"

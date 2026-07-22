@@ -46,4 +46,24 @@ Fonts: General Sans (self-hosted, `app/fonts/`, Fontshare Free Font License) for
 
 ## Page structure
 
-Single page (`app/page.tsx`): Hero (with Proof Sprint HUD readout) → sector ticker strip → The accountability gap → work triptych → guarantee mechanism → tracks capability grid → miss-clause spec tables → sectors capability grid → The Record (reserved slots) → method rail → pricing ladder → the gate → footer CTA. All copy migrated verbatim from the previous site.
+Home (`app/page.tsx`): Hero (with Proof Sprint HUD readout) → sector ticker strip → The accountability gap → work triptych → guarantee mechanism → tracks capability grid → miss-clause spec tables → sectors capability grid → method rail → pricing ladder → the gate → footer CTA. Contact (`app/contact/page.tsx`): the qualification questionnaire that every CTA routes to.
+
+## Contact form (email delivery)
+
+The questionnaire at `/contact` posts to `app/api/contact/route.ts`, which emails each submission to the partners via [Resend](https://resend.com). Set these environment variables in Vercel (Project → Settings → Environment Variables), then redeploy:
+
+| Variable | Required | Notes |
+| --- | --- | --- |
+| `RESEND_API_KEY` | Yes | API key from resend.com. Without it the form returns a "not configured" message and the lead is logged server-side. |
+| `CONTACT_FROM` | Recommended | Verified sender, e.g. `Tally <noreply@tallynz.co>`. Requires verifying `tallynz.co` in Resend (add the DNS records they provide). Falls back to Resend's shared `onboarding@resend.dev`. |
+| `CONTACT_TO` | Optional | Comma-separated recipients. Defaults to `zak@tallynz.co,jonty@tallynz.co`. |
+
+Submissions set `reply-to` to the enquirer's email, so replying goes straight back to them.
+
+## SEO
+
+Metadata, keywords, JSON-LD (`ProfessionalService`), `sitemap.xml`, `robots.txt`, and a generated OpenGraph card (`app/opengraph-image.tsx`) target New Zealand primary-sector search. Set `NEXT_PUBLIC_SITE_URL` to the live domain (e.g. `https://tallynz.co`) so canonical URLs, the sitemap, and social cards point at the right origin.
+
+## Performance
+
+Static prerendering, `next/image` with AVIF/WebP and blur placeholders, `next/font` (self-hosted + swap), and Framer Motion loaded through `LazyMotion` (the lightweight `m` component) to keep the client bundle small.
