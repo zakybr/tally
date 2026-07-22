@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { JetBrains_Mono } from "next/font/google";
 import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
 
@@ -19,11 +18,15 @@ const grotesk = localFont({
   display: "swap",
 });
 
-/* Label and eyebrow mono: the "ARSENAL-1" treatment. */
-const jbMono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-jbmono",
+/* Eyebrow, label and technical readout face: Alliance No.1 (Degarism Studio). */
+const alliance = localFont({
+  src: [
+    { path: "./fonts/AllianceNo1-Regular.ttf", weight: "400", style: "normal" },
+    { path: "./fonts/AllianceNo1-Medium.ttf", weight: "500", style: "normal" },
+    { path: "./fonts/AllianceNo1-SemiBold.ttf", weight: "600", style: "normal" },
+    { path: "./fonts/AllianceNo1-Bold.ttf", weight: "700", style: "normal" },
+  ],
+  variable: "--font-alliance",
   display: "swap",
 });
 
@@ -144,7 +147,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-NZ" className={`${grotesk.variable} ${jbMono.variable}`}>
+    <html lang="en-NZ" className={`${grotesk.variable} ${alliance.variable}`}>
       <body>
         <SmoothScroll>{children}</SmoothScroll>
         <script

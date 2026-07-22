@@ -34,7 +34,7 @@ Defined once in `app/globals.css`:
 | `--accent-amber-dim` | `#6b4a1f` | amber rules/borders |
 | `--border-hairline` | `rgba(245,242,234,0.08)` | all dividers |
 
-Fonts: General Sans (self-hosted, `app/fonts/`, Fontshare Free Font License) for headlines/body; JetBrains Mono via `next/font/google` for every eyebrow, tag, stat and label (`.eyebrow` / `.mono-label`).
+Fonts: General Sans (self-hosted, `app/fonts/`, Fontshare Free Font License) for headlines/body; Alliance No.1 (self-hosted, Degarism Studio) for every eyebrow, tag, stat and label (`.eyebrow` / `.mono-label`).
 
 ## Core component
 

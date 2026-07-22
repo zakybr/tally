@@ -24,7 +24,7 @@
   --color-amber-dim: var(--accent-amber-dim);
   --color-hairline: var(--border-hairline);
   --font-sans: var(--font-grotesk);
-  --font-mono: var(--font-jbmono);
+  --font-mono: var(--font-alliance);
   --radius: 0px;
 }
 
@@ -46,18 +46,20 @@ body {
   color: #0b0b0a;
 }
 
-/* Monospace eyebrow and label treatment, used site-wide */
+/* Alliance eyebrow and label treatment, used site-wide */
 .eyebrow {
-  font-family: var(--font-jbmono), monospace;
+  font-family: var(--font-alliance), system-ui, sans-serif;
   font-size: 0.6875rem;
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent-amber);
 }
 
 .mono-label {
-  font-family: var(--font-jbmono), monospace;
+  font-family: var(--font-alliance), system-ui, sans-serif;
   font-size: 0.6875rem;
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
