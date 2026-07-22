@@ -1,11 +1,13 @@
+import Image from "next/image";
 import Reveal from "@/components/Reveal";
+import termsImg from "@/public/images/terms-contract.jpg";
 
-type Row = { k: string; body: string };
+type Clause = { k: string; body: string };
 
-const tables: { heading: string; rows: Row[] }[] = [
+const sections: { heading: string; clauses: Clause[] }[] = [
   {
     heading: "The miss clause, verbatim",
-    rows: [
+    clauses: [
       {
         k: "Miss by ≤20%",
         body: "Free 30-day extension. We keep working and absorb the delivery cost.",
@@ -22,7 +24,7 @@ const tables: { heading: string; rows: Row[] }[] = [
   },
   {
     heading: "Who carries what",
-    rows: [
+    clauses: [
       {
         k: "We absorb",
         body: "Delivery risk. If we miss, we keep working out of our own pocket. That's the deal.",
@@ -39,7 +41,7 @@ const tables: { heading: string; rows: Row[] }[] = [
   },
   {
     heading: "What voids the guarantee",
-    rows: [
+    clauses: [
       {
         k: "Late assets",
         body: "Everything on the asset checklist lands by end of week two, or the guarantee clock doesn't start. Each day of delay is excluded from our responsibility.",
@@ -56,30 +58,90 @@ const tables: { heading: string; rows: Row[] }[] = [
   },
 ];
 
-/* Spec-sheet risk tables: mono headers, thin amber rules, no marketing chrome. */
+/*
+  Guarantee terms rendered as a contract exhibit: document reference header,
+  numbered clauses on a hairline grid. Palantir/Anduril dossier treatment,
+  built to read cleanly in a procurement pack.
+*/
 export default function MissClause() {
   return (
-    <section className="pb-28 md:pb-36">
+    <section id="terms" className="pb-28 md:pb-36">
       <div className="mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
-        {tables.map((table, ti) => (
-          <Reveal key={table.heading} delay={ti * 0.05}>
-            <div className={ti === 0 ? "" : "mt-20"}>
-              <div className="mono-label border-t border-amber-dim pt-4 text-amber">
-                {table.heading}
-              </div>
-              <div className="mt-8 grid gap-10 md:grid-cols-3 md:gap-14">
-                {table.rows.map((row) => (
-                  <div key={row.k}>
-                    <div className="mono-label border-t border-hairline pt-4 text-ink">
-                      {row.k}
-                    </div>
-                    <p className="mt-4 text-[0.9375rem] leading-[1.7] text-ink-2">{row.body}</p>
-                  </div>
-                ))}
-              </div>
+        <Reveal>
+          <div className="border border-hairline bg-panel">
+            {/* Document reference bar */}
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-2 border-b border-hairline px-6 py-4 md:px-10">
+              <span className="mono-label text-amber">Tally · Guarantee terms</span>
+              <span className="mono-label hidden text-ink-2 sm:inline">Doc TLY-GTE-01</span>
+              <span className="mono-label hidden text-ink-2 md:inline">Rev 2026.07</span>
+              <span className="mono-label ml-auto text-ink-2">
+                Status · <b className="font-medium text-amber">Binding</b>
+              </span>
             </div>
-          </Reveal>
-        ))}
+
+            {/* Graded banner. PLACEHOLDER IMAGERY: AI-generated stand-in; swap for real contract photography. */}
+            <figure className="relative h-44 overflow-hidden border-b border-hairline md:h-56">
+              <Image
+                src={termsImg}
+                alt="Contract documents and technical specification sheets on a steel table"
+                fill
+                placeholder="blur"
+                sizes="(max-width: 1440px) 100vw, 1440px"
+                className="img-grade object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[rgba(11,11,10,0.85)] via-[rgba(11,11,10,0.25)] to-transparent" />
+              <figcaption className="mono-label absolute bottom-4 left-6 text-ink md:left-10">
+                Printed in the contract · Not implied in the pitch
+              </figcaption>
+            </figure>
+
+            {/* Numbered clause sections */}
+            {sections.map((section, si) => (
+              <div
+                key={section.heading}
+                className="grid border-b border-hairline last:border-b-0 md:grid-cols-[300px_1fr]"
+              >
+                {/* Section rail */}
+                <div className="border-b border-hairline p-6 md:border-b-0 md:border-r md:p-10">
+                  <div className="font-mono text-3xl font-medium text-amber">
+                    {String(si + 1).padStart(2, "0")}
+                  </div>
+                  <h3 className="mt-4 font-sans text-xl font-semibold leading-snug tracking-tight text-ink">
+                    {section.heading}
+                  </h3>
+                </div>
+
+                {/* Clauses */}
+                <div className="divide-y divide-hairline">
+                  {section.clauses.map((clause, ci) => (
+                    <div
+                      key={clause.k}
+                      className="grid gap-3 p-6 md:grid-cols-[180px_1fr] md:gap-8 md:p-8"
+                    >
+                      <div>
+                        <div className="font-mono text-xs text-ink-2">
+                          {String(si + 1).padStart(2, "0")}.{ci + 1}
+                        </div>
+                        <div className="mono-label mt-2 text-ink">{clause.k}</div>
+                      </div>
+                      <p className="max-w-2xl text-[0.9375rem] leading-[1.7] text-ink-2">
+                        {clause.body}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+
+            {/* Document footer */}
+            <div className="flex flex-wrap items-center justify-between gap-x-8 gap-y-2 border-t border-hairline px-6 py-4 md:px-10">
+              <span className="font-mono text-[0.6875rem] leading-relaxed text-ink-2">
+                Extract reproduced verbatim from the standard engagement contract.
+              </span>
+              <span className="mono-label text-ink-2">Page 1 of 1</span>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
