@@ -11,10 +11,9 @@ type Props = {
 };
 
 /*
-  Free Outlook booking via Microsoft Bookings / Bookings with me.
-  Set NEXT_PUBLIC_BOOKING_URL to your personal Bookings page, e.g.
-  https://outlook.office.com/bookwithme/... or your Bookings calendar URL.
-  Falls back to a mailto that opens Outlook compose if unset.
+  Calendly booking CTA. Set NEXT_PUBLIC_BOOKING_URL to the event link
+  (e.g. https://calendly.com/you/30min). Calendly syncs to Outlook and
+  can create the Zoom meeting. Falls back to mailto if unset.
 */
 export default function BookCall({
   className = "mono-label border border-hairline px-6 py-3.5 text-ink transition-colors duration-300 hover:border-ink",
@@ -28,7 +27,7 @@ export default function BookCall({
         target="_blank"
         rel="noopener noreferrer"
         className={className}
-        onClick={() => trackEvent("book_call_click", { source, method: "microsoft_bookings" })}
+        onClick={() => trackEvent("book_call_click", { source, method: "calendly" })}
       >
         {label}
       </a>
@@ -44,7 +43,7 @@ export default function BookCall({
     <a
       href={`mailto:zak@tallynz.co?subject=${subject}&body=${body}`}
       className={className}
-      onClick={() => trackEvent("book_call_click", { source, method: "mailto_outlook" })}
+      onClick={() => trackEvent("book_call_click", { source, method: "mailto" })}
     >
       {label}
     </a>

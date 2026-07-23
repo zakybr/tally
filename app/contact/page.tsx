@@ -68,7 +68,7 @@ export default function ContactPage() {
                 <BookCall
                   source="contact_intro"
                   className="text-amber underline-offset-4 hover:underline"
-                  label="Book a call in Outlook"
+                  label="Book a call"
                 />
                 . Or email{" "}
                 <a

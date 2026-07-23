@@ -106,7 +106,7 @@ export default function VerticalPage({ vertical }: { vertical: Vertical }) {
               Tell us the number for {vertical.shortName.toLowerCase()}.
             </h2>
             <p className="mt-4 text-[0.9375rem] leading-[1.7] text-ink-2">
-              Qualify in a few minutes, or book a short call in Outlook via Microsoft Bookings.
+              Qualify in a few minutes, or book a 30-minute Zoom call via Calendly.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link

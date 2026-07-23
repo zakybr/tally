@@ -63,7 +63,7 @@ export default function ProofPage() {
               <BookCall
                 source="proof_page"
                 className="mono-label border border-hairline px-6 py-3.5 text-ink transition-colors duration-300 hover:border-ink"
-                label="Book a call in Outlook"
+                label="Book a call"
               />
             </div>
 
@@ -92,14 +92,14 @@ export default function ProofPage() {
                 Prefer a calendar invite?
               </h2>
               <p className="mt-4 text-[0.9375rem] leading-[1.7] text-ink-2">
-                Use Microsoft Bookings (free with Outlook / Microsoft 365) to pick a slot. Or submit
+                Use Calendly to pick a 30-minute Zoom slot (synced to Outlook). Or submit
                 the qualification brief and we reply within two working days.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <BookCall
                   source="proof_sidebar"
                   className="mono-label border border-amber bg-amber px-6 py-3.5 text-bg transition-colors duration-300 hover:bg-transparent hover:text-amber"
-                  label="Book via Outlook"
+                  label="Book on Calendly"
                 />
                 <Link
                   href="/contact"

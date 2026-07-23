@@ -71,14 +71,13 @@ Submissions set `reply-to` to the enquirer's email, so replying goes straight ba
 - UTMs / gclid / msclkid are captured for the session and attached to contact and one-pager leads. GA4 events fire into your existing tag: `generate_lead`, `file_download`, `book_call_click`.
 - After deploy: submit the sitemap in [Google Search Console](https://search.google.com/search-console) for `www.tallynz.co`.
 
-## Outlook booking (free)
+## Calendly booking
 
-Uses **Microsoft Bookings** / **Bookings with me** (included with Outlook / Microsoft 365, syncs to your calendar). No Calendly fee.
+"Book a call" CTAs open your Calendly event (`NEXT_PUBLIC_BOOKING_URL`). Typical setup: Calendly event → Outlook calendar sync → Zoom 30-minute meeting.
 
-1. In Outlook on the web, open Bookings or create a "Bookings with me" page.
-2. Copy the public booking URL.
-3. In Vercel → Environment Variables set `NEXT_PUBLIC_BOOKING_URL` to that URL (Production + Preview).
-4. Redeploy. "Book a call" CTAs open your Outlook page.
+1. In Calendly, open the event → Share → copy the link.
+2. In Vercel → Environment Variables set `NEXT_PUBLIC_BOOKING_URL` to that URL (Production + Preview).
+3. Redeploy so the public env var is baked in.
 
 Until that env var is set, booking CTAs fall back to a pre-filled mailto to `zak@tallynz.co`.
 
