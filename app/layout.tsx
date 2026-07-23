@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Script from "next/script";
 import SmoothScroll from "@/components/SmoothScroll";
+import UtmCapture from "@/components/UtmCapture";
 import {
   DEFAULT_DESCRIPTION,
   DEFAULT_TITLE,
@@ -115,6 +116,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body>
+        <UtmCapture />
         <SmoothScroll>{children}</SmoothScroll>
         <script
           type="application/ld+json"

@@ -63,6 +63,20 @@ export default function SeoOverview() {
               >
                 Full capability brief
               </Link>
+              <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2">
+                <Link href="/seafood-aquaculture-marketing" className="mono-label text-ink-2 hover:text-ink">
+                  Seafood
+                </Link>
+                <Link href="/forestry-marketing" className="mono-label text-ink-2 hover:text-ink">
+                  Forestry
+                </Link>
+                <Link href="/horticulture-marketing" className="mono-label text-ink-2 hover:text-ink">
+                  Horticulture
+                </Link>
+                <Link href="/proof" className="mono-label text-ink-2 hover:text-ink">
+                  Proof landing
+                </Link>
+              </div>
             </aside>
           </Reveal>
         </div>

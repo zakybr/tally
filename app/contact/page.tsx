@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import ContactForm from "@/components/ContactForm";
+import BookCall from "@/components/BookCall";
 import TallyMark from "@/components/TallyMark";
 
 export const metadata: Metadata = {
@@ -63,7 +64,13 @@ export default function ContactPage() {
                 ))}
               </ul>
               <p className="mt-8 max-w-md text-sm leading-[1.7] text-ink-2">
-                Prefer email? Reach the partners directly at{" "}
+                Prefer a calendar slot?{" "}
+                <BookCall
+                  source="contact_intro"
+                  className="text-amber underline-offset-4 hover:underline"
+                  label="Book a call in Outlook"
+                />
+                . Or email{" "}
                 <a
                   href="mailto:zak@tallynz.co"
                   className="text-amber underline-offset-4 hover:underline"

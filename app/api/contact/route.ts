@@ -33,6 +33,15 @@ type Payload = {
   timeline?: string;
   message?: string;
   website?: string; // honeypot
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
+  utm_term?: string;
+  utm_content?: string;
+  gclid?: string;
+  msclkid?: string;
+  referrer?: string;
+  landing_page?: string;
 };
 
 const isEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -85,6 +94,15 @@ export async function POST(request: Request) {
     ["Budget status", budgetStatus],
     ["Timeline", timeline],
     ["Outcome detail", message],
+    ["UTM source", clean(body.utm_source, 120)],
+    ["UTM medium", clean(body.utm_medium, 120)],
+    ["UTM campaign", clean(body.utm_campaign, 160)],
+    ["UTM term", clean(body.utm_term, 160)],
+    ["UTM content", clean(body.utm_content, 160)],
+    ["Google click id", clean(body.gclid, 120)],
+    ["Microsoft click id", clean(body.msclkid, 120)],
+    ["Referrer", clean(body.referrer, 500)],
+    ["Landing page", clean(body.landing_page, 300)],
   ];
 
   const text = rows

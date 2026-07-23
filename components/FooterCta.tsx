@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import TallyMark from "@/components/TallyMark";
+import BookCall from "@/components/BookCall";
 
 /* Spare institutional footer: single CTA, one-line positioning statement. */
 export default function FooterCta() {
@@ -24,6 +25,7 @@ export default function FooterCta() {
               >
                 Start the Proof
               </Link>
+              <BookCall source="footer_cta" label="Book a call" />
               <a
                 href="#guarantee"
                 className="mono-label border border-hairline px-6 py-3.5 text-ink transition-colors duration-300 hover:border-ink"
@@ -52,6 +54,30 @@ export default function FooterCta() {
               className="mono-label text-ink-2 transition-colors hover:text-ink"
             >
               Primary industries marketing
+            </Link>
+            <Link
+              href="/seafood-aquaculture-marketing"
+              className="mono-label text-ink-2 transition-colors hover:text-ink"
+            >
+              Seafood
+            </Link>
+            <Link
+              href="/forestry-marketing"
+              className="mono-label text-ink-2 transition-colors hover:text-ink"
+            >
+              Forestry
+            </Link>
+            <Link
+              href="/horticulture-marketing"
+              className="mono-label text-ink-2 transition-colors hover:text-ink"
+            >
+              Horticulture
+            </Link>
+            <Link
+              href="/proof"
+              className="mono-label text-ink-2 transition-colors hover:text-ink"
+            >
+              Proof
             </Link>
             <Link
               href="/contact"

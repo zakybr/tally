@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import BookCall from "@/components/BookCall";
+import { attributionPayload, trackEvent } from "@/lib/analytics";
 
 const industries = [
   "Seafood & aquaculture",
@@ -47,17 +49,25 @@ export default function ContactForm() {
 
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
+    const attribution = attributionPayload();
 
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, ...attribution }),
       });
       if (!res.ok) {
         const json = await res.json().catch(() => ({}));
         throw new Error(json.error || "Something went wrong. Please try again.");
       }
+      trackEvent("generate_lead", {
+        method: "contact_form",
+        industry: String(data.industry ?? ""),
+        outcome: String(data.outcome ?? ""),
+        currency: "NZD",
+        ...attribution,
+      });
       setStatus("success");
       form.reset();
     } catch (err) {
@@ -78,19 +88,25 @@ export default function ContactForm() {
           can&apos;t guarantee your outcome, we&apos;ll tell you straight, and exactly what it would
           take if we can.
         </p>
-        <Link
-          href="/"
-          className="mono-label mt-8 inline-block border border-hairline px-6 py-3.5 text-ink transition-colors duration-300 hover:border-ink"
-        >
-          Back to home
-        </Link>
+        <div className="mt-8 flex flex-wrap gap-4">
+          <BookCall
+            source="contact_success"
+            className="mono-label border border-amber bg-amber px-6 py-3.5 text-bg transition-colors duration-300 hover:bg-transparent hover:text-amber"
+            label="Book a call while you wait"
+          />
+          <Link
+            href="/"
+            className="mono-label border border-hairline px-6 py-3.5 text-ink transition-colors duration-300 hover:border-ink"
+          >
+            Back to home
+          </Link>
+        </div>
       </div>
     );
   }
 
   return (
     <form onSubmit={onSubmit} noValidate className="max-w-2xl">
-      {/* Honeypot: hidden from users, catches bots. */}
       <input
         type="text"
         name="website"
@@ -111,13 +127,26 @@ export default function ContactForm() {
           <label className={labelCls} htmlFor="email">
             Work email <span className="text-amber">*</span>
           </label>
-          <input id="email" name="email" type="email" required autoComplete="email" className={fieldCls} />
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            autoComplete="email"
+            className={fieldCls}
+          />
         </div>
         <div>
           <label className={labelCls} htmlFor="company">
             Company / organisation <span className="text-amber">*</span>
           </label>
-          <input id="company" name="company" required autoComplete="organization" className={fieldCls} />
+          <input
+            id="company"
+            name="company"
+            required
+            autoComplete="organization"
+            className={fieldCls}
+          />
         </div>
         <div>
           <label className={labelCls} htmlFor="role">
@@ -244,6 +273,7 @@ export default function ContactForm() {
         >
           {status === "submitting" ? "Sending…" : "Submit the brief"}
         </button>
+        <BookCall source="contact_form_aside" label="Or book a call" />
         <span className="font-mono text-[0.6875rem] leading-relaxed text-ink-2">
           Required fields marked <span className="text-amber">*</span>. We reply within two working
           days.

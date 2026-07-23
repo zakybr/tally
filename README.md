@@ -64,11 +64,23 @@ Submissions set `reply-to` to the enquirer's email, so replying goes straight ba
 
 - Canonical host defaults to `https://www.tallynz.co` (`lib/seo.ts`). Override with `NEXT_PUBLIC_SITE_URL` if needed.
 - Titles, descriptions and keywords target queries like "marketing for primary industries NZ", "primary industries marketing New Zealand", and "best NZ marketing agencies".
-- Structured data: Organization + ProfessionalService, WebSite, FAQPage, BreadcrumbList.
-- Pillar page: `/primary-industries-marketing` (sector coverage + FAQ written for Google and AI answer engines).
-- `/llms.txt` curated map for ChatGPT, Claude, Perplexity and similar agents.
-- `robots.txt` explicitly allows major AI crawlers; `sitemap.xml` lists all indexable routes.
-- After deploy: submit the sitemap in [Google Search Console](https://search.google.com/search-console) for `www.tallynz.co` (and the apex if used).
+- Structured data: Organization + ProfessionalService, WebSite, FAQPage, BreadcrumbList, Service.
+- Pillar: `/primary-industries-marketing`. Verticals: `/seafood-aquaculture-marketing`, `/forestry-marketing`, `/horticulture-marketing`.
+- Ads / LinkedIn landing: `/proof`. Gated guarantee PDF: `/docs/tally-guarantee-one-pager.pdf`.
+- `/llms.txt` for AI agents. `robots.txt` allows major AI crawlers; `sitemap.xml` lists all indexable routes.
+- UTMs / gclid / msclkid are captured for the session and attached to contact and one-pager leads. GA4 events fire into your existing tag: `generate_lead`, `file_download`, `book_call_click`.
+- After deploy: submit the sitemap in [Google Search Console](https://search.google.com/search-console) for `www.tallynz.co`.
+
+## Outlook booking (free)
+
+Uses **Microsoft Bookings** / **Bookings with me** (included with Outlook / Microsoft 365, syncs to your calendar). No Calendly fee.
+
+1. In Outlook on the web, open Bookings or create a "Bookings with me" page.
+2. Copy the public booking URL.
+3. In Vercel → Environment Variables set `NEXT_PUBLIC_BOOKING_URL` to that URL (Production + Preview).
+4. Redeploy. "Book a call" CTAs open your Outlook page.
+
+Until that env var is set, booking CTAs fall back to a pre-filled mailto to `zak@tallynz.co`.
 
 ## Performance
 
