@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Script from "next/script";
 import SmoothScroll from "@/components/SmoothScroll";
 import {
   DEFAULT_DESCRIPTION,
@@ -11,6 +12,8 @@ import {
   websiteJsonLd,
 } from "@/lib/seo";
 import "./globals.css";
+
+const GA_MEASUREMENT_ID = "G-M7YPGSC1R8";
 
 /* Headline and body grotesk: General Sans, self-hosted (Fontshare FFL). */
 const grotesk = localFont({
@@ -96,6 +99,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-NZ" className={`${grotesk.variable} ${alliance.variable}`}>
+      <head>
+        {/* Google tag (gtag.js) */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
+      </head>
       <body>
         <SmoothScroll>{children}</SmoothScroll>
         <script
