@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tally LinkedIn Banner Background</title>
+    <style>
+      :root {
+        --ink: #0b0b0a;
+        --paper: #e8e2d6;
+        --amber: #d9711a;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 2256px;
+        height: 382px;
+        overflow: hidden;
+        background: var(--ink);
+      }
+
+      .banner {
+        position: relative;
+        width: 2256px;
+        height: 382px;
+        background: var(--ink);
+        overflow: hidden;
+      }
+
+      /* Faint warm paper lift — barely there, institutional */
+      .paper-lift {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 70% 120% at 72% 45%,
+          color-mix(in srgb, var(--paper) 4.5%, transparent) 0%,
+          transparent 62%
+        );
+        pointer-events: none;
+      }
+
+      /* Secondary soft lift toward center-right, keeps left/bottom calm */
+      .paper-lift-secondary {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          105deg,
+          transparent 0%,
+          transparent 38%,
+          color-mix(in srgb, var(--paper) 2.2%, transparent) 68%,
+          transparent 100%
+        );
+        pointer-events: none;
+      }
+
+      /* Dimension / spec-sheet rules — texture, not decoration */
+      .dimension-lines {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 1;
+      }
+
+      .dimension-lines line {
+        stroke: var(--amber);
+        stroke-width: 1;
+        stroke-opacity: 0.08;
+      }
+
+      /* Oversized tally mark watermark — fragment only, right-of-center */
+      .tally {
+        position: absolute;
+        top: 50%;
+        left: 58%;
+        width: 920px;
+        height: 620px;
+        transform: translateY(-48%);
+        pointer-events: none;
+        overflow: visible;
+      }
+
+      .tally stroke {
+        stroke: var(--amber);
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+      }
+
+      .tally .stroke-v {
+        stroke-width: 14;
+        stroke-opacity: 0.14;
+      }
+
+      .tally .stroke-d {
+        stroke-width: 13;
+        stroke-opacity: 0.16;
+      }
+
+      /* Slight engraving depth: a second pass offset, even fainter */
+      .tally-ghost {
+        position: absolute;
+        top: 50%;
+        left: 58%;
+        width: 920px;
+        height: 620px;
+        transform: translate(3px, calc(-48% + 2px));
+        pointer-events: none;
+        overflow: visible;
+      }
+
+      .tally-ghost stroke {
+        stroke: var(--paper);
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+        stroke-width: 14;
+        stroke-opacity: 0.03;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="banner" id="banner">
+      <div class="paper-lift"></div>
+      <div class="paper-lift-secondary"></div>
+
+      <!-- Irregular horizontal dimension lines (spec-sheet feel) -->
+      <svg
+        class="dimension-lines"
+        width="2256"
+        height="382"
+        viewBox="0 0 2256 382"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <!-- Keep left ~160px and bottom ~120px quieter (2x of 80/60) -->
+        <line x1="180" y1="42" x2="2180" y2="42" />
+        <line x1="220" y1="78" x2="2100" y2="78" />
+        <line x1="160" y1="118" x2="2240" y2="118" />
+        <line x1="280" y1="151" x2="1980" y2="151" />
+        <line x1="190" y1="189" x2="2200" y2="189" />
+        <line x1="240" y1="224" x2="2050" y2="224" />
+        <line x1="170" y1="268" x2="2160" y2="268" />
+        <!-- Fewer / shorter lines in lower band so logo zone stays calm -->
+        <line x1="520" y1="312" x2="1900" y2="312" />
+      </svg>
+
+      <!-- Ghost engraving pass -->
+      <svg
+        class="tally-ghost"
+        viewBox="0 0 920 620"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <line x1="210" y1="-40" x2="210" y2="660" />
+        <line x1="320" y1="-40" x2="320" y2="660" />
+        <line x1="430" y1="-40" x2="430" y2="660" />
+        <line x1="540" y1="-40" x2="540" y2="660" />
+        <line x1="160" y1="120" x2="620" y2="500" />
+      </svg>
+
+      <!-- Primary tally mark: four verticals + diagonal cross -->
+      <svg
+        class="tally"
+        viewBox="0 0 920 620"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <line class="stroke-v" x1="210" y1="-40" x2="210" y2="660" />
+        <line class="stroke-v" x1="320" y1="-40" x2="320" y2="660" />
+        <line class="stroke-v" x1="430" y1="-40" x2="430" y2="660" />
+        <line class="stroke-v" x1="540" y1="-40" x2="540" y2="660" />
+        <line class="stroke-d" x1="160" y1="120" x2="620" y2="500" />
+      </svg>
+    </div>
+  </body>
+</html>

@@ -18,6 +18,7 @@ Tally sells the tally, not the footage. One agreed business outcome is written i
 ## Core pages
 
 - [Home](${SITE_URL}/): Institutional overview of Tally's outcome-guaranteed offer for NZ primary industries
+- [About](${SITE_URL}/about): Who runs Tally, the DTC-to-primary transfer, directors, and operating rules
 - [Primary industries marketing](${SITE_URL}/primary-industries-marketing): Full capability brief, sector coverage, guarantee tracks and FAQ for buyers and AI search
 - [Start the Proof](${SITE_URL}/proof): Short conversion page for paid search and LinkedIn traffic
 - [Start the Proof / Contact](${SITE_URL}/contact): Qualification questionnaire for recruitment, reach and enquiry briefs

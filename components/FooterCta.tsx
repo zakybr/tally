@@ -27,7 +27,7 @@ export default function FooterCta() {
               </Link>
               <BookCall source="footer_cta" label="Book a call" />
               <a
-                href="#guarantee"
+                href="/#guarantee"
                 className="mono-label border border-hairline px-6 py-3.5 text-ink transition-colors duration-300 hover:border-ink"
               >
                 Re-read the guarantee
@@ -49,6 +49,12 @@ export default function FooterCta() {
             aria-label="Footer"
             className="flex flex-wrap gap-x-5 gap-y-2 md:ml-auto"
           >
+            <Link
+              href="/about"
+              className="mono-label text-ink-2 transition-colors hover:text-ink"
+            >
+              About
+            </Link>
             <Link
               href="/primary-industries-marketing"
               className="mono-label text-ink-2 transition-colors hover:text-ink"
