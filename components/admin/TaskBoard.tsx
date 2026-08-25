@@ -154,9 +154,14 @@ export default function TaskBoard({
           return (
             <section key={list.id}>
               <div className="mb-3">
-                <h2 className="text-[length:var(--t-section)] font-semibold tracking-tight text-[var(--ink)]">
-                  {list.title}
-                </h2>
+                <div className="flex flex-wrap items-baseline gap-x-3">
+                  <h2 className="text-[length:var(--t-section)] font-semibold tracking-tight text-[var(--ink)]">
+                    {list.title}
+                  </h2>
+                  <span className="mono-label tnum text-[10px] text-[var(--ink-3)]">
+                    {rows.filter((t) => t.status !== "done").length} open
+                  </span>
+                </div>
                 {list.summary && (
                   <p
                     className="mt-1 max-w-3xl text-sm leading-relaxed text-[var(--ink-2)]"
@@ -221,8 +226,8 @@ function TaskRow({
     task.due_date && !done && task.due_date < new Date().toISOString().slice(0, 10);
 
   return (
-    <li className="border-b border-[var(--line)]">
-      <div className="flex items-start gap-3 py-3">
+    <li className="group border-b border-[var(--line)] transition-colors duration-150 hover:bg-[var(--s-panel)]">
+      <div className="flex items-center gap-3 py-2.5 pl-1 pr-1">
         <button
           type="button"
           onClick={() => onPatch(task.id, { status: done ? "todo" : "done" })}
@@ -252,7 +257,7 @@ function TaskRow({
           </span>
         </button>
 
-        <div className="flex shrink-0 items-center gap-1.5">
+        <div className="flex shrink-0 items-center gap-1.5 opacity-90 transition-opacity group-hover:opacity-100">
           {task.due_date && (
             <span
               className={[

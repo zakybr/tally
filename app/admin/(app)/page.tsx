@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHeader from "@/components/admin/PageHeader";
 import { EmptyState, PriorityChip, StatusChip, buttonClass } from "@/components/admin/ui";
+import TallyCount from "@/components/admin/TallyCount";
 import { supabaseServer } from "@/lib/supabase/server";
 import type { List, Note, Task } from "@/lib/supabase/types";
 
@@ -48,21 +49,43 @@ export default async function DashboardPage() {
       />
 
       <div className="px-5 py-6 md:px-8">
-        {/* One line of context, not a wall of tiles. */}
-        <p className="mb-8 text-sm text-[var(--ink-2)]">
-          <span className="tnum text-2xl font-semibold text-[var(--ink)]">{open.length}</span>
-          <span className="ml-2">open</span>
-          <span className="mx-3 text-[var(--ink-3)]">/</span>
-          <span className="tnum text-[var(--ink)]">{tasks.length - open.length}</span>
-          <span className="ml-2">done</span>
-          {blocked.length > 0 && (
-            <>
-              <span className="mx-3 text-[var(--ink-3)]">/</span>
-              <span className="tnum text-[var(--st-blocked)]">{blocked.length}</span>
-              <span className="ml-2 text-[var(--st-blocked)]">blocked</span>
-            </>
-          )}
-        </p>
+        {/* The product counts. It should count in its own mark. */}
+        <div className="mb-10 border border-[var(--line)] bg-[var(--s-panel)] px-5 py-5 md:px-6">
+          <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-4">
+            <div className="min-w-0">
+              <p className="mono-label mb-3 text-[var(--ink-3)]">Open work</p>
+              <TallyCount
+                value={open.length}
+                tone="var(--ink)"
+                max={30}
+                label={`${open.length} open tasks`}
+              />
+            </div>
+            <div className="flex items-end gap-8">
+              <p className="text-right">
+                <span className="tnum block text-4xl font-semibold leading-none text-[var(--ink)]">
+                  {open.length}
+                </span>
+                <span className="mono-label mt-2 block text-[var(--ink-3)]">open</span>
+              </p>
+              <p className="text-right">
+                <span className="tnum block text-4xl font-semibold leading-none text-[var(--ink-3)]">
+                  {tasks.length - open.length}
+                </span>
+                <span className="mono-label mt-2 block text-[var(--ink-3)]">done</span>
+              </p>
+              <p className="text-right">
+                <span
+                  className="tnum block text-4xl font-semibold leading-none"
+                  style={{ color: blocked.length ? "var(--st-blocked)" : "var(--ink-3)" }}
+                >
+                  {blocked.length}
+                </span>
+                <span className="mono-label mt-2 block text-[var(--ink-3)]">blocked</span>
+              </p>
+            </div>
+          </div>
+        </div>
 
         <section className="mb-12">
           <h2 className="mb-3 text-[length:var(--t-section)] font-semibold tracking-tight text-[var(--ink)]">
@@ -117,11 +140,11 @@ export default async function DashboardPage() {
             {progress.length === 0 ? (
               <p className="py-4 text-sm text-[var(--ink-2)]">No lists yet.</p>
             ) : (
-              <ul className="space-y-5">
+              <ul className="space-y-6">
                 {progress.map(({ list, total, done }) => (
                   <li key={list.id}>
-                    <Link href="/admin/tasks" className="group block pb-1">
-                      <div className="mb-1.5 flex items-baseline justify-between gap-3">
+                    <Link href="/admin/tasks" className="group block">
+                      <div className="mb-2 flex items-baseline justify-between gap-3">
                         <span className="text-sm text-[var(--ink)] group-hover:text-[var(--accent)]">
                           {list.title}
                         </span>
@@ -129,13 +152,13 @@ export default async function DashboardPage() {
                           {done}/{total}
                         </span>
                       </div>
-                      {/* Progress reads as a rule, not a rounded bar. */}
-                      <div className="h-px w-full bg-[var(--line)]">
-                        <div
-                          className="h-px bg-[var(--accent)] transition-[width] duration-300 ease-out"
-                          style={{ width: total ? `${(done / total) * 100}%` : "0%" }}
-                        />
-                      </div>
+                      <TallyCount
+                        value={done}
+                        total={total}
+                        tone="var(--ink)"
+                        max={20}
+                        label={`${done} of ${total} done`}
+                      />
                     </Link>
                   </li>
                 ))}

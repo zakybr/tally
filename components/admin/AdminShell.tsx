@@ -5,14 +5,21 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import TallyMark from "@/components/TallyMark";
 import { buttonClass } from "@/components/admin/ui";
+import {
+  IconBrand,
+  IconDashboard,
+  IconNotes,
+  IconTasks,
+  IconTeam,
+} from "@/components/admin/NavIcons";
 import type { Member } from "@/lib/supabase/types";
 
 const NAV = [
-  { href: "/admin", label: "Dashboard" },
-  { href: "/admin/tasks", label: "Tasks" },
-  { href: "/admin/notes", label: "Notes" },
-  { href: "/admin/brand", label: "Brand" },
-  { href: "/admin/team", label: "Team" },
+  { href: "/admin", label: "Dashboard", Icon: IconDashboard },
+  { href: "/admin/tasks", label: "Tasks", Icon: IconTasks },
+  { href: "/admin/notes", label: "Notes", Icon: IconNotes },
+  { href: "/admin/brand", label: "Brand", Icon: IconBrand },
+  { href: "/admin/team", label: "Team", Icon: IconTeam },
 ];
 
 function isActive(pathname: string, href: string) {
@@ -39,6 +46,7 @@ export default function AdminShell({
   const nav = (onNavigate?: () => void) =>
     NAV.map((item) => {
       const active = isActive(pathname, item.href);
+      const { Icon } = item;
       return (
         <Link
           key={item.href}
@@ -46,12 +54,24 @@ export default function AdminShell({
           onClick={onNavigate}
           aria-current={active ? "page" : undefined}
           className={[
-            "mono-label px-4 py-3 transition-colors duration-150",
+            "mono-label relative flex items-center gap-2.5 py-2 pl-4 pr-3",
+            "transition-colors duration-150",
             active
               ? "bg-[var(--s-raised)] text-[var(--accent)]"
               : "text-[var(--ink-2)] hover:bg-[var(--s-panel)] hover:text-[var(--ink)]",
           ].join(" ")}
         >
+          {/* Current item is marked by a stroke, the way the brand marks anything. */}
+          <span
+            aria-hidden="true"
+            className={[
+              "absolute left-0 top-1/2 h-4 w-[2px] -translate-y-1/2 transition-opacity duration-150",
+              active ? "bg-[var(--accent)] opacity-100" : "opacity-0",
+            ].join(" ")}
+          />
+          <span className={active ? "text-[var(--accent)]" : "text-[var(--ink-3)]"}>
+            <Icon />
+          </span>
           {item.label}
         </Link>
       );
@@ -103,7 +123,7 @@ export default function AdminShell({
           </span>
         </Link>
 
-        <nav className="flex flex-1 flex-col py-3">{nav()}</nav>
+        <nav className="flex flex-1 flex-col gap-px py-3">{nav()}</nav>
 
         <div className="border-t border-[var(--line)] p-4">
           <MemberBlock member={member} />
@@ -112,7 +132,7 @@ export default function AdminShell({
 
       {/* Cap the measure so rows do not stretch across a wide monitor. */}
       <main className="min-w-0 flex-1 bg-[var(--s-ground)]">
-        <div className="mx-auto w-full max-w-[1180px]">{children}</div>
+        <div className="mx-auto w-full max-w-[1040px]">{children}</div>
       </main>
     </div>
   );
