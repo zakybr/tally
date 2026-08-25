@@ -7,6 +7,8 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
+        /* Internal portal. Locked behind auth anyway, but keep it out of every index. */
+        disallow: ["/admin", "/admin/", "/auth/"],
       },
       /* Explicit allow for AI search / answer crawlers */
       { userAgent: "GPTBot", allow: "/" },

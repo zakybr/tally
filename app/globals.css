@@ -116,3 +116,194 @@ body {
 .tally-mark.over {
   background: var(--accent-amber);
 }
+
+/* ============================================================
+   ADMIN PORTAL
+   Dense dashboard scale (8–32px) on the same tokens as the site.
+   Nothing here leaks onto the marketing pages — every rule is
+   scoped under .admin.
+   ============================================================ */
+
+.admin {
+  --pad: 12px;
+  --gap: 8px;
+  --rule: rgba(245, 242, 234, 0.08);
+  --rule-strong: rgba(245, 242, 234, 0.16);
+  --raised: #1c1f24;
+  font-size: 16px;
+}
+
+/* Lenis is disabled under /admin, so the browser owns scroll again. */
+.admin,
+.admin * {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(245, 242, 234, 0.18) transparent;
+}
+.admin *::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.admin *::-webkit-scrollbar-thumb {
+  background: rgba(245, 242, 234, 0.18);
+}
+.admin *::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Never remove the focus ring — make it match the brand instead. */
+.admin :focus-visible {
+  outline: 2px solid var(--accent-amber);
+  outline-offset: 2px;
+}
+
+.admin input,
+.admin textarea,
+.admin select {
+  background: var(--bg-primary);
+  border: 1px solid var(--rule);
+  color: var(--text-primary);
+  border-radius: 0;
+  padding: 10px 12px;
+  font: inherit;
+  width: 100%;
+}
+.admin input::placeholder,
+.admin textarea::placeholder {
+  color: #6e665e;
+}
+.admin input:focus,
+.admin textarea:focus,
+.admin select:focus {
+  border-color: var(--accent-amber);
+}
+
+.admin button {
+  border-radius: 0;
+  font: inherit;
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+/* 44x44 minimum touch target on anything tappable, on touch devices. */
+@media (pointer: coarse) {
+  .admin button,
+  .admin a[role="button"],
+  .admin input[type="checkbox"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin *,
+  .admin *::before,
+  .admin *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --- Collaborative editor ------------------------------------------------ */
+
+.tiptap {
+  outline: none;
+  min-height: 60vh;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+}
+.tiptap > * + * {
+  margin-top: 0.85em;
+}
+.tiptap h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 1.6em;
+}
+.tiptap h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin-top: 1.5em;
+}
+.tiptap h3 {
+  font-family: var(--font-alliance), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-amber);
+  margin-top: 1.8em;
+}
+.tiptap ul,
+.tiptap ol {
+  padding-left: 1.25rem;
+}
+.tiptap ul {
+  list-style: disc;
+}
+.tiptap ol {
+  list-style: decimal;
+}
+.tiptap li::marker {
+  color: var(--accent-amber);
+}
+.tiptap blockquote {
+  border-left: 3px solid var(--accent-amber);
+  padding-left: 1rem;
+  color: var(--text-secondary);
+}
+.tiptap code {
+  font-family: var(--font-alliance), monospace;
+  background: var(--bg-secondary);
+  padding: 0.1em 0.35em;
+  font-size: 0.9em;
+}
+.tiptap pre {
+  background: var(--bg-secondary);
+  border-left: 3px solid var(--accent-amber-dim);
+  padding: 12px 14px;
+  overflow-x: auto;
+}
+.tiptap pre code {
+  background: none;
+  padding: 0;
+}
+.tiptap hr {
+  border: none;
+  border-top: 1px solid var(--rule);
+}
+.tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: #6e665e;
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Remote collaborators' carets, coloured per person. */
+.collaboration-carets__caret {
+  border-left: 1px solid;
+  border-right: 1px solid;
+  margin-left: -1px;
+  margin-right: -1px;
+  pointer-events: none;
+  position: relative;
+  word-break: normal;
+}
+.collaboration-carets__label {
+  border-radius: 0;
+  color: #0b0b0a;
+  font-family: var(--font-alliance), system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  left: -1px;
+  line-height: 1;
+  padding: 3px 5px;
+  position: absolute;
+  top: -1.4em;
+  user-select: none;
+  white-space: nowrap;
+}
