@@ -92,6 +92,18 @@ export default function FooterCta() {
               Contact
             </Link>
             <Link
+              href="/privacy"
+              className="mono-label text-ink-2 transition-colors hover:text-ink"
+            >
+              Privacy
+            </Link>
+            <Link
+              href="/terms"
+              className="mono-label text-ink-2 transition-colors hover:text-ink"
+            >
+              Terms
+            </Link>
+            <Link
               href="/llms.txt"
               className="mono-label text-ink-2 transition-colors hover:text-ink"
             >
