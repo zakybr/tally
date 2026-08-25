@@ -33,8 +33,8 @@ export default function CopyButton({
       className={[
         "mono-label border px-3 py-2 transition-colors",
         copied
-          ? "border-amber bg-amber text-bg"
-          : "border-hairline text-ink-2 hover:border-amber hover:text-amber",
+          ? "border-[var(--accent)] bg-[var(--accent)] text-[var(--s-ground)]"
+          : "border-[var(--line)] text-[var(--ink-2)] hover:border-[var(--accent)] hover:text-[var(--accent)]",
         className,
       ].join(" ")}
     >

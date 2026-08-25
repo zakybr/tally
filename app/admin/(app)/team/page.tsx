@@ -25,7 +25,6 @@ export default async function TeamPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Access"
         title="Team"
         lede="Add someone here and they can sign in with Google immediately. No invite email, no password."
       />

@@ -193,7 +193,7 @@ export default function NoteEditor({
 
   return (
     <>
-      <header className="sticky top-0 z-10 border-b border-hairline bg-bg/95 px-5 py-4 backdrop-blur md:px-8">
+      <header className="sticky top-0 z-10 border-b border-[var(--line)] bg-[var(--s-ground)]/95 px-5 py-4 backdrop-blur md:px-8">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <input
             value={title}
@@ -211,7 +211,7 @@ export default function NoteEditor({
                   <span
                     key={p.clientId}
                     title={`${p.name} is here`}
-                    className="mono-label px-1.5 py-0.5 text-[10px] text-bg"
+                    className="mono-label px-1.5 py-0.5 text-[10px] text-[var(--s-ground)]"
                     style={{ background: p.color }}
                   >
                     {p.name.slice(0, 10)}
@@ -219,7 +219,7 @@ export default function NoteEditor({
                 ))}
               </div>
             )}
-            <span className="mono-label flex items-center gap-2 text-[10px] text-ink-2">
+            <span className="mono-label flex items-center gap-2 text-[10px] text-[var(--ink-2)]">
               <span
                 aria-hidden="true"
                 className="inline-block h-2 w-2"

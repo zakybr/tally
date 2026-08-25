@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import TallyMark from "@/components/TallyMark";
+import { buttonClass } from "@/components/admin/ui";
 import type { Member } from "@/lib/supabase/types";
 
 const NAV = [
@@ -45,10 +46,10 @@ export default function AdminShell({
           onClick={onNavigate}
           aria-current={active ? "page" : undefined}
           className={[
-            "mono-label border-l-2 px-4 py-3 transition-colors",
+            "mono-label px-4 py-3 transition-colors duration-150",
             active
-              ? "border-amber bg-panel text-amber"
-              : "border-transparent text-ink-2 hover:border-hairline hover:text-ink",
+              ? "bg-[var(--s-raised)] text-[var(--accent)]"
+              : "text-[var(--ink-2)] hover:bg-[var(--s-panel)] hover:text-[var(--ink)]",
           ].join(" ")}
         >
           {item.label}
@@ -59,10 +60,10 @@ export default function AdminShell({
   return (
     <div className="flex min-h-screen flex-col lg:flex-row">
       {/* Mobile bar */}
-      <header className="flex items-center justify-between border-b border-hairline px-4 py-3 lg:hidden">
+      <header className="flex items-center justify-between border-b border-[var(--line)] bg-[var(--s-chrome)] px-4 py-3 lg:hidden">
         <Link href="/admin" className="flex items-center gap-2.5" aria-label="Tally portal">
           <TallyMark size={20} />
-          <span className="font-sans text-base font-semibold tracking-tight text-ink">
+          <span className="font-sans text-base font-semibold tracking-tight text-[var(--ink)]">
             tally
           </span>
         </Link>
@@ -71,55 +72,64 @@ export default function AdminShell({
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-controls="admin-nav"
-          className="mono-label border border-hairline px-3 py-2 text-ink"
+          className={buttonClass("secondary", "md")}
         >
           {open ? "Close" : "Menu"}
         </button>
       </header>
 
       {open && (
-        <nav id="admin-nav" className="flex flex-col border-b border-hairline py-2 lg:hidden">
+        <nav
+          id="admin-nav"
+          className="flex flex-col border-b border-[var(--line)] bg-[var(--s-chrome)] py-2 lg:hidden"
+        >
           {nav(() => setOpen(false))}
-          <SignOut className="mx-4 mt-3" />
+          <div className="mt-2 border-t border-[var(--line)] px-4 pt-3">
+            <MemberBlock member={member} />
+          </div>
         </nav>
       )}
 
-      {/* Desktop sidebar */}
-      <aside className="hidden w-56 shrink-0 flex-col border-r border-hairline lg:flex">
+      {/* Desktop sidebar — its own neutral layer, so chrome reads apart from content. */}
+      <aside className="hidden w-56 shrink-0 flex-col border-r border-[var(--line)] bg-[var(--s-chrome)] lg:flex">
         <Link
           href="/admin"
-          className="flex items-center gap-3 border-b border-hairline px-4 py-5"
+          className="flex items-center gap-3 border-b border-[var(--line)] px-4 py-5"
           aria-label="Tally portal"
         >
           <TallyMark size={22} />
-          <span className="font-sans text-lg font-semibold tracking-tight text-ink">tally</span>
+          <span className="font-sans text-lg font-semibold tracking-tight text-[var(--ink)]">
+            tally
+          </span>
         </Link>
 
         <nav className="flex flex-1 flex-col py-3">{nav()}</nav>
 
-        <div className="border-t border-hairline p-4">
-          <p className="truncate text-xs text-ink-2" title={member.email}>
-            {member.full_name ?? member.email}
-          </p>
-          <p className="mono-label mt-1 text-[10px] text-amber">{member.role}</p>
-          <SignOut className="mt-3 w-full" />
+        <div className="border-t border-[var(--line)] p-4">
+          <MemberBlock member={member} />
         </div>
       </aside>
 
-      <main className="min-w-0 flex-1">{children}</main>
+      {/* Cap the measure so rows do not stretch across a wide monitor. */}
+      <main className="min-w-0 flex-1 bg-[var(--s-ground)]">
+        <div className="mx-auto w-full max-w-[1180px]">{children}</div>
+      </main>
     </div>
   );
 }
 
-function SignOut({ className = "" }: { className?: string }) {
+function MemberBlock({ member }: { member: Member }) {
   return (
-    <form action="/auth/signout" method="post" className={className}>
-      <button
-        type="submit"
-        className="mono-label w-full border border-hairline px-3 py-2 text-ink-2 hover:border-amber hover:text-amber"
-      >
-        Sign out
-      </button>
-    </form>
+    <>
+      <p className="truncate text-xs text-[var(--ink-2)]" title={member.email}>
+        {member.full_name ?? member.email}
+      </p>
+      <p className="mono-label mt-1 text-[10px] text-[var(--ink-3)]">{member.role}</p>
+      <form action="/auth/signout" method="post" className="mt-3">
+        <button type="submit" className={buttonClass("secondary", "sm", "w-full")}>
+          Sign out
+        </button>
+      </form>
+    </>
   );
 }

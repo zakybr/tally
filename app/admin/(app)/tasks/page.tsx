@@ -23,7 +23,6 @@ export default async function TasksPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Working board"
         title="Tasks"
         lede="Everything here updates live. If someone else has it open, their changes land on your screen without a refresh."
       />

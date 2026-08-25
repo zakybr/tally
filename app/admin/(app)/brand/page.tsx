@@ -22,7 +22,6 @@ export default async function BrandPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Identity and briefs"
         title="Brand"
         lede="The logo, the palette, the rules, and a prompt for every kind of asset — each one carrying the brand block so anything Claude generates comes back looking like Tally."
       />

@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 
 /* Bare frame. The signed-in shell (sidebar, nav) lives in the (app) group below. */
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  return <div className="admin min-h-screen bg-bg text-ink">{children}</div>;
+  return <div className="admin min-h-screen bg-[var(--s-ground)] text-[var(--ink)]">{children}</div>;
 }

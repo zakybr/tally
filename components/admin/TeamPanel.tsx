@@ -66,19 +66,19 @@ export default function TeamPanel({
     <div className="space-y-12 px-5 py-6 md:px-8">
       <section>
         <p className="eyebrow mb-3">Signed in at least once</p>
-        <ul className="divide-y divide-[rgba(245,242,234,0.08)] border-y border-hairline">
+        <ul className="divide-y divide-[var(--line)] border-y border-[var(--line)]">
           {members.map((m) => (
             <li key={m.id} className="flex flex-wrap items-center justify-between gap-3 py-4">
               <div className="min-w-0">
-                <p className="text-sm font-semibold text-ink">
+                <p className="text-sm font-semibold text-[var(--ink)]">
                   {m.full_name ?? m.email}
                   {m.id === currentId && (
-                    <span className="mono-label ml-2 text-[10px] text-ink-2">you</span>
+                    <span className="mono-label ml-2 text-[10px] text-[var(--ink-2)]">you</span>
                   )}
                 </p>
-                <p className="mt-0.5 truncate text-xs text-ink-2">{m.email}</p>
+                <p className="mt-0.5 truncate text-xs text-[var(--ink-2)]">{m.email}</p>
               </div>
-              <span className="mono-label border border-hairline px-2 py-1 text-[10px] text-amber">
+              <span className="mono-label border border-[var(--line)] px-2 py-1 text-[10px] text-[var(--accent)]">
                 {m.role}
               </span>
             </li>
@@ -89,7 +89,7 @@ export default function TeamPanel({
       <section>
         <p className="eyebrow mb-1">Allowlist</p>
         <h2 className="mb-2 text-lg font-semibold tracking-tight">Who can get in</h2>
-        <p className="mb-5 max-w-2xl text-sm leading-relaxed text-ink-2">
+        <p className="mb-5 max-w-2xl text-sm leading-relaxed text-[var(--ink-2)]">
           Only these addresses become members when they sign in with Google. Anyone else who
           tries lands on a locked screen and can read nothing.
         </p>
@@ -97,7 +97,7 @@ export default function TeamPanel({
         {isOwner && (
           <form onSubmit={invite} className="mb-6 grid gap-3 sm:grid-cols-[2fr_2fr_auto]">
             <label className="block">
-              <span className="mono-label mb-1.5 block text-ink-2">Google email</span>
+              <span className="mono-label mb-1.5 block text-[var(--ink-2)]">Google email</span>
               <input
                 type="email"
                 value={email}
@@ -107,7 +107,7 @@ export default function TeamPanel({
               />
             </label>
             <label className="block">
-              <span className="mono-label mb-1.5 block text-ink-2">Note (optional)</span>
+              <span className="mono-label mb-1.5 block text-[var(--ink-2)]">Note (optional)</span>
               <input
                 value={note}
                 onChange={(e) => setNote(e.target.value)}
@@ -117,7 +117,7 @@ export default function TeamPanel({
             <button
               type="submit"
               disabled={busy}
-              className="mono-label self-end border border-amber bg-amber px-4 py-2.5 text-bg hover:bg-transparent hover:text-amber disabled:opacity-60"
+              className="mono-label self-end border border-[var(--accent)] bg-[var(--accent)] px-4 py-2.5 text-[var(--s-ground)] hover:bg-transparent hover:text-[var(--accent)] disabled:opacity-60"
             >
               {busy ? "Adding" : "Add"}
             </button>
@@ -125,25 +125,25 @@ export default function TeamPanel({
         )}
 
         {error && (
-          <p role="alert" className="mb-4 border-l-2 border-amber bg-panel px-4 py-3 text-sm">
+          <p role="alert" className="mb-4 border-l border-[var(--accent)] bg-[var(--s-panel)] px-4 py-3 text-sm">
             {error}
           </p>
         )}
 
-        <ul className="divide-y divide-[rgba(245,242,234,0.08)] border-y border-hairline">
+        <ul className="divide-y divide-[var(--line)] border-y border-[var(--line)]">
           {allowed.map((a) => (
             <li key={a.email} className="flex flex-wrap items-center justify-between gap-3 py-4">
               <div className="min-w-0">
-                <p className="truncate text-sm text-ink">{a.email}</p>
-                {a.note && <p className="mt-0.5 text-xs text-ink-2">{a.note}</p>}
+                <p className="truncate text-sm text-[var(--ink)]">{a.email}</p>
+                {a.note && <p className="mt-0.5 text-xs text-[var(--ink-2)]">{a.note}</p>}
               </div>
               <div className="flex items-center gap-2">
                 <span
                   className={[
                     "mono-label border px-2 py-1 text-[10px]",
                     signedUp.has(a.email.toLowerCase())
-                      ? "border-hairline text-ink-2"
-                      : "border-amber-dim text-[#c9a961]",
+                      ? "border-[var(--line)] text-[var(--ink-2)]"
+                      : "border-[var(--line-strong)] text-[#c9a961]",
                   ].join(" ")}
                 >
                   {signedUp.has(a.email.toLowerCase()) ? "active" : "not signed in yet"}
@@ -152,7 +152,7 @@ export default function TeamPanel({
                   <button
                     type="button"
                     onClick={() => revoke(a.email)}
-                    className="mono-label border border-hairline px-3 py-1.5 text-ink-2 hover:border-amber hover:text-amber"
+                    className="mono-label border border-[var(--line)] px-3 py-1.5 text-[var(--ink-2)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
                   >
                     Remove
                   </button>
@@ -163,7 +163,7 @@ export default function TeamPanel({
         </ul>
 
         {!isOwner && (
-          <p className="mt-4 text-xs text-ink-2">
+          <p className="mt-4 text-xs text-[var(--ink-2)]">
             Only the account owner can change the allowlist.
           </p>
         )}

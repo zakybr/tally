@@ -51,7 +51,7 @@ export default function BrandHub({
       <div
         role="tablist"
         aria-label="Brand sections"
-        className="mb-8 flex border-b border-hairline"
+        className="mb-8 flex border-b border-[var(--line)]"
       >
         {(["assets", "prompts"] as const).map((key) => (
           <button
@@ -60,10 +60,10 @@ export default function BrandHub({
             aria-selected={tab === key}
             onClick={() => setTab(key)}
             className={[
-              "mono-label -mb-px border-b-2 px-4 py-3 transition-colors",
+              "mono-label -mb-px border-b px-4 py-3 transition-colors",
               tab === key
-                ? "border-amber text-amber"
-                : "border-transparent text-ink-2 hover:text-ink",
+                ? "border-[var(--accent)] text-[var(--accent)]"
+                : "border-transparent text-[var(--ink-2)] hover:text-[var(--ink)]",
             ].join(" ")}
           >
             {key === "assets" ? "Brand assets" : "Claude Design prompts"}
@@ -97,10 +97,10 @@ function Assets({ assets }: { assets: BrandAsset[] }) {
     <div className="space-y-12">
       <section>
         <p className="eyebrow mb-3">The lockup</p>
-        <div className="flex flex-wrap items-center gap-8 border border-hairline bg-panel p-8">
+        <div className="flex flex-wrap items-center gap-8 border border-[var(--line)] bg-[var(--s-panel)] p-8">
           <div className="flex items-center gap-3">
             <TallyMark size={34} />
-            <span className="font-sans text-3xl font-semibold tracking-tight text-ink">
+            <span className="font-sans text-3xl font-semibold tracking-tight text-[var(--ink)]">
               tally
             </span>
           </div>
@@ -109,7 +109,7 @@ function Assets({ assets }: { assets: BrandAsset[] }) {
               href="/tally-logo.svg"
               download
               role="button"
-              className="mono-label inline-flex items-center border border-hairline px-3 py-2 text-ink-2 hover:border-amber hover:text-amber"
+              className="mono-label inline-flex items-center border border-[var(--line)] px-3 py-2 text-[var(--ink-2)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
             >
               Download SVG
             </a>
@@ -117,7 +117,7 @@ function Assets({ assets }: { assets: BrandAsset[] }) {
               href="/tally-logo.png"
               download
               role="button"
-              className="mono-label inline-flex items-center border border-hairline px-3 py-2 text-ink-2 hover:border-amber hover:text-amber"
+              className="mono-label inline-flex items-center border border-[var(--line)] px-3 py-2 text-[var(--ink-2)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
             >
               PNG
             </a>
@@ -125,7 +125,7 @@ function Assets({ assets }: { assets: BrandAsset[] }) {
               href="/tally-logo-dark.png"
               download
               role="button"
-              className="mono-label inline-flex items-center border border-hairline px-3 py-2 text-ink-2 hover:border-amber hover:text-amber"
+              className="mono-label inline-flex items-center border border-[var(--line)] px-3 py-2 text-[var(--ink-2)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
             >
               PNG for light grounds
             </a>
@@ -133,13 +133,13 @@ function Assets({ assets }: { assets: BrandAsset[] }) {
               href="/linkedin-banner.png"
               download
               role="button"
-              className="mono-label inline-flex items-center border border-hairline px-3 py-2 text-ink-2 hover:border-amber hover:text-amber"
+              className="mono-label inline-flex items-center border border-[var(--line)] px-3 py-2 text-[var(--ink-2)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
             >
               LinkedIn banner
             </a>
           </div>
         </div>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-2">
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[var(--ink-2)]">
           The wordmark is always lowercase and always white. The amber cross-stroke is the only
           coloured element in the identity.
         </p>
@@ -153,7 +153,7 @@ function Assets({ assets }: { assets: BrandAsset[] }) {
           </div>
           <CopyButton value={BRAND_BLOCK} label="Copy brand block" />
         </div>
-        <pre className="overflow-x-auto whitespace-pre-wrap border-l-2 border-amber bg-panel p-5 text-xs leading-relaxed text-ink-2">
+        <pre className="overflow-x-auto whitespace-pre-wrap border-l border-[var(--accent)] bg-[var(--s-panel)] p-5 text-xs leading-relaxed text-[var(--ink-2)]">
           {BRAND_BLOCK}
         </pre>
       </section>
@@ -167,49 +167,49 @@ function Assets({ assets }: { assets: BrandAsset[] }) {
             <p className="eyebrow mb-3">{CATEGORY_LABEL[category]}</p>
 
             {category === "colour" ? (
-              <div className="grid gap-px border border-hairline bg-[rgba(245,242,234,0.08)] sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-px border border-[var(--line)] bg-[rgba(245,242,234,0.08)] sm:grid-cols-2 lg:grid-cols-3">
                 {items.map((item) => (
-                  <div key={item.id} className="bg-bg p-4">
+                  <div key={item.id} className="bg-[var(--s-ground)] p-4">
                     <div
-                      className="mb-3 h-14 w-full border border-hairline"
+                      className="mb-3 h-14 w-full border border-[var(--line)]"
                       style={{ background: item.value ?? "transparent" }}
                       aria-hidden="true"
                     />
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
-                        <p className="text-sm font-semibold text-ink">{item.name}</p>
-                        <p className="mono-label mt-0.5 text-[10px] text-amber">{item.value}</p>
+                        <p className="text-sm font-semibold text-[var(--ink)]">{item.name}</p>
+                        <p className="mono-label mt-0.5 text-[10px] text-[var(--accent)]">{item.value}</p>
                       </div>
                       {item.value && <CopyButton value={item.value} label="Copy" />}
                     </div>
                     {item.description && (
-                      <p className="mt-2 text-xs leading-relaxed text-ink-2">
+                      <p className="mt-2 text-xs leading-relaxed text-[var(--ink-2)]">
                         {item.description}
                       </p>
                     )}
                     {item.usage && (
-                      <p className="mt-2 text-xs leading-relaxed text-[#6e665e]">{item.usage}</p>
+                      <p className="mt-2 text-xs leading-relaxed text-[var(--ink-3)]">{item.usage}</p>
                     )}
                   </div>
                 ))}
               </div>
             ) : (
-              <ul className="divide-y divide-[rgba(245,242,234,0.08)] border-y border-hairline">
+              <ul className="divide-y divide-[var(--line)] border-y border-[var(--line)]">
                 {items.map((item) => (
                   <li key={item.id} className="py-4">
                     <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                      <h3 className="text-sm font-semibold text-ink">{item.name}</h3>
+                      <h3 className="text-sm font-semibold text-[var(--ink)]">{item.name}</h3>
                       {item.value && (
-                        <span className="mono-label text-[10px] text-amber">{item.value}</span>
+                        <span className="mono-label text-[10px] text-[var(--accent)]">{item.value}</span>
                       )}
                     </div>
                     {item.description && (
-                      <p className="mt-1 max-w-3xl text-sm leading-relaxed text-ink-2">
+                      <p className="mt-1 max-w-3xl text-sm leading-relaxed text-[var(--ink-2)]">
                         {item.description}
                       </p>
                     )}
                     {item.usage && (
-                      <p className="mt-2 max-w-3xl border-l-2 border-amber-dim pl-3 text-xs leading-relaxed text-[#8d8880]">
+                      <p className="mt-2 max-w-3xl border-l border-[var(--line-strong)] pl-3 text-xs leading-relaxed text-[var(--ink-2)]">
                         {item.usage}
                       </p>
                     )}
@@ -263,7 +263,7 @@ function Prompts({
 
   return (
     <div>
-      <p className="mb-6 max-w-2xl text-sm leading-relaxed text-ink-2">
+      <p className="mb-6 max-w-2xl text-sm leading-relaxed text-[var(--ink-2)]">
         Every prompt already carries the brand block. Copy one, replace the bracketed
         placeholders, paste it into Claude. Nothing else needs explaining to get an asset that
         looks like Tally.
@@ -276,8 +276,8 @@ function Prompts({
           className={[
             "mono-label border px-3 py-2 transition-colors",
             filter === "all"
-              ? "border-amber text-amber"
-              : "border-hairline text-ink-2 hover:text-ink",
+              ? "border-[var(--accent)] text-[var(--accent)]"
+              : "border-[var(--line)] text-[var(--ink-2)] hover:text-[var(--ink)]",
           ].join(" ")}
         >
           All
@@ -293,8 +293,8 @@ function Prompts({
               className={[
                 "mono-label border px-3 py-2 transition-colors",
                 filter === c.value
-                  ? "border-amber text-amber"
-                  : "border-hairline text-ink-2 hover:text-ink",
+                  ? "border-[var(--accent)] text-[var(--accent)]"
+                  : "border-[var(--line)] text-[var(--ink-2)] hover:text-[var(--ink)]",
               ].join(" ")}
             >
               {c.label} · {count}
@@ -304,7 +304,7 @@ function Prompts({
         <button
           type="button"
           onClick={() => setDrafting((v) => !v)}
-          className="mono-label ml-auto border border-amber bg-amber px-4 py-2 text-bg transition-colors hover:bg-transparent hover:text-amber"
+          className="mono-label ml-auto border border-[var(--accent)] bg-[var(--accent)] px-4 py-2 text-[var(--s-ground)] transition-colors hover:bg-transparent hover:text-[var(--accent)]"
         >
           {drafting ? "Cancel" : "New prompt"}
         </button>
@@ -340,15 +340,15 @@ function PromptCard({
   const [body, setBody] = useState(prompt.body);
 
   return (
-    <li className="bg-bg p-5">
+    <li className="bg-[var(--s-ground)] p-5">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
           <p className="eyebrow mb-1">
             {CHANNELS.find((c) => c.value === prompt.channel)?.label ?? prompt.channel}
           </p>
-          <h3 className="text-base font-semibold tracking-tight text-ink">{prompt.title}</h3>
+          <h3 className="text-base font-semibold tracking-tight text-[var(--ink)]">{prompt.title}</h3>
           {prompt.purpose && (
-            <p className="mt-1 max-w-2xl text-sm leading-relaxed text-ink-2">{prompt.purpose}</p>
+            <p className="mt-1 max-w-2xl text-sm leading-relaxed text-[var(--ink-2)]">{prompt.purpose}</p>
           )}
         </div>
         <div className="flex shrink-0 flex-wrap gap-2">
@@ -357,7 +357,7 @@ function PromptCard({
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
-            className="mono-label border border-hairline px-3 py-2 text-ink-2 hover:border-amber hover:text-amber"
+            className="mono-label border border-[var(--line)] px-3 py-2 text-[var(--ink-2)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
           >
             {open ? "Hide" : "Read"}
           </button>
@@ -381,7 +381,7 @@ function PromptCard({
                     onUpdate(prompt.id, { body });
                     setEditing(false);
                   }}
-                  className="mono-label border border-amber bg-amber px-4 py-2 text-bg hover:bg-transparent hover:text-amber"
+                  className="mono-label border border-[var(--accent)] bg-[var(--accent)] px-4 py-2 text-[var(--s-ground)] hover:bg-transparent hover:text-[var(--accent)]"
                 >
                   Save
                 </button>
@@ -391,7 +391,7 @@ function PromptCard({
                     setBody(prompt.body);
                     setEditing(false);
                   }}
-                  className="mono-label border border-hairline px-4 py-2 text-ink-2 hover:text-ink"
+                  className="mono-label border border-[var(--line)] px-4 py-2 text-[var(--ink-2)] hover:text-[var(--ink)]"
                 >
                   Cancel
                 </button>
@@ -399,14 +399,14 @@ function PromptCard({
             </div>
           ) : (
             <>
-              <pre className="overflow-x-auto whitespace-pre-wrap border-l-2 border-amber-dim bg-panel p-4 text-xs leading-relaxed text-ink-2">
+              <pre className="overflow-x-auto whitespace-pre-wrap border-l border-[var(--line-strong)] bg-[var(--s-panel)] p-4 text-xs leading-relaxed text-[var(--ink-2)]">
                 {prompt.body}
               </pre>
               <div className="mt-3 flex gap-2">
                 <button
                   type="button"
                   onClick={() => setEditing(true)}
-                  className="mono-label border border-hairline px-3 py-2 text-ink-2 hover:border-amber hover:text-amber"
+                  className="mono-label border border-[var(--line)] px-3 py-2 text-[var(--ink-2)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
                 >
                   Edit
                 </button>
@@ -415,7 +415,7 @@ function PromptCard({
                   onClick={() => {
                     if (confirm(`Delete the "${prompt.title}" prompt?`)) onRemove(prompt.id);
                   }}
-                  className="mono-label border border-hairline px-3 py-2 text-ink-2 hover:border-amber hover:text-amber"
+                  className="mono-label border border-[var(--line)] px-3 py-2 text-[var(--ink-2)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
                 >
                   Delete
                 </button>
@@ -450,11 +450,11 @@ function PromptDraft({
         if (!title.trim() || !body.trim()) return;
         onSave({ channel, title: title.trim(), purpose: purpose.trim(), body });
       }}
-      className="mb-6 space-y-3 border border-hairline bg-panel p-5"
+      className="mb-6 space-y-3 border border-[var(--line)] bg-[var(--s-panel)] p-5"
     >
       <div className="grid gap-3 sm:grid-cols-3">
         <label className="block">
-          <span className="mono-label mb-1.5 block text-ink-2">Channel</span>
+          <span className="mono-label mb-1.5 block text-[var(--ink-2)]">Channel</span>
           <select value={channel} onChange={(e) => setChannel(e.target.value as PromptChannel)}>
             {CHANNELS.map((c) => (
               <option key={c.value} value={c.value}>
@@ -464,18 +464,18 @@ function PromptDraft({
           </select>
         </label>
         <label className="block sm:col-span-2">
-          <span className="mono-label mb-1.5 block text-ink-2">Title</span>
+          <span className="mono-label mb-1.5 block text-[var(--ink-2)]">Title</span>
           <input value={title} onChange={(e) => setTitle(e.target.value)} required />
         </label>
       </div>
 
       <label className="block">
-        <span className="mono-label mb-1.5 block text-ink-2">What it is for</span>
+        <span className="mono-label mb-1.5 block text-[var(--ink-2)]">What it is for</span>
         <input value={purpose} onChange={(e) => setPurpose(e.target.value)} />
       </label>
 
       <label className="block">
-        <span className="mono-label mb-1.5 block text-ink-2">
+        <span className="mono-label mb-1.5 block text-[var(--ink-2)]">
           Prompt — the brand block is pre-filled, write the brief underneath it
         </span>
         <textarea
@@ -489,7 +489,7 @@ function PromptDraft({
 
       <button
         type="submit"
-        className="mono-label border border-amber bg-amber px-4 py-2.5 text-bg hover:bg-transparent hover:text-amber"
+        className="mono-label border border-[var(--accent)] bg-[var(--accent)] px-4 py-2.5 text-[var(--s-ground)] hover:bg-transparent hover:text-[var(--accent)]"
       >
         Save prompt
       </button>

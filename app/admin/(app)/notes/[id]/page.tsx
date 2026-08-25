@@ -35,8 +35,8 @@ export default async function NotePage({ params }: { params: Promise<{ id: strin
 
   return (
     <>
-      <div className="border-b border-hairline px-5 py-3 md:px-8">
-        <Link href="/admin/notes" className="mono-label text-ink-2 hover:text-amber">
+      <div className="border-b border-[var(--line)] px-5 py-3 md:px-8">
+        <Link href="/admin/notes" className="mono-label text-[var(--ink-2)] hover:text-[var(--accent)]">
           ← All notes
         </Link>
       </div>

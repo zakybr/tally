@@ -56,12 +56,12 @@ export default function LoginPanel({ next, error }: { next?: string; error?: str
     <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center px-6">
       <div className="mb-10 flex items-center gap-3">
         <TallyMark size={26} />
-        <span className="font-sans text-xl font-semibold tracking-tight text-ink">tally</span>
+        <span className="font-sans text-xl font-semibold tracking-tight text-[var(--ink)]">tally</span>
       </div>
 
       <p className="eyebrow mb-3">Internal portal</p>
       <h1 className="mb-3 text-3xl font-semibold tracking-tight">Sign in</h1>
-      <p className="mb-8 text-sm leading-relaxed text-ink-2">
+      <p className="mb-8 text-sm leading-relaxed text-[var(--ink-2)]">
         Access is limited to allowlisted accounts. Everything inside is commercial in
         confidence.
       </p>
@@ -69,7 +69,7 @@ export default function LoginPanel({ next, error }: { next?: string; error?: str
       {failed && (
         <p
           role="alert"
-          className="mb-6 border-l-2 border-amber bg-panel px-4 py-3 text-sm text-ink"
+          className="mb-6 border-l border-[var(--accent)] bg-[var(--s-panel)] px-4 py-3 text-sm text-[var(--ink)]"
         >
           {failed === "missing_code"
             ? "Sign-in did not complete. Try again."
@@ -80,11 +80,11 @@ export default function LoginPanel({ next, error }: { next?: string; error?: str
       {googleReady === false && (
         <div
           role="alert"
-          className="mb-6 border-l-2 border-[#C9A961] bg-panel px-4 py-3 text-sm leading-relaxed text-ink-2"
+          className="mb-6 border-l border-[#C9A961] bg-[var(--s-panel)] px-4 py-3 text-sm leading-relaxed text-[var(--ink-2)]"
         >
           <p className="mono-label mb-1.5 text-[10px] text-[#C9A961]">Not switched on yet</p>
           Google sign-in has not been enabled on this project. In Supabase, open{" "}
-          <span className="text-ink">Authentication → Sign In / Providers → Google</span>, turn it
+          <span className="text-[var(--ink)]">Authentication → Sign In / Providers → Google</span>, turn it
           on, paste the Client ID and Client secret, and save. This page will work straight after.
         </div>
       )}
@@ -93,7 +93,7 @@ export default function LoginPanel({ next, error }: { next?: string; error?: str
         type="button"
         onClick={signIn}
         disabled={busy || googleReady === false}
-        className="flex w-full items-center justify-center gap-3 border border-amber bg-amber px-4 py-3.5 text-bg transition-colors hover:bg-transparent hover:text-amber disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-amber disabled:hover:text-bg"
+        className="flex w-full items-center justify-center gap-3 border border-[var(--accent)] bg-[var(--accent)] px-4 py-3.5 text-[var(--s-ground)] transition-colors hover:bg-transparent hover:text-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-[var(--accent)] disabled:hover:text-[var(--s-ground)]"
       >
         <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
           <path
@@ -118,7 +118,7 @@ export default function LoginPanel({ next, error }: { next?: string; error?: str
         </span>
       </button>
 
-      <p className="mt-6 text-xs leading-relaxed text-ink-2">
+      <p className="mt-6 text-xs leading-relaxed text-[var(--ink-2)]">
         Not on the list? Ask Zak to add your email under Team.
       </p>
     </main>

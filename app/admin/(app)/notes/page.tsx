@@ -22,7 +22,6 @@ export default async function NotesPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Documents"
         title="Notes"
         lede="Open a note and anyone else in it edits alongside you, cursor and all. Nothing needs saving."
       />

@@ -119,77 +119,157 @@ body {
 
 /* ============================================================
    ADMIN PORTAL
-   Dense dashboard scale (8–32px) on the same tokens as the site.
-   Nothing here leaks onto the marketing pages — every rule is
-   scoped under .admin.
+   Operate-mode surface. Same brand tokens as the marketing site,
+   but a denser scale, a second neutral layer for chrome, and a
+   semantic status vocabulary. Everything is scoped under .admin.
    ============================================================ */
 
 .admin {
-  --pad: 12px;
-  --gap: 8px;
-  --rule: rgba(245, 242, 234, 0.08);
-  --rule-strong: rgba(245, 242, 234, 0.16);
-  --raised: #1c1f24;
+  /* Surfaces: content ground, chrome, raised panel, interactive hover. */
+  --s-ground: #0b0b0a;
+  --s-chrome: #101215;
+  --s-panel: #16191d;
+  --s-raised: #1c1f24;
+
+  --line: rgba(245, 242, 234, 0.08);
+  --line-strong: rgba(245, 242, 234, 0.18);
+
+  --ink: #ffffff;
+  --ink-2: #a8a49a;
+  --ink-3: #857d73;
+
+  --accent: #d9711a;
+  --accent-dim: #6b4a1f;
+  --accent-wash: rgba(217, 113, 26, 0.1);
+
+  /*
+    Status is semantic, not accent. Brass and slate are already part of
+    Tally's document palette, so the vocabulary stays inside the brand.
+  */
+  --st-todo: #857d73;
+  --st-doing: #d9711a;
+  --st-blocked: #c9a961;
+  --st-done: #7c8b93;
+
+  /* Fixed step scale. Product UI does not want fluid headings. */
+  --t-page: 1.5rem;
+  --t-section: 1.0625rem;
+  --t-body: 0.9375rem;
+  --t-label: 0.6875rem;
+
   font-size: 16px;
+  color-scheme: dark;
+  background: var(--s-ground);
 }
 
-/* Lenis is disabled under /admin, so the browser owns scroll again. */
-.admin,
-.admin * {
+/* Browser surfaces the design still owns. */
+.admin ::selection {
+  background: var(--accent);
+  color: var(--s-ground);
+}
+.admin input,
+.admin textarea,
+.admin [contenteditable] {
+  caret-color: var(--accent);
+}
+.admin {
   scrollbar-width: thin;
-  scrollbar-color: rgba(245, 242, 234, 0.18) transparent;
+  scrollbar-color: rgba(245, 242, 234, 0.16) transparent;
 }
 .admin *::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 .admin *::-webkit-scrollbar-thumb {
-  background: rgba(245, 242, 234, 0.18);
+  background: rgba(245, 242, 234, 0.16);
+}
+.admin *::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 242, 234, 0.28);
 }
 .admin *::-webkit-scrollbar-track {
   background: transparent;
 }
 
-/* Never remove the focus ring — make it match the brand instead. */
 .admin :focus-visible {
-  outline: 2px solid var(--accent-amber);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
+
+/* Numerals line up wherever they are compared. */
+.admin .tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- form controls: one vocabulary everywhere -------------------------- */
 
 .admin input,
 .admin textarea,
 .admin select {
-  background: var(--bg-primary);
-  border: 1px solid var(--rule);
-  color: var(--text-primary);
+  background: var(--s-ground);
+  border: 1px solid var(--line);
+  color: var(--ink);
   border-radius: 0;
-  padding: 10px 12px;
+  padding: 9px 11px;
   font: inherit;
+  font-size: var(--t-body);
   width: 100%;
+  transition: border-color 160ms ease, background-color 160ms ease;
 }
 .admin input::placeholder,
 .admin textarea::placeholder {
-  color: #6e665e;
+  color: var(--ink-3);
+}
+.admin input:hover,
+.admin textarea:hover,
+.admin select:hover {
+  border-color: var(--line-strong);
 }
 .admin input:focus,
 .admin textarea:focus,
 .admin select:focus {
-  border-color: var(--accent-amber);
+  border-color: var(--accent);
+  outline-offset: 1px;
+}
+.admin input:disabled,
+.admin textarea:disabled,
+.admin select:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.admin select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--ink-3) 50%),
+    linear-gradient(135deg, var(--ink-3) 50%, transparent 50%);
+  background-position: calc(100% - 15px) calc(50% + 1px), calc(100% - 10px) calc(50% + 1px);
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 30px;
+}
+.admin input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--accent);
+  padding: 0;
+}
+.admin input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.6) sepia(1) saturate(3) hue-rotate(340deg);
+  cursor: pointer;
 }
 
 .admin button {
   border-radius: 0;
   font: inherit;
-  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+.admin button:disabled {
+  cursor: not-allowed;
 }
 
-/* 44x44 minimum touch target on anything tappable, on touch devices. */
 @media (pointer: coarse) {
   .admin button,
-  .admin a[role="button"],
-  .admin input[type="checkbox"] {
+  .admin a[role="button"] {
     min-height: 44px;
-    min-width: 44px;
   }
 }
 
@@ -202,29 +282,39 @@ body {
   }
 }
 
-/* --- Collaborative editor ------------------------------------------------ */
+/* Skeletons: shape of the content, not a spinner in the middle of it. */
+@keyframes admin-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.85; }
+}
+.admin .skeleton {
+  background: var(--s-panel);
+  animation: admin-pulse 1.6s ease-in-out infinite;
+}
+
+/* --- collaborative editor --------------------------------------------- */
 
 .tiptap {
   outline: none;
-  min-height: 60vh;
-  font-size: 1rem;
-  line-height: 1.7;
+  min-height: 55vh;
+  font-size: 1.0625rem;
+  line-height: 1.75;
   color: var(--text-primary);
 }
 .tiptap > * + * {
-  margin-top: 0.85em;
+  margin-top: 0.9em;
 }
 .tiptap h1 {
-  font-size: 1.9rem;
+  font-size: 1.75rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-top: 1.6em;
+  letter-spacing: -0.022em;
+  margin-top: 1.7em;
 }
 .tiptap h2 {
-  font-size: 1.4rem;
+  font-size: 1.3125rem;
   font-weight: 600;
-  letter-spacing: -0.015em;
-  margin-top: 1.5em;
+  letter-spacing: -0.016em;
+  margin-top: 1.6em;
 }
 .tiptap h3 {
   font-family: var(--font-alliance), system-ui, sans-serif;
@@ -232,46 +322,39 @@ body {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--accent-amber);
-  margin-top: 1.8em;
+  color: #d9711a;
+  margin-top: 2em;
 }
 .tiptap ul,
 .tiptap ol {
   padding-left: 1.25rem;
 }
-.tiptap ul {
-  list-style: disc;
-}
-.tiptap ol {
-  list-style: decimal;
-}
-.tiptap li::marker {
-  color: var(--accent-amber);
-}
+.tiptap ul { list-style: disc; }
+.tiptap ol { list-style: decimal; }
+.tiptap li::marker { color: #d9711a; }
+.tiptap li + li { margin-top: 0.3em; }
 .tiptap blockquote {
-  border-left: 3px solid var(--accent-amber);
+  border-left: 1px solid #d9711a;
   padding-left: 1rem;
-  color: var(--text-secondary);
+  color: #a8a49a;
 }
 .tiptap code {
   font-family: var(--font-alliance), monospace;
-  background: var(--bg-secondary);
+  background: #16191d;
   padding: 0.1em 0.35em;
   font-size: 0.9em;
 }
 .tiptap pre {
-  background: var(--bg-secondary);
-  border-left: 3px solid var(--accent-amber-dim);
+  background: #16191d;
+  border-left: 1px solid #6b4a1f;
   padding: 12px 14px;
   overflow-x: auto;
 }
-.tiptap pre code {
-  background: none;
-  padding: 0;
-}
+.tiptap pre code { background: none; padding: 0; }
 .tiptap hr {
   border: none;
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid rgba(245, 242, 234, 0.08);
+  margin: 2em 0;
 }
 .tiptap p.is-editor-empty:first-child::before {
   content: attr(data-placeholder);
@@ -281,7 +364,7 @@ body {
   pointer-events: none;
 }
 
-/* Remote collaborators' carets, coloured per person. */
+/* Remote collaborators' carets. */
 .collaboration-carets__caret {
   border-left: 1px solid;
   border-right: 1px solid;

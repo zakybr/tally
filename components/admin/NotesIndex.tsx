@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { supabaseBrowser } from "@/lib/supabase/client";
+import { EmptyState, buttonClass } from "@/components/admin/ui";
 import type { Note } from "@/lib/supabase/types";
 
 type Row = Pick<Note, "id" | "title" | "plain_text" | "tags" | "updated_at">;
@@ -87,29 +88,41 @@ export default function NotesIndex({
           type="button"
           onClick={createNote}
           disabled={creating}
-          className="mono-label shrink-0 border border-amber bg-amber px-4 py-2.5 text-bg transition-colors hover:bg-transparent hover:text-amber disabled:opacity-60"
+          className={buttonClass("primary", "md", "shrink-0")}
         >
           {creating ? "Creating" : "New note"}
         </button>
       </div>
 
       {filtered.length === 0 ? (
-        <p className="py-12 text-sm text-ink-2">
-          {query ? `Nothing matches "${query}".` : "No notes yet. Create the first one."}
-        </p>
+        <EmptyState
+          title={query ? `Nothing matches "${query}"` : "No notes yet"}
+          body={
+            query
+              ? "Search looks at titles, body text and tags. Try a shorter word, or clear the box to see everything."
+              : "Notes are shared documents. Open one and anyone else in it edits alongside you, cursor and all — nothing needs saving."
+          }
+          action={
+            query ? undefined : (
+              <button type="button" onClick={createNote} className={buttonClass("primary", "md")}>
+                New note
+              </button>
+            )
+          }
+        />
       ) : (
-        <ul className="divide-y divide-[rgba(245,242,234,0.08)] border-y border-hairline">
+        <ul className="divide-y divide-[var(--line)] border-y border-[var(--line)]">
           {filtered.map((note) => (
             <li key={note.id}>
               <Link
                 href={`/admin/notes/${note.id}`}
-                className="group block py-4 transition-colors hover:bg-panel"
+                className="group block py-4 transition-colors hover:bg-[var(--s-panel)]"
               >
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                  <h2 className="text-base font-semibold tracking-tight text-ink group-hover:text-amber">
+                  <h2 className="text-base font-semibold tracking-tight text-[var(--ink)] group-hover:text-[var(--accent)]">
                     {note.title}
                   </h2>
-                  <span className="mono-label text-[10px] text-ink-2">
+                  <span className="mono-label text-[10px] text-[var(--ink-2)]">
                     {new Date(note.updated_at).toLocaleDateString("en-NZ", {
                       day: "2-digit",
                       month: "short",
@@ -117,7 +130,7 @@ export default function NotesIndex({
                   </span>
                 </div>
                 {note.plain_text && (
-                  <p className="mt-1 line-clamp-2 max-w-3xl text-sm leading-relaxed text-ink-2">
+                  <p className="mt-1 line-clamp-2 max-w-3xl text-sm leading-relaxed text-[var(--ink-2)]">
                     {note.plain_text.slice(0, 220)}
                   </p>
                 )}
@@ -126,7 +139,7 @@ export default function NotesIndex({
                     {note.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="mono-label border border-hairline px-1.5 py-0.5 text-[10px] text-ink-2"
+                        className="mono-label border border-[var(--line)] px-1.5 py-0.5 text-[10px] text-[var(--ink-2)]"
                       >
                         {tag}
                       </span>
