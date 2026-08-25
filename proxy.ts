@@ -7,6 +7,36 @@ import { createServerClient } from "@supabase/ssr";
   It is an optimistic check only — row level security is what actually protects the data.
 */
 export async function proxy(request: NextRequest) {
+  const url = request.nextUrl;
+
+  /*
+    Supabase only honours the destination we ask for when it matches an entry in
+    the project's Redirect URLs. When it does not, it falls back to the Site URL
+    and drops the visitor on the homepage with ?code= still unspent. Catch that
+    and finish the sign-in properly rather than stranding them on marketing.
+  */
+  if (url.pathname === "/") {
+    const code = url.searchParams.get("code");
+    const authError = url.searchParams.get("error_description") ?? url.searchParams.get("error");
+
+    if (code) {
+      const callback = url.clone();
+      callback.pathname = "/auth/callback";
+      callback.search = "";
+      callback.searchParams.set("code", code);
+      callback.searchParams.set("next", "/admin");
+      return NextResponse.redirect(callback);
+    }
+
+    if (authError) {
+      const login = url.clone();
+      login.pathname = "/admin/login";
+      login.search = "";
+      login.searchParams.set("error", authError);
+      return NextResponse.redirect(login);
+    }
+  }
+
   let response = NextResponse.next({ request });
 
   const supabase = createServerClient(
@@ -54,5 +84,12 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: [
+    "/admin/:path*",
+    /* Only run on the homepage when it is carrying an auth result, so the
+       marketing site keeps rendering without touching the proxy at all. */
+    { source: "/", has: [{ type: "query", key: "code" }] },
+    { source: "/", has: [{ type: "query", key: "error" }] },
+    { source: "/", has: [{ type: "query", key: "error_description" }] },
+  ],
 };
