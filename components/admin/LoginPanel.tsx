@@ -1,12 +1,35 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TallyMark from "@/components/TallyMark";
 import { supabaseBrowser } from "@/lib/supabase/client";
 
 export default function LoginPanel({ next, error }: { next?: string; error?: string }) {
   const [busy, setBusy] = useState(false);
   const [failed, setFailed] = useState<string | null>(error ?? null);
+  const [googleReady, setGoogleReady] = useState<boolean | null>(null);
+
+  /*
+    signInWithOAuth navigates straight to Supabase, so when the Google provider
+    is switched off there the browser lands on a raw 400 with no explanation.
+    Ask Supabase which providers are live first, and say so plainly instead.
+  */
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/auth/v1/settings`, {
+      headers: { apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY! },
+      signal: controller.signal,
+    })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((settings) => setGoogleReady(settings?.external?.google === true))
+      .catch(() => {
+        /* Offline or blocked — assume it works and let the real attempt report. */
+        setGoogleReady(true);
+      });
+
+    return () => controller.abort();
+  }, []);
 
   async function signIn() {
     setBusy(true);
@@ -54,11 +77,23 @@ export default function LoginPanel({ next, error }: { next?: string; error?: str
         </p>
       )}
 
+      {googleReady === false && (
+        <div
+          role="alert"
+          className="mb-6 border-l-2 border-[#C9A961] bg-panel px-4 py-3 text-sm leading-relaxed text-ink-2"
+        >
+          <p className="mono-label mb-1.5 text-[10px] text-[#C9A961]">Not switched on yet</p>
+          Google sign-in has not been enabled on this project. In Supabase, open{" "}
+          <span className="text-ink">Authentication → Sign In / Providers → Google</span>, turn it
+          on, paste the Client ID and Client secret, and save. This page will work straight after.
+        </div>
+      )}
+
       <button
         type="button"
         onClick={signIn}
-        disabled={busy}
-        className="flex w-full items-center justify-center gap-3 border border-amber bg-amber px-4 py-3.5 text-bg transition-colors hover:bg-transparent hover:text-amber disabled:opacity-60"
+        disabled={busy || googleReady === false}
+        className="flex w-full items-center justify-center gap-3 border border-amber bg-amber px-4 py-3.5 text-bg transition-colors hover:bg-transparent hover:text-amber disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-amber disabled:hover:text-bg"
       >
         <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
           <path
