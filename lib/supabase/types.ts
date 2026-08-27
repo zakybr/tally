@@ -57,6 +57,8 @@ export type Task = {
 export type Note = {
   id: string;
   title: string;
+  collection: string;
+  pinned: boolean;
   ydoc: string | null;
   plain_text: string | null;
   tags: string[];

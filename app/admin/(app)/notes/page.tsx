@@ -15,8 +15,10 @@ export default async function NotesPage() {
 
   const { data } = await supabase
     .from("notes")
-    .select("id, title, plain_text, tags, updated_at")
+    .select("id, title, plain_text, tags, updated_at, collection, pinned")
     .eq("archived", false)
+    .order("collection")
+    .order("pinned", { ascending: false })
     .order("updated_at", { ascending: false });
 
   return (
