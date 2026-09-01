@@ -1,11 +1,13 @@
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import Arrow from "@/components/Arrow";
 import SectionHeader from "@/components/SectionHeader";
 
 const steps = [
   {
     n: "01",
     title: "Agree the number",
-    body: "Before anything is made, we agree one business outcome (qualified applications, qualified reach, or qualified enquiries) and pull the baseline. In writing, both signatures.",
+    body: "Before anything is made we agree one business outcome and pull the baseline. Applications, reach, enquiries, bookings, or an asset set delivered to spec. Which number is yours to choose; both signatures go on it.",
   },
   {
     n: "02",
@@ -27,7 +29,7 @@ export default function Guarantee() {
         <SectionHeader
           eyebrow="The offer"
           title="How the guarantee works"
-          note="One outcome, agreed before we start, with our fee at risk against it. No one else in primary will make that deal."
+          note="One outcome, chosen by you, agreed before we start, with our fee at risk against it. No one else in primary or marine will make that deal."
         />
 
         <Reveal delay={0.1}>
@@ -45,6 +47,25 @@ export default function Guarantee() {
                 <p className="mt-4 max-w-sm leading-[1.7] text-ink-2">{s.body}</p>
               </div>
             ))}
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.15}>
+          <div className="mt-14 flex flex-col gap-6 border-t border-hairline pt-8 md:flex-row md:items-center md:justify-between">
+            <p className="max-w-2xl text-[0.9375rem] leading-[1.7] text-ink-2">
+              The miss clause is reproduced verbatim from the standard engagement contract, along
+              with what voids it and who carries which risk.
+            </p>
+            <Link
+              href="/guarantee"
+              className="mono-label group inline-flex shrink-0 items-center gap-2.5 self-start border border-hairline px-6 py-3.5 text-ink transition-colors duration-300 hover:border-ink md:self-auto"
+            >
+              Read the full terms
+              <Arrow
+                size={14}
+                className="shrink-0 text-amber transition-transform duration-300 ease-out group-hover:translate-x-1"
+              />
+            </Link>
           </div>
         </Reveal>
       </div>

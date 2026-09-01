@@ -1,26 +1,27 @@
 import Reveal from "@/components/Reveal";
+import Link from "next/link";
 import SectionHeader from "@/components/SectionHeader";
 
 const tiers = [
   {
-    k: "Step 1 · Qualifier",
+    k: "Step 1 · Where everyone starts",
     name: "Proof",
     terms: "Fixed-scope sprint",
-    body: "8 weeks. One role family, one site, baseline agreed up front. The sprint that earns the roster.",
-    cta: { label: "See what qualifies", href: "/contact", primary: false },
+    body: "Eight weeks. One number, one audience, baseline agreed up front. Scoped to the operation in front of us, whether that is a season of charter bookings or a single roster that will not fill.",
+    cta: { label: "Start the Proof", href: "/contact", primary: false },
   },
   {
-    k: "Step 2 · Retained",
+    k: "Step 2 · Once it is working",
     name: "Engine",
     terms: "Monthly retainer",
-    body: "6-month minimum. The roster held quarter after quarter, guarantee re-set each cycle.",
-    cta: { label: "Start the Proof", href: "/contact", primary: true },
+    body: "Six-month minimum. The number held quarter after quarter and the guarantee re-set each cycle. This is where the whole online presence gets run rather than topped up.",
+    cta: { label: "Talk to us about Engine", href: "/contact", primary: true },
   },
   {
     k: "Step 3 · Later",
     name: "Playbook",
     terms: "Licensed method",
-    body: "The proven method, licensed. Opens once the sprint record exists to back it.",
+    body: "The proven method, licensed to your team to run in-house. Opens once the sprint record exists to back it.",
     cta: { label: "Register interest", href: "/contact", primary: false },
   },
 ];
@@ -32,8 +33,8 @@ export default function Pricing() {
       <div className="mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
         <SectionHeader
           eyebrow="Pricing"
-          title="The ladder"
-          note="Three steps, scoped to the outcome, with a guarantee that is never discounted. Figures are set in discovery once the target is agreed."
+          title="Start small. Prove it. Then scale."
+          note="Three steps, scoped to the outcome rather than the size of the business, with a guarantee that is never discounted. Figures are set in discovery once the target is agreed."
         />
 
         <Reveal delay={0.1}>
@@ -48,7 +49,7 @@ export default function Pricing() {
                   {t.terms}
                 </div>
                 <p className="mt-6 flex-1 text-[0.9375rem] leading-[1.7] text-ink-2">{t.body}</p>
-                <a
+                <Link
                   href={t.cta.href}
                   className={`mono-label mt-10 inline-block self-start border px-5 py-3 transition-colors duration-300 ${
                     t.cta.primary
@@ -57,7 +58,7 @@ export default function Pricing() {
                   }`}
                 >
                   {t.cta.label}
-                </a>
+                </Link>
               </div>
             ))}
           </div>

@@ -1,35 +1,33 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Ticker from "@/components/Ticker";
-import SeoOverview from "@/components/SeoOverview";
-import AccountabilityGap from "@/components/AccountabilityGap";
-import WorkTriptych from "@/components/WorkTriptych";
+import Offer from "@/components/Offer";
+import SeasonBand from "@/components/SeasonBand";
 import Guarantee from "@/components/Guarantee";
-import TracksGrid from "@/components/TracksGrid";
-import MissClause from "@/components/MissClause";
 import SectorsGrid from "@/components/SectorsGrid";
-import Method from "@/components/Method";
 import Pricing from "@/components/Pricing";
-import Gate from "@/components/Gate";
+import SeoOverview from "@/components/SeoOverview";
 import FooterCta from "@/components/FooterCta";
 import { FAQS, faqJsonLd } from "@/lib/seo";
 
+/*
+  Reading order is the sales order: what you get, what is live right now, how the
+  guarantee works, who we do it for, what it costs, then the argument in full.
+  The long-form guarantee terms, method and qualification gate live on /guarantee
+  so this page stays walkable on a phone.
+*/
 export default function Home() {
   return (
     <main>
       <Nav />
       <Hero />
       <Ticker />
-      <SeoOverview />
-      <AccountabilityGap />
-      <WorkTriptych />
+      <Offer />
+      <SeasonBand />
       <Guarantee />
-      <TracksGrid />
-      <MissClause />
       <SectorsGrid />
-      <Method />
       <Pricing />
-      <Gate />
+      <SeoOverview />
       <FooterCta />
       <script
         type="application/ld+json"

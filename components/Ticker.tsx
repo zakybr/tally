@@ -1,5 +1,7 @@
 const sectors = [
   "Seafood & Aquaculture",
+  "Boat Building & Marine Trades",
+  "Fishing Charters",
   "Forestry & Wood Processing",
   "Horticulture at Scale",
   "Food Processing",

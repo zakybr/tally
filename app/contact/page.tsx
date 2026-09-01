@@ -24,9 +24,9 @@ export const metadata: Metadata = {
 };
 
 const qualify = [
-  "A real, budgeted outcome to move: vacancies, reach, or enquiries",
+  "A real outcome to move: vacancies, reach, enquiries or bookings",
   "A baseline that exists, or one we set together in discovery",
-  "One decision-maker with budget authority and a 48-hour response SLA",
+  "Someone who can decide and come back to us inside 48 hours",
   "An operation that is sound, so content amplifies it rather than its flaws",
 ];
 
@@ -44,8 +44,9 @@ export default function ContactPage() {
               Tell us the number.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-[1.6] text-ink-2">
-              One conversation. We only take briefs we can guarantee, so this is where we work out
-              whether yours is one of them. Answer honestly; it saves us both time.
+              One conversation, whatever the size of the operation. We only take briefs we can
+              guarantee, so this is where we work out whether yours is one of them. Answer honestly;
+              it saves us both time.
             </p>
 
             <div className="mt-12 border-t border-hairline pt-8">
@@ -94,10 +95,24 @@ export default function ContactPage() {
           <Link href="/" aria-label="Tally home">
             <TallyMark size={18} />
           </Link>
-          <p className="font-mono text-[0.6875rem] leading-relaxed text-ink-2">
-            <b className="text-ink">Tally</b>. The only primary-sector partner in NZ that guarantees
-            the outcome. We guarantee what we control; we never guarantee sales. © 2026 Tally.
+          <p className="max-w-2xl font-mono text-[0.6875rem] leading-relaxed text-ink-2">
+            <b className="text-ink">Tally</b>. Primary industries and marine marketing, New Zealand.
+            We guarantee what we control; we never guarantee sales. © 2026 Tally.
           </p>
+          <nav aria-label="Legal" className="flex flex-wrap gap-x-6 gap-y-2 md:ml-auto">
+            <Link
+              href="/privacy"
+              className="mono-label text-ink-2 transition-colors duration-300 hover:text-ink"
+            >
+              Privacy policy
+            </Link>
+            <Link
+              href="/terms"
+              className="mono-label text-ink-2 transition-colors duration-300 hover:text-ink"
+            >
+              Terms of service
+            </Link>
+          </nav>
         </div>
       </footer>
     </main>

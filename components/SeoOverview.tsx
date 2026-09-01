@@ -1,84 +1,63 @@
-import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import SectorRegister from "@/components/SectorRegister";
 
 /*
   Crawlable authority block for Google and AI answer engines.
-  Kept institutional: one composition, no card chrome, keyword-rich prose.
+  Composed as a document rather than an article-plus-sidebar: masthead rule,
+  a claim set against its argument, then the coverage register underneath.
 */
 export default function SeoOverview() {
   return (
-    <section id="about" className="border-t border-hairline py-28 md:py-36" aria-labelledby="about-heading">
+    <section id="about" className="border-t border-hairline py-24 md:py-32" aria-labelledby="about-heading">
       <div className="mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
         <Reveal>
-          <div className="eyebrow mb-5">Primary industries marketing · New Zealand</div>
-          <h2
-            id="about-heading"
-            className="max-w-4xl font-sans text-4xl font-semibold tracking-tight text-ink md:text-5xl"
-          >
-            A marketing agency for NZ&apos;s primary industries, built around a guaranteed number.
-          </h2>
+          <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-b border-hairline pb-5">
+            <span className="eyebrow">Primary industries &amp; marine marketing · New Zealand</span>
+            <span className="mono-label text-ink-2">Food &amp; fibre economy</span>
+          </div>
         </Reveal>
 
-        <div className="mt-12 grid gap-12 lg:grid-cols-12 lg:gap-16">
-          <Reveal className="lg:col-span-7" delay={0.05}>
-            <div className="space-y-6 text-[0.9375rem] leading-[1.75] text-ink-2">
+        <div className="mt-14 grid gap-y-10 lg:grid-cols-12 lg:gap-x-16 md:mt-16">
+          <Reveal className="lg:col-span-5">
+            <h2
+              id="about-heading"
+              className="font-sans text-[2.125rem] font-semibold leading-[1.08] tracking-[-0.03em] text-balance text-ink md:text-5xl"
+            >
+              A marketing agency for NZ&apos;s primary and marine industries, built around a guaranteed number.
+            </h2>
+          </Reveal>
+
+          <Reveal className="lg:col-span-6 lg:col-start-7" delay={0.08}>
+            <div className="max-w-[66ch] space-y-6 text-[0.9375rem] leading-[1.75] text-ink-2">
               <p>
-                Tally is a New Zealand primary industries marketing agency for funded exporters,
-                processors, co-ops and large operators across the food and fibre economy. We run
-                recruitment marketing, reach campaigns and enquiry generation for seafood and
-                aquaculture, forestry and wood processing, horticulture, viticulture, food and
+                Tally is a New Zealand primary industries and marine marketing agency working with
+                exporters, processors, co-ops, operators and owner-run businesses across the food
+                and fibre economy. We run brand and reach strategy, recruitment marketing, enquiry
+                generation and booking campaigns for seafood and aquaculture, boat building and
+                fishing charter, forestry and wood processing, horticulture, viticulture, food and
                 beverage processing, meat processing, agribusiness and agritech.
               </p>
               <p>
                 Most marketing agencies in New Zealand sell footage and monthly retainers. Agri
                 specialists cluster around dairy suppliers and field days. Tally sits in the gap:
-                outcome-guaranteed campaigns pointed at the primary sectors that still lack a
-                dedicated partner, with the miss clause printed in the contract.
+                outcome-guaranteed campaigns pointed at the primary and marine sectors that still
+                lack a dedicated partner, with the miss clause printed in the contract. The
+                engagement can be a single day of capture or the whole online presence run for you;
+                either way it opens with an agreed number.
               </p>
               <p>
-                If you are searching for marketing for primary industries in NZ, a specialist
-                agribusiness marketing agency, or the best NZ marketing agencies for hard-to-staff
-                crews and plants, start with the number you need moved. We only take briefs we can
-                guarantee.
+                If you are searching for marketing for primary industries in NZ, a marine or
+                fishing charter marketing agency, a specialist agribusiness marketing agency, or
+                the best NZ marketing agencies for hard-to-staff crews, yards and plants, start
+                with the number you need moved. Size is not the test; a countable outcome is. We
+                only take briefs we can guarantee.
               </p>
             </div>
           </Reveal>
+        </div>
 
-          <Reveal className="lg:col-span-5" delay={0.1}>
-            <aside className="border border-hairline bg-panel p-8">
-              <div className="mono-label mb-6 text-amber">Sectors covered</div>
-              <ul className="space-y-3 font-mono text-[0.75rem] uppercase tracking-[0.08em] text-ink-2">
-                <li>Seafood &amp; aquaculture</li>
-                <li>Forestry &amp; wood processing</li>
-                <li>Horticulture &amp; seasonal labour</li>
-                <li>Viticulture &amp; wine</li>
-                <li>Food &amp; beverage processing</li>
-                <li>Meat processing &amp; red meat</li>
-                <li>Operators, co-ops &amp; exporters</li>
-                <li>Funded agritech &amp; agribusiness</li>
-              </ul>
-              <Link
-                href="/primary-industries-marketing"
-                className="mono-label mt-8 inline-block border-b border-amber pb-1 text-amber transition-colors duration-300 hover:text-ink"
-              >
-                Full capability brief
-              </Link>
-              <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2">
-                <Link href="/seafood-aquaculture-marketing" className="mono-label text-ink-2 hover:text-ink">
-                  Seafood
-                </Link>
-                <Link href="/forestry-marketing" className="mono-label text-ink-2 hover:text-ink">
-                  Forestry
-                </Link>
-                <Link href="/horticulture-marketing" className="mono-label text-ink-2 hover:text-ink">
-                  Horticulture
-                </Link>
-                <Link href="/proof" className="mono-label text-ink-2 hover:text-ink">
-                  Proof landing
-                </Link>
-              </div>
-            </aside>
-          </Reveal>
+        <div className="mt-20 md:mt-24">
+          <SectorRegister />
         </div>
       </div>
     </section>

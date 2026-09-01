@@ -113,6 +113,61 @@ export const VERTICALS: Vertical[] = [
     ],
   },
   {
+    slug: "marine-marketing",
+    path: "/marine-marketing",
+    name: "Marine & charter marketing",
+    shortName: "Marine & charter",
+    eyebrow: "Sector \u00b7 Marine, boat building & charter",
+    title: "Marine marketing New Zealand",
+    description:
+      "Outcome-guaranteed marine marketing in New Zealand. Charter bookings and enquiries, boat building and marine trades recruitment, and in-sector reach for yards, refit operations and charter operators.",
+    keywords: [
+      "marine marketing New Zealand",
+      "boat builder marketing NZ",
+      "fishing charter marketing New Zealand",
+      "charter booking campaigns NZ",
+      "marine trades recruitment marketing",
+      "boat building apprentice recruitment NZ",
+      "refit and boatyard marketing New Zealand",
+    ],
+    intro:
+      "New Zealand marine runs from boat builders and refit yards through to the charter operators who work a season that opens and shuts on a date. Both ends are under-marketed and both have a number worth guaranteeing: berths filled, or benches filled. Tally agrees which number, then carries it.",
+    pain: "Charter operators are judged on a booking window a few months long, and the boats that are already visible take the bookings. Yards and builders compete for the same trades as construction, at higher skill and lower profile. Neither problem is solved by a monthly video retainer.",
+    approach:
+      "We agree the outcome first: charter bookings and qualified enquiries, or qualified applications for build, refit and marine trades roles. Capture happens on the water and on the shop floor. You get one figure a week against the agreed target, and the miss clause is in the contract.",
+    outcomes: [
+      {
+        name: "Charter bookings & enquiries",
+        body: "Guaranteed qualified enquiries or bookings ahead of the season, aimed at the window that actually pays.",
+      },
+      {
+        name: "Boat build & marine trades recruitment",
+        body: "Guaranteed qualified applications for shipwrights, fabricators, marine engineers and apprentices competing against construction wages.",
+      },
+      {
+        name: "Yard & operator reach",
+        body: "Qualified reach for builders, refit yards and operators who need to be known before the season, not during it.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Do you do marketing for fishing charters in New Zealand?",
+        answer:
+          "Yes. Charter operators are a core marine brief: a guaranteed number of qualified booking enquiries ahead of the season, agreed in writing before production starts, with the miss clause printed in the contract.",
+      },
+      {
+        question: "Can you run recruitment campaigns for boat builders and marine trades?",
+        answer:
+          "Yes. Boat builders, refit yards and marine engineering firms run the same guaranteed-application brief as any other hard-to-staff operator: shipwrights, fabricators, marine engineers and apprentices, measured in qualified applications rather than videos delivered.",
+      },
+      {
+        question: "When should a charter operator start a campaign for the season?",
+        answer:
+          "Work backwards from the season. A Proof sprint runs eight weeks from signature to result, so a campaign started in early spring is live and compounding before the summer booking window opens. Starting inside the season means paying for attention at the moment everyone else is buying it.",
+      },
+    ],
+  },
+  {
     slug: "horticulture-marketing",
     path: "/horticulture-marketing",
     name: "Horticulture marketing",

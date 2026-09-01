@@ -2,15 +2,15 @@ import Reveal from "@/components/Reveal";
 import SectionHeader from "@/components/SectionHeader";
 
 const qualify = [
-  "There's a real, budgeted outcome to move: vacancies, reach, or enquiries",
-  "A baseline exists, or you'll let us set one in discovery",
-  "One decision-maker holds budget authority and a 48-hour response SLA",
+  "There's a real outcome to move: vacancies, reach, enquiries or bookings",
+  "A baseline exists, or you'll let us set one with you in discovery",
+  "Someone can decide and come back to us inside 48 hours",
   "The operation is sound; content amplifies it, not its flaws",
 ];
 
 const pass = [
   'You want an output count; "X videos a month" is the old category',
-  "There's no baseline and no intent to measure",
+  "There's nothing to count and no intention to start counting",
   "Known product or operational problems the content would expose",
   "You expect zero obligations on your side",
 ];
@@ -22,8 +22,8 @@ export default function Gate() {
       <div className="mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
         <SectionHeader
           eyebrow="The gate"
-          title="We turn down most briefs"
-          note="A guarantee only holds with the right clients. The strategic gate is the product protecting itself."
+          title="What makes a brief guaranteeable"
+          note="Size is not the test. A guarantee only holds when there is something countable to guarantee, so this is what we look for before we put our fee behind your number."
         />
 
         <Reveal delay={0.1}>

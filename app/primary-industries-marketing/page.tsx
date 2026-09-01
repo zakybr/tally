@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import TallyMark from "@/components/TallyMark";
+import { SECTORS, TRACKS } from "@/lib/offer";
 import {
   FAQS,
   SITE_URL,
@@ -34,47 +35,6 @@ export const metadata: Metadata = {
   },
 };
 
-const sectors = [
-  {
-    name: "Seafood & aquaculture",
-    body: "Marketing and crew recruitment for commercial fishing, mussel and salmon aquaculture, and seafood exporters under reputation and roster pressure.",
-  },
-  {
-    name: "Forestry & wood processing",
-    body: "Employer-brand and hiring campaigns for forestry gangs, mills and wood processors where growth-fund capacity meets a chronic staffing gap.",
-  },
-  {
-    name: "Horticulture at scale",
-    body: "Seasonal labour and packhouse recruitment for kiwifruit, pipfruit and export horticulture, where vacancy-days land at board level every year.",
-  },
-  {
-    name: "Food & beverage processing",
-    body: "Plant recruitment and brand reach for processors with large workforces, real employer-brand budgets and rosters that never quite fill.",
-  },
-  {
-    name: "Operators, co-ops & exporters",
-    body: "Campaigns for the producers themselves, not only the suppliers selling into them: co-ops, exporters and large operators with a budgeted outcome.",
-  },
-  {
-    name: "Agritech & agribusiness",
-    body: "Qualified enquiry and demo-booking campaigns for funded agritech and agri-suppliers, gated hard at discovery for product risk.",
-  },
-];
-
-const tracks = [
-  {
-    name: "Recruitment / Applications",
-    body: "Guaranteed qualified applications, or cost-per-qualified-applicant, for fisheries crews, processing lines, forestry gangs and seasonal horticulture.",
-  },
-  {
-    name: "Reach / Attention",
-    body: "Guaranteed qualified reach and engagement in-sector for primary industries brands that need an audience moved, not a vanity view count.",
-  },
-  {
-    name: "Pipeline / Enquiry",
-    body: "Guaranteed qualified enquiries and demo bookings for agritech and agribusiness suppliers where the funnel can be measured cleanly.",
-  },
-];
 
 const jsonLd = [
   faqJsonLd(FAQS),
@@ -107,10 +67,12 @@ export default function PrimaryIndustriesMarketingPage() {
             Marketing for primary industries in New Zealand
           </h1>
           <p className="mt-7 text-lg leading-[1.65] text-ink-2">
-            Tally is a specialist primary industries marketing agency. We run
-            outcome-guaranteed recruitment, reach and enquiry campaigns for New Zealand&apos;s food
-            and fibre economy: seafood, aquaculture, forestry, wood processing, horticulture, food
-            processing, agribusiness and agritech.
+            Tally is a specialist primary industries and marine marketing agency. We run
+            outcome-guaranteed brand, reach, recruitment, enquiry and booking campaigns for New
+            Zealand&apos;s food and fibre economy: seafood and aquaculture, boat building and
+            fishing charter, forestry and wood processing, horticulture, food processing,
+            agribusiness and agritech. Engagements run from a single day of capture through to
+            running the whole online presence.
           </p>
           <div className="mt-9 flex flex-wrap gap-4">
             <Link
@@ -120,7 +82,7 @@ export default function PrimaryIndustriesMarketingPage() {
               Start the Proof
             </Link>
             <Link
-              href="/#guarantee"
+              href="/guarantee"
               className="mono-label border border-hairline px-6 py-3.5 text-ink transition-colors duration-300 hover:border-ink"
             >
               How the guarantee works
@@ -163,10 +125,11 @@ export default function PrimaryIndustriesMarketingPage() {
             with recruitment as the wedge where the outcome is cleanest to guarantee.
           </p>
           <div className="mt-10 grid gap-px border border-hairline bg-hairline md:grid-cols-2 lg:grid-cols-3">
-            {sectors.map((s) => (
+            {SECTORS.map((s) => (
               <div key={s.name} className="bg-bg p-8">
                 <h3 className="font-sans text-xl font-semibold tracking-tight text-ink">{s.name}</h3>
-                <p className="mt-4 text-[0.9375rem] leading-[1.7] text-ink-2">{s.body}</p>
+                <p className="mt-4 text-[0.9375rem] leading-[1.7] text-ink-2">{s.scope}</p>
+                <p className="mono-label mt-5 text-amber">{s.number}</p>
               </div>
             ))}
           </div>
@@ -180,24 +143,23 @@ export default function PrimaryIndustriesMarketingPage() {
             What we guarantee
           </h2>
           <p className="mt-5 max-w-2xl text-[0.9375rem] leading-[1.7] text-ink-2">
-            We only guarantee what we control: creative, targeting and the system behind the number.
-            We never guarantee sales.
+            Four tracks, one mechanism. You choose which number the engagement is judged on and we
+            agree it in writing before anything is made. We only guarantee what we control: the
+            creative, the targeting and the system behind the number. We never guarantee sales.
           </p>
           <div className="mt-10 divide-y divide-hairline border border-hairline">
-            {tracks.map((t, i) => (
+            {TRACKS.map((t) => (
               <div
-                key={t.name}
+                key={t.slug}
                 className="grid gap-4 p-8 md:grid-cols-[220px_1fr] md:gap-10"
               >
                 <div>
-                  <div className="font-mono text-sm text-amber">
-                    {String(i + 1).padStart(2, "0")}
-                  </div>
-                  <h3 className="mt-2 font-sans text-xl font-semibold tracking-tight text-ink">
+                  <h3 className="font-sans text-xl font-semibold tracking-tight text-ink">
                     {t.name}
                   </h3>
+                  <p className="mono-label mt-3 text-amber">{t.guarantees}</p>
                 </div>
-                <p className="text-[0.9375rem] leading-[1.7] text-ink-2">{t.body}</p>
+                <p className="text-[0.9375rem] leading-[1.7] text-ink-2">{t.scope}</p>
               </div>
             ))}
           </div>

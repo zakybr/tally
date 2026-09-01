@@ -21,16 +21,16 @@ export default function Hero() {
       <div className="relative mx-auto w-full max-w-[1440px] px-6 pb-16 pt-40 md:px-12 lg:px-20">
         <div className="grid items-end gap-12 lg:grid-cols-[1fr_auto]">
           <div className="max-w-2xl">
-            <div className="eyebrow mb-6">NZ Primary Sector · Outcome-Guaranteed</div>
+            <div className="eyebrow mb-6">NZ Primary &amp; Marine · Outcome-Guaranteed</div>
             <h1 className="font-sans text-5xl font-semibold leading-[1.02] tracking-tight text-ink md:text-7xl">
               We sell the tally,
               <br />
               not the footage.
             </h1>
             <p className="mt-7 max-w-xl text-lg leading-[1.6] text-ink-2">
-              Recruitment campaigns for hard-to-staff operators (crews, plants, boats, forests),
-              with the result written into the contract. Content is the mechanism. The number is
-              the product.
+              Brand, reach and recruitment for New Zealand&apos;s primary and marine operators, from
+              a single day of capture through to running your whole online presence. You name the
+              number that matters. We agree it up front and write it into the contract.
             </p>
             <div className="mt-9 flex flex-wrap gap-4">
               <Link
@@ -40,12 +40,15 @@ export default function Hero() {
                 Start the Proof
               </Link>
               <a
-                href="#guarantee"
+                href="#offer"
                 className="mono-label border border-hairline px-6 py-3.5 text-ink transition-colors duration-300 hover:border-ink"
               >
-                How the guarantee works
+                See what we run
               </a>
             </div>
+            <p className="mono-label mt-6 text-ink-2">
+              Free quote · Free 30-minute call · Free read on your sector
+            </p>
           </div>
 
           {/* HUD stat readout, bottom-right */}

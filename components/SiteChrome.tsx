@@ -3,6 +3,8 @@
 import { usePathname } from "next/navigation";
 import SmoothScroll from "@/components/SmoothScroll";
 import UtmCapture from "@/components/UtmCapture";
+import StickyCta from "@/components/StickyCta";
+import { LeadCaptureProvider } from "@/components/LeadCapture";
 
 /*
   The marketing site runs Lenis smooth scroll and first-touch UTM capture.
@@ -15,9 +17,10 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
   if (pathname?.startsWith("/admin")) return <>{children}</>;
 
   return (
-    <>
+    <LeadCaptureProvider>
       <UtmCapture />
       <SmoothScroll>{children}</SmoothScroll>
-    </>
+      <StickyCta />
+    </LeadCaptureProvider>
   );
 }

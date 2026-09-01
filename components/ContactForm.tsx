@@ -4,26 +4,16 @@ import { useState } from "react";
 import Link from "next/link";
 import BookCall from "@/components/BookCall";
 import { attributionPayload, trackEvent } from "@/lib/analytics";
+import { INDUSTRY_OPTIONS } from "@/lib/offer";
 
-const industries = [
-  "Seafood & aquaculture",
-  "Forestry & wood processing",
-  "Horticulture",
-  "Viticulture & wine",
-  "Food & beverage processing",
-  "Meat processing",
-  "Dairy processing",
-  "Operators & co-ops",
-  "Funded agritech",
-  "Other primary sector",
-];
-
-const companySizes = ["1–20", "21–50", "51–200", "201–500", "500+"];
+const companySizes = ["Just me", "2–10", "11–50", "51–200", "201–500", "500+"];
 
 const outcomes = [
   "Recruitment / applications",
-  "Reach / attention",
+  "Reach / brand presence",
   "Pipeline / enquiries",
+  "Bookings (charter or seasonal)",
+  "Capture only / asset library",
   "Not sure yet",
 ];
 
@@ -162,7 +152,7 @@ export default function ContactForm() {
             <option value="" disabled>
               Select a sector
             </option>
-            {industries.map((v) => (
+            {INDUSTRY_OPTIONS.map((v) => (
               <option key={v} value={v}>
                 {v}
               </option>

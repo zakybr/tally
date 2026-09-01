@@ -63,7 +63,7 @@ export default function Scoreboard() {
           <span key={i} className={`tally-mark ${i >= GUARANTEED ? "over" : ""}`} />
         ))}
       </div>
-      <p className="mt-4 font-mono text-[0.625rem] leading-relaxed text-ink-2">
+      <p className="mt-4 font-mono text-[0.6875rem] leading-relaxed text-ink-2 md:text-[0.625rem]">
         Format illustration: this is how every engagement is reported. White marks count to the
         guarantee; amber marks are over-delivery.
       </p>

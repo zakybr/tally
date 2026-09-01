@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import FooterCta from "@/components/FooterCta";
+import Arrow from "@/components/Arrow";
 import Reveal from "@/components/Reveal";
 import SectionHeader from "@/components/SectionHeader";
 import { SITE_URL, breadcrumbJsonLd } from "@/lib/seo";
@@ -274,10 +275,14 @@ export default function AboutPage() {
           <Reveal delay={0.15}>
             <p className="mt-8">
               <Link
-                href="/#guarantee"
-                className="mono-label text-amber transition-colors hover:text-ink"
+                href="/guarantee"
+                className="mono-label group inline-flex items-center gap-2 text-amber transition-colors hover:text-ink"
               >
-                How the guarantee works →
+                How the guarantee works
+                <Arrow
+                  size={14}
+                  className="shrink-0 transition-transform duration-300 ease-out group-hover:translate-x-1"
+                />
               </Link>
             </p>
           </Reveal>
