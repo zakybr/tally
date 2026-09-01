@@ -96,17 +96,15 @@ body {
 }
 
 @media (pointer: coarse) {
+  /*
+    min-height ONLY. This block is unlayered, so anything it sets beats every
+    Tailwind utility including `hidden` and the responsive display variants —
+    touching `display` here silently un-hides elements the markup meant to hide.
+    Controls that need a box to grow into declare it in their own className.
+  */
   a.mono-label,
   button.mono-label {
     min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-  }
-
-  /* Full-width rows keep their box; only the display keyword changes. */
-  a.mono-label.block,
-  nav a.mono-label {
-    display: flex;
   }
 }
 

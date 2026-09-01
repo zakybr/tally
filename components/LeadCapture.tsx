@@ -83,6 +83,7 @@ export function LeadCaptureProvider({ children }: { children: React.ReactNode })
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
   const firstFieldRef = useRef<HTMLInputElement>(null);
+  const errorRef = useRef<HTMLParagraphElement>(null);
   const openerRef = useRef<HTMLElement | null>(null);
 
   const suppressed = SUPPRESSED.includes(pathname) || pathname.startsWith("/admin");
@@ -160,6 +161,26 @@ export function LeadCaptureProvider({ children }: { children: React.ReactNode })
     const data = Object.fromEntries(new FormData(form).entries());
     const picked = CHOICES.find((c) => c.id === choice)?.label ?? choice;
 
+    /* Validate here rather than round-tripping: the server's 422 is correct but
+       it lands at the bottom of a scrolled panel where nobody reads it. */
+    const missing = (["name", "email", "company", "industry"] as const).find(
+      (k) => !String(data[k] ?? "").trim(),
+    );
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(data.email ?? "").trim());
+    if (missing || !emailOk) {
+      const badField = missing ?? "email";
+      setStatus("error");
+      setError(
+        missing
+          ? "Please fill in your name, work email, company and sector."
+          : "That email address does not look right. Check it and try again.",
+      );
+      const el = form.querySelector<HTMLElement>(`[name="${badField}"]`);
+      el?.focus();
+      el?.scrollIntoView({ block: "center" });
+      return;
+    }
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -189,6 +210,10 @@ export function LeadCaptureProvider({ children }: { children: React.ReactNode })
     } catch (err) {
       setStatus("error");
       setError(err instanceof Error ? err.message : "Something went wrong.");
+      window.setTimeout(
+        () => errorRef.current?.scrollIntoView({ block: "center", behavior: "smooth" }),
+        30,
+      );
     }
   }
 
@@ -215,7 +240,7 @@ export function LeadCaptureProvider({ children }: { children: React.ReactNode })
 
       {isOpen && (
         <div
-          className="fixed inset-0 z-[60] flex items-end justify-center bg-bg/85 p-0 backdrop-blur-sm sm:items-center sm:p-6"
+          className="fixed inset-0 z-[60] flex items-end justify-center overscroll-contain bg-bg/85 p-0 backdrop-blur-sm sm:items-center sm:p-6"
           role="dialog"
           aria-modal="true"
           aria-labelledby="free-offer-title"
@@ -223,7 +248,12 @@ export function LeadCaptureProvider({ children }: { children: React.ReactNode })
             if (e.target === e.currentTarget) close();
           }}
         >
-          <div className="max-h-[92svh] w-full max-w-lg overflow-y-auto border border-hairline bg-panel">
+          {/* data-lenis-prevent: Lenis listens for wheel on the window and would
+              otherwise scroll the page behind the dialog instead of this panel. */}
+          <div
+            data-lenis-prevent
+            className="max-h-[92svh] w-full max-w-lg overflow-y-auto overscroll-contain border border-hairline bg-panel"
+          >
             <div className="flex items-start justify-between gap-4 border-b border-hairline p-6 md:p-8">
               <div>
                 <div className="eyebrow mb-3">Free · No obligation</div>
@@ -393,6 +423,7 @@ export function LeadCaptureProvider({ children }: { children: React.ReactNode })
 
                 {status === "error" && (
                   <p
+                    ref={errorRef}
                     role="alert"
                     className="mt-5 border border-amber-dim bg-bg p-4 text-[0.875rem] leading-[1.6] text-ink"
                   >
