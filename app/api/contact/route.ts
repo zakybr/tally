@@ -6,6 +6,10 @@ export const runtime = "nodejs";
 /*
   Qualification enquiry handler.
 
+  Serves both lead forms: the full qualification brief on /contact and the free
+  offer popup. They share one endpoint, one recipient list and one Resend send;
+  `formType` is what separates them in the inbox.
+
   Sends each submission to the Tally partners. Delivery uses Resend.
   Required env (set in Vercel > Project > Settings > Environment Variables):
     RESEND_API_KEY   API key from resend.com
@@ -21,6 +25,10 @@ const TO = (process.env.CONTACT_TO ?? "zak@tallynz.co,jonty@tallynz.co")
 const FROM = process.env.CONTACT_FROM ?? "Tally <onboarding@resend.dev>";
 
 type Payload = {
+  /* "free-offer" from the site popup, anything else is the full qualification brief. */
+  formType?: string;
+  offer?: string;
+  source?: string;
   name?: string;
   email?: string;
   company?: string;
@@ -74,6 +82,10 @@ export async function POST(request: Request) {
   const budgetStatus = clean(body.budgetStatus, 60);
   const timeline = clean(body.timeline, 60);
   const message = clean(body.message, 4000);
+  const formType = clean(body.formType, 40);
+  const offer = clean(body.offer, 80);
+  const source = clean(body.source, 60);
+  const isFreeOffer = formType === "free-offer";
 
   if (!name || !email || !isEmail(email) || !company || !industry) {
     return NextResponse.json(
@@ -83,6 +95,9 @@ export async function POST(request: Request) {
   }
 
   const rows: [string, string][] = [
+    ["Enquiry type", isFreeOffer ? "Free offer request (site popup)" : "Full qualification brief"],
+    ["Free offer requested", isFreeOffer ? offer : ""],
+    ["Opened from", isFreeOffer ? source : ""],
     ["Name", name],
     ["Email", email],
     ["Company", company],
@@ -113,7 +128,7 @@ export async function POST(request: Request) {
   const html = `
     <div style="font-family:ui-sans-serif,system-ui,sans-serif;background:#0b0b0a;color:#f5f2ea;padding:32px">
       <p style="font-family:ui-monospace,monospace;letter-spacing:0.1em;text-transform:uppercase;color:#d9711a;font-size:12px;margin:0 0 16px">
-        New qualification enquiry
+        ${isFreeOffer ? `Free offer request &middot; ${esc(offer || "unspecified")}` : "New qualification enquiry"}
       </p>
       <table style="border-collapse:collapse;width:100%;max-width:640px">
         ${rows
@@ -144,7 +159,9 @@ export async function POST(request: Request) {
       from: FROM,
       to: TO,
       replyTo: email,
-      subject: `Tally enquiry: ${company} (${industry})`,
+      subject: isFreeOffer
+        ? `Tally · FREE ${(offer || "request").toUpperCase()} — ${company} (${industry})`
+        : `Tally enquiry: ${company} (${industry})`,
       text,
       html,
     });

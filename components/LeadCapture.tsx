@@ -166,9 +166,9 @@ export function LeadCaptureProvider({ children }: { children: React.ReactNode })
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...data,
-          message: `FREE OFFER REQUEST — ${picked}. Submitted from the site popup (${source}).${
-            data.message ? `\n\nWhat they said: ${String(data.message)}` : ""
-          }`,
+          formType: "free-offer",
+          offer: picked,
+          source,
           ...attributionPayload(),
         }),
       });

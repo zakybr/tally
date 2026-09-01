@@ -46,19 +46,28 @@ Fonts: General Sans (self-hosted, `app/fonts/`, Fontshare Free Font License) for
 
 ## Page structure
 
-Home (`app/page.tsx`): Hero → sector ticker → SEO overview → accountability gap → work triptych → guarantee → tracks → miss clause → sectors → method → pricing → gate → footer CTA. Pillar page at `/primary-industries-marketing` for search/AI intent. Contact (`/contact`): qualification questionnaire.
+Home (`app/page.tsx`): Hero → sector ticker → offer (four tracks) → marine season band → guarantee → sectors → pricing → SEO overview → footer CTA. Long-form guarantee material (accountability gap, method, capture triptych, miss clause, qualification gate, FAQ) lives at `/guarantee`. Pillar page at `/primary-industries-marketing` for search/AI intent. Contact (`/contact`): qualification questionnaire.
 
-## Contact form (email delivery)
+## Lead forms (email delivery)
 
-The questionnaire at `/contact` posts to `app/api/contact/route.ts`, which emails each submission to the partners via [Resend](https://resend.com). Set these environment variables in Vercel (Project → Settings → Environment Variables), then redeploy:
+Both lead forms post to the same handler, `app/api/contact/route.ts`, which emails each submission to the partners via [Resend](https://resend.com):
+
+- **Start the Proof** — the full qualification questionnaire at `/contact` (`components/ContactForm.tsx`), sent with `formType: "brief"`.
+- **Free offer popup** — the quote / call / research popup that opens site-wide (`components/LeadCapture.tsx`), sent with `formType: "free-offer"` plus the chosen `offer` and the `source` that opened it.
+
+`formType` is what separates them in the inbox. Free-offer leads arrive with the subject `Tally · FREE <OFFER> — <Company> (<Sector>)`; briefs keep `Tally enquiry: <Company> (<Sector>)`. Both carry UTM attribution and set `reply-to` to the enquirer.
+
+Set these environment variables in Vercel (Project → Settings → Environment Variables), then redeploy:
 
 | Variable | Required | Notes |
 | --- | --- | --- |
-| `RESEND_API_KEY` | Yes | API key from resend.com. Without it the form returns a "not configured" message and the lead is logged server-side. |
+| `RESEND_API_KEY` | Yes | API key from resend.com. Without it **both** forms return a "not configured" message (HTTP 503) and the lead is only logged server-side. This is also why neither form sends from `localhost` unless you add the key to `.env.local`. |
 | `CONTACT_FROM` | Recommended | Verified sender, e.g. `Tally <noreply@tallynz.co>`. Requires verifying `tallynz.co` in Resend (add the DNS records they provide). Falls back to Resend's shared `onboarding@resend.dev`. |
 | `CONTACT_TO` | Optional | Comma-separated recipients. Defaults to `zak@tallynz.co,jonty@tallynz.co`. |
 
 Submissions set `reply-to` to the enquirer's email, so replying goes straight back to them.
+
+To test delivery locally, add `RESEND_API_KEY=...` to `.env.local` and restart `npm run dev`.
 
 ## SEO & AI discoverability
 
