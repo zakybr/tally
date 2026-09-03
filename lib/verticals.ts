@@ -62,6 +62,31 @@ export const VERTICALS: Vertical[] = [
         answer:
           "Tally is a primary industries marketing agency with seafood and aquaculture as a core vertical. Campaigns are outcome-guaranteed rather than production retainers.",
       },
+      {
+        question: "Why is it so hard to recruit crew for fishing and aquaculture in New Zealand?",
+        answer:
+          "Three things stack up. The work competes for the same people as construction and mining, which pay visibly and advertise constantly. The job is misunderstood outside the sector, so the pool of people who would consider it is smaller than it should be. And most operators only advertise once a vacancy is already hurting, which is the most expensive moment to start. The operators who fill crew reliably are the ones with a standing presence in front of the right people before the roster breaks, not a job ad posted in a bad week.",
+      },
+      {
+        question: "How do you market a seafood or aquaculture business that sells business to business?",
+        answer:
+          "Most seafood and aquaculture revenue is contracted rather than won on a shopfront, so the marketing job is rarely direct sales. It is usually one of three things: filling roles, being credible to buyers, processors and regulators who are already deciding about you, or defending reputation in a sector that attracts scrutiny. Tally scopes to whichever of those is countable for you, then guarantees that number rather than promising brand awareness.",
+      },
+      {
+        question: "What does a seafood marketing campaign actually cost?",
+        answer:
+          "The figure is set in discovery once the target is agreed, because the cost of hitting a number depends on the number. A Proof sprint is a fixed-scope eight-week engagement against one agreed outcome, usually qualified applications for crew or plant roles. Ongoing work moves to a monthly retainer on a six-month minimum. If we cannot see a route to your number, we say so before you pay anything.",
+      },
+      {
+        question: "Can you film on a working vessel or in a processing plant?",
+        answer:
+          "Yes, and it is the point. Capture happens around real work rather than a staged day: on a trip, on the wharf, or on a running line. Site induction, PPE and food-safety requirements are planned around before we arrive rather than discovered on the day. Crew who do not want to be on camera are not filmed, because what carries a recruitment campaign is the work and the conditions, not faces.",
+      },
+      {
+        question: "New Zealand seafood exports are large. Why is the marketing so thin?",
+        answer:
+          "New Zealand seafood and aquaculture exports run to roughly $650M across 81 countries, and almost none of that is supported by a marketing specialist who knows the sector. Generalist agencies cluster around consumer brands, and the agricultural specialists cluster around dairy. That leaves operators buying either generic creative that does not understand the work or nothing at all. It is the gap Tally was built for.",
+      },
     ],
   },
   {
@@ -109,6 +134,31 @@ export const VERTICALS: Vertical[] = [
         question: "Who is a forestry marketing agency in New Zealand?",
         answer:
           "Tally markets forestry and wood processing as part of its primary industries practice, with an outcome guarantee rather than a monthly production retainer.",
+      },
+      {
+        question: "How do you recruit forestry crew and gang members in New Zealand?",
+        answer:
+          "Forestry hiring competes against construction and civil for the same practical workforce, usually at a distance from town and with a safety reputation that has to be addressed head on rather than avoided. Campaigns that work show the actual crew, the actual machinery and the actual conditions, and they run before the gap opens rather than after. The number worth guaranteeing is qualified applications: people who understand the work and would genuinely take it.",
+      },
+      {
+        question: "What is employer brand and does a forestry contractor need one?",
+        answer:
+          "Employer brand is simply what someone already thinks about working for you before you advertise. Every operator has one whether or not they manage it. It matters most where hiring is chronic rather than occasional: if you are recruiting several times a year, the cost of starting from zero each time is far higher than the cost of keeping a presence in front of the right people between rounds.",
+      },
+      {
+        question: "Can marketing help a wood processor or mill with staffing rather than sales?",
+        answer:
+          "Yes, and for most processors it is the more valuable brief. Mills and processing sites usually have contracted volume and a staffing problem, not a demand problem. Vacancy days on a line are countable in dollars, which makes them exactly the kind of outcome that can be agreed and guaranteed in writing before any work starts.",
+      },
+      {
+        question: "Does growth-fund or corporate ownership change the marketing brief?",
+        answer:
+          "It usually raises the standard of proof rather than the budget. Funded and corporate forestry operations are used to reporting against numbers, so an agency that reports output, videos delivered or posts published, tends to sit badly with them. Agreeing one business outcome up front and reporting a weekly figure against it is closer to how the rest of the business already runs.",
+      },
+      {
+        question: "When should a forestry operation start a recruitment campaign?",
+        answer:
+          "Work backwards from when the crew has to be on the ground. A Proof sprint runs eight weeks from signature to a result, so a campaign signed two months before you need people is live and compounding when the gap opens. Starting after the vacancy exists means paying for attention while already carrying the cost of being short.",
       },
     ],
   },
@@ -244,6 +294,31 @@ export const VERTICALS: Vertical[] = [
         question: "Is Tally a kiwifruit or pipfruit marketing agency?",
         answer:
           "Tally works with horticulture at scale, including kiwifruit and pipfruit operators, as part of its New Zealand primary industries practice.",
+      },
+      {
+        question: "How do you recruit seasonal labour for a packhouse or orchard?",
+        answer:
+          "Seasonal recruitment is a timing problem before it is a marketing problem. The pool is largely fixed, everyone in the region competes for it in the same few weeks, and the operations that fill first are the ones people already knew about. Campaigns that work start before the season, show the actual site and the actual shift, and are honest about the conditions, because an applicant surprised on day one leaves in week two and you pay to recruit them twice.",
+      },
+      {
+        question: "What is the real cost of an unfilled packhouse shift?",
+        answer:
+          "It is usually the cost most horticulture operations can name to the dollar and least often put a marketing budget behind: throughput lost against a window that does not move, plus overtime to cover, plus fruit quality risk if the pick slows. Because it is countable, it is exactly the kind of number that can be agreed in writing and guaranteed before any work begins.",
+      },
+      {
+        question: "Does marketing help with export premium as well as labour?",
+        answer:
+          "It can, though the outcome is different and it is worth separating them. Labour campaigns guarantee qualified applications. Export and category work guarantees qualified in-sector reach, meaning the buyers, distributors and partners who actually decide about your product, rather than a follower count. Tally will take either brief, but agrees which number is being carried before anything is made.",
+      },
+      {
+        question: "We only hire for a few months a year. Is a campaign worth it?",
+        answer:
+          "Often more so, not less. A short hiring window is precisely where being already known pays, because there is no time to build awareness once the season starts. The work also compounds: the same capture and the same audience serve next season, so the second year of a seasonal campaign generally costs less per applicant than the first.",
+      },
+      {
+        question: "When should a horticulture operation start for the coming season?",
+        answer:
+          "Count back from your first pick or your first packhouse shift. A Proof sprint takes eight weeks from signature to a measured result, so signing roughly three months out means the campaign is live and building before the region starts competing for the same people.",
       },
     ],
   },

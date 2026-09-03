@@ -11,6 +11,13 @@ export type Person = {
   name: string;
   role: string;
   email: string;
+  /*
+    Public profiles that name this person. These become `sameAs` in the Person
+    schema, which is the strongest signal available for a personal-name query:
+    it lets Google tie the name on this site to an entity it already trusts.
+    Leave empty rather than guessing a URL.
+  */
+  sameAs: string[];
   /* E.164, for tel: hrefs and structured data. */
   phone: string;
   /* How a New Zealander reads it back. */
@@ -22,13 +29,16 @@ export const PEOPLE: Person[] = [
     name: "Zak Rachmadi",
     role: "Director",
     email: "zak@tallynz.co",
+    sameAs: ["https://www.linkedin.com/in/zak-rachmadi-400633249/"],
     phone: "+64223053853",
     phoneDisplay: "+64 22 305 3853",
   },
   {
     name: "Jonty MacIntyre",
     role: "Director",
+    /* TODO: add Jonty's LinkedIn here once we have the URL. */
     email: "jonty@tallynz.co",
+    sameAs: [],
     phone: "+6421344965",
     phoneDisplay: "+64 21 344 965",
   },

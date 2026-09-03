@@ -104,10 +104,9 @@ const directors = [
   to a page that is about them. These carry the same contact details as the
   Organization record so the two corroborate rather than compete.
 
-  sameAs is deliberately empty. It should list the directors' LinkedIn and any
-  other profile that names them, and those are the strongest signal available
-  for a personal-name query, but inventing profile URLs would be worse than
-  leaving the array out.
+  sameAs carries each director's public profiles, which is the strongest signal
+  available for a personal-name query: it ties the name here to an entity Google
+  already trusts. It is omitted rather than emptied when we have no URL.
 */
 const people = PEOPLE.map((p) => ({
   "@context": "https://schema.org",
@@ -127,6 +126,7 @@ const people = PEOPLE.map((p) => ({
     "Video capture and production",
   ],
   nationality: { "@type": "Country", name: "New Zealand" },
+  ...(p.sameAs.length ? { sameAs: p.sameAs } : {}),
 }));
 
 const jsonLd = [

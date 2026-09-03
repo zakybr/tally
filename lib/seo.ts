@@ -237,6 +237,7 @@ export function organizationJsonLd() {
       email: p.email,
       telephone: p.phone,
       worksFor: { "@id": `${SITE_URL}/#organization` },
+      ...(p.sameAs.length ? { sameAs: p.sameAs } : {}),
     })),
     contactPoint: PEOPLE.map((p) => ({
       "@type": "ContactPoint",
@@ -343,7 +344,7 @@ export function organizationJsonLd() {
         },
       },
     ],
-    sameAs: [],
+    sameAs: PEOPLE.flatMap((p) => p.sameAs),
   };
 }
 
