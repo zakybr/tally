@@ -1,6 +1,7 @@
 import Section from "@/components/Section";
 import Pill from "@/components/Pill";
 import Scoreboard from "@/components/Scoreboard";
+import WeekStack from "@/components/WeekStack";
 
 /*
   The mechanism, drawn twice: once as a dimension string across the eight weeks,
@@ -13,10 +14,26 @@ import Scoreboard from "@/components/Scoreboard";
 */
 
 const weeks = [
-  { w: "00", body: "Signature. The number is agreed and the baseline pulled." },
-  { w: "01-03", body: "Capture on site, wherever the work actually happens." },
-  { w: "04", body: "The campaign goes live. Budget moves to what converts." },
-  { w: "08", body: "The tally, against the number agreed in week zero." },
+  {
+    w: "00",
+    title: "Agree the number",
+    body: "You name one countable outcome. We pull the baseline and both signatures go on it before anything is made.",
+  },
+  {
+    w: "01-03",
+    title: "Capture on site",
+    body: "We come to the boat, the yard, the orchard or the plant and shoot the real thing. You never manage a creator or sit in a production call.",
+  },
+  {
+    w: "04",
+    title: "Live",
+    body: "The campaign runs. Variants are tested, the ones that do not work get cut, and budget moves to what converts.",
+  },
+  {
+    w: "08",
+    title: "The tally",
+    body: "The delivered figure against the number agreed in week zero. If it is short, the miss clause decides what happens next, not a conversation.",
+  },
 ];
 
 const notes = [
@@ -51,21 +68,8 @@ export default function Guarantee() {
         </div>
       </div>
 
-      {/* The eight weeks, stated plainly. */}
-      <div>
-        <div className="mt-20 grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2 md:grid-cols-4">
-          {weeks.map((s) => (
-            <div key={s.w}>
-              <div className="font-mono text-[0.75rem] tnum tracking-[0.1em] text-ink">
-                WK {s.w}
-              </div>
-              <p className="mt-2.5 max-w-[24ch] text-[0.8125rem] leading-[1.55] text-ink-2">
-                {s.body}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
+      {/* The eight weeks, walked rather than tabulated. */}
+      <WeekStack weeks={weeks} />
 
       {/* NOTES: a drawing carries its binding conditions here, so the miss clause does too. */}
       <div>
