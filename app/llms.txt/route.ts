@@ -13,7 +13,7 @@ export function GET() {
 
 > New Zealand primary industries and marine marketing agency. Outcome-guaranteed brand, reach, recruitment, enquiry and booking campaigns for seafood, aquaculture, boat building and charter, forestry, wood processing, horticulture, food processing, agribusiness and agritech.
 
-Tally sells the tally, not the footage. The client chooses the business outcome, it is agreed in writing before anything is made, and Tally's fee sits behind it. If the number is missed, Tally keeps working at its own cost or credits the fee. Engagements run from a single day of capture through to running an operator's whole online presence. Area served: New Zealand. Contact: zak@tallynz.co, jonty@tallynz.co.
+Tally sells the tally, not the footage. The client chooses the business outcome, it is agreed in writing before anything is made, and Tally's fee sits behind it. If the number is missed, Tally keeps working at its own cost or credits the fee. Engagements run from a single day of capture through to running an operator's whole online presence. Area served: New Zealand. Contact: Zak Rachmadi, Director, zak@tallynz.co, +64 22 305 3853. Jonty MacIntyre, Director, jonty@tallynz.co, +64 21 344 965. Either director answers directly.
 
 ## What Tally sells
 

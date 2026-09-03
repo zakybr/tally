@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import TallyMark from "@/components/TallyMark";
 import Pill from "@/components/Pill";
+import { PEOPLE } from "@/lib/contact";
 
 /*
   Two doors, both on the right. The bar used to carry five flat links plus a
@@ -171,12 +172,18 @@ export default function Nav() {
             <p className="mt-6 max-w-[24ch] font-sans text-lg leading-[1.45] text-ink-2">
               {active?.blurb}
             </p>
-            <a
-              href="mailto:zak@tallynz.co"
-              className="mono-label link-wipe mt-10 inline-block text-ink-3 hover:text-ink"
-            >
-              zak@tallynz.co
-            </a>
+            <div className="mt-10 space-y-2">
+              {PEOPLE.map((p) => (
+                <a
+                  key={p.email}
+                  href={`tel:${p.phone}`}
+                  className="mono-label block text-ink-3 transition-colors hover:text-ink"
+                >
+                  {p.name.split(" ")[0]}{" "}
+                  <span className="font-mono tnum text-ink-2">{p.phoneDisplay}</span>
+                </a>
+              ))}
+            </div>
           </div>
 
           <div aria-label={active?.label} className="flex flex-col items-end">
@@ -231,12 +238,24 @@ export default function Nav() {
             <Pill href="/contact" className="mt-2 w-full">
               Start the Proof
             </Pill>
-            <a
-              href="mailto:zak@tallynz.co"
-              className="mono-label link-wipe mt-6 self-start text-ink-3 hover:text-ink"
-            >
-              zak@tallynz.co
-            </a>
+            <div className="mt-6 space-y-3">
+              {PEOPLE.map((p) => (
+                <div key={p.email}>
+                  <a
+                    href={`tel:${p.phone}`}
+                    className="mono-label block text-ink transition-colors hover:text-signal"
+                  >
+                    {p.name.split(" ")[0]} <span className="font-mono tnum">{p.phoneDisplay}</span>
+                  </a>
+                  <a
+                    href={`mailto:${p.email}`}
+                    className="mono-label mt-1 block text-ink-3 hover:text-ink"
+                  >
+                    {p.email}
+                  </a>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )}

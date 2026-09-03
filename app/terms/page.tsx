@@ -153,7 +153,8 @@ const clauses: Clause[] = [
     body: (
       <p>
         We may update these terms. The date at the top of this page shows when they last changed.
-        Questions: <a href="mailto:zak@tallynz.co">zak@tallynz.co</a>.
+        Questions: <a href="mailto:zak@tallynz.co">zak@tallynz.co</a> or{" "}
+        <a href="mailto:jonty@tallynz.co">jonty@tallynz.co</a>.
       </p>
     ),
   },

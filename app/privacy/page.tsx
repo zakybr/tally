@@ -56,7 +56,8 @@ const clauses: Clause[] = [
         <p>
           The gated guarantee one-pager asks only for a name, work email and company. Everything
           on both forms is given voluntarily. If you would rather not fill in a form, email{" "}
-          <a href="mailto:zak@tallynz.co">zak@tallynz.co</a> directly.
+          <a href="mailto:zak@tallynz.co">zak@tallynz.co</a> or{" "}
+          <a href="mailto:jonty@tallynz.co">jonty@tallynz.co</a> directly.
         </p>
       </>
     ),
@@ -81,7 +82,7 @@ const clauses: Clause[] = [
     ),
   },
   {
-    heading: "Analytics",
+    heading: "Analytics and cookies",
     body: (
       <>
         <p>
@@ -90,8 +91,20 @@ const clauses: Clause[] = [
           interactions such as opening the one-pager or clicking through to book a call.
         </p>
         <p>
-          Google sets cookies to do this. You can block them in your browser settings or install
-          Google&apos;s{" "}
+          Analytics cookies are switched off until you accept them. On your first visit a notice
+          appears at the bottom of the screen, and until you choose, Google Consent Mode holds
+          analytics storage in a denied state: no analytics cookie is written and nothing is read
+          from your device. Choosing Decline keeps it that way, and Google receives only a
+          cookieless ping it cannot tie to a returning visitor.
+        </p>
+        <p>
+          We set no advertising cookies at all, and we do not use the site to build advertising
+          audiences. IP addresses are anonymised before Google stores them.
+        </p>
+        <p>
+          Your choice is stored in your browser under <strong>tally_cookie_consent</strong>. To
+          change it, clear this site&apos;s data in your browser and the notice will appear again.
+          You can also block the cookies outright in your browser settings or install Google&apos;s{" "}
           <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener" target="_blank">
             opt-out browser add-on
           </a>
@@ -170,7 +183,8 @@ const clauses: Clause[] = [
         <p>
           Under the Privacy Act 2020 you may ask us what personal information we hold about you,
           ask for a copy, and ask us to correct anything wrong. Email{" "}
-          <a href="mailto:zak@tallynz.co">zak@tallynz.co</a> and we will respond within 20 working
+          <a href="mailto:zak@tallynz.co">zak@tallynz.co</a> or{" "}
+          <a href="mailto:jonty@tallynz.co">jonty@tallynz.co</a> and we will respond within 20 working
           days.
         </p>
         <p>
@@ -214,7 +228,8 @@ const clauses: Clause[] = [
         </p>
         <p>
           Questions about privacy, or a request about your information:{" "}
-          <a href="mailto:zak@tallynz.co">zak@tallynz.co</a>. Our terms of service are at{" "}
+          <a href="mailto:zak@tallynz.co">zak@tallynz.co</a> or{" "}
+          <a href="mailto:jonty@tallynz.co">jonty@tallynz.co</a>. Our terms of service are at{" "}
           <Link href="/terms">tallynz.co/terms</Link>.
         </p>
       </>

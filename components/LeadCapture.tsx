@@ -231,7 +231,7 @@ export function LeadCaptureProvider({ children }: { children: React.ReactNode })
         <button
           type="button"
           onClick={() => open("pill")}
-          className="pill pill-solid mono-label fixed bottom-[96px] right-4 z-40 hidden shadow-[0_8px_24px_rgba(0,0,0,0.45)] lg:bottom-6 lg:right-6 lg:inline-flex"
+          className="pill pill-solid mono-label fixed bottom-[96px] right-4 z-40 hidden shadow-[0_8px_24px_rgba(0,0,0,0.45)]"
         >
           Get a free quote
           <Arrow size={14} className="shrink-0" />

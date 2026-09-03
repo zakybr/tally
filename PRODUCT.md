@@ -58,8 +58,8 @@ Three commercial steps: Proof (fixed-scope eight-week sprint, where everyone
 starts), Engine (monthly retainer, six-month minimum), Playbook (licensed
 method, opens later).
 
-Engagement sequence: week 0 signature and baseline; weeks 1–3 capture on site;
-week 4 live; week 8 the tally against the agreed number. Delivery is headless —
+Engagement sequence: week 0 signature and baseline; weeks 1-3 capture on site;
+week 4 live; week 8 the tally against the agreed number. Delivery is headless:
 the client manages no creators and sits in no production calls, and receives one
 plain-English figure-against-target update per week.
 
@@ -81,8 +81,17 @@ are independent pages reached from a header dropdown, not sections of the
 homepage. They carry their own metadata, FAQPage/Service/Breadcrumb schema and
 keyword coverage, which must be preserved.
 
-Contact is email-first (zak@tallynz.co) plus a booked 30-minute call. No phone
-number, no physical address, no social accounts are published.
+Contact is direct to either director, by phone or email, plus a booked
+30-minute call. Zak Rachmadi (zak@tallynz.co, +64 22 305 3853) and Jonty
+MacIntyre (jonty@tallynz.co, +64 21 344 965). Both are published on the site,
+carried in the persistent contact rail, and exposed as ContactPoint and founder
+entries in the Organization schema so search and answer engines can surface a
+way of getting in touch. No physical address and no social accounts are
+published.
+
+Google Analytics 4 runs behind Consent Mode v2. Analytics storage defaults to
+denied, so no analytics cookie is written until a visitor accepts. Declining
+keeps it denied for good. The choice is stored under `tally_cookie_consent`.
 
 ## Brand Commitments
 

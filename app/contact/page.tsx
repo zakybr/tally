@@ -4,6 +4,7 @@ import Nav from "@/components/Nav";
 import ContactForm from "@/components/ContactForm";
 import BookCall from "@/components/BookCall";
 import TallyMark from "@/components/TallyMark";
+import { PEOPLE } from "@/lib/contact";
 
 export const metadata: Metadata = {
   title: "Contact | Primary Industries Marketing NZ",
@@ -63,6 +64,29 @@ export default function ContactPage() {
                   </li>
                 ))}
               </ul>
+              <div className="mt-10 grid gap-6 border-t rule-hair pt-8 sm:grid-cols-2">
+                {PEOPLE.map((p) => (
+                  <div key={p.email}>
+                    <div className="font-sans text-lg font-semibold tracking-[-0.02em] text-ink">
+                      {p.name}
+                    </div>
+                    <div className="mono-label mt-1 text-ink-3">{p.role}</div>
+                    <a
+                      href={`tel:${p.phone}`}
+                      className="mt-4 block font-mono text-[1.0625rem] tnum text-ink transition-colors hover:text-signal"
+                    >
+                      {p.phoneDisplay}
+                    </a>
+                    <a
+                      href={`mailto:${p.email}`}
+                      className="mono-label link-wipe mt-2 inline-block text-ink-2 hover:text-ink"
+                    >
+                      {p.email}
+                    </a>
+                  </div>
+                ))}
+              </div>
+
               <p className="mt-8 max-w-md text-sm leading-[1.7] text-ink-2">
                 Prefer a calendar slot?{" "}
                 <BookCall
@@ -70,14 +94,7 @@ export default function ContactPage() {
                   className="text-ink-3 underline-offset-4 hover:underline"
                   label="Book a call"
                 />
-                . Or email{" "}
-                <a
-                  href="mailto:zak@tallynz.co"
-                  className="text-ink-3 underline-offset-4 hover:underline"
-                >
-                  zak@tallynz.co
-                </a>
-                .
+                . Either of us will pick up.
               </p>
             </div>
           </div>

@@ -1,5 +1,7 @@
 /* Shared SEO copy, keywords and structured-data builders. */
 
+import { PEOPLE } from "@/lib/contact";
+
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "https://www.tallynz.co";
 
@@ -187,7 +189,25 @@ export function organizationJsonLd() {
       url: `${SITE_URL}/tally-logo.png`,
     },
     image: `${SITE_URL}/images/hero-boat.jpg`,
-    email: "zak@tallynz.co",
+    email: PEOPLE[0].email,
+    telephone: PEOPLE[0].phone,
+    founder: PEOPLE.map((p) => ({
+      "@type": "Person",
+      name: p.name,
+      jobTitle: p.role,
+      email: p.email,
+      telephone: p.phone,
+      worksFor: { "@id": `${SITE_URL}/#organization` },
+    })),
+    contactPoint: PEOPLE.map((p) => ({
+      "@type": "ContactPoint",
+      contactType: "sales",
+      name: p.name,
+      email: p.email,
+      telephone: p.phone,
+      areaServed: "NZ",
+      availableLanguage: ["en-NZ", "en"],
+    })),
     foundingLocation: {
       "@type": "Place",
       address: {

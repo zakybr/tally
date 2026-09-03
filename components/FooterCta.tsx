@@ -2,6 +2,7 @@ import Link from "next/link";
 import TallyMark from "@/components/TallyMark";
 import BookCall from "@/components/BookCall";
 import Pill from "@/components/Pill";
+import { PEOPLE } from "@/lib/contact";
 
 const sectorLinks = [
   { href: "/seafood-aquaculture-marketing", label: "Seafood & aquaculture" },
@@ -48,12 +49,22 @@ export default function FooterCta() {
               <Pill href="/contact">Start the Proof</Pill>
               <BookCall source="footer_cta" label="Or book a 30-minute call" />
             </div>
-            <p className="mono-label mt-8 text-ink-2">
-              Prefer email?{" "}
-              <a href="mailto:zak@tallynz.co" className="link-wipe text-ink hover:text-ink-2">
-                zak@tallynz.co
-              </a>
-            </p>
+            <div className="mt-10 flex flex-col gap-2 border-t rule-hair pt-6 sm:flex-row sm:flex-wrap sm:gap-x-10">
+              {PEOPLE.map((p) => (
+                <p key={p.email} className="mono-label text-ink-2">
+                  {p.name.split(" ")[0]}{" "}
+                  <a
+                    href={`tel:${p.phone}`}
+                    className="font-mono tnum text-ink transition-colors hover:text-signal"
+                  >
+                    {p.phoneDisplay}
+                  </a>{" "}
+                  <a href={`mailto:${p.email}`} className="link-wipe text-ink-2 hover:text-ink">
+                    {p.email}
+                  </a>
+                </p>
+              ))}
+            </div>
           </div>
         </div>
       </section>

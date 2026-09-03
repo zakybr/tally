@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Analytics from "@/components/Analytics";
+import CookieNotice from "@/components/CookieNotice";
 import SiteChrome from "@/components/SiteChrome";
 import {
   DEFAULT_DESCRIPTION,
@@ -133,6 +134,7 @@ export default function RootLayout({
           }}
         />
         <SiteChrome>{children}</SiteChrome>
+        <CookieNotice />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
