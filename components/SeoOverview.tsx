@@ -1,14 +1,16 @@
 import Section from "@/components/Section";
 import Pill from "@/components/Pill";
-import SectorRegister from "@/components/SectorRegister";
+import SectorDeck from "@/components/SectorDeck";
 
 /*
   Coverage register. The sector cards left the homepage for their own pages
   behind the header dropdown; what stays is the register, a finite, complete
   table of what Tally covers and which number it guarantees per sector.
 
-  A register is the right shape for a sheet and the right shape for a crawler:
-  structured, scannable, and readable by an answer engine without prose.
+  The nine sectors are a fanned deck rather than a nine row ledger. The rows
+  were the same shape repeated, which read as a long list instead of a broad
+  one. Crawlable content is unaffected: every card is a real link carrying the
+  sector name, its coverage line and the number guaranteed.
 */
 export default function SeoOverview() {
   return (
@@ -34,7 +36,7 @@ export default function SeoOverview() {
       </div>
 
       <div className="mt-16">
-        <SectorRegister />
+        <SectorDeck />
       </div>
     </Section>
   );

@@ -386,6 +386,15 @@ body {
   filter: grayscale(20%) contrast(1.1) brightness(0.9);
 }
 
+/* Sector deck carousel: the scrollbar is chrome the design does not want. */
+.deck-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.deck-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 /* Sector ticker: dense manifest strip */
 @keyframes ticker-scroll {
   from {

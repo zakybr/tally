@@ -5,6 +5,7 @@ import Nav from "@/components/Nav";
 import FooterCta from "@/components/FooterCta";
 import Arrow from "@/components/Arrow";
 import SectionHeader from "@/components/SectionHeader";
+import { PEOPLE } from "@/lib/contact";
 import { SITE_URL, breadcrumbJsonLd } from "@/lib/seo";
 import jontyImg from "@/public/images/jonty.png";
 import zakImg from "@/public/images/zak.png";
@@ -95,7 +96,41 @@ const directors = [
   },
 ];
 
+/*
+  Person entities for both directors, each with a stable @id.
+
+  A person-name query cannot be won by an organisation record alone: Google
+  needs a Person entity it can attach the name to, tied to the organisation and
+  to a page that is about them. These carry the same contact details as the
+  Organization record so the two corroborate rather than compete.
+
+  sameAs is deliberately empty. It should list the directors' LinkedIn and any
+  other profile that names them, and those are the strongest signal available
+  for a personal-name query, but inventing profile URLs would be worse than
+  leaving the array out.
+*/
+const people = PEOPLE.map((p) => ({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${SITE_URL}/about#${p.email.split("@")[0]}`,
+  name: p.name,
+  jobTitle: p.role,
+  email: p.email,
+  telephone: p.phone,
+  worksFor: { "@id": `${SITE_URL}/#organization` },
+  mainEntityOfPage: `${SITE_URL}/about`,
+  knowsAbout: [
+    "Outcome-guaranteed marketing",
+    "Recruitment marketing",
+    "Primary industries marketing New Zealand",
+    "Marine and charter marketing",
+    "Video capture and production",
+  ],
+  nationality: { "@type": "Country", name: "New Zealand" },
+}));
+
 const jsonLd = [
+  ...people,
   breadcrumbJsonLd([
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
@@ -109,6 +144,7 @@ const jsonLd = [
     url: `${SITE_URL}/about`,
     isPartOf: { "@id": `${SITE_URL}/#website` },
     about: { "@id": `${SITE_URL}/#organization` },
+    mainEntity: people.map((p) => ({ "@id": p["@id"] })),
     inLanguage: "en-NZ",
   },
 ];

@@ -110,6 +110,30 @@ export const KEYWORDS = [
   "food and beverage marketing New Zealand",
   "agritech marketing New Zealand",
   "agtech marketing NZ",
+  // Guarantee-led positioning, the category Tally is trying to own
+  "guarantee based marketing agency",
+  "guaranteed marketing agency New Zealand",
+  "performance guaranteed marketing NZ",
+  "results guaranteed marketing agency",
+  "pay on results marketing New Zealand",
+  "outcome based marketing agency NZ",
+  "marketing agency that guarantees results",
+  "risk reversal marketing agency",
+  // Capture and production
+  "video capture marketing New Zealand",
+  "video production marketing agency NZ",
+  "on location video capture NZ",
+  "industrial video production New Zealand",
+  "employer brand video NZ",
+  "recruitment video production New Zealand",
+  "commercial photography primary industries NZ",
+  // Named directors, for brand and person queries
+  "Zak Rachmadi",
+  "Jonty MacIntyre",
+  "Zak Rachmadi Tally",
+  "Jonty MacIntyre Tally",
+  "Tally NZ marketing agency",
+  "Tally marketing New Zealand",
   // Service modifiers
   "guaranteed marketing results NZ",
   "lead generation agribusiness NZ",
@@ -165,6 +189,21 @@ export const FAQS: FaqItem[] = [
     question: "Can Tally just do the filming, or does it have to be a full campaign?",
     answer:
       "Either. Capture is sold on its own: Tally comes to the boat, yard, orchard or plant, shoots the real thing, and hands over an agreed asset set the client owns outright. From there the same footage can feed a reach and brand programme where Tally runs the strategy, channels and posting system against a guaranteed qualified-reach figure.",
+  },
+  {
+    question: "What is guarantee-based marketing?",
+    answer:
+      "Guarantee-based marketing ties the agency's fee to a business outcome the client chooses, agreed in writing before any work begins. Tally agrees one countable number, such as qualified applications, confirmed bookings, qualified enquiries or an asset set delivered to spec, and puts its fee behind it. A miss of 20% or less means work continues for 30 days at Tally's cost. A larger miss triggers a fee credit or partial refund. The conditions are printed in the engagement contract rather than implied in a pitch.",
+  },
+  {
+    question: "Does Tally do video capture and production?",
+    answer:
+      "Yes. Capture is sold as a standalone track. Tally shoots on location across boats, yards, orchards, packhouses and processing plants in New Zealand, and delivers an agreed asset set the client owns outright with no expiry and no per-use fee. The same library can then feed recruitment, reach and enquiry campaigns rather than being shot three separate times.",
+  },
+  {
+    question: "Who runs Tally?",
+    answer:
+      "Tally is run by two directors, Zak Rachmadi and Jonty MacIntyre. Both sign every guarantee number alongside the client, and both are reachable directly: Zak on +64 22 305 3853 or zak@tallynz.co, Jonty on +64 21 344 965 or jonty@tallynz.co.",
   },
   {
     question: "Where is Tally based and who does it serve?",
