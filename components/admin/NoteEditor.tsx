@@ -13,7 +13,7 @@ import { SupabaseYjsProvider, fromB64, toB64, type PeerState } from "@/lib/yjs-s
 import type { Member, Note } from "@/lib/supabase/types";
 
 /* Stable per-person colour so the same collaborator keeps the same caret. */
-const CARET_COLOURS = ["#d9711a", "#7c8b93", "#c9a961", "#8a9a5b", "#b0736f"];
+const CARET_COLOURS = ["#ff4a1c", "#7c8b93", "#c9a961", "#8a9a5b", "#b0736f"];
 
 function colourFor(id: string) {
   let hash = 0;
@@ -72,7 +72,7 @@ export default function NoteEditor({
       try {
         Y.applyUpdate(ydoc, fromB64(note.ydoc));
       } catch {
-        /* Corrupt or truncated state — fall through and let peers or the seed repopulate. */
+        /* Corrupt or truncated state, fall through and let peers or the seed repopulate. */
       }
     }
   }, [ydoc, note.ydoc]);
@@ -103,7 +103,7 @@ export default function NoteEditor({
 
   /*
     Connect to the room. The provider owns a realtime socket, so it can only be
-    built in an effect — never during render, where StrictMode's double invoke
+    built in an effect, never during render, where StrictMode's double invoke
     would leak a second subscription. The editor then rebuilds once it exists,
     because CollaborationCaret needs the provider up front.
   */
@@ -162,7 +162,7 @@ export default function NoteEditor({
 
     seedAttempted.current = true;
     const timer = setTimeout(async () => {
-      /* A peer already sent us the document — nothing to seed. */
+      /* A peer already sent us the document, nothing to seed. */
       if (ydoc.getXmlFragment("default").length > 0) return;
 
       const claim = supabase.from("notes").update({ ydoc: "" }).eq("id", note.id);
@@ -171,7 +171,7 @@ export default function NoteEditor({
         : claim.eq("ydoc", "")
       ).select("id");
 
-      /* Empty result means another client won the claim — their update is on its way. */
+      /* Empty result means another client won the claim, their update is on its way. */
       if (data && data.length === 1) {
         editor.commands.setContent(plainTextToHtml(note.plain_text!), { emitUpdate: true });
         await persist();
@@ -223,7 +223,7 @@ export default function NoteEditor({
               <span
                 aria-hidden="true"
                 className="inline-block h-2 w-2"
-                style={{ background: connected ? "#d9711a" : "#6e665e" }}
+                style={{ background: connected ? "#ff4a1c" : "#6e665e" }}
               />
               {!connected
                 ? "Connecting"

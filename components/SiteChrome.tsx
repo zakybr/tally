@@ -8,7 +8,7 @@ import { LeadCaptureProvider } from "@/components/LeadCapture";
 
 /*
   The marketing site runs Lenis smooth scroll and first-touch UTM capture.
-  Neither belongs in the admin portal — Lenis hijacks scroll inside the note
+  Neither belongs in the admin portal, Lenis hijacks scroll inside the note
   editor and sidebars, and internal traffic should not be attributed.
 */
 export default function SiteChrome({ children }: { children: React.ReactNode }) {

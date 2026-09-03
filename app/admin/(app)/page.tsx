@@ -32,7 +32,7 @@ export default async function DashboardPage() {
   const urgent = open.filter((t) => t.priority === "p1" && t.status !== "blocked");
   const listTitle = (id: string) => lists.find((l) => l.id === id)?.title ?? "";
 
-  /* Blocked first, then P1 — the order you would actually work them. */
+  /* Blocked first, then P1, the order you would actually work them. */
   const attention = [...blocked, ...urgent].slice(0, 8);
 
   const progress = lists.map((list) => {

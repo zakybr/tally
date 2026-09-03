@@ -73,7 +73,7 @@ const clauses: Clause[] = [
     body: (
       <p>
         The text, design, brand marks and documents on this site belong to Tally unless stated
-        otherwise. Documents we make available — such as the guarantee one-pager — are provided so
+        otherwise. Documents we make available, such as the guarantee one-pager, are provided so
         you can evaluate working with us. You may share them inside your own organisation. Please
         do not republish or redistribute them publicly without asking.
       </p>
@@ -86,7 +86,7 @@ const clauses: Clause[] = [
         <p>
           Where this site describes an outcome guarantee, it is describing the shape of a
           commercial offer. What is actually binding is the number, the measurement method and the
-          miss clause written into a signed engagement — not a page on a website.
+          miss clause written into a signed engagement, not a page on a website.
         </p>
         <p>
           Figures shown are sourced or marked as illustrative. Results from previous work do not

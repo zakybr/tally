@@ -4,7 +4,7 @@ import { createServerClient } from "@supabase/ssr";
 /*
   Next 16 renamed Middleware to Proxy. This runs before /admin renders and does two jobs:
   refresh the Supabase session cookie, and bounce signed-out visitors to the login page.
-  It is an optimistic check only — row level security is what actually protects the data.
+  It is an optimistic check only. Row level security is what actually protects the data.
 */
 export async function proxy(request: NextRequest) {
   const url = request.nextUrl;

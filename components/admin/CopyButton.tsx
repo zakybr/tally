@@ -27,7 +27,7 @@ export default function CopyButton({
           await navigator.clipboard.writeText(value);
           setCopied(true);
         } catch {
-          /* Clipboard blocked (insecure context or denied permission) — leave the label alone. */
+          /* Clipboard blocked (insecure context or denied permission), leave the label alone. */
         }
       }}
       className={[

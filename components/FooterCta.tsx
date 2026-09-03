@@ -1,8 +1,7 @@
 import Link from "next/link";
-import Reveal from "@/components/Reveal";
 import TallyMark from "@/components/TallyMark";
 import BookCall from "@/components/BookCall";
-import Arrow from "@/components/Arrow";
+import Pill from "@/components/Pill";
 
 const sectorLinks = [
   { href: "/seafood-aquaculture-marketing", label: "Seafood & aquaculture" },
@@ -26,52 +25,40 @@ const legalLinks = [
   { href: "/llms.txt", label: "llms.txt" },
 ];
 
-const colHead = "mono-label mb-5 text-amber";
-const colLink = "mono-label block py-1.5 text-ink-2 transition-colors duration-300 hover:text-ink";
+const colHead = "font-mono text-[0.625rem] uppercase tracking-[0.14em] text-ink-3 mb-4";
+/* `block w-fit`, not `inline-block`: the column needs one link per line, and the
+   wipe rule has to span the label rather than the whole column. */
+const colLink = "mono-label link-wipe block w-fit py-1.5 text-ink-2 hover:text-ink";
 
 /* Closing CTA aimed at the form, then a columned footer with legal on its own rule. */
 export default function FooterCta() {
   return (
-    <>
-      <section id="contact" className="border-t border-hairline bg-panel py-28 md:py-40">
+    <div>
+      <section id="contact" className="border-t rule-heavy bg-sheet-2 py-24 md:py-32">
         <div className="mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
-          <Reveal>
-            <div className="eyebrow mb-6">Start the Proof</div>
-            <h2 className="max-w-4xl font-sans text-5xl font-semibold leading-[1.02] tracking-tight text-ink md:text-7xl">
+          <div>
+            <h2 className="max-w-[14ch] font-sans text-[2.75rem] font-semibold leading-[0.98] tracking-[-0.045em] text-ink md:text-[4.5rem]">
               Hold us to the number.
             </h2>
-            <p className="mt-7 max-w-2xl text-lg leading-[1.6] text-ink-2">
-              Tell us what you need moved: applications, bookings, enquiries, or just being known
-              in your patch before the season. We will tell you straight whether we can guarantee
-              it, and exactly what it would take if we can. That answer costs you nothing.
+            <p className="mt-7 max-w-[46ch] text-lg leading-[1.6] text-ink-2">
+              Tell us what you need moved. We will tell you straight whether we can guarantee it,
+              and what it would take. That answer costs you nothing.
             </p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Link
-                href="/contact"
-                className="mono-label group inline-flex items-center gap-3 border border-amber bg-amber px-7 py-4 text-bg transition-colors duration-300 hover:bg-transparent hover:text-amber"
-              >
-                Start the Proof
-                <Arrow
-                  size={16}
-                  className="shrink-0 transition-transform duration-300 ease-out group-hover:translate-x-1"
-                />
-              </Link>
+            <div className="mt-10 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+              <Pill href="/contact">Start the Proof</Pill>
               <BookCall source="footer_cta" label="Or book a 30-minute call" />
             </div>
             <p className="mono-label mt-8 text-ink-2">
               Prefer email?{" "}
-              <a
-                href="mailto:zak@tallynz.co"
-                className="text-amber transition-colors hover:text-ink"
-              >
+              <a href="mailto:zak@tallynz.co" className="link-wipe text-ink hover:text-ink-2">
                 zak@tallynz.co
               </a>
             </p>
-          </Reveal>
+          </div>
         </div>
       </section>
 
-      <footer className="border-t border-hairline pb-[84px] pt-16 lg:pb-28">
+      <footer className="border-t rule-med bg-sheet pb-[84px] pt-14 lg:pb-24">
         <div className="mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
             <div>
@@ -87,7 +74,7 @@ export default function FooterCta() {
               </p>
               <a
                 href="mailto:zak@tallynz.co"
-                className="mono-label mt-6 inline-block border-b border-hairline pb-1 text-ink transition-colors duration-300 hover:border-amber hover:text-amber"
+                className="mono-label link-wipe mt-6 inline-block text-ink hover:text-ink-2"
               >
                 zak@tallynz.co
               </a>
@@ -113,7 +100,7 @@ export default function FooterCta() {
           </div>
 
           {/* Legal sits on its own rule so it is findable rather than buried in the link soup. */}
-          <div className="mt-14 flex flex-col gap-4 border-t border-hairline pt-6 md:flex-row md:items-center md:justify-between">
+          <div className="mt-12 flex flex-col gap-4 border-t rule-hair pt-6 md:flex-row md:items-center md:justify-between">
             <p className="font-mono text-[0.6875rem] text-ink-2">
               © 2026 Tally. All rights reserved.
             </p>
@@ -122,7 +109,7 @@ export default function FooterCta() {
                 <Link
                   key={l.href}
                   href={l.href}
-                  className="mono-label text-ink-2 transition-colors duration-300 hover:text-ink"
+                  className="mono-label link-wipe text-ink-2 hover:text-ink"
                 >
                   {l.label}
                 </Link>
@@ -131,6 +118,6 @@ export default function FooterCta() {
           </div>
         </div>
       </footer>
-    </>
+    </div>
   );
 }

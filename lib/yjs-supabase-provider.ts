@@ -106,7 +106,7 @@ export class SupabaseYjsProvider {
   }
 
   private handleDocUpdate = (update: Uint8Array, origin: unknown) => {
-    /* Do not echo updates that arrived from a peer — that is how loops start. */
+    /* Do not echo updates that arrived from a peer, that is how loops start. */
     if (origin === this.origin) return;
     this.send({ t: "update", from: this.doc.clientID, u: toB64(update) });
   };
@@ -140,7 +140,7 @@ export class SupabaseYjsProvider {
         /* Reply with everything they are missing. */
         const diff = Y.encodeStateAsUpdate(this.doc, fromB64(msg.sv));
         this.send({ t: "sync2", to: msg.from, u: toB64(diff) });
-        /* Then ask for anything we are missing — once, so this does not ping-pong. */
+        /* Then ask for anything we are missing, once, so this does not ping-pong. */
         if (!msg.reply) {
           this.send({
             t: "sync1",
@@ -179,7 +179,7 @@ export class SupabaseYjsProvider {
         peers.push({
           clientId,
           name: user.name,
-          color: user.color ?? "#d9711a",
+          color: user.color ?? "#ff4a1c",
         });
       }
     });

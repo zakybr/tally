@@ -10,7 +10,7 @@ export default function NoAccessPage() {
         <TallyMark size={22} />
         <span className="font-sans text-lg font-semibold tracking-tight text-[var(--ink)]">tally</span>
       </div>
-      <p className="eyebrow mb-3">Access denied</p>
+      <p className="mono-label text-ink-3">Access denied</p>
       <h1 className="mb-4 text-2xl font-semibold tracking-tight">
         That account is not on the list
       </h1>

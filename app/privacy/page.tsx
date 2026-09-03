@@ -67,9 +67,9 @@ const clauses: Clause[] = [
       <>
         <p>
           When you arrive from an ad, a search result or a link, we record the campaign parameters
-          in that link — <strong>utm_source</strong>, <strong>utm_medium</strong>,{" "}
+          in that link, <strong>utm_source</strong>, <strong>utm_medium</strong>,{" "}
           <strong>utm_campaign</strong>, <strong>utm_term</strong>, <strong>utm_content</strong>,
-          and the Google or Microsoft click identifiers — along with the page you landed on and the
+          and the Google or Microsoft click identifiers, along with the page you landed on and the
           site that referred you.
         </p>
         <p>
@@ -128,20 +128,20 @@ const clauses: Clause[] = [
         <p>We use a small number of providers, each doing one job:</p>
         <ul>
           <li>
-            <strong>Vercel</strong> — hosts and serves the website
+            <strong>Vercel</strong>: hosts and serves the website
           </li>
           <li>
-            <strong>Resend</strong> — delivers your form submission to our inboxes as an email
+            <strong>Resend</strong>: delivers your form submission to our inboxes as an email
           </li>
           <li>
-            <strong>Google Analytics</strong> — usage measurement, as described above
+            <strong>Google Analytics</strong>: usage measurement, as described above
           </li>
           <li>
-            <strong>Calendly</strong> — only if you choose to book a call, and only the details you
+            <strong>Calendly</strong>: only if you choose to book a call, and only the details you
             enter there
           </li>
           <li>
-            <strong>Supabase</strong> — powers our internal staff portal. It holds no information
+            <strong>Supabase</strong>: powers our internal staff portal. It holds no information
             about website visitors
           </li>
         </ul>

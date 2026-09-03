@@ -15,9 +15,9 @@ import type { List, Member, Priority, Task, TaskStatus } from "@/lib/supabase/ty
 
 const STATUSES: TaskStatus[] = ["todo", "doing", "blocked", "done"];
 const PRIORITIES: { value: Priority; label: string }[] = [
-  { value: "p1", label: "P1 — now" },
-  { value: "p2", label: "P2 — next" },
-  { value: "p3", label: "P3 — later" },
+  { value: "p1", label: "P1, now" },
+  { value: "p2", label: "P2, next" },
+  { value: "p3", label: "P3, later" },
 ];
 
 export default function TaskBoard({
@@ -281,7 +281,7 @@ function TaskRow({
       </div>
 
       {open && (
-        /* Keyed on updated_at so a saved change — yours or a collaborator's —
+        /* Keyed on updated_at so a saved change, yours or a collaborator's,
            remounts the fields with the new values instead of syncing in an effect. */
         <TaskDetail
           key={task.updated_at}

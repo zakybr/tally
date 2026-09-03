@@ -38,7 +38,7 @@ async function main() {
       kernel: sharp.kernel.lanczos3,
       fit: "fill",
     })
-    .flatten({ background: { r: 11, g: 11, b: 10 } }) // #0b0b0a — no alpha
+    .flatten({ background: { r: 8, g: 9, b: 11 } }) // #08090b, no alpha
     .png({ compressionLevel: 9 })
     .toFile(outFinal);
 

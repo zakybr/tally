@@ -20,33 +20,33 @@ export const TRACKS: Track[] = [
     slug: "capture",
     name: "Capture",
     scope:
-      "On-the-ground production and nothing else. We come to the boat, the yard, the orchard or the plant and shoot the real thing, then hand over a library you own outright.",
+      "We come to the boat, the yard, the orchard and shoot the real thing. You own the library outright.",
     guarantees: "An agreed asset set, delivered to spec",
-    suits: "Operators who need real footage in hand before they need a campaign.",
+    suits: "Operators who need footage before they need a campaign.",
   },
   {
     slug: "reach",
     name: "Reach & brand",
     scope:
-      "Your presence online, run properly: the strategy, the channels, the posting system and the creative that feeds it. Not a folder of files and a wish.",
+      "Strategy, channels, the posting system and the creative that feeds it. You get a running account rather than a folder of files.",
     guarantees: "An agreed qualified-reach figure, in-sector",
-    suits: "Smaller operators building a name before the season, not during it.",
+    suits: "Smaller operators building a name before the season.",
   },
   {
     slug: "recruitment",
     name: "Recruitment",
     scope:
-      "The flagship. Hard-to-staff crews, plants, gangs, yards and seasonal rosters, aimed at the vacancy that is costing you money right now.",
+      "The flagship. Crews, plants, gangs and yards, aimed at the vacancy costing you money right now.",
     guarantees: "Qualified applications, or cost per qualified applicant",
-    suits: "Anyone whose roster never quite fills and who can count what it costs.",
+    suits: "Anyone whose roster never quite fills.",
   },
   {
     slug: "pipeline",
     name: "Pipeline & bookings",
     scope:
-      "Demand, measured. Charter bookings, demo requests, supplier enquiries and quote requests, gated hard at discovery so we only guarantee what the product can carry.",
+      "Charter bookings, demo requests and supplier enquiries, screened hard at discovery.",
     guarantees: "Qualified enquiries or confirmed bookings",
-    suits: "Charters, yards, agritech and suppliers with a season or a sales target.",
+    suits: "Charters, yards and suppliers with a season to fill.",
   },
 ];
 
@@ -67,21 +67,21 @@ export type SectorRow = {
 export const SECTORS: SectorRow[] = [
   {
     name: "Seafood & aquaculture",
-    scope: "Crew, plant and exporter campaigns for commercial fishing, mussel and salmon operators.",
+    scope: "Crew, plant and exporter campaigns for fishing, mussel and salmon operators.",
     number: "Qualified applications",
     href: "/seafood-aquaculture-marketing",
     brief: "Seafood brief",
   },
   {
     name: "Marine, boat building & charter",
-    scope: "Charter bookings before the season, and trades recruitment for builders and refit yards.",
+    scope: "Charter bookings before the season. Trades recruitment for builders and refit yards.",
     number: "Bookings & enquiries",
     href: "/marine-marketing",
     brief: "Marine brief",
   },
   {
     name: "Forestry & wood processing",
-    scope: "Employer brand and hiring for forestry gangs, mills and wood processors carrying a chronic staffing gap.",
+    scope: "Employer brand and hiring for gangs, mills and wood processors.",
     number: "Qualified applications",
     href: "/forestry-marketing",
     brief: "Forestry brief",
@@ -95,35 +95,35 @@ export const SECTORS: SectorRow[] = [
   },
   {
     name: "Viticulture & wine",
-    scope: "Vintage and cellar crews, plus in-sector reach for wine exporters moving a category.",
+    scope: "Vintage and cellar crews, plus in-sector reach for wine exporters.",
     number: "Applications & reach",
     href: "/primary-industries-marketing",
     brief: "Capability brief",
   },
   {
     name: "Food & beverage processing",
-    scope: "Plant recruitment and brand reach for processors with large workforces and rosters that never fill.",
+    scope: "Plant recruitment and brand reach for processors with large workforces.",
     number: "Qualified applications",
     href: "/primary-industries-marketing",
     brief: "Capability brief",
   },
   {
     name: "Meat processing & red meat",
-    scope: "Line and shift recruitment where vacancy-days are counted at board level every season.",
+    scope: "Line and shift recruitment where vacancy-days are counted at board level.",
     number: "Qualified applications",
     href: "/primary-industries-marketing",
     brief: "Capability brief",
   },
   {
     name: "Operators, co-ops & exporters",
-    scope: "The producers themselves, not only the suppliers selling into them: co-ops, exporters and large operators.",
+    scope: "Producers as well as the suppliers selling into them.",
     number: "Qualified reach",
     href: "/primary-industries-marketing",
     brief: "Capability brief",
   },
   {
     name: "Funded agritech & agribusiness",
-    scope: "Qualified enquiry and demo bookings for funded agritech and agri-suppliers, gated hard at discovery for product risk.",
+    scope: "Qualified enquiry and demo bookings, screened at discovery for product risk.",
     number: "Qualified enquiries",
     href: "/primary-industries-marketing",
     brief: "Capability brief",

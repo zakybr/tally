@@ -110,7 +110,7 @@ export default function AdminShell({
         </nav>
       )}
 
-      {/* Desktop sidebar — its own neutral layer, so chrome reads apart from content. */}
+      {/* Desktop sidebar, its own neutral layer, so chrome reads apart from content. */}
       <aside className="hidden w-56 shrink-0 flex-col border-r border-[var(--line)] bg-[var(--s-chrome)] lg:flex">
         <Link
           href="/admin"

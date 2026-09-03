@@ -45,7 +45,6 @@ export default function ProofPage() {
       <section className="mx-auto max-w-[1440px] px-6 pb-24 pt-32 md:px-12 md:pt-40 lg:px-20">
         <div className="grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
           <div>
-            <div className="eyebrow mb-6">Proof sprint · NZ primary industries</div>
             <h1 className="max-w-2xl font-sans text-4xl font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl">
               Hold us to the number.
             </h1>
@@ -56,22 +55,22 @@ export default function ProofPage() {
             <div className="mt-9 flex flex-wrap gap-4">
               <Link
                 href="/contact"
-                className="mono-label border border-amber bg-amber px-6 py-3.5 text-bg transition-colors duration-300 hover:bg-transparent hover:text-amber"
+                className="pill pill-solid mono-label inline-flex"
               >
                 Start the Proof
               </Link>
               <BookCall
                 source="proof_page"
-                className="mono-label border border-hairline px-6 py-3.5 text-ink transition-colors duration-300 hover:border-ink"
+                className="mono-label border rule-hair px-6 py-3.5 text-ink transition-colors duration-300 hover:border-ink"
                 label="Book a call"
               />
             </div>
 
-            <div className="mt-16 divide-y divide-hairline border border-hairline">
+            <div className="mt-16 divide-y divide-[var(--w-hair)] border rule-hair">
               {points.map((p, i) => (
                 <div key={p.k} className="grid gap-3 p-6 md:grid-cols-[160px_1fr] md:gap-8">
                   <div>
-                    <div className="font-mono text-xs text-amber">{String(i + 1).padStart(2, "0")}</div>
+                    <div className="font-mono text-xs text-ink-3">{String(i + 1).padStart(2, "0")}</div>
                     <div className="mono-label mt-2 text-ink">{p.k}</div>
                   </div>
                   <p className="text-[0.9375rem] leading-[1.7] text-ink-2">{p.body}</p>
@@ -86,8 +85,7 @@ export default function ProofPage() {
           </div>
 
           <div className="space-y-8">
-            <div className="border border-hairline bg-panel p-8 md:p-10">
-              <div className="eyebrow mb-4">Fast path</div>
+            <div className="border rule-hair bg-sheet-2 p-8 md:p-10">
               <h2 className="font-sans text-2xl font-semibold tracking-tight text-ink">
                 Prefer a calendar invite?
               </h2>
@@ -98,12 +96,12 @@ export default function ProofPage() {
               <div className="mt-8 flex flex-wrap gap-4">
                 <BookCall
                   source="proof_sidebar"
-                  className="mono-label border border-amber bg-amber px-6 py-3.5 text-bg transition-colors duration-300 hover:bg-transparent hover:text-amber"
+                  className="pill pill-solid mono-label inline-flex"
                   label="Book on Calendly"
                 />
                 <Link
                   href="/contact"
-                  className="mono-label border border-hairline px-6 py-3.5 text-ink transition-colors duration-300 hover:border-ink"
+                  className="mono-label border rule-hair px-6 py-3.5 text-ink transition-colors duration-300 hover:border-ink"
                 >
                   Submit a brief
                 </Link>
@@ -114,11 +112,11 @@ export default function ProofPage() {
         </div>
       </section>
 
-      <footer className="border-t border-hairline py-10">
+      <footer className="border-t rule-hair py-10">
         <div className="mx-auto flex max-w-[1440px] flex-wrap items-center gap-x-6 gap-y-4 px-6 md:px-12 lg:px-20">
           <TallyMark size={18} />
           <p className="font-mono text-[0.6875rem] leading-relaxed text-ink-2">
-            <Link href="/" className="text-ink hover:text-amber">
+            <Link href="/" className="text-ink hover:text-ink">
               Tally
             </Link>
             . Outcome-guaranteed primary industries marketing, New Zealand. © 2026 Tally.

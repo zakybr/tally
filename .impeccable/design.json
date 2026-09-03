@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-03T00:00:00Z",
+  "title": "Design System: Tally",
+  "extensions": {
+    "colorMeta": {
+      "signal": {
+        "role": "primary",
+        "displayName": "Signal Orange",
+        "canonical": "#ff4a1c",
+        "tonalRamp": ["#2a0c03", "#4a1607", "#6b210b", "#8f2d10", "#b53916", "#dc421b", "#ff4a1c", "#ff8a68"]
+      },
+      "signal-dim": {
+        "role": "primary",
+        "displayName": "Signal Dim",
+        "canonical": "#5c2410",
+        "tonalRamp": ["#1c0a04", "#2e1108", "#41190b", "#5c2410", "#7a3016", "#993d1d", "#b95126", "#d98a6b"]
+      },
+      "sheet": {
+        "role": "neutral",
+        "displayName": "Sheet",
+        "canonical": "#08090b",
+        "tonalRamp": ["#08090b", "#0d0f13", "#12151a", "#1b1f26", "#2a3038", "#464e59", "#7a828c", "#c3c9d1"]
+      },
+      "sheet-2": {
+        "role": "neutral",
+        "displayName": "Sheet Well",
+        "canonical": "#0d0f13",
+        "tonalRamp": ["#08090b", "#0d0f13", "#12151a", "#1b1f26", "#2a3038", "#464e59", "#7a828c", "#c3c9d1"]
+      },
+      "sheet-3": {
+        "role": "neutral",
+        "displayName": "Sheet Raised",
+        "canonical": "#12151a",
+        "tonalRamp": ["#08090b", "#0d0f13", "#12151a", "#1b1f26", "#2a3038", "#464e59", "#7a828c", "#c3c9d1"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Line White",
+        "canonical": "#e8eaed",
+        "tonalRamp": ["#22252a", "#343940", "#4a5058", "#616872", "#7a828c", "#a3abb5", "#c9ced4", "#e8eaed"]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Cool Grey",
+        "canonical": "#a3abb5",
+        "tonalRamp": ["#22252a", "#343940", "#4a5058", "#616872", "#7a828c", "#a3abb5", "#c9ced4", "#e8eaed"]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Deep Grey",
+        "canonical": "#7a828c",
+        "tonalRamp": ["#22252a", "#343940", "#4a5058", "#616872", "#7a828c", "#a3abb5", "#c9ced4", "#e8eaed"]
+      },
+      "line-hair": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "rgba(232, 234, 237, 0.08)",
+        "tonalRamp": ["rgba(232,234,237,0.04)", "rgba(232,234,237,0.08)", "rgba(232,234,237,0.14)", "rgba(232,234,237,0.2)", "rgba(232,234,237,0.3)", "rgba(232,234,237,0.45)", "rgba(232,234,237,0.7)", "#e8eaed"]
+      },
+      "line-med": {
+        "role": "neutral",
+        "displayName": "Medium Rule",
+        "canonical": "rgba(232, 234, 237, 0.14)",
+        "tonalRamp": ["rgba(232,234,237,0.04)", "rgba(232,234,237,0.08)", "rgba(232,234,237,0.14)", "rgba(232,234,237,0.2)", "rgba(232,234,237,0.3)", "rgba(232,234,237,0.45)", "rgba(232,234,237,0.7)", "#e8eaed"]
+      },
+      "line-heavy": {
+        "role": "neutral",
+        "displayName": "Heavy Rule",
+        "canonical": "rgba(232, 234, 237, 0.3)",
+        "tonalRamp": ["rgba(232,234,237,0.04)", "rgba(232,234,237,0.08)", "rgba(232,234,237,0.14)", "rgba(232,234,237,0.2)", "rgba(232,234,237,0.3)", "rgba(232,234,237,0.45)", "rgba(232,234,237,0.7)", "#e8eaed"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero claim and closing CTA heading only. Capped at 13 to 14 characters per line." },
+      "headline": { "displayName": "Headline", "purpose": "Section headings, balanced and capped at 16 to 20ch." },
+      "title": { "displayName": "Title", "purpose": "Register row titles, pricing tier names, subpage subheads." },
+      "body": { "displayName": "Body", "purpose": "Running copy in rows, cards and answers. 52 to 70ch." },
+      "body-lead": { "displayName": "Body Lead", "purpose": "The single supporting paragraph under a display or headline. 42 to 58ch." },
+      "label": { "displayName": "Label", "purpose": "The .mono-label treatment: every eyebrow-position label, nav item, column head, field label and small link. The only uppercase in the system. Steps to 0.75rem at 0.08em tracking below 768px." },
+      "readout": { "displayName": "Readout", "purpose": "Large tabular figures in the scoreboard and any instrument-style number." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "ease-house", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "The only easing curve in the system. Every hover, sweep, wipe and panel uses it." },
+      { "name": "dur-colour", "value": "280ms to 320ms", "purpose": "Colour and border-colour transitions on links, rows and pills." },
+      { "name": "dur-wipe", "value": "420ms", "purpose": "The .link-wipe underline printing in from the left, and the nav panel max-height and opacity." },
+      { "name": "dur-fill", "value": "460ms", "purpose": "The pill fill scaling from the left edge and the pill arrow travelling 4px." },
+      { "name": "dur-row", "value": "520ms to 600ms", "purpose": "Row arrow travel, .row-sweep wash, and the heavy rule printing across a register row." },
+      { "name": "scroll-lenis", "value": "lerp 0.07, wheelMultiplier 0.9, touchMultiplier 1.2", "purpose": "Damped smooth scroll, mounted for the marketing site only, never for the admin surface." },
+      { "name": "ticker", "value": "ticker-scroll 42s linear infinite", "purpose": "The only ambient animation. aria-hidden and stopped under reduced motion." },
+      { "name": "reduced-motion", "value": "transition-duration: 0.01ms; MotionConfig reducedMotion=\"user\"", "purpose": "Honoured in CSS and in JS so server and client render identically." }
+    ],
+    "breakpoints": [
+      { "name": "label-step", "value": "max-width: 767px" },
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "container", "value": "1440px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Pill",
+      "kind": "button",
+      "refersTo": "pill-solid",
+      "description": "The single primary action on a screen. Signal ground that inverts to an outline as the fill sweeps in from the left.",
+      "html": "<a class=\"ds-pill ds-pill-solid\" href=\"#\">START THE PROOF<svg class=\"ds-arrow\" viewBox=\"0 0 16 16\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.25\" stroke-linecap=\"square\" aria-hidden=\"true\"><path d=\"M1.5 8h12M9.5 4l4 4-4 4\"/></svg></a>",
+      "css": ".ds-pill { position: relative; isolation: isolate; display: inline-flex; align-items: center; justify-content: center; gap: 0.625rem; border-radius: 999px; border: 1px solid transparent; padding: 0.8125rem 1.5rem; overflow: hidden; white-space: nowrap; text-decoration: none; font-family: var(--font-alliance), system-ui, sans-serif; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; transition: color 320ms cubic-bezier(0.16,1,0.3,1), border-color 320ms cubic-bezier(0.16,1,0.3,1); } .ds-pill::before { content: \"\"; position: absolute; inset: 0; z-index: -1; border-radius: inherit; transform: scaleX(0); transform-origin: left center; transition: transform 460ms cubic-bezier(0.16,1,0.3,1); } .ds-pill:hover::before, .ds-pill:focus-visible::before { transform: scaleX(1); } .ds-arrow { flex-shrink: 0; transition: transform 460ms cubic-bezier(0.16,1,0.3,1); } .ds-pill:hover .ds-arrow, .ds-pill:focus-visible .ds-arrow { transform: translateX(4px); } .ds-pill:focus-visible { outline: 2px solid #ff4a1c; outline-offset: 3px; } .ds-pill-solid { background: #ff4a1c; border-color: #ff4a1c; color: #08090b; } .ds-pill-solid::before { background: #08090b; } .ds-pill-solid:hover, .ds-pill-solid:focus-visible { color: #ff4a1c; }"
+    },
+    {
+      "name": "Outline Pill",
+      "kind": "button",
+      "refersTo": "pill-outline",
+      "description": "Secondary action. A medium rule that fills with signal from the left on hover.",
+      "html": "<a class=\"ds-pill ds-pill-outline\" href=\"#\">SEE WHAT WE RUN<svg class=\"ds-arrow\" viewBox=\"0 0 16 16\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.25\" stroke-linecap=\"square\" aria-hidden=\"true\"><path d=\"M1.5 8h12M9.5 4l4 4-4 4\"/></svg></a>",
+      "css": ".ds-pill-outline { border-color: rgba(232,234,237,0.14); color: #e8eaed; background: transparent; } .ds-pill-outline::before { background: #ff4a1c; } .ds-pill-outline:hover, .ds-pill-outline:focus-visible { border-color: #ff4a1c; color: #08090b; }"
+    },
+    {
+      "name": "Ghost Pill",
+      "kind": "button",
+      "refersTo": "pill-ghost",
+      "description": "Tertiary action. No chrome until approached, then an 8 percent ink wash sweeps in.",
+      "html": "<a class=\"ds-pill ds-pill-ghost\" href=\"#\">HOW WE WORK<svg class=\"ds-arrow\" viewBox=\"0 0 16 16\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.25\" stroke-linecap=\"square\" aria-hidden=\"true\"><path d=\"M1.5 8h12M9.5 4l4 4-4 4\"/></svg></a>",
+      "css": ".ds-pill-ghost { color: #a3abb5; background: transparent; } .ds-pill-ghost::before { background: color-mix(in srgb, #e8eaed 8%, transparent); } .ds-pill-ghost:hover, .ds-pill-ghost:focus-visible { color: #e8eaed; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input-text",
+      "description": "Zero-radius field on the base ground with a hairline border that goes signal on focus.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Your number</span><input class=\"ds-input\" type=\"text\" placeholder=\"30 qualified applications in 8 weeks\"></label>",
+      "css": ".ds-field { display: block; } .ds-field-label { display: block; font-family: var(--font-alliance), system-ui, sans-serif; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #7a828c; } .ds-input { margin-top: 0.5rem; width: 100%; background: #08090b; border: 1px solid rgba(232,234,237,0.08); border-radius: 0; padding: 0.75rem 1rem; font-size: 0.9375rem; color: #e8eaed; outline: none; transition: border-color 300ms cubic-bezier(0.16,1,0.3,1); } .ds-input::placeholder { color: rgba(163,171,181,0.6); } .ds-input:hover { border-color: rgba(232,234,237,0.14); } .ds-input:focus { border-color: #ff4a1c; }"
+    },
+    {
+      "name": "Register Row",
+      "kind": "custom",
+      "refersTo": "register-row",
+      "description": "The signature component. A full-width ruled ledger row carrying a name, a scope, a guaranteed figure in signal, and a travelling arrow. On hover the ground recedes and a heavy rule prints across the bottom from the left.",
+      "html": "<ul class=\"ds-register\"><li><a class=\"ds-row\" href=\"#\" aria-label=\"Seafood and aquaculture: qualified applications\"><span class=\"ds-row-rule\" aria-hidden=\"true\"></span><span class=\"ds-row-name\">Seafood &amp; aquaculture</span><span class=\"ds-row-scope\">Processing floors, hatcheries and export brands, on shift patterns that do not wait.</span><span class=\"ds-row-number\">QUALIFIED APPLICATIONS</span><svg class=\"ds-row-arrow\" viewBox=\"0 0 16 16\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.25\" stroke-linecap=\"square\" aria-hidden=\"true\"><path d=\"M1.5 8h12M9.5 4l4 4-4 4\"/></svg></a></li></ul>",
+      "css": ".ds-register { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(232,234,237,0.08); border-bottom: 1px solid rgba(232,234,237,0.08); } .ds-row { position: relative; display: grid; grid-template-columns: minmax(0,3.4fr) minmax(0,5.1fr) minmax(0,1.9fr) 16px; align-items: baseline; column-gap: 2.5rem; padding: 1.5rem 0; text-decoration: none; transition: background-color 300ms cubic-bezier(0.16,1,0.3,1); } .ds-row:hover { background: #0d0f13; } .ds-row-rule { position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: rgba(232,234,237,0.3); transform: scaleX(0); transform-origin: left center; transition: transform 600ms cubic-bezier(0.16,1,0.3,1); } .ds-row:hover .ds-row-rule, .ds-row:focus-visible .ds-row-rule { transform: scaleX(1); } .ds-row-name { font-family: var(--font-grotesk), system-ui, sans-serif; font-size: 1.125rem; font-weight: 500; letter-spacing: -0.012em; color: #e8eaed; } .ds-row-scope { font-size: 0.875rem; line-height: 1.65; color: #a3abb5; } .ds-row-number { font-family: var(--font-alliance), system-ui, sans-serif; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #ff4a1c; } .ds-row-arrow { color: #7a828c; transform: translateY(0.15rem); transition: transform 300ms ease-out; } .ds-row:hover .ds-row-arrow { transform: translate(0.25rem, 0.15rem); }"
+    },
+    {
+      "name": "Figure Well",
+      "kind": "card",
+      "refersTo": "well",
+      "description": "A recessed rectangle holding one contractually guaranteed figure. The only place a figure and the accent live together.",
+      "html": "<div class=\"ds-well\"><div class=\"ds-well-label\">Guaranteed</div><p class=\"ds-well-figure\">30 qualified applications in eight weeks</p><a class=\"ds-well-link\" href=\"#\">Quote this</a></div>",
+      "css": ".ds-well { background: #0d0f13; border-radius: 0; padding: 1rem 1.25rem; } .ds-well-label { font-family: var(--font-alliance), system-ui, sans-serif; font-size: 0.625rem; letter-spacing: 0.12em; text-transform: uppercase; color: #7a828c; } .ds-well-figure { margin: 0.375rem 0 0; font-family: var(--font-grotesk), system-ui, sans-serif; font-size: 0.9375rem; font-weight: 500; line-height: 1.375; color: #ff4a1c; } .ds-well-link { position: relative; display: inline-block; margin-top: 0.75rem; font-family: var(--font-alliance), system-ui, sans-serif; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; color: #7a828c; transition: color 280ms cubic-bezier(0.16,1,0.3,1); } .ds-well-link::after { content: \"\"; position: absolute; left: 0; right: 0; bottom: -0.35em; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left center; transition: transform 420ms cubic-bezier(0.16,1,0.3,1); } .ds-well-link:hover { color: #e8eaed; } .ds-well-link:hover::after, .ds-well-link:focus-visible::after { transform: scaleX(1); }"
+    },
+    {
+      "name": "Nav Bar",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Fixed 4rem bar: mark and wordmark left, two label-sized menu doors and one small primary pill right. Links carry the wipe underline.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-brand\" href=\"#\" aria-label=\"Tally home\"><svg width=\"24\" height=\"22\" viewBox=\"0 0 26 24\" fill=\"none\" aria-hidden=\"true\"><line x1=\"3\" y1=\"3\" x2=\"3\" y2=\"21\" stroke=\"#ffffff\" stroke-width=\"2.5\"/><line x1=\"9.5\" y1=\"3\" x2=\"9.5\" y2=\"21\" stroke=\"#ffffff\" stroke-width=\"2.5\"/><line x1=\"16\" y1=\"3\" x2=\"16\" y2=\"21\" stroke=\"#ffffff\" stroke-width=\"2.5\"/><line x1=\"22.5\" y1=\"3\" x2=\"22.5\" y2=\"21\" stroke=\"#ffffff\" stroke-width=\"2.5\"/><line x1=\"-0.5\" y1=\"19\" x2=\"25.5\" y2=\"5\" stroke=\"#d9711a\" stroke-width=\"2.5\"/></svg><span class=\"ds-wordmark\">tally</span></a><div class=\"ds-nav-right\"><button class=\"ds-nav-link\" type=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Sectors</button><button class=\"ds-nav-link\" type=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">About</button><a class=\"ds-pill ds-pill-solid ds-pill-sm\" href=\"#\">START THE PROOF</a></div></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; height: 4rem; padding: 0 1.5rem; background: rgba(8,9,11,0.9); backdrop-filter: blur(12px); } .ds-brand { display: flex; align-items: center; gap: 0.75rem; min-height: 44px; text-decoration: none; } .ds-wordmark { font-family: var(--font-grotesk), system-ui, sans-serif; font-size: 1.125rem; font-weight: 600; letter-spacing: -0.02em; color: #e8eaed; } .ds-nav-right { display: flex; align-items: center; gap: 2rem; } .ds-nav-link { position: relative; background: none; border: none; padding: 0; cursor: pointer; font-family: var(--font-alliance), system-ui, sans-serif; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #a3abb5; transition: color 280ms cubic-bezier(0.16,1,0.3,1); } .ds-nav-link::after { content: \"\"; position: absolute; left: 0; right: 0; bottom: -0.35em; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left center; transition: transform 420ms cubic-bezier(0.16,1,0.3,1); } .ds-nav-link:hover { color: #e8eaed; } .ds-nav-link:hover::after, .ds-nav-link:focus-visible::after { transform: scaleX(1); } .ds-pill-sm { padding: 0.5625rem 1.125rem; }"
+    },
+    {
+      "name": "Scoreboard Readout",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Instrument-panel stat block reporting an engagement. Tabular figure, tally strokes, marks past the guarantee in signal. Always labelled illustrative because Tally is pre-first-client.",
+      "html": "<div class=\"ds-board\" role=\"img\" aria-label=\"Illustrative Proof Sprint readout: 47 qualified applications delivered against 30 guaranteed\"><div class=\"ds-board-head\"><span class=\"ds-board-label ds-dim\">Proof Sprint &middot; Week 6 of 8</span><span class=\"ds-board-label\">Illustrative</span></div><div class=\"ds-board-label ds-mt\">Qualified applications</div><div class=\"ds-board-figure-row\"><span class=\"ds-board-figure\">47</span><span class=\"ds-board-label\">applications</span></div><div class=\"ds-board-marks\" aria-hidden=\"true\"><i class=\"ds-tally\"></i><i class=\"ds-tally\"></i><i class=\"ds-tally\"></i><i class=\"ds-tally\"></i><i class=\"ds-tally\"></i><i class=\"ds-tally ds-over\"></i><i class=\"ds-tally ds-over\"></i></div><p class=\"ds-board-note\">Format illustration: this is how every engagement is reported. White marks count towards the guarantee. Orange marks are over-delivery.</p></div>",
+      "css": ".ds-board { max-width: 24rem; border: 1px solid rgba(232,234,237,0.08); background: rgba(13,15,19,0.8); border-radius: 0; padding: 1.25rem; } .ds-board-head { display: flex; align-items: baseline; justify-content: space-between; } .ds-board-label { font-family: var(--font-alliance), system-ui, sans-serif; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #a3abb5; } .ds-dim { color: #7a828c; } .ds-mt { margin-top: 1rem; } .ds-board-figure-row { display: flex; align-items: baseline; gap: 0.75rem; margin-top: 0.25rem; } .ds-board-figure { font-family: var(--font-alliance), system-ui, sans-serif; font-size: 3rem; font-weight: 500; font-variant-numeric: tabular-nums; color: #e8eaed; } .ds-board-marks { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 1rem; } .ds-tally { display: block; width: 3px; height: 16px; background: #e8eaed; } .ds-tally.ds-over { background: #ff4a1c; } .ds-board-note { margin: 1rem 0 0; font-family: var(--font-alliance), system-ui, sans-serif; font-size: 0.6875rem; line-height: 1.6; color: #a3abb5; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The General Arrangement Sheet, stripped of its furniture",
+    "overview": "Tally started as a literal naval-architecture drawing sheet. The decorative furniture that made it literal (the construction-grid overlay, the arrowed dimension lines, the revision triangles, the docked title block) was removed during the build because it read as costume: decoration pretending to be structure. What shipped keeps the discipline and drops the props. Cold blue-black grounds that recede in three steps instead of inverting, cool ink that is never warm, hierarchy carried by three line weights rather than by colour, binding conditions set as numbered NOTES, and figures set in tabular numerals so columns of numbers line up.\n\nThe site is a document an operator can audit, not a pitch. It is dense where it states terms and empty where it makes a claim: a full-viewport hero with one sentence and a lot of air, then ruled bands where every row carries an index, a scope, and a number. Nothing floats. There are no shadows, no cards with lifted corners, no gradients other than the one that seats the hero photograph on its ground. Separation is a rule, not a drop shadow.\n\nColour is rationed to the point of severity. One accent exists and it marks money: a guaranteed figure, or the single control that starts the engagement. Everything else, including every label, arrow, divider and hover state, is ink. The site is legible in greyscale with three exceptions, and that is the intended test.",
+    "keyCharacteristics": [
+      "Cold blue-black grounds in three depths; the ground recedes, it never inverts.",
+      "Hierarchy is line weight (hairline, medium, heavy), not colour and not elevation.",
+      "One accent, spent only on guaranteed figures and the primary action.",
+      "Zero radius everywhere except the pill button, which is the one deliberate exception.",
+      "Hover-only interaction language: a sweep left to right, a hairline that thickens.",
+      "Tabular numerals wherever figures are compared.",
+      "Two self-hosted faces, no third face, no system display face."
+    ],
+    "rules": [
+      { "name": "The Spent Signal Rule", "body": "Signal orange is spent, not applied. It is legitimate on exactly three classes of thing: a figure the contract binds, the one control that starts the engagement, and the focus or selection affordance the browser would otherwise draw badly. A label, an arrow, a divider, a hover state, an icon or a decorative flourish in signal is wrong. If you cannot name the contract clause or the primary action behind a use of it, remove it.", "section": "colors" },
+      { "name": "The Receding Ground Rule", "body": "Sections change depth, never hue and never polarity. There is no light section, no inverted band, no cream ground. Three depths of the same blue-black, separated by a rule.", "section": "colors" },
+      { "name": "The Greyscale Audit", "body": "Render a screen in greyscale. If more than the guaranteed figures and the one primary control lose meaning, the palette is being used as decoration.", "section": "colors" },
+      { "name": "The Tabular Figure Rule", "body": "Any number that could be compared to another number is set in tabular numerals. Scoreboard counts, week numbers, note numerals. Numbers that shift column width as they animate are a defect.", "section": "typography" },
+      { "name": "The No Kicker Rule", "body": "Section headings do not carry an eyebrow. The eyebrow above every heading restated the heading in smaller caps and was removed from SectionHeader; the heading carries itself. The label face exists for column heads, nav items and field labels, not for announcing what the next heading is about to say.", "section": "typography" },
+      { "name": "The One Note Rule", "body": "A heading gets at most one supporting paragraph. Pull-quote and closing-footnote layers do not bracket a section; detail lives on its own page.", "section": "typography" },
+      { "name": "The Single Gutter Rule", "body": "Never introduce a second container width or a second gutter scale. If a block needs to feel wider, remove its internal max-width; do not widen the container.", "section": "layout" },
+      { "name": "The Rhythm Lives in Section Rule", "body": "Band padding is set by Section and nowhere else. A one-off padding utility on a band is drift; if a band genuinely needs different spacing, it needs a tone, not a padding override.", "section": "layout" },
+      { "name": "The No Shadow Rule", "body": "A box shadow is never correct on this site. If an element needs to separate from what is behind it, give it a rule, a darker ground, or space. Hard offset shadows in particular are foreign to this world; nothing here is neobrutalist.", "section": "elevation" },
+      { "name": "The Photograph Sits Down Rule", "body": "Photography never floats above the sheet. Hero imagery runs at 0.28 opacity under a grayscale, contrast and brightness grade, with a bottom-up gradient from the ground colour so the image is seated in the sheet rather than laid on it. Every image in the build is an AI-generated placeholder and must never be presented as documentation of a client engagement.", "section": "elevation" },
+      { "name": "The Three Weights Rule", "body": "There are exactly three line weights. A fourth weight, a dashed rule, a double rule or a coloured rule is not in the system.", "section": "shapes" },
+      { "name": "The Pill Is The Exception Rule", "body": "Round the button. Round nothing else. The 999px pill is a pinned user preference and the one rounded element in an otherwise square system, because a fully rounded control is unmistakably a control in a world made entirely of rectangles.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do spend signal orange only on a guaranteed figure, the single primary action, or a focus and selection affordance. Everything else is ink.",
+      "Do change section ground by depth (sheet, well, raised) and separate bands with a hairline seam.",
+      "Do carry hierarchy on the three line weights: hairline for construction, medium for module edges, heavy for what is load-bearing.",
+      "Do set every comparable number in tabular numerals.",
+      "Do use Section for band rhythm and the single 1440px container with the 1.5 / 3 / 5rem gutter ramp.",
+      "Do make interaction a left-to-right sweep on cubic-bezier(0.16, 1, 0.3, 1): a fill that scales from the left, a rule that wipes in, an arrow that travels. Give focus-visible the same treatment as hover, always.",
+      "Do keep tap targets at 44px minimum under a coarse pointer, and declare the growth in the element's own className rather than in the unlayered global block.",
+      "Do label any illustrative figure as illustrative, in the visible copy and in the accessible name.",
+      "Do keep the pill at 999px and everything else at 0px."
+    ],
+    "donts": [
+      "Don't add a box shadow, a lifted card, a glow, or any elevation. Depth is tonal and linear only.",
+      "Don't invert a section to a light or warm ground, or reintroduce the cream and terracotta palette. The ground recedes, it never flips.",
+      "Don't put an eyebrow or kicker above a section heading. The section kickers shipped in an earlier pass were removed for restating the heading; do not bring them back.",
+      "Don't use signal orange for labels, arrows, rules, dividers, hover states or decoration, and don't use it on a figure that is not contractually guaranteed.",
+      "Don't add a third typeface, a serif, or a system display face. General Sans and Alliance No.1 are the whole set.",
+      "Don't use a glyph or an emoji as an icon. Icons are drawn SVG with square caps at 1.25 stroke width.",
+      "Don't add scroll-triggered entrance animation to new surfaces. The interaction language is hover-only.",
+      "Don't add a fourth line weight, a dashed rule or a coloured rule.",
+      "Don't round anything except the pill, and don't introduce an intermediate radius scale.",
+      "Don't write an em dash or an en dash anywhere: not in copy, headings, metadata, alt text, JSON-LD or code comments. Use a comma, a colon, or a second sentence.",
+      "Don't write copy that implies a client, a case study, a result, a logo or a testimonial. Tally is pre-first-client. Numbers on the site are guarantees offered or illustrative formats, and both must read as such.",
+      "Don't import or mirror the .admin token scope into a marketing surface."
+    ]
+  }
+}

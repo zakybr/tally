@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import Arrow from "@/components/Arrow";
+import Pill from "@/components/Pill";
 import { useLeadCapture } from "@/components/LeadCapture";
 
 /*
@@ -32,23 +32,23 @@ export default function StickyCta() {
          `translate-y-full` sit in the same cascade layer, so the class order in
          the attribute does not decide the winner. */
       style={{ transform: shown ? "translateY(0)" : "translateY(100%)" }}
-      className="fixed inset-x-0 bottom-0 z-40 border-t border-hairline bg-bg/95 backdrop-blur-md transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden"
+      className="fixed inset-x-0 bottom-0 z-40 border-t rule-hair bg-sheet/95 backdrop-blur-md transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden"
       aria-hidden={!shown}
     >
       <div className="flex items-center gap-4 px-5 py-3">
+        {/* Two short lines. The longer version wrapped to three at 375px and
+            crowded the pill off its own baseline. */}
         <p className="mono-label min-w-0 flex-1 text-ink-2">
-          Free quote, call or sector read.
+          Free quote or sector read.
           <span className="block text-ink">No cost, no obligation.</span>
         </p>
-        <button
-          type="button"
+        <Pill
           onClick={() => open("sticky_rail")}
-          tabIndex={shown ? undefined : -1}
-          className="mono-label flex min-h-[44px] shrink-0 items-center gap-2 border border-amber bg-amber px-4 py-3 text-bg"
+          size="sm"
+          className="min-h-[44px] shrink-0"
         >
           Get it free
-          <Arrow size={14} className="shrink-0" />
-        </button>
+        </Pill>
       </div>
     </div>
   );

@@ -1,27 +1,26 @@
-import Reveal from "@/components/Reveal";
-import Link from "next/link";
-import SectionHeader from "@/components/SectionHeader";
+import Section from "@/components/Section";
+import Pill from "@/components/Pill";
 
 const tiers = [
   {
     k: "Step 1 · Where everyone starts",
     name: "Proof",
     terms: "Fixed-scope sprint",
-    body: "Eight weeks. One number, one audience, baseline agreed up front. Scoped to the operation in front of us, whether that is a season of charter bookings or a single roster that will not fill.",
+    body: "Eight weeks. One number, one audience, baseline agreed up front and scoped to the operation in front of us.",
     cta: { label: "Start the Proof", href: "/contact", primary: false },
   },
   {
     k: "Step 2 · Once it is working",
     name: "Engine",
     terms: "Monthly retainer",
-    body: "Six-month minimum. The number held quarter after quarter and the guarantee re-set each cycle. This is where the whole online presence gets run rather than topped up.",
+    body: "Six-month minimum. The number held quarter after quarter, the guarantee re-set each cycle.",
     cta: { label: "Talk to us about Engine", href: "/contact", primary: true },
   },
   {
     k: "Step 3 · Later",
     name: "Playbook",
     terms: "Licensed method",
-    body: "The proven method, licensed to your team to run in-house. Opens once the sprint record exists to back it.",
+    body: "The method, licensed to your team to run in-house. Opens once the sprint record backs it.",
     cta: { label: "Register interest", href: "/contact", primary: false },
   },
 ];
@@ -29,41 +28,46 @@ const tiers = [
 /* Spec-sheet pricing: machined, sharp-cornered, mono figures, no shadows. */
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-28 md:py-36">
-      <div className="mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
-        <SectionHeader
-          eyebrow="Pricing"
-          title="Start small. Prove it. Then scale."
-          note="Three steps, scoped to the outcome rather than the size of the business, with a guarantee that is never discounted. Figures are set in discovery once the target is agreed."
-        />
+    <Section id="pricing" tone="raised" labelledBy="pricing-heading">
+        <div>
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <h2
+              id="pricing-heading"
+              className="max-w-[16ch] text-balance font-sans text-[2rem] font-semibold leading-[1.02] tracking-[-0.035em] text-ink md:text-[2.75rem]"
+            >
+              Prove it first, then scale.
+            </h2>
+            <p className="max-w-[40ch] text-[0.9375rem] leading-[1.6] text-ink-2">
+              Scoped to the outcome rather than the size of the business. Figures are set in discovery
+              once the target is agreed.
+            </p>
+          </div>
+        </div>
 
-        <Reveal delay={0.1}>
-          <div className="mt-14 grid gap-px bg-hairline md:grid-cols-3">
+        <div>
+          <div className="mt-16 grid gap-px bg-[var(--w-hair)] md:grid-cols-3">
             {tiers.map((t) => (
-              <div key={t.name} className="flex flex-col bg-panel p-8 md:p-10">
-                <div className="mono-label text-amber">{t.k}</div>
-                <h3 className="mt-6 font-sans text-3xl font-semibold tracking-tight text-ink">
+              <div key={t.name} className="flex flex-col bg-sheet p-7 md:p-8">
+                <div className="font-mono text-[0.625rem] uppercase tracking-[0.12em] text-ink-3">
+                  {t.k}
+                </div>
+                <h3 className="mt-5 font-sans text-2xl font-semibold tracking-[-0.02em] text-ink">
                   {t.name}
                 </h3>
-                <div className="mono-label mt-3 border-b border-hairline pb-6 text-ink-2">
-                  {t.terms}
-                </div>
-                <p className="mt-6 flex-1 text-[0.9375rem] leading-[1.7] text-ink-2">{t.body}</p>
-                <Link
+                <div className="mono-label mt-2 border-b rule-hair pb-5 text-ink-2">{t.terms}</div>
+                <p className="mt-5 flex-1 text-[0.875rem] leading-[1.65] text-ink-2">{t.body}</p>
+                <Pill
                   href={t.cta.href}
-                  className={`mono-label mt-10 inline-block self-start border px-5 py-3 transition-colors duration-300 ${
-                    t.cta.primary
-                      ? "border-amber bg-amber text-bg hover:bg-transparent hover:text-amber"
-                      : "border-hairline text-ink hover:border-ink"
-                  }`}
+                  variant={t.cta.primary ? "solid" : "outline"}
+                  size="sm"
+                  className="mt-7 self-start"
                 >
                   {t.cta.label}
-                </Link>
+                </Pill>
               </div>
             ))}
           </div>
-        </Reveal>
-      </div>
-    </section>
+        </div>
+    </Section>
   );
 }

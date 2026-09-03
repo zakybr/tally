@@ -6,7 +6,7 @@ import BookCall from "@/components/BookCall";
 import { attributionPayload, trackEvent } from "@/lib/analytics";
 import { INDUSTRY_OPTIONS } from "@/lib/offer";
 
-const companySizes = ["Just me", "2–10", "11–50", "51–200", "201–500", "500+"];
+const companySizes = ["Just me", "2-10", "11-50", "51-200", "201-500", "500+"];
 
 const outcomes = [
   "Recruitment / applications",
@@ -25,7 +25,7 @@ type Status = "idle" | "submitting" | "success" | "error";
 
 const labelCls = "mono-label block text-ink-2";
 const fieldCls =
-  "mt-2 w-full border border-hairline bg-bg px-4 py-3 text-[0.9375rem] text-ink outline-none transition-colors duration-300 placeholder:text-ink-2/60 focus:border-amber";
+  "mt-2 w-full border rule-hair bg-sheet px-4 py-3 text-[0.9375rem] text-ink outline-none transition-colors duration-300 placeholder:text-ink-2/60 focus:border-[var(--signal)]";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -68,8 +68,7 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="border border-amber-dim bg-panel p-8 md:p-12">
-        <div className="eyebrow mb-5">Received</div>
+      <div className="border rule-med bg-sheet-2 p-8 md:p-12">
         <h2 className="font-sans text-3xl font-semibold tracking-tight text-ink md:text-4xl">
           We have your brief.
         </h2>
@@ -81,12 +80,12 @@ export default function ContactForm() {
         <div className="mt-8 flex flex-wrap gap-4">
           <BookCall
             source="contact_success"
-            className="mono-label border border-amber bg-amber px-6 py-3.5 text-bg transition-colors duration-300 hover:bg-transparent hover:text-amber"
+            className="pill pill-solid mono-label inline-flex"
             label="Book a call while you wait"
           />
           <Link
             href="/"
-            className="mono-label border border-hairline px-6 py-3.5 text-ink transition-colors duration-300 hover:border-ink"
+            className="mono-label border rule-hair px-6 py-3.5 text-ink transition-colors duration-300 hover:border-ink"
           >
             Back to home
           </Link>
@@ -109,13 +108,13 @@ export default function ContactForm() {
       <div className="grid gap-6 md:grid-cols-2">
         <div>
           <label className={labelCls} htmlFor="name">
-            Name <span className="text-amber">*</span>
+            Name <span className="text-ink-3">*</span>
           </label>
           <input id="name" name="name" required autoComplete="name" className={fieldCls} />
         </div>
         <div>
           <label className={labelCls} htmlFor="email">
-            Work email <span className="text-amber">*</span>
+            Work email <span className="text-ink-3">*</span>
           </label>
           <input
             id="email"
@@ -128,7 +127,7 @@ export default function ContactForm() {
         </div>
         <div>
           <label className={labelCls} htmlFor="company">
-            Company / organisation <span className="text-amber">*</span>
+            Company / organisation <span className="text-ink-3">*</span>
           </label>
           <input
             id="company"
@@ -146,7 +145,7 @@ export default function ContactForm() {
         </div>
         <div>
           <label className={labelCls} htmlFor="industry">
-            Industry / sector <span className="text-amber">*</span>
+            Industry / sector <span className="text-ink-3">*</span>
           </label>
           <select id="industry" name="industry" required defaultValue="" className={fieldCls}>
             <option value="" disabled>
@@ -250,7 +249,7 @@ export default function ContactForm() {
       </div>
 
       {status === "error" && (
-        <p className="mono-label mt-6 border border-amber-dim px-4 py-3 text-amber" role="alert">
+        <p className="mono-label mt-6 border rule-med px-4 py-3 text-ink-3" role="alert">
           {error}
         </p>
       )}
@@ -259,13 +258,13 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="mono-label border border-amber bg-amber px-6 py-3.5 text-bg transition-colors duration-300 hover:bg-transparent hover:text-amber disabled:cursor-not-allowed disabled:opacity-60"
+          className="pill pill-solid mono-label inline-flex disabled:cursor-not-allowed disabled:opacity-60"
         >
           {status === "submitting" ? "Sending…" : "Submit the brief"}
         </button>
         <BookCall source="contact_form_aside" label="Or book a call" />
         <span className="font-mono text-[0.6875rem] leading-relaxed text-ink-2">
-          Required fields marked <span className="text-amber">*</span>. We reply within two working
+          Required fields marked <span className="text-ink-3">*</span>. We reply within two working
           days.
         </span>
       </div>

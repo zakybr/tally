@@ -24,7 +24,7 @@ export default function LoginPanel({ next, error }: { next?: string; error?: str
       .then((response) => (response.ok ? response.json() : null))
       .then((settings) => setGoogleReady(settings?.external?.google === true))
       .catch(() => {
-        /* Offline or blocked — assume it works and let the real attempt report. */
+        /* Offline or blocked, assume it works and let the real attempt report. */
         setGoogleReady(true);
       });
 
@@ -59,7 +59,7 @@ export default function LoginPanel({ next, error }: { next?: string; error?: str
         <span className="font-sans text-xl font-semibold tracking-tight text-[var(--ink)]">tally</span>
       </div>
 
-      <p className="eyebrow mb-3">Internal portal</p>
+      <p className="mono-label text-ink-3">Internal portal</p>
       <h1 className="mb-3 text-3xl font-semibold tracking-tight">Sign in</h1>
       <p className="mb-8 text-sm leading-relaxed text-[var(--ink-2)]">
         Access is limited to allowlisted accounts. Everything inside is commercial in

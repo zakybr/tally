@@ -1,4 +1,3 @@
-import Reveal from "@/components/Reveal";
 import SectionHeader from "@/components/SectionHeader";
 
 /* Two-column editorial section: dense institutional prose, no cards. */
@@ -7,23 +6,22 @@ export default function AccountabilityGap() {
     <section className="py-28 md:py-36">
       <div className="mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
         <SectionHeader
-          eyebrow="Why this exists"
           title="The accountability gap"
           note="Every agency in this category sells the same thing: empathy and footage, billed monthly. The content looks good. Whether it moved the needle is your problem."
         />
 
-        <Reveal delay={0.1}>
+        <div>
           <p className="mt-14 max-w-4xl font-sans text-2xl font-medium leading-[1.45] tracking-tight text-ink md:text-3xl">
             We sit in the intersection. The only primary-sector partner in NZ that guarantees the
             outcome, pointed at the sectors and operators no specialist serves. A different
             category, a different conversation.
           </p>
-        </Reveal>
+        </div>
 
-        <Reveal delay={0.15}>
-          <div className="mt-16 grid gap-12 border-t border-hairline pt-12 md:grid-cols-2 md:gap-20">
+        <div>
+          <div className="mt-16 grid gap-12 border-t rule-hair pt-12 md:grid-cols-2 md:gap-20">
             <div>
-              <div className="mono-label mb-4 text-amber">Gap 1 · Accountability</div>
+              <div className="mono-label mb-4 text-ink-3">Gap 1 · Accountability</div>
               <h3 className="font-sans text-xl font-semibold tracking-tight text-ink">
                 Everyone bills for production
               </h3>
@@ -33,7 +31,7 @@ export default function AccountabilityGap() {
               </p>
             </div>
             <div>
-              <div className="mono-label mb-4 text-amber">Gap 2 · Sector</div>
+              <div className="mono-label mb-4 text-ink-3">Gap 2 · Sector</div>
               <h3 className="font-sans text-xl font-semibold tracking-tight text-ink">
                 The specialists cluster in dairy
               </h3>
@@ -44,7 +42,7 @@ export default function AccountabilityGap() {
               </p>
             </div>
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );

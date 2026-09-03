@@ -155,7 +155,7 @@ export default function NotesIndex({
           body={
             query
               ? "Search looks at titles, body text and tags. Try a shorter word, or clear the box to see everything."
-              : "Notes are shared documents. Open one and anyone else in it edits alongside you, cursor and all — nothing needs saving."
+              : "Notes are shared documents. Open one and anyone else in it edits alongside you, cursor and all, nothing needs saving."
           }
           action={
             query ? undefined : (

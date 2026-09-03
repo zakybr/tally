@@ -74,7 +74,6 @@ export default function GuaranteePage() {
 
       <header className="mx-auto max-w-[1440px] px-6 pb-4 pt-32 md:px-12 md:pt-40 lg:px-20">
         <div className="max-w-3xl">
-          <div className="eyebrow mb-6">The guarantee</div>
           <h1 className="font-sans text-4xl font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl">
             Our fee sits behind your number.
           </h1>
@@ -87,7 +86,7 @@ export default function GuaranteePage() {
           <div className="mt-9 flex flex-wrap gap-4">
             <Link
               href="/contact"
-              className="mono-label border border-amber bg-amber px-6 py-3.5 text-bg transition-colors duration-300 hover:bg-transparent hover:text-amber"
+              className="pill pill-solid mono-label inline-flex"
             >
               Start the Proof
             </Link>
@@ -108,13 +107,13 @@ export default function GuaranteePage() {
           <h2 className="font-sans text-3xl font-semibold tracking-tight text-ink md:text-4xl">
             Questions people ask before signing
           </h2>
-          <div className="mt-10 divide-y divide-hairline border border-hairline">
+          <div className="mt-10 divide-y divide-[var(--w-hair)] border rule-hair">
             {faqs.map((f) => (
-              <details key={f.question} className="group bg-bg p-6 open:bg-panel md:p-8">
+              <details key={f.question} className="group bg-sheet p-6 open:bg-sheet-2 md:p-8">
                 <summary className="cursor-pointer list-none font-sans text-lg font-semibold tracking-tight text-ink">
                   <span className="flex items-start justify-between gap-6">
                     {f.question}
-                    <span className="mono-label shrink-0 text-amber transition-transform group-open:rotate-45">
+                    <span className="mono-label shrink-0 text-ink-3 transition-transform group-open:rotate-45">
                       +
                     </span>
                   </span>
@@ -127,7 +126,7 @@ export default function GuaranteePage() {
           </div>
           <p className="mt-8 text-[0.9375rem] leading-[1.7] text-ink-2">
             Still unsure whether your number is one we can carry?{" "}
-            <Link href="/contact" className="text-amber underline-offset-4 hover:underline">
+            <Link href="/contact" className="text-ink-3 underline-offset-4 hover:underline">
               Send it to us
             </Link>{" "}
             and we will tell you straight, before you pay anything.

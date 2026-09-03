@@ -126,8 +126,8 @@ export async function POST(request: Request) {
     .join("\n");
 
   const html = `
-    <div style="font-family:ui-sans-serif,system-ui,sans-serif;background:#0b0b0a;color:#f5f2ea;padding:32px">
-      <p style="font-family:ui-monospace,monospace;letter-spacing:0.1em;text-transform:uppercase;color:#d9711a;font-size:12px;margin:0 0 16px">
+    <div style="font-family:ui-sans-serif,system-ui,sans-serif;background:#08090b;color:#e8eaed;padding:32px">
+      <p style="font-family:ui-monospace,monospace;letter-spacing:0.1em;text-transform:uppercase;color:#ff4a1c;font-size:12px;margin:0 0 16px">
         ${isFreeOffer ? `Free offer request &middot; ${esc(offer || "unspecified")}` : "New qualification enquiry"}
       </p>
       <table style="border-collapse:collapse;width:100%;max-width:640px">
@@ -160,7 +160,7 @@ export async function POST(request: Request) {
       to: TO,
       replyTo: email,
       subject: isFreeOffer
-        ? `Tally · FREE ${(offer || "request").toUpperCase()} — ${company} (${industry})`
+        ? `Tally · FREE ${(offer || "request").toUpperCase()}: ${company} (${industry})`
         : `Tally enquiry: ${company} (${industry})`,
       text,
       html,

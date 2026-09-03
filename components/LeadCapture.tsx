@@ -220,7 +220,7 @@ export function LeadCaptureProvider({ children }: { children: React.ReactNode })
   const value = useMemo(() => ({ open }), [open]);
   const label = "mono-label mb-2 block text-ink-2";
   const field =
-    "w-full border border-hairline bg-bg px-4 py-3 text-[1rem] text-ink outline-none transition-colors duration-300 placeholder:text-ink-2/60 focus:border-amber";
+    "w-full border rule-hair bg-sheet px-4 py-3 text-[1rem] text-ink outline-none transition-colors duration-300 placeholder:text-ink-2/60 focus:border-[var(--signal)]";
 
   return (
     <LeadCaptureContext.Provider value={value}>
@@ -231,7 +231,7 @@ export function LeadCaptureProvider({ children }: { children: React.ReactNode })
         <button
           type="button"
           onClick={() => open("pill")}
-          className="mono-label fixed bottom-[96px] right-4 z-40 hidden items-center gap-2.5 border border-amber bg-amber px-5 py-3.5 text-bg shadow-[0_8px_24px_rgba(0,0,0,0.45)] transition-colors duration-300 hover:bg-bg hover:text-amber lg:bottom-6 lg:right-6 lg:flex"
+          className="pill pill-solid mono-label fixed bottom-[96px] right-4 z-40 hidden shadow-[0_8px_24px_rgba(0,0,0,0.45)] lg:bottom-6 lg:right-6 lg:inline-flex"
         >
           Get a free quote
           <Arrow size={14} className="shrink-0" />
@@ -240,7 +240,7 @@ export function LeadCaptureProvider({ children }: { children: React.ReactNode })
 
       {isOpen && (
         <div
-          className="fixed inset-0 z-[60] flex items-end justify-center overscroll-contain bg-bg/85 p-0 backdrop-blur-sm sm:items-center sm:p-6"
+          className="fixed inset-0 z-[60] flex items-end justify-center overscroll-contain bg-sheet/85 p-0 backdrop-blur-sm sm:items-center sm:p-6"
           role="dialog"
           aria-modal="true"
           aria-labelledby="free-offer-title"
@@ -252,11 +252,10 @@ export function LeadCaptureProvider({ children }: { children: React.ReactNode })
               otherwise scroll the page behind the dialog instead of this panel. */}
           <div
             data-lenis-prevent
-            className="max-h-[92svh] w-full max-w-lg overflow-y-auto overscroll-contain border border-hairline bg-panel"
+            className="max-h-[92svh] w-full max-w-lg overflow-y-auto overscroll-contain border rule-hair bg-sheet-2"
           >
-            <div className="flex items-start justify-between gap-4 border-b border-hairline p-6 md:p-8">
+            <div className="flex items-start justify-between gap-4 border-b rule-hair p-6 md:p-8">
               <div>
-                <div className="eyebrow mb-3">Free · No obligation</div>
                 <h2
                   id="free-offer-title"
                   className="font-sans text-2xl font-semibold leading-tight tracking-tight text-ink md:text-3xl"
@@ -268,7 +267,7 @@ export function LeadCaptureProvider({ children }: { children: React.ReactNode })
                 type="button"
                 onClick={close}
                 aria-label="Close"
-                className="mono-label shrink-0 border border-hairline px-3 py-2 text-ink-2 transition-colors duration-300 hover:border-ink hover:text-ink"
+                className="mono-label shrink-0 border rule-hair px-3 py-2 text-ink-2 transition-colors duration-300 hover:border-ink hover:text-ink"
               >
                 Close
               </button>
@@ -285,14 +284,14 @@ export function LeadCaptureProvider({ children }: { children: React.ReactNode })
                   <button
                     type="button"
                     onClick={close}
-                    className="mono-label border border-amber bg-amber px-5 py-3 text-bg transition-colors duration-300 hover:bg-transparent hover:text-amber"
+                    className="pill pill-solid pill-sm mono-label inline-flex"
                   >
                     Back to the site
                   </button>
                   <Link
                     href="/guarantee"
                     onClick={close}
-                    className="mono-label border border-hairline px-5 py-3 text-ink transition-colors duration-300 hover:border-ink"
+                    className="mono-label border rule-hair px-5 py-3 text-ink transition-colors duration-300 hover:border-ink"
                   >
                     Read the guarantee
                   </Link>
@@ -321,18 +320,18 @@ export function LeadCaptureProvider({ children }: { children: React.ReactNode })
                           onClick={() => setChoice(c.id)}
                           aria-pressed={active}
                           className={`px-4 py-4 text-left transition-colors duration-200 ${
-                            active ? "bg-bg" : "bg-panel hover:bg-bg/60"
+                            active ? "bg-sheet" : "bg-sheet-2 hover:bg-sheet/60"
                           }`}
                         >
                           <span className="flex items-center gap-3">
                             <span
                               aria-hidden="true"
                               className={`h-2.5 w-2.5 shrink-0 border ${
-                                active ? "border-amber bg-amber" : "border-ink-2"
+                                active ? "border-[var(--signal)] bg-signal" : "border-ink-2"
                               }`}
                             />
                             <span
-                              className={`mono-label ${active ? "text-amber" : "text-ink"}`}
+                              className={`mono-label ${active ? "text-ink-3" : "text-ink"}`}
                             >
                               {c.label}
                             </span>
@@ -349,7 +348,7 @@ export function LeadCaptureProvider({ children }: { children: React.ReactNode })
                 <div className="mt-6 grid gap-4 sm:grid-cols-2">
                   <div>
                     <label className={label} htmlFor="fo-name">
-                      Name <span className="text-amber">*</span>
+                      Name <span className="text-ink-3">*</span>
                     </label>
                     <input
                       ref={firstFieldRef}
@@ -362,7 +361,7 @@ export function LeadCaptureProvider({ children }: { children: React.ReactNode })
                   </div>
                   <div>
                     <label className={label} htmlFor="fo-email">
-                      Work email <span className="text-amber">*</span>
+                      Work email <span className="text-ink-3">*</span>
                     </label>
                     <input
                       id="fo-email"
@@ -376,7 +375,7 @@ export function LeadCaptureProvider({ children }: { children: React.ReactNode })
                   </div>
                   <div>
                     <label className={label} htmlFor="fo-company">
-                      Company <span className="text-amber">*</span>
+                      Company <span className="text-ink-3">*</span>
                     </label>
                     <input
                       id="fo-company"
@@ -388,7 +387,7 @@ export function LeadCaptureProvider({ children }: { children: React.ReactNode })
                   </div>
                   <div>
                     <label className={label} htmlFor="fo-industry">
-                      Sector <span className="text-amber">*</span>
+                      Sector <span className="text-ink-3">*</span>
                     </label>
                     <select
                       id="fo-industry"
@@ -425,7 +424,7 @@ export function LeadCaptureProvider({ children }: { children: React.ReactNode })
                   <p
                     ref={errorRef}
                     role="alert"
-                    className="mt-5 border border-amber-dim bg-bg p-4 text-[0.875rem] leading-[1.6] text-ink"
+                    className="mt-5 border rule-med bg-sheet p-4 text-[0.875rem] leading-[1.6] text-ink"
                   >
                     {error}
                   </p>
@@ -434,7 +433,7 @@ export function LeadCaptureProvider({ children }: { children: React.ReactNode })
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="mono-label mt-6 flex w-full items-center justify-center gap-3 border border-amber bg-amber px-6 py-4 text-bg transition-colors duration-300 hover:bg-transparent hover:text-amber disabled:opacity-60"
+                  className="pill pill-solid mono-label mt-6 flex w-full disabled:opacity-60"
                 >
                   {status === "submitting" ? "Sending…" : "Send it over"}
                   {status !== "submitting" && <Arrow size={16} className="shrink-0" />}

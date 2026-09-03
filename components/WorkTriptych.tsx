@@ -1,15 +1,21 @@
 import Image, { type StaticImageData } from "next/image";
-import Reveal from "@/components/Reveal";
 import SectionHeader from "@/components/SectionHeader";
 import workBoat from "@/public/images/work-boat.jpg";
 import workPlant from "@/public/images/work-plant.jpg";
 import workFarm from "@/public/images/work-farm.jpg";
 
-/* PLACEHOLDER IMAGERY: AI-generated stand-ins graded to spec. Swap for live-sprint capture. */
+/*
+  PLACEHOLDER IMAGERY: AI-generated stand-ins graded to spec. Swap for live-sprint capture.
+
+  The captions used to read "IMG 01 · ON-BOAT CAPTURE", which presented three
+  stock frames as Tally's own delivered work. Tally is pre-first-client, so that
+  was a fabricated portfolio. Each frame now says what it is on the face of the
+  page, not only in this comment.
+*/
 const frames: { img: StaticImageData; caption: string; alt: string }[] = [
-  { img: workBoat, caption: "IMG 01 · ON-BOAT CAPTURE", alt: "Deck winch and nets on a commercial fishing boat at sea" },
-  { img: workPlant, caption: "IMG 02 · IN-PLANT CAPTURE", alt: "Steam over a stainless processing line" },
-  { img: workFarm, caption: "IMG 03 · ON-FARM CAPTURE", alt: "Forestry loader working in dawn mist" },
+  { img: workBoat, caption: "Reference view · not client work", alt: "Deck winch and nets on a commercial fishing boat at sea" },
+  { img: workPlant, caption: "Reference view · not client work", alt: "Steam over a stainless processing line" },
+  { img: workFarm, caption: "Reference view · not client work", alt: "Forestry loader working in dawn mist" },
 ];
 
 export default function WorkTriptych() {
@@ -17,16 +23,15 @@ export default function WorkTriptych() {
     <section className="py-28 md:py-36">
       <div className="mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
         <SectionHeader
-          eyebrow="The work"
           title="On the boat. In the plant. On the farm."
-          note="No staged content; primary sniffs it out. Real capture from live sprints drops in here."
+          note="Operators spot staged content instantly. These are reference views. Real capture from live sprints replaces them."
         />
       </div>
       {/* Full-bleed hardware-photography spread, hairline dividers, no card chrome. */}
-      <Reveal className="mt-14">
+      <div className="mt-14">
         <div className="grid grid-cols-1 gap-px bg-hairline md:grid-cols-3">
           {frames.map((f) => (
-            <figure key={f.caption} className="relative aspect-[4/3] overflow-hidden bg-bg">
+            <figure key={f.alt} className="relative aspect-[4/3] overflow-hidden bg-sheet">
               <Image
                 src={f.img}
                 alt={f.alt}
@@ -42,7 +47,7 @@ export default function WorkTriptych() {
             </figure>
           ))}
         </div>
-      </Reveal>
+      </div>
     </section>
   );
 }

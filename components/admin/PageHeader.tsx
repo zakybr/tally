@@ -1,5 +1,5 @@
 /*
-  No eyebrow. In a task UI a label above the title is decoration — the title
+  No eyebrow. In a task UI a label above the title is decoration, the title
   and the sidebar's current item already say where you are.
 */
 export default function PageHeader({

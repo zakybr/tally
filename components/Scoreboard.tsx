@@ -8,7 +8,7 @@ const GUARANTEED = 30;
 
 /*
   Proof Sprint HUD readout: instrument-panel stat block, bottom-right of hero.
-  Counts to the illustrative figure once in view; marks past the guarantee run amber.
+  Counts to the illustrative figure once in view. Marks past the guarantee run orange.
 */
 export default function Scoreboard() {
   const ref = useRef<HTMLDivElement>(null);
@@ -33,12 +33,12 @@ export default function Scoreboard() {
   return (
     <div
       ref={ref}
-      className="w-full max-w-sm border border-hairline bg-bg/70 p-5 backdrop-blur-md"
+      className="w-full max-w-sm border rule-hair bg-sheet-2/80 p-5"
       role="img"
       aria-label={`Illustrative Proof Sprint readout: ${TARGET} qualified applications delivered against ${GUARANTEED} guaranteed`}
     >
       <div className="flex items-baseline justify-between">
-        <span className="mono-label text-amber">Proof Sprint · Week 6 of 8</span>
+        <span className="mono-label text-ink-3">Proof Sprint · Week 6 of 8</span>
         <span className="mono-label text-ink-2">Illustrative</span>
       </div>
       <div className="mono-label mt-4 text-ink-2">Qualified applications</div>
@@ -53,7 +53,7 @@ export default function Scoreboard() {
         <span>
           Delivered <b className="text-ink">{count}</b>
         </span>
-        {count > GUARANTEED && <span className="text-amber">+{count - GUARANTEED} over</span>}
+        {count > GUARANTEED && <span className="text-signal">+{count - GUARANTEED} over</span>}
       </div>
       <div
         className="mt-4 flex flex-wrap gap-[3px]"
@@ -64,8 +64,8 @@ export default function Scoreboard() {
         ))}
       </div>
       <p className="mt-4 font-mono text-[0.6875rem] leading-relaxed text-ink-2 md:text-[0.625rem]">
-        Format illustration: this is how every engagement is reported. White marks count to the
-        guarantee; amber marks are over-delivery.
+        Format illustration: this is how every engagement is reported. White marks count towards
+        the guarantee. Orange marks are over-delivery.
       </p>
     </div>
   );

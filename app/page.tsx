@@ -4,17 +4,18 @@ import Ticker from "@/components/Ticker";
 import Offer from "@/components/Offer";
 import SeasonBand from "@/components/SeasonBand";
 import Guarantee from "@/components/Guarantee";
-import SectorsGrid from "@/components/SectorsGrid";
 import Pricing from "@/components/Pricing";
 import SeoOverview from "@/components/SeoOverview";
 import FooterCta from "@/components/FooterCta";
 import { FAQS, faqJsonLd } from "@/lib/seo";
 
 /*
-  Reading order is the sales order: what you get, what is live right now, how the
-  guarantee works, who we do it for, what it costs, then the argument in full.
-  The long-form guarantee terms, method and qualification gate live on /guarantee
-  so this page stays walkable on a phone.
+  Reading order is the sales order: the claim, what you get, how the guarantee is
+  dimensioned, the marine season, what it costs, then the coverage register.
+
+  The sector cards are no longer here. They are independent pages reached from
+  the header dropdown, which keeps the homepage to one argument and gives each
+  sector a page that can rank on its own.
 */
 export default function Home() {
   return (
@@ -25,7 +26,6 @@ export default function Home() {
       <Offer />
       <SeasonBand />
       <Guarantee />
-      <SectorsGrid />
       <Pricing />
       <SeoOverview />
       <FooterCta />

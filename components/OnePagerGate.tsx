@@ -5,7 +5,7 @@ import { attributionPayload, trackEvent } from "@/lib/analytics";
 
 const labelCls = "mono-label block text-ink-2";
 const fieldCls =
-  "mt-2 w-full border border-hairline bg-bg px-4 py-3 text-[0.9375rem] text-ink outline-none transition-colors duration-300 placeholder:text-ink-2/60 focus:border-amber";
+  "mt-2 w-full border rule-hair bg-sheet px-4 py-3 text-[0.9375rem] text-ink outline-none transition-colors duration-300 placeholder:text-ink-2/60 focus:border-[var(--signal)]";
 
 type Status = "idle" | "submitting" | "ready" | "error";
 
@@ -52,8 +52,7 @@ export default function OnePagerGate() {
   }
 
   return (
-    <div className="border border-hairline bg-bg p-8 md:p-10">
-      <div className="eyebrow mb-4">Procurement pack</div>
+    <div className="border rule-hair bg-sheet p-8 md:p-10">
       <h2 className="font-sans text-2xl font-semibold tracking-tight text-ink">
         Guarantee one-pager
       </h2>
@@ -67,7 +66,7 @@ export default function OnePagerGate() {
           <a
             href={downloadUrl}
             download
-            className="mono-label inline-block border border-amber bg-amber px-6 py-3.5 text-bg transition-colors duration-300 hover:bg-transparent hover:text-amber"
+            className="pill pill-solid mono-label inline-flex"
             onClick={() =>
               trackEvent("file_download", {
                 file_name: "tally-guarantee-one-pager.pdf",
@@ -94,13 +93,13 @@ export default function OnePagerGate() {
           />
           <div>
             <label className={labelCls} htmlFor="op-name">
-              Name <span className="text-amber">*</span>
+              Name <span className="text-ink-3">*</span>
             </label>
             <input id="op-name" name="name" required className={fieldCls} autoComplete="name" />
           </div>
           <div>
             <label className={labelCls} htmlFor="op-email">
-              Work email <span className="text-amber">*</span>
+              Work email <span className="text-ink-3">*</span>
             </label>
             <input
               id="op-email"
@@ -123,14 +122,14 @@ export default function OnePagerGate() {
             />
           </div>
           {status === "error" && (
-            <p className="mono-label border border-amber-dim px-4 py-3 text-amber" role="alert">
+            <p className="mono-label border rule-med px-4 py-3 text-ink-3" role="alert">
               {error}
             </p>
           )}
           <button
             type="submit"
             disabled={status === "submitting"}
-            className="mono-label border border-amber bg-amber px-6 py-3.5 text-bg transition-colors duration-300 hover:bg-transparent hover:text-amber disabled:cursor-not-allowed disabled:opacity-60"
+            className="pill pill-solid mono-label inline-flex disabled:cursor-not-allowed disabled:opacity-60"
           >
             {status === "submitting" ? "Unlocking…" : "Unlock the one-pager"}
           </button>

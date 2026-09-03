@@ -1,5 +1,5 @@
 /*
-  The product counts. So it counts in tally marks — four strokes and the
+  The product counts. So it counts in tally marks, four strokes and the
   amber cross-stroke, the same geometry as the logo. Groups of five.
 */
 const GROUP_W = 26;

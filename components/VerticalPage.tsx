@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Pill from "@/components/Pill";
 import Nav from "@/components/Nav";
 import BookCall from "@/components/BookCall";
 import TallyMark from "@/components/TallyMark";
@@ -30,25 +31,19 @@ export default function VerticalPage({ vertical }: { vertical: Vertical }) {
   return (
     <main>
       <Nav />
-      <article className="mx-auto max-w-[1440px] px-6 pb-28 pt-32 md:px-12 md:pt-40 lg:px-20">
+      <article className="mx-auto max-w-[1440px] px-6 pb-32 pt-36 md:px-12 md:pt-44 lg:px-20">
         <header className="max-w-3xl">
-          <div className="eyebrow mb-6">{vertical.eyebrow}</div>
-          <h1 className="font-sans text-4xl font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl">
+          <h1 className="max-w-[16ch] font-sans text-[2.5rem] font-semibold leading-[1.0] tracking-[-0.04em] text-ink md:text-[3.5rem]">
             {vertical.title}
           </h1>
-          <p className="mt-7 text-lg leading-[1.65] text-ink-2">{vertical.intro}</p>
+          <p className="mt-7 max-w-[52ch] text-lg leading-[1.55] text-ink-2">{vertical.intro}</p>
           <div className="mt-9 flex flex-wrap gap-4">
-            <Link
-              href="/contact"
-              className="mono-label border border-amber bg-amber px-6 py-3.5 text-bg transition-colors duration-300 hover:bg-transparent hover:text-amber"
-            >
-              Start the Proof
-            </Link>
+            <Pill href="/contact">Start the Proof</Pill>
             <BookCall source={vertical.slug} />
           </div>
         </header>
 
-        <section className="mt-20 grid gap-10 border-t border-hairline pt-16 lg:grid-cols-2">
+        <section className="mt-24 grid gap-12 border-t rule-hair pt-16 lg:grid-cols-2 lg:gap-20">
           <div>
             <h2 className="font-sans text-2xl font-semibold tracking-tight text-ink">The gap</h2>
             <p className="mt-4 text-[0.9375rem] leading-[1.75] text-ink-2">{vertical.pain}</p>
@@ -61,16 +56,15 @@ export default function VerticalPage({ vertical }: { vertical: Vertical }) {
           </div>
         </section>
 
-        <section className="mt-20 border-t border-hairline pt-16">
+        <section className="mt-24 border-t rule-hair pt-16">
           <h2 className="font-sans text-3xl font-semibold tracking-tight text-ink">
             Outcomes we guarantee
           </h2>
-          <div className="mt-10 divide-y divide-hairline border border-hairline">
-            {vertical.outcomes.map((o, i) => (
-              <div key={o.name} className="grid gap-4 p-8 md:grid-cols-[220px_1fr] md:gap-10">
+          <div className="mt-12 divide-y divide-[var(--w-hair)]">
+            {vertical.outcomes.map((o) => (
+              <div key={o.name} className="grid gap-4 py-8 md:grid-cols-[260px_1fr] md:gap-12">
                 <div>
-                  <div className="font-mono text-sm text-amber">{String(i + 1).padStart(2, "0")}</div>
-                  <h3 className="mt-2 font-sans text-xl font-semibold tracking-tight text-ink">
+                  <h3 className="font-sans text-xl font-semibold tracking-[-0.02em] text-ink">
                     {o.name}
                   </h3>
                 </div>
@@ -80,15 +74,15 @@ export default function VerticalPage({ vertical }: { vertical: Vertical }) {
           </div>
         </section>
 
-        <section className="mt-20 border-t border-hairline pt-16">
+        <section className="mt-24 border-t rule-hair pt-16">
           <h2 className="font-sans text-3xl font-semibold tracking-tight text-ink">FAQ</h2>
-          <div className="mt-10 divide-y divide-hairline border border-hairline">
+          <div className="mt-12 divide-y divide-[var(--w-hair)]">
             {vertical.faqs.map((f) => (
-              <details key={f.question} className="group bg-bg p-8 open:bg-panel">
+              <details key={f.question} className="group py-7">
                 <summary className="cursor-pointer list-none font-sans text-lg font-semibold tracking-tight text-ink">
                   <span className="flex items-start justify-between gap-6">
                     {f.question}
-                    <span className="mono-label shrink-0 text-amber transition-transform group-open:rotate-45">
+                    <span className="mono-label shrink-0 text-ink-3 transition-transform duration-300 group-open:rotate-45">
                       +
                     </span>
                   </span>
@@ -99,9 +93,8 @@ export default function VerticalPage({ vertical }: { vertical: Vertical }) {
           </div>
         </section>
 
-        <section className="mt-20 grid gap-10 border-t border-hairline pt-16 lg:grid-cols-2">
-          <div className="border border-hairline bg-panel p-8 md:p-10">
-            <div className="eyebrow mb-4">Next step</div>
+        <section className="mt-24 grid gap-12 border-t rule-hair pt-16 lg:grid-cols-2 lg:gap-20">
+          <div className="bg-sheet-2 p-8 md:p-10">
             <h2 className="font-sans text-2xl font-semibold tracking-tight text-ink">
               Tell us the number for {vertical.shortName.toLowerCase()}.
             </h2>
@@ -109,33 +102,28 @@ export default function VerticalPage({ vertical }: { vertical: Vertical }) {
               Qualify in a few minutes, or book a 30-minute Zoom call via Calendly.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="/contact"
-                className="mono-label border border-amber bg-amber px-6 py-3.5 text-bg transition-colors duration-300 hover:bg-transparent hover:text-amber"
-              >
-                Start the Proof
-              </Link>
+              <Pill href="/contact">Start the Proof</Pill>
               <BookCall source={`${vertical.slug}_cta`} />
             </div>
           </div>
           <OnePagerGate />
         </section>
 
-        <nav className="mt-16 border-t border-hairline pt-10" aria-label="Related sectors">
+        <nav className="mt-24 border-t rule-hair pt-10" aria-label="Related sectors">
           <div className="mono-label mb-4 text-ink-2">Related sectors</div>
           <div className="flex flex-wrap gap-4">
             {others.map((v) => (
               <Link
                 key={v.slug}
                 href={v.path}
-                className="mono-label text-amber transition-colors hover:text-ink"
+                className="mono-label link-wipe text-ink-2 transition-colors hover:text-ink"
               >
                 {v.shortName}
               </Link>
             ))}
             <Link
               href="/primary-industries-marketing"
-              className="mono-label text-ink-2 transition-colors hover:text-ink"
+              className="mono-label link-wipe text-ink-3 transition-colors hover:text-ink"
             >
               All primary industries
             </Link>
@@ -143,11 +131,11 @@ export default function VerticalPage({ vertical }: { vertical: Vertical }) {
         </nav>
       </article>
 
-      <footer className="border-t border-hairline py-10">
+      <footer className="border-t rule-hair py-10">
         <div className="mx-auto flex max-w-[1440px] flex-wrap items-center gap-x-6 gap-y-4 px-6 md:px-12 lg:px-20">
           <TallyMark size={18} />
           <p className="font-mono text-[0.6875rem] leading-relaxed text-ink-2">
-            <Link href="/" className="text-ink hover:text-amber">
+            <Link href="/" className="text-ink hover:text-ink-2">
               Tally
             </Link>
             . {vertical.name}, New Zealand. © 2026 Tally.

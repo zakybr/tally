@@ -19,7 +19,7 @@ export type CapabilityCardProps = {
   Capability Card: the Ghost/Barracuda/Lattice grid treatment.
   Full-bleed image, mono tag, large name bottom-left, subhead on hover.
   Cards butt against each other; the parent grid supplies hairline dividers
-  via `gap-px bg-hairline` with `bg-bg` cells.
+  via `gap-px bg-hairline` with `bg-sheet` cells.
 */
 export default function CapabilityCard({
   image,
@@ -34,7 +34,7 @@ export default function CapabilityCard({
   sizes = "(max-width: 768px) 100vw, 33vw",
 }: CapabilityCardProps) {
   const face = (
-    <div className="group/cap relative flex aspect-[4/5] flex-col justify-end overflow-hidden bg-bg md:aspect-[3/4]">
+    <div className="group/cap relative flex aspect-[4/5] flex-col justify-end overflow-hidden bg-sheet md:aspect-[3/4]">
       {image && !reserved && (
         <>
           <Image
@@ -50,7 +50,7 @@ export default function CapabilityCard({
         </>
       )}
 
-      {reserved && <div className="hatch absolute inset-0 bg-panel" />}
+      {reserved && <div className="hatch absolute inset-0 bg-sheet-2" />}
 
       {label && (
         <span className="mono-label absolute left-6 top-6 text-ink">
@@ -58,7 +58,7 @@ export default function CapabilityCard({
         </span>
       )}
       {reserved && (
-        <span className="mono-label absolute right-6 top-6 border border-amber-dim px-2 py-1 text-amber">
+        <span className="mono-label absolute right-6 top-6 border rule-med px-2 py-1 text-ink-3">
           Reserved
         </span>
       )}

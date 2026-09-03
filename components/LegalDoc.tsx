@@ -27,9 +27,9 @@ export default function LegalDoc({
     <>
       <Nav />
       <main className="pt-16">
-        <header className="border-b border-hairline px-6 py-20 md:px-12 md:py-28 lg:px-20">
+        <header className="border-b rule-hair px-6 py-20 md:px-12 md:py-28 lg:px-20">
           <div className="mx-auto max-w-[1440px]">
-            <p className="eyebrow mb-5">{eyebrow}</p>
+            <p className="mono-label text-ink-3">{eyebrow}</p>
             <h1 className="max-w-3xl font-sans text-4xl font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl">
               {title}
             </h1>
@@ -43,16 +43,16 @@ export default function LegalDoc({
             {clauses.map((clause, index) => (
               <li
                 key={clause.heading}
-                className="grid grid-cols-[2.5rem_1fr] gap-x-5 border-b border-hairline py-9 last:border-b-0"
+                className="grid grid-cols-[2.5rem_1fr] gap-x-5 border-b rule-hair py-9 last:border-b-0"
               >
-                <span className="font-mono text-sm tabular-nums text-amber">
+                <span className="font-mono text-sm tabular-nums text-ink-3">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <div>
                   <h2 className="mb-3 font-sans text-xl font-semibold tracking-tight text-ink">
                     {clause.heading}
                   </h2>
-                  <div className="space-y-4 text-[0.9375rem] leading-[1.7] text-ink-2 [&_a]:text-amber [&_a]:underline [&_a]:underline-offset-4 [&_li]:mb-2 [&_strong]:text-ink [&_ul]:list-disc [&_ul]:space-y-1 [&_ul]:pl-5">
+                  <div className="space-y-4 text-[0.9375rem] leading-[1.7] text-ink-2 [&_a]:text-ink-3 [&_a]:underline [&_a]:underline-offset-4 [&_li]:mb-2 [&_strong]:text-ink [&_ul]:list-disc [&_ul]:space-y-1 [&_ul]:pl-5">
                     {clause.body}
                   </div>
                 </div>

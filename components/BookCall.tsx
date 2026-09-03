@@ -16,7 +16,7 @@ type Props = {
   can create the Zoom meeting. Falls back to mailto if unset.
 */
 export default function BookCall({
-  className = "mono-label border border-hairline px-6 py-3.5 text-ink transition-colors duration-300 hover:border-ink",
+  className = "mono-label border rule-hair px-6 py-3.5 text-ink transition-colors duration-300 hover:border-ink",
   label = "Book a call",
   source = "site",
 }: Props) {

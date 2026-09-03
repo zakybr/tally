@@ -29,7 +29,7 @@ export default function SectorRegister() {
     >
       {/* Ledger head: the column contract, stated once. Columns only exist at lg. */}
       <div className="hidden lg:block" aria-hidden="true">
-        <div className={`${ROW_GRID} border-b border-hairline pb-3 text-ink-2`}>
+        <div className={`${ROW_GRID} border-b rule-hair pb-3 text-ink-2`}>
           <span className="mono-label">Sector</span>
           <span className="mono-label">Coverage</span>
           <span className="mono-label">Number we guarantee</span>
@@ -37,22 +37,22 @@ export default function SectorRegister() {
         </div>
       </div>
 
-      <ul className="border-y border-hairline lg:border-t-0">
+      <ul className="border-y rule-hair lg:border-t-0">
         {SECTORS.map((row) => (
           <m.li
             key={row.name}
             variants={rowVariants}
-            className="border-t border-hairline first:border-t-0"
+            className="border-t rule-hair first:border-t-0"
           >
             <Link
               href={row.href}
-              aria-label={`${row.name} — ${row.brief}`}
-              className={`group relative ${ROW_GRID} py-6 transition-colors duration-300 hover:bg-panel md:py-7`}
+              aria-label={`${row.name}: ${row.brief}`}
+              className={`group relative ${ROW_GRID} py-6 transition-colors duration-300 hover:bg-sheet-2 md:py-7`}
             >
-              {/* The authored moment: an amber rule prints across the row. */}
+              {/* The authored moment: a heavy rule prints across the row. */}
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-amber transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100 group-focus-visible:scale-x-100"
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-[var(--w-heavy)] transition-transform duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100 group-focus-visible:scale-x-100"
               />
               <span className="font-sans text-[1.0625rem] font-medium leading-snug tracking-[-0.012em] text-ink md:text-[1.125rem]">
                 {row.name}
@@ -60,10 +60,10 @@ export default function SectorRegister() {
               <span className="col-span-2 row-start-2 max-w-[62ch] text-[0.875rem] leading-[1.65] text-ink-2 lg:col-span-1 lg:col-start-2 lg:row-start-1">
                 {row.scope}
               </span>
-              <span className="mono-label col-span-2 row-start-3 text-ink-2 transition-colors duration-300 group-hover:text-amber lg:col-span-1 lg:col-start-3 lg:row-start-1">
+              <span className="mono-label col-span-2 row-start-3 text-signal transition-colors duration-300 lg:col-span-1 lg:col-start-3 lg:row-start-1">
                 {row.number}
               </span>
-              <Arrow className="col-start-2 row-start-1 shrink-0 translate-y-[0.15rem] text-amber transition-transform duration-300 ease-out group-hover:translate-x-1 lg:col-start-4" />
+              <Arrow className="col-start-2 row-start-1 shrink-0 translate-y-[0.15rem] text-ink-3 transition-transform duration-300 ease-out group-hover:translate-x-1 lg:col-start-4" />
             </Link>
           </m.li>
         ))}
@@ -75,9 +75,9 @@ export default function SectorRegister() {
         className="flex flex-col gap-6 pt-8 md:flex-row md:items-end md:justify-between"
       >
         <Link href="/primary-industries-marketing" className="group max-w-xl">
-          <span className="flex items-center gap-3 font-sans text-xl font-semibold tracking-tight text-ink transition-colors duration-300 group-hover:text-amber md:text-2xl">
+          <span className="flex items-center gap-3 font-sans text-xl font-semibold tracking-tight text-ink transition-colors duration-300 group-hover:text-ink md:text-2xl">
             Full capability brief
-            <Arrow className="shrink-0 text-amber transition-transform duration-300 ease-out group-hover:translate-x-1.5" />
+            <Arrow className="shrink-0 text-ink-3 transition-transform duration-300 ease-out group-hover:translate-x-1.5" />
           </span>
           <span className="mt-2 block text-[0.875rem] leading-[1.6] text-ink-2">
             Every sector above, all four tracks, and the miss clause, in one document.
@@ -85,7 +85,7 @@ export default function SectorRegister() {
         </Link>
         <Link
           href="/contact"
-          className="mono-label inline-flex items-center self-start border-b border-amber pb-1.5 text-amber transition-colors duration-300 hover:text-ink md:shrink-0 md:self-end"
+          className="mono-label inline-flex items-center self-start border-b border-[var(--w-med)] pb-1.5 text-ink-2 transition-colors duration-300 hover:text-ink md:shrink-0 md:self-end"
         >
           Not listed? Ask anyway
         </Link>

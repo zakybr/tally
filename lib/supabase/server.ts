@@ -19,7 +19,7 @@ export async function supabaseServer() {
               store.set(name, value, options);
             }
           } catch {
-            /* Called from a Server Component render — proxy.ts refreshes the session instead. */
+            /* Called from a Server Component render, proxy.ts refreshes the session instead. */
           }
         },
       },

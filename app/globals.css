@@ -1,18 +1,57 @@
 @import "tailwindcss";
 
 /*
-  Tally design tokens: dark-first, institutional.
-  Accent locked to #D9711A / panel #16191D / text #FFFFFF per spec §7.
+  GENERAL ARRANGEMENT, the drawing-sheet world.
+
+  Everything cold. The previous palette ran a warm near-black (#0b0b0a) under a
+  warm grey (#a8a49a) with a terracotta accent on a cream ground; that
+  combination is the exact cluster machine-generated interfaces fall into, and
+  it read as brochure rather than document. The sheet is blue-black, the ink is
+  cool, and saturation is rationed.
+
+  Hierarchy here is LINE WEIGHT, not colour. Three weights only, the way a real
+  sheet works: hairline for construction and grid, medium for module edges,
+  heavy for what is cut or load-bearing.
 */
 :root {
-  --bg-primary: #0b0b0a;
-  --bg-secondary: #16191d;
-  --bg-card-overlay: rgba(11, 11, 10, 0.55);
-  --text-primary: #ffffff;
-  --text-secondary: #a8a49a;
-  --accent-amber: #d9711a;
-  --accent-amber-dim: #6b4a1f;
-  --border-hairline: rgba(245, 242, 234, 0.08);
+  /* Grounds, the sheet, and two darker wells for recessed data. */
+  --sheet: #08090b;
+  --sheet-2: #0d0f13;
+  --sheet-3: #12151a;
+
+  /* Ink, cool, never warm. */
+  --ink: #e8eaed;
+  --ink-2: #a3abb5;
+  /* 5.1:1 on the sheet. The previous value (#4d545d) was 2.60:1 and carried
+     text in 125 places, including the title-block field labels and the whole
+     NOTES numeral column. */
+  --ink-3: #7a828c;
+
+  /*
+    Signal. Rationed by meaning: a guaranteed figure, a revision flag, or the
+    single primary action, nothing else, ever. Labels, arrows, rules, hovers and
+    active states all take ink. If a use of this colour is not a number the
+    contract binds or the one control that starts the engagement, it is wrong.
+  */
+  --signal: #ff4a1c;
+  --signal-dim: #5c2410;
+
+  /* Line weights. */
+  --w-hair: rgba(232, 234, 237, 0.08);
+  --w-med: rgba(232, 234, 237, 0.14);
+  --w-heavy: rgba(232, 234, 237, 0.3);
+
+  --radius-pill: 999px;
+
+  /* Legacy aliases: the admin portal and older components still read these. */
+  --bg-primary: var(--sheet);
+  --bg-secondary: var(--sheet-3);
+  --bg-card-overlay: rgba(8, 9, 11, 0.55);
+  --text-primary: var(--ink);
+  --text-secondary: var(--ink-2);
+  --accent-amber: var(--signal);
+  --accent-amber-dim: var(--signal-dim);
+  --border-hairline: var(--w-hair);
 }
 
 @theme inline {
@@ -23,6 +62,13 @@
   --color-amber: var(--accent-amber);
   --color-amber-dim: var(--accent-amber-dim);
   --color-hairline: var(--border-hairline);
+  --color-sheet: var(--sheet);
+  --color-sheet-2: var(--sheet-2);
+  --color-sheet-3: var(--sheet-3);
+  --color-ink-3: var(--ink-3);
+  --color-signal: var(--signal);
+  --color-line-med: var(--w-med);
+  --color-line-heavy: var(--w-heavy);
   --font-sans: var(--font-grotesk);
   --font-mono: var(--font-alliance);
   --radius: 0px;
@@ -42,8 +88,8 @@ body {
 }
 
 ::selection {
-  background: var(--accent-amber);
-  color: #0b0b0a;
+  background: var(--signal);
+  color: var(--sheet);
 }
 
 /* Keyboard focus is part of the design, not a browser default. */
@@ -52,22 +98,250 @@ body {
   outline-offset: 3px;
 }
 
-/* Alliance eyebrow and label treatment, used site-wide */
-.eyebrow {
-  font-family: var(--font-alliance), system-ui, sans-serif;
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent-amber);
-}
-
+/* Label treatment, used site-wide */
 .mono-label {
   font-family: var(--font-alliance), system-ui, sans-serif;
   font-size: 0.6875rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+/* ============================================================
+   PILLS
+   One button primitive, three variants. The fill is a ::before that
+   scales from the left on hover rather than a background-color swap,
+   so the change reads as a sweep with a direction and the arrow has
+   something to travel with.
+   ============================================================ */
+
+.pill {
+  /*
+    No `display` here. This block is unlayered, so a display declaration would
+    beat every Tailwind display utility, including `hidden` and the responsive
+    variants, and silently un-hide pills the markup meant to hide. Pill.tsx
+    supplies `inline-flex` as a utility instead, and steps aside when the caller
+    passes its own display class.
+  */
+  position: relative;
+  isolation: isolate;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  padding: 0.8125rem 1.5rem;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: color 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 460ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pill:hover::before,
+.pill:focus-visible::before {
+  transform: scaleX(1);
+}
+
+/* The arrow leads the sweep out of the pill. */
+.pill svg {
+  flex-shrink: 0;
+  transition: transform 460ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pill:hover svg,
+.pill:focus-visible svg {
+  transform: translateX(4px);
+}
+
+/* Solid: amber ground, inverts to an outline. */
+.pill-solid {
+  background: var(--accent-amber);
+  border-color: var(--accent-amber);
+  color: var(--bg-primary);
+}
+.pill-solid::before {
+  background: var(--bg-primary);
+}
+.pill-solid:hover,
+.pill-solid:focus-visible {
+  color: var(--accent-amber);
+}
+
+/* Outline: hairline that fills with amber. */
+.pill-outline {
+  border-color: var(--w-med);
+  color: var(--text-primary);
+}
+.pill-outline::before {
+  background: var(--accent-amber);
+}
+.pill-outline:hover,
+.pill-outline:focus-visible {
+  border-color: var(--accent-amber);
+  color: var(--bg-primary);
+}
+
+/* Ghost: no chrome until you approach it. */
+.pill-ghost {
+  color: var(--text-secondary);
+}
+.pill-ghost::before {
+  background: color-mix(in srgb, var(--text-primary) 8%, transparent);
+}
+.pill-ghost:hover,
+.pill-ghost:focus-visible {
+  color: var(--text-primary);
+}
+
+.pill-sm {
+  padding: 0.5625rem 1.125rem;
+}
+
+/* Photo grounds: the hero sits on an image, so the outline needs its own
+   contrast floor rather than the hairline token. */
+.pill-on-photo {
+  border-color: var(--w-heavy);
+  backdrop-filter: blur(6px);
+}
+
+/* ============================================================
+   HOVER LANGUAGE
+   Every interactive thing moves the same way: something travels left
+   to right, and a hairline thickens. Nothing scales, nothing bounces.
+   ============================================================ */
+
+/* Nav and inline links: a rule wipes in under the label. */
+.link-wipe {
+  position: relative;
+  transition: color 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-wipe::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.35em;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-wipe:hover::after,
+.link-wipe:focus-visible::after,
+.link-wipe[data-active="true"]::after {
+  transform: scaleX(1);
+}
+
+/*
+  Full-width rows (offer tracks, sector register). A wash sweeps in from
+  the left edge and the row's own arrow answers it. The wash is a ::before
+  bled past the container padding so it reads as a band, not a card.
+*/
+.row-sweep {
+  position: relative;
+  transition: border-color 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.row-sweep::before {
+  content: "";
+  position: absolute;
+  inset: 0 -1.5rem;
+  z-index: -1;
+  background: color-mix(in srgb, var(--text-primary) 4%, transparent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 560ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.row-sweep:hover::before,
+.row-sweep:focus-within::before {
+  transform: scaleX(1);
+}
+.row-sweep:hover {
+  border-color: var(--w-heavy);
+}
+.row-sweep .row-arrow {
+  transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1),
+    color 320ms ease;
+  color: var(--text-secondary);
+}
+.row-sweep:hover .row-arrow,
+.row-sweep:focus-within .row-arrow {
+  transform: translateX(8px);
+  color: var(--ink);
+}
+.row-sweep .row-title {
+  transition: color 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.row-sweep:hover .row-title {
+  color: var(--ink);
+}
+
+@media (min-width: 1024px) {
+  .row-sweep::before {
+    inset: 0 -2rem;
+  }
+}
+
+/* ============================================================
+   DRAWING PRIMITIVES
+   The sheet's own vocabulary. Hierarchy is line weight; these are
+   the three weights plus the furniture a real GA sheet carries.
+   ============================================================ */
+
+.rule-hair { border-color: var(--w-hair); }
+.rule-med { border-color: var(--w-med); }
+.rule-heavy { border-color: var(--w-heavy); }
+
+/* Numbered notes. A drawing's binding conditions live here, so the miss
+   clause does too. Hanging indent so the numerals form their own column. */
+.notes {
+  counter-reset: note;
+}
+.notes > li {
+  counter-increment: note;
+  position: relative;
+  padding-left: 2.5rem;
+}
+.notes > li::before {
+  content: counter(note, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+}
+
+/* Data set in a drawing is always tabular; numerals must align in a column. */
+.tnum { font-variant-numeric: tabular-nums; }
+
+
+
+
+
+@media (prefers-reduced-motion: reduce) {
+  .pill::before,
+  .pill svg,
+  .link-wipe::after,
+  .row-sweep::before,
+  .row-sweep .row-arrow,
+  .cap-img {
+    transition-duration: 0.01ms !important;
+  }
+  .ticker-track {
+    animation: none;
+  }
 }
 
 /* ============================================================
@@ -78,7 +352,6 @@ body {
    ============================================================ */
 
 @media (max-width: 767px) {
-  .eyebrow,
   .mono-label {
     font-size: 0.75rem;
     letter-spacing: 0.08em;
@@ -98,7 +371,7 @@ body {
 @media (pointer: coarse) {
   /*
     min-height ONLY. This block is unlayered, so anything it sets beats every
-    Tailwind utility including `hidden` and the responsive display variants —
+    Tailwind utility including `hidden` and the responsive display variants,
     touching `display` here silently un-hides elements the markup meant to hide.
     Controls that need a box to grow into declare it in their own className.
   */
@@ -133,8 +406,8 @@ body {
 .hatch {
   background-image: repeating-linear-gradient(
     -45deg,
-    rgba(245, 242, 234, 0.05) 0px,
-    rgba(245, 242, 234, 0.05) 1px,
+    rgba(232, 234, 237, 0.05) 0px,
+    rgba(232, 234, 237, 0.05) 1px,
     transparent 1px,
     transparent 10px
   );
@@ -154,7 +427,7 @@ body {
 .tally-mark {
   width: 3px;
   height: 16px;
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--ink);
 }
 
 .tally-mark.over {
@@ -170,29 +443,29 @@ body {
 
 .admin {
   /* Surfaces: content ground, chrome, raised panel, interactive hover. */
-  --s-ground: #0b0b0a;
-  --s-chrome: #101215;
-  --s-panel: #16191d;
-  --s-raised: #1c1f24;
+  --s-ground: #08090b;
+  --s-chrome: #0d0f13;
+  --s-panel: #12151a;
+  --s-raised: #191d23;
 
-  --line: rgba(245, 242, 234, 0.08);
-  --line-strong: rgba(245, 242, 234, 0.18);
+  --line: rgba(232, 234, 237, 0.08);
+  --line-strong: rgba(232, 234, 237, 0.18);
 
-  --ink: #ffffff;
-  --ink-2: #a8a49a;
-  --ink-3: #857d73;
+  --ink: #e8eaed;
+  --ink-2: #a3abb5;
+  --ink-3: #7a828c;
 
-  --accent: #d9711a;
-  --accent-dim: #6b4a1f;
-  --accent-wash: rgba(217, 113, 26, 0.1);
+  --accent: #ff4a1c;
+  --accent-dim: #5c2410;
+  --accent-wash: rgba(255, 74, 28, 0.1);
 
   /*
     Status is semantic, not accent. Brass and slate are already part of
     Tally's document palette, so the vocabulary stays inside the brand.
   */
-  --st-todo: #857d73;
-  --st-doing: #d9711a;
-  --st-blocked: #c9a961;
+  --st-todo: #7a828c;
+  --st-doing: #ff4a1c;
+  --st-blocked: #c2a878;
   --st-done: #7c8b93;
 
   /* Fixed step scale. Product UI does not want fluid headings. */
@@ -218,17 +491,17 @@ body {
 }
 .admin {
   scrollbar-width: thin;
-  scrollbar-color: rgba(245, 242, 234, 0.16) transparent;
+  scrollbar-color: rgba(232, 234, 237, 0.16) transparent;
 }
 .admin *::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 .admin *::-webkit-scrollbar-thumb {
-  background: rgba(245, 242, 234, 0.16);
+  background: rgba(232, 234, 237, 0.16);
 }
 .admin *::-webkit-scrollbar-thumb:hover {
-  background: rgba(245, 242, 234, 0.28);
+  background: rgba(232, 234, 237, 0.28);
 }
 .admin *::-webkit-scrollbar-track {
   background: transparent;
@@ -343,7 +616,7 @@ body {
   min-height: 55vh;
   font-size: 1.0625rem;
   line-height: 1.75;
-  color: var(--text-primary);
+  color: var(--ink);
 }
 .tiptap > * + * {
   margin-top: 0.9em;
@@ -366,7 +639,7 @@ body {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #d9711a;
+  color: var(--accent);
   margin-top: 2em;
 }
 .tiptap ul,
@@ -375,29 +648,29 @@ body {
 }
 .tiptap ul { list-style: disc; }
 .tiptap ol { list-style: decimal; }
-.tiptap li::marker { color: #d9711a; }
+.tiptap li::marker { color: var(--accent); }
 .tiptap li + li { margin-top: 0.3em; }
 .tiptap blockquote {
-  border-left: 1px solid #d9711a;
+  border-left: 1px solid var(--accent);
   padding-left: 1rem;
-  color: #a8a49a;
+  color: var(--ink-2);
 }
 .tiptap code {
   font-family: var(--font-alliance), monospace;
-  background: #16191d;
+  background: var(--s-panel);
   padding: 0.1em 0.35em;
   font-size: 0.9em;
 }
 .tiptap pre {
-  background: #16191d;
-  border-left: 1px solid #6b4a1f;
+  background: var(--s-panel);
+  border-left: 1px solid var(--accent-dim);
   padding: 12px 14px;
   overflow-x: auto;
 }
 .tiptap pre code { background: none; padding: 0; }
 .tiptap hr {
   border: none;
-  border-top: 1px solid rgba(245, 242, 234, 0.08);
+  border-top: 1px solid var(--line);
   margin: 2em 0;
 }
 .tiptap p.is-editor-empty:first-child::before {
@@ -420,7 +693,7 @@ body {
 }
 .collaboration-carets__label {
   border-radius: 0;
-  color: #0b0b0a;
+  color: #08090b;
   font-family: var(--font-alliance), system-ui, sans-serif;
   font-size: 10px;
   font-weight: 600;

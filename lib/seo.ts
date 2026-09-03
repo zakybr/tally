@@ -37,8 +37,18 @@ export const KEYWORDS = [
   "processing plant recruitment marketing",
   "crew recruitment marketing seafood",
   "forestry crew recruitment campaigns",
-  // Marine, boat building & charter
+  /*
+    Marine, boat building & charter.
+
+    Every phrase here is "marketing FOR <marine business>", never the operator's
+    own transactional term. Chasing "jet ski hire Auckland" would put this site
+    against a map pack it cannot win, on an intent that wants a jet ski rather
+    than an agency; Google reads pages built for that as doorway content. The
+    queries below are the ones where an agency is genuinely the right result:
+    a marine operator looking for someone to fix their marketing.
+  */
   "marine marketing New Zealand",
+  "marine marketing agency NZ",
   "boat builder marketing NZ",
   "boat building marketing New Zealand",
   "fishing charter marketing NZ",
@@ -46,6 +56,32 @@ export const KEYWORDS = [
   "charter booking campaigns NZ",
   "marine trades recruitment NZ",
   "boatyard and refit marketing New Zealand",
+  // Marine operator business types, agency-intent
+  "jet ski hire marketing NZ",
+  "jetski rental business marketing New Zealand",
+  "boat hire marketing New Zealand",
+  "boat rental business marketing NZ",
+  "boat club and subscription marketing NZ",
+  "marine tourism marketing New Zealand",
+  "dive charter marketing NZ",
+  "sailing charter marketing New Zealand",
+  "whale and dolphin tour marketing NZ",
+  "water sports business marketing New Zealand",
+  "marina marketing New Zealand",
+  "boat dealer marketing NZ",
+  "marine servicing and repair marketing NZ",
+  "outboard and marine engineering marketing New Zealand",
+  "superyacht refit marketing NZ",
+  "marine electronics marketing New Zealand",
+  // Operator problem queries, informational intent an agency legitimately answers
+  "how to get more charter bookings NZ",
+  "how to market a fishing charter business",
+  "how to market a jet ski hire business",
+  "how to fill a charter season",
+  "why is my charter business not getting bookings",
+  "marine business marketing ideas New Zealand",
+  "boat business advertising NZ",
+  "off season marketing for charter operators",
   // Brand, reach & content strategy
   "brand strategy agency New Zealand",
   "social media strategy NZ small business",

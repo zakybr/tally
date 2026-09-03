@@ -1,77 +1,77 @@
-import Link from "next/link";
-import Reveal from "@/components/Reveal";
-import SectionHeader from "@/components/SectionHeader";
+import Section from "@/components/Section";
+import Pill from "@/components/Pill";
 import Arrow from "@/components/Arrow";
 import { TRACKS } from "@/lib/offer";
 
 /*
-  What Tally actually sells, from a single day of capture through to running the
-  whole online presence. Spec-sheet rows with a rail, not four equal cards: the
-  guaranteed number is the readout, and it is the only thing on the right.
+  The four tracks, drawn as sheet modules rather than sold as cards.
+
+  Each row is a ruled module: an index, the track, who it suits, what it covers,
+  and the guaranteed figure set apart in its own well. The figure is the only
+  thing on the row that carries signal colour, because on a drawing the number
+  is the point and everything else is construction.
 */
 export default function Offer() {
   return (
-    <section id="offer" className="py-24 md:py-32">
-      <div className="mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
-        <SectionHeader
-          eyebrow="What we run"
-          title="Four tracks. One guarantee."
-          note="Start with a day of capture, or hand over the whole online presence. Either way the engagement opens the same: we agree the number it has to hit."
-        />
-
-        <Reveal delay={0.08}>
-          <p className="mt-12 max-w-4xl border-l-2 border-amber pl-6 font-sans text-xl font-medium leading-[1.45] tracking-tight text-ink md:text-2xl">
-            You name the outcome. We agree it in writing before anything is made. Then it stops
-            being your risk and starts being ours.
+    <Section id="offer" tone="sheet">
+      <div>
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <h2 className="max-w-[16ch] text-balance font-sans text-[2rem] font-semibold leading-[1.02] tracking-[-0.035em] text-ink md:text-[2.75rem]">
+            Four tracks. One guarantee.
+          </h2>
+          <p className="max-w-[42ch] text-[0.9375rem] leading-[1.6] text-ink-2">
+            Start with a day of capture, or hand over the whole presence. Either way the number is
+            agreed before anything is made.
           </p>
-        </Reveal>
-
-        <div className="mt-16 border-t border-hairline">
-          {TRACKS.map((track, i) => (
-            <Reveal key={track.slug} delay={0.05 * i}>
-              <div className="grid gap-8 border-b border-hairline py-10 md:py-12 lg:grid-cols-[300px_minmax(0,1fr)_280px] lg:gap-12">
-                {/* Rail: what it is called and who buys it */}
-                <div>
-                  <h3 className="font-sans text-2xl font-semibold tracking-tight text-ink md:text-3xl">
-                    {track.name}
-                  </h3>
-                  <p className="mono-label mt-4 text-ink-2">{track.suits}</p>
-                </div>
-
-                <p className="max-w-[62ch] self-center text-[0.9375rem] leading-[1.75] text-ink-2">
-                  {track.scope}
-                </p>
-
-                {/* Readout: the only thing that changes between tracks */}
-                <div className="self-center border border-amber-dim bg-panel p-6">
-                  <div className="mono-label text-amber">We guarantee</div>
-                  <p className="mt-3 font-sans text-[1.0625rem] font-medium leading-snug tracking-[-0.01em] text-ink">
-                    {track.guarantees}
-                  </p>
-                  <Link
-                    href="/contact"
-                    className="mono-label group mt-5 inline-flex items-center gap-2 text-ink-2 transition-colors duration-300 hover:text-amber"
-                  >
-                    Get this quoted
-                    <Arrow
-                      size={14}
-                      className="shrink-0 transition-transform duration-300 ease-out group-hover:translate-x-1"
-                    />
-                  </Link>
-                </div>
-              </div>
-            </Reveal>
-          ))}
         </div>
-
-        <Reveal delay={0.1}>
-          <p className="mt-10 max-w-3xl text-[0.9375rem] leading-[1.75] text-ink-2">
-            We never guarantee sales. We guarantee what we control: the creative, the targeting and
-            the system that turns them into your number. If we cannot see a way to hit it, we say so
-            before you pay us anything.
-          </p>
-        </Reveal>
       </div>
-    </section>
+
+      <div className="mt-16 divide-y divide-[var(--w-hair)]">
+        {TRACKS.map((track) => (
+          <div key={track.slug}>
+            <div className="grid grid-cols-1 items-baseline gap-x-10 gap-y-5 py-10 lg:grid-cols-[16rem_minmax(0,1fr)_20rem]">
+              <div>
+                <h3 className="row-title font-sans text-xl font-semibold tracking-[-0.02em] text-ink">
+                  {track.name}
+                </h3>
+                <p className="mono-label mt-2 text-ink-3">{track.suits}</p>
+              </div>
+
+              <p className="max-w-[52ch] text-[0.9375rem] leading-[1.6] text-ink-2">{track.scope}</p>
+
+              {/* The guaranteed figure, recessed into its own well. */}
+              <div className="bg-sheet-2 px-5 py-4">
+                <div className="font-mono text-[0.625rem] uppercase tracking-[0.12em] text-ink-3">
+                  Guaranteed
+                </div>
+                {/* The guaranteed figure. This is what the signal colour is for. */}
+                <p className="mt-1.5 font-sans text-[0.9375rem] font-medium leading-snug text-signal">
+                  {track.guarantees}
+                </p>
+                <a
+                  href="/contact"
+                  className="mono-label link-wipe mt-3 inline-flex items-center gap-2 text-ink-3 hover:text-ink"
+                >
+                  Quote this
+                  <Arrow size={12} className="row-arrow shrink-0" />
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div>
+        <div className="mt-14 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
+          <p className="max-w-[56ch] text-[0.875rem] leading-[1.6] text-ink-3">
+            We guarantee what we control. Sales are never part of it. If we cannot see a way to
+            hit your number, we say so before you pay anything.
+          </p>
+          <Pill href="/contact" variant="outline" size="sm">
+            Get a number quoted
+          </Pill>
+        </div>
+      </div>
+    </Section>
   );
 }

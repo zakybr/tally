@@ -1,74 +1,99 @@
-import Link from "next/link";
-import Reveal from "@/components/Reveal";
-import Arrow from "@/components/Arrow";
-import SectionHeader from "@/components/SectionHeader";
+import Section from "@/components/Section";
+import Pill from "@/components/Pill";
+import Scoreboard from "@/components/Scoreboard";
 
-const steps = [
-  {
-    n: "01",
-    title: "Agree the number",
-    body: "Before anything is made we agree one business outcome and pull the baseline. Applications, reach, enquiries, bookings, or an asset set delivered to spec. Which number is yours to choose; both signatures go on it.",
-  },
-  {
-    n: "02",
-    title: "We deliver, headless",
-    body: "You don't manage creators, approve raw footage, or sit in production calls. You get one update a week: the current figure against target, in plain English. No decks.",
-  },
-  {
-    n: "03",
-    title: "Miss? We pay for it",
-    body: "If the number isn't hit, we keep working at our cost, or the fee comes back. The miss clause is printed in the contract, not implied in the pitch.",
-  },
+/*
+  The mechanism, drawn twice: once as a dimension string across the eight weeks,
+  once as the NOTES block that carries the binding conditions.
+
+  A GA sheet states its conditions as numbered notes, and that is exactly the
+  shape of a miss clause, which is why this direction was chosen. Tally has no
+  results to show yet, so the contract itself has to do the trust work, and a
+  numbered, dimensioned document is how this audience reads a commitment.
+*/
+
+const weeks = [
+  { w: "00", body: "Signature. The number is agreed and the baseline pulled." },
+  { w: "01-03", body: "Capture on site, wherever the work actually happens." },
+  { w: "04", body: "The campaign goes live. Budget moves to what converts." },
+  { w: "08", body: "The tally, against the number agreed in week zero." },
 ];
 
-/* Three-step mechanism: systems diagram, hairline connecting rail, amber numerals. */
+const notes = [
+  "The client names one countable outcome. Both parties sign it before production begins.",
+  "Tally guarantees the creative, the targeting and the system that converts them. Sales are never guaranteed.",
+  "A miss of 20% or less: work continues for 30 days at Tally's cost.",
+  "A miss beyond 20%: fee credit or partial refund, per the engagement contract.",
+  "Late assets or an operation that cannot carry the work void the guarantee. The contract names both.",
+];
+
 export default function Guarantee() {
   return (
-    <section id="guarantee" className="py-28 md:py-36">
-      <div className="mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
-        <SectionHeader
-          eyebrow="The offer"
-          title="How the guarantee works"
-          note="One outcome, chosen by you, agreed before we start, with our fee at risk against it. No one else in primary or marine will make that deal."
-        />
+    <Section id="guarantee" tone="well" labelledBy="guarantee-heading">
+      <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start lg:gap-16">
+        <div>
+          <h2
+            id="guarantee-heading"
+            className="max-w-[20ch] text-balance font-sans text-[2rem] font-semibold leading-[1.02] tracking-[-0.035em] text-ink md:text-[2.75rem]"
+          >
+            How the guarantee works.
+          </h2>
+          <p className="mt-6 max-w-[46ch] text-[0.9375rem] leading-[1.6] text-ink-2">
+            You choose one outcome. We agree it in writing before anything is made, and our fee
+            sits behind it. You get the same report every week.
+          </p>
+        </div>
 
-        <Reveal delay={0.1}>
-          <div className="relative mt-16 grid gap-12 md:grid-cols-3 md:gap-0">
-            {/* Connecting rail */}
-            <div className="absolute left-0 right-0 top-7 hidden h-px bg-hairline md:block" />
-            {steps.map((s) => (
-              <div key={s.n} className="relative md:pr-14">
-                <div className="relative inline-block bg-bg pr-4 font-mono text-5xl font-medium text-amber">
-                  {s.n}
-                </div>
-                <h3 className="mt-6 font-sans text-xl font-semibold tracking-tight text-ink">
-                  {s.title}
-                </h3>
-                <p className="mt-4 max-w-sm leading-[1.7] text-ink-2">{s.body}</p>
-              </div>
-            ))}
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.15}>
-          <div className="mt-14 flex flex-col gap-6 border-t border-hairline pt-8 md:flex-row md:items-center md:justify-between">
-            <p className="max-w-2xl text-[0.9375rem] leading-[1.7] text-ink-2">
-              The miss clause is reproduced verbatim from the standard engagement contract, along
-              with what voids it and who carries which risk.
-            </p>
-            <Link
-              href="/guarantee"
-              className="mono-label group inline-flex shrink-0 items-center gap-2.5 self-start border border-hairline px-6 py-3.5 text-ink transition-colors duration-300 hover:border-ink md:self-auto"
-            >
-              Read the full terms
-              <Arrow
-                size={14}
-                className="shrink-0 text-amber transition-transform duration-300 ease-out group-hover:translate-x-1"
-              />
-            </Link>
-          </div>
-        </Reveal>
+        {/* How an engagement reports. Illustrative format, labelled as such, Tally
+            is pre-first-client and nothing here is presented as an achieved result. */}
+        <div>
+          <Scoreboard />
+        </div>
       </div>
-    </section>
+
+      {/* The eight weeks, stated plainly. */}
+      <div>
+        <div className="mt-20 grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2 md:grid-cols-4">
+          {weeks.map((s) => (
+            <div key={s.w}>
+              <div className="font-mono text-[0.75rem] tnum tracking-[0.1em] text-ink">
+                WK {s.w}
+              </div>
+              <p className="mt-2.5 max-w-[24ch] text-[0.8125rem] leading-[1.55] text-ink-2">
+                {s.body}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* NOTES: a drawing carries its binding conditions here, so the miss clause does too. */}
+      <div>
+        <div className="mt-24 grid gap-12 border-t rule-hair pt-12 lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-20">
+          <div>
+            <h3 className="font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-ink">
+              Notes
+            </h3>
+            <p className="mt-3 max-w-[30ch] text-[0.8125rem] leading-[1.6] text-ink-3">
+              Reproduced from the standard engagement contract.
+            </p>
+            <Pill href="/guarantee" variant="outline" size="sm" className="mt-5">
+              Read the full terms
+            </Pill>
+          </div>
+
+          <ol className="notes space-y-5">
+            {notes.map((n) => (
+              <li
+                key={n}
+                className="max-w-[70ch] text-[0.875rem] leading-[1.65] text-ink-2"
+              >
+                {n}
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </Section>
   );
 }

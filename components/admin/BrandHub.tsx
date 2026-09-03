@@ -6,16 +6,20 @@ import CopyButton from "@/components/admin/CopyButton";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import type { BrandAsset, Prompt, PromptChannel } from "@/lib/supabase/types";
 
-/* The block every generated asset must carry. Copy this into any Claude Design brief. */
-export const BRAND_BLOCK = `BRAND — TALLY (tallynz.co). Non-negotiable.
-Logo: the tally mark — four vertical strokes in WHITE (#FFFFFF) with a fifth diagonal cross-stroke in amber (#D9711A) struck rising left to right. Beside it the wordmark "tally" — always lowercase, always WHITE, grotesque semibold, tracking -0.02em. One baseline, gap roughly half the mark width. Never recolour the wordmark, never capitalise it, no tagline inside the lockup.
-Ground #0B0B0A. Panels #16191D. Text #FFFFFF primary, #A8A49A secondary.
-Accent: amber #D9711A. ONE accent. There is no second brand colour.
-Type: grotesque for headings and body (General Sans; substitute Archivo or Inter). Technical face for eyebrows, labels and figures (Alliance No.1; substitute IBM Plex Mono) — ALWAYS uppercase, 0.1em tracking, 11px. Tabular numerals.
-Geometry: ZERO border-radius anywhere. Hairline rules 1px white at 8%. No drop shadows, no floating cards, no rounded boxes.
-Photography: graded to grayscale 20%, contrast 1.1, brightness 0.9.
+/*
+  The block every generated asset must carry. Copy this into any Claude Design brief.
+  This is the canonical brand record: if it disagrees with the site, the site is
+  wrong. Keep it in step with the tokens in app/globals.css.
+*/
+export const BRAND_BLOCK = `BRAND, TALLY (tallynz.co). Non-negotiable.
+Logo: the tally mark, four vertical strokes in WHITE (#FFFFFF) with a fifth diagonal cross-stroke in signal orange (#FF4A1C) struck rising left to right. Beside it the wordmark "tally", always lowercase, always WHITE, grotesque semibold, tracking -0.02em. One baseline, gap roughly half the mark width. Never recolour the wordmark, never capitalise it, no tagline inside the lockup.
+Ground #08090B. Panels #12151A. Text #E8EAED primary, #A3ABB5 secondary. All neutrals are cool. Never warm.
+Accent: signal orange #FF4A1C. ONE accent. There is no second brand colour. Spend it only on a guaranteed figure or the single primary action, never on chrome, labels, rules or arrows.
+Type: grotesque for headings and body (General Sans; substitute Archivo or Inter). Technical face for eyebrows, labels and figures (Alliance No.1; substitute IBM Plex Mono), ALWAYS uppercase, 0.1em tracking, 11px. Tabular numerals.
+Geometry: ZERO border-radius, with one exception, buttons are full pills (999px). Hairline rules 1px cool white at 8%. No drop shadows, no floating cards.
+Photography: cool and pushed back, grayscale 60 to 65%, contrast 1.15, brightness 0.75, sitting under the type rather than competing with it.
 Every figure carries a numbered source superscript. Where a number is not published, write "not published" rather than estimating it.
-Tone: institutional, plain, unhyped. Short declarative sentences. No exclamation marks, no emoji, no marketing adjectives.`;
+Tone: institutional, plain, unhyped. Short declarative sentences. No exclamation marks, no emoji, no marketing adjectives. Never an em dash or en dash, use a comma, a colon or a full stop. Tally is pre-first-client, so never imply a delivered result, a client name or a case study.`;
 
 const CHANNELS: { value: PromptChannel; label: string }[] = [
   { value: "pitch-deck", label: "Pitch deck" },
@@ -96,7 +100,7 @@ function Assets({ assets }: { assets: BrandAsset[] }) {
   return (
     <div className="space-y-12">
       <section>
-        <p className="eyebrow mb-3">The lockup</p>
+        <p className="mono-label text-ink-3">The lockup</p>
         <div className="flex flex-wrap items-center gap-8 border border-[var(--line)] bg-[var(--s-panel)] p-8">
           <div className="flex items-center gap-3">
             <TallyMark size={34} />
@@ -148,7 +152,7 @@ function Assets({ assets }: { assets: BrandAsset[] }) {
       <section>
         <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
           <div>
-            <p className="eyebrow mb-1">Paste this into every brief</p>
+            <p className="mono-label text-ink-3">Paste this into every brief</p>
             <h2 className="text-lg font-semibold tracking-tight">The brand block</h2>
           </div>
           <CopyButton value={BRAND_BLOCK} label="Copy brand block" />
@@ -164,7 +168,7 @@ function Assets({ assets }: { assets: BrandAsset[] }) {
 
         return (
           <section key={category}>
-            <p className="eyebrow mb-3">{CATEGORY_LABEL[category]}</p>
+            <p className="mono-label text-ink-3">{CATEGORY_LABEL[category]}</p>
 
             {category === "colour" ? (
               <div className="grid gap-px border border-[var(--line)] bg-[rgba(245,242,234,0.08)] sm:grid-cols-2 lg:grid-cols-3">
@@ -343,7 +347,7 @@ function PromptCard({
     <li className="bg-[var(--s-ground)] p-5">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
-          <p className="eyebrow mb-1">
+          <p className="mono-label text-ink-3">
             {CHANNELS.find((c) => c.value === prompt.channel)?.label ?? prompt.channel}
           </p>
           <h3 className="text-base font-semibold tracking-tight text-[var(--ink)]">{prompt.title}</h3>
@@ -476,7 +480,7 @@ function PromptDraft({
 
       <label className="block">
         <span className="mono-label mb-1.5 block text-[var(--ink-2)]">
-          Prompt — the brand block is pre-filled, write the brief underneath it
+          Prompt, the brand block is pre-filled, write the brief underneath it
         </span>
         <textarea
           rows={14}

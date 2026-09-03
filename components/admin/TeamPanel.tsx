@@ -65,7 +65,7 @@ export default function TeamPanel({
   return (
     <div className="space-y-12 px-5 py-6 md:px-8">
       <section>
-        <p className="eyebrow mb-3">Signed in at least once</p>
+        <p className="mono-label text-ink-3">Signed in at least once</p>
         <ul className="divide-y divide-[var(--line)] border-y border-[var(--line)]">
           {members.map((m) => (
             <li key={m.id} className="flex flex-wrap items-center justify-between gap-3 py-4">
@@ -87,7 +87,7 @@ export default function TeamPanel({
       </section>
 
       <section>
-        <p className="eyebrow mb-1">Allowlist</p>
+        <p className="mono-label text-ink-3">Allowlist</p>
         <h2 className="mb-2 text-lg font-semibold tracking-tight">Who can get in</h2>
         <p className="mb-5 max-w-2xl text-sm leading-relaxed text-[var(--ink-2)]">
           Only these addresses become members when they sign in with Google. Anyone else who

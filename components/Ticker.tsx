@@ -9,11 +9,12 @@ const sectors = [
   "Funded Agritech",
 ];
 
-/* Thin, dense manifest strip: stock-ticker treatment, amber dividers. */
+/* Thin, dense manifest strip. The dividers are ink, not signal: the signal
+   budget on this page is spent on the guaranteed figures, not on decoration. */
 export default function Ticker() {
   return (
     <div
-      className="overflow-hidden border-y border-hairline bg-panel py-2.5"
+      className="overflow-hidden border-y rule-hair bg-sheet-2 py-2"
       aria-hidden="true"
     >
       <div className="ticker-track">
@@ -21,8 +22,8 @@ export default function Ticker() {
           <div key={copy} className="flex shrink-0 items-center">
             {sectors.map((s) => (
               <span key={`${copy}-${s}`} className="flex items-center">
-                <span className="mono-label whitespace-nowrap px-6 text-ink-2">{s}</span>
-                <span className="font-mono text-xs text-amber">/</span>
+                <span className="mono-label whitespace-nowrap px-6 text-ink-3">{s}</span>
+                <span className="font-mono text-xs text-ink-3">/</span>
               </span>
             ))}
           </div>

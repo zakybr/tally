@@ -39,7 +39,6 @@ export default function ContactPage() {
         <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
           {/* Intro + qualification criteria */}
           <div>
-            <div className="eyebrow mb-6">Start the Proof · Qualification</div>
             <h1 className="font-sans text-4xl font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl">
               Tell us the number.
             </h1>
@@ -49,15 +48,15 @@ export default function ContactPage() {
               it saves us both time.
             </p>
 
-            <div className="mt-12 border-t border-hairline pt-8">
-              <div className="mono-label mb-6 text-amber">You&apos;ll qualify if:</div>
+            <div className="mt-12 border-t rule-hair pt-8">
+              <div className="mono-label mb-6 text-ink-3">You&apos;ll qualify if:</div>
               <ul className="space-y-5">
                 {qualify.map((item) => (
                   <li
                     key={item}
                     className="flex gap-4 text-[0.9375rem] leading-[1.7] text-ink-2"
                   >
-                    <span className="mt-0.5 font-mono text-amber" aria-hidden="true">
+                    <span className="mt-0.5 font-mono text-ink-3" aria-hidden="true">
                       ✓
                     </span>
                     {item}
@@ -68,13 +67,13 @@ export default function ContactPage() {
                 Prefer a calendar slot?{" "}
                 <BookCall
                   source="contact_intro"
-                  className="text-amber underline-offset-4 hover:underline"
+                  className="text-ink-3 underline-offset-4 hover:underline"
                   label="Book a call"
                 />
                 . Or email{" "}
                 <a
                   href="mailto:zak@tallynz.co"
-                  className="text-amber underline-offset-4 hover:underline"
+                  className="text-ink-3 underline-offset-4 hover:underline"
                 >
                   zak@tallynz.co
                 </a>
@@ -90,7 +89,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <footer className="border-t border-hairline py-10">
+      <footer className="border-t rule-hair py-10">
         <div className="mx-auto flex max-w-[1440px] flex-wrap items-center gap-x-6 gap-y-4 px-6 md:px-12 lg:px-20">
           <Link href="/" aria-label="Tally home">
             <TallyMark size={18} />

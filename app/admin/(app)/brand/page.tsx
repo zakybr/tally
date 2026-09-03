@@ -23,7 +23,7 @@ export default async function BrandPage() {
     <>
       <PageHeader
         title="Brand"
-        lede="The logo, the palette, the rules, and a prompt for every kind of asset — each one carrying the brand block so anything Claude generates comes back looking like Tally."
+        lede="The logo, the palette, the rules, and a prompt for every kind of asset, each one carrying the brand block so anything Claude generates comes back looking like Tally."
       />
       <BrandHub
         assets={(assets.data ?? []) as BrandAsset[]}

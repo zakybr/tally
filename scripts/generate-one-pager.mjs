@@ -20,9 +20,9 @@ const doc = new PDFDocument({
 const stream = fs.createWriteStream(outFile);
 doc.pipe(stream);
 
-const ink = "#0b0b0a";
+const ink = "#08090b";
 const muted = "#5c5850";
-const amber = "#d9711a";
+const amber = "#ff4a1c";
 
 doc.fillColor(ink).fontSize(9).text("TALLY  ·  GUARANTEE TERMS  ·  DOC TLY-GTE-01", {
   characterSpacing: 1.2,

@@ -1,4 +1,3 @@
-import Reveal from "@/components/Reveal";
 import SectionHeader from "@/components/SectionHeader";
 
 const phases = [
@@ -21,17 +20,16 @@ export default function Method() {
     <section className="py-28 md:py-36">
       <div className="mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
         <SectionHeader
-          eyebrow="The method"
           title="Eight weeks. One number."
           note="Real on-boat, on-farm, in-plant capture, run through a controlled system that never needs your time."
         />
 
-        <Reveal delay={0.1}>
+        <div>
           <div className="relative mt-16 grid gap-10 md:grid-cols-5 md:gap-0">
             <div className="absolute left-0 right-0 top-6 hidden h-px bg-hairline md:block" />
             {phases.map((p) => (
               <div key={p.n} className="relative md:pr-10">
-                <div className="relative inline-block bg-bg pr-3 font-mono text-4xl font-medium text-amber">
+                <div className="relative inline-block bg-sheet pr-3 font-mono text-4xl font-medium text-ink-3">
                   {p.n}
                 </div>
                 <h3 className="mt-5 font-sans text-lg font-semibold tracking-tight text-ink">
@@ -41,20 +39,20 @@ export default function Method() {
               </div>
             ))}
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={0.15}>
+        <div>
           <div className="mt-16 grid gap-px bg-hairline md:grid-cols-3">
             {comms.map((c) => (
-              <div key={c} className="border-t-2 border-t-amber bg-panel p-6">
+              <div key={c} className="border-t-2 border-t-amber bg-sheet-2 p-6">
                 <p className="text-sm leading-[1.7] text-ink-2">
-                  <span className="mono-label mr-2 text-amber">REPORTING</span>
+                  <span className="mono-label mr-2 text-ink-3">REPORTING</span>
                   {c}
                 </p>
               </div>
             ))}
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );

@@ -41,7 +41,7 @@ export function IconNotes() {
   );
 }
 
-/* The mark itself, reduced — brand lives in the details. */
+/* The mark itself, reduced, brand lives in the details. */
 export function IconBrand() {
   return (
     <svg {...base}>

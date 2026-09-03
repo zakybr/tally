@@ -165,6 +165,38 @@ export const VERTICALS: Vertical[] = [
         answer:
           "Work backwards from the season. A Proof sprint runs eight weeks from signature to result, so a campaign started in early spring is live and compounding before the summer booking window opens. Starting inside the season means paying for attention at the moment everyone else is buying it.",
       },
+      /*
+        Operator-problem questions. These target informational searches a marine
+        business owner actually runs when their bookings are soft, the queries
+        where a marketing agency is the correct answer, rather than the
+        transactional terms ("jet ski hire Auckland") that belong to operators
+        and would read as doorway content coming from an agency domain.
+      */
+      {
+        question: "Why is my fishing charter not getting bookings?",
+        answer:
+          "In most cases the boat is fine and the visibility is not. Charter demand concentrates in a short window, and the operators who take the bookings are the ones people already knew about weeks earlier. The three faults we see most often are: no presence at all outside the season, so every year restarts from zero; photography that shows the boat instead of the day out; and no way to capture an enquiry other than a phone number. Fixing visibility ahead of the window is usually worth more than discounting inside it.",
+      },
+      {
+        question: "How do I market a jet ski hire or boat rental business in New Zealand?",
+        answer:
+          "Hire and rental businesses live or die on two numbers: how many people know you exist before they arrive in the area, and how few steps stand between interest and a booking. That means in-sector reach in the weeks before peak season, real footage of the experience rather than the equipment, and a booking path that works on a phone in one hand. Tally runs these as a guaranteed number of qualified booking enquiries, agreed before anything is made.",
+      },
+      {
+        question: "How do I get more charter bookings in the off season?",
+        answer:
+          "The off season is when charter marketing actually works, because attention is cheap and the summer window is still ahead. Use it to build the audience you will sell to later: capture on the water while conditions allow, publish consistently to the people who holiday in your region, and collect enquiries into a list you own. Operators who spend in the off season buy attention at a fraction of what it costs in December.",
+      },
+      {
+        question: "What does marine marketing cost in New Zealand?",
+        answer:
+          "Tally scopes to the outcome rather than a monthly output, so the figure is set in discovery once the target is agreed. A Proof sprint is a fixed-scope eight-week engagement against one agreed number: charter booking enquiries, or qualified applications for a yard. Ongoing work moves to a monthly retainer with a six-month minimum. The guarantee is never discounted, and if we cannot see a way to hit the number we say so before you pay anything.",
+      },
+      {
+        question: "Do marine businesses need a marketing agency, or can they do it in-house?",
+        answer:
+          "Plenty of marine operators run their own social media well enough. The point at which an agency pays for itself is usually when a countable number is at stake and nobody has time to own it: a season that has to fill, or a bench that has to be staffed by a date. If you can count what a missed booking or an unfilled role costs you, that number is what the work should be measured against, and it is worth asking any agency to put their fee behind it.",
+      },
     ],
   },
   {
