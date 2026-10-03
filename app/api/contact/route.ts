@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import { clean, escapeHtml as esc, isEmail, sendLeadEmail } from "@/lib/lead-email";
 
 export const runtime = "nodejs";
 
@@ -10,19 +10,9 @@ export const runtime = "nodejs";
   offer popup. They share one endpoint, one recipient list and one Resend send;
   `formType` is what separates them in the inbox.
 
-  Sends each submission to the Tally partners. Delivery uses Resend.
-  Required env (set in Vercel > Project > Settings > Environment Variables):
-    RESEND_API_KEY   API key from resend.com
-    CONTACT_FROM     verified sender, e.g. "Tally <noreply@tallynz.co>" (optional; falls back to Resend's onboarding sender)
-    CONTACT_TO       comma-separated recipients (optional; defaults to the two partner inboxes)
+  Sends each submission to the Tally partners through lib/lead-email.ts, which
+  also documents the Resend env vars.
 */
-
-const TO = (process.env.CONTACT_TO ?? "zak@tallynz.co,jonty@tallynz.co")
-  .split(",")
-  .map((s) => s.trim())
-  .filter(Boolean);
-
-const FROM = process.env.CONTACT_FROM ?? "Tally <onboarding@resend.dev>";
 
 type Payload = {
   /* "free-offer" from the site popup, anything else is the full qualification brief. */
@@ -51,12 +41,6 @@ type Payload = {
   referrer?: string;
   landing_page?: string;
 };
-
-const isEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-const clean = (v: unknown, max = 2000) =>
-  typeof v === "string" ? v.trim().slice(0, max) : "";
-const esc = (v: string) =>
-  v.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 export async function POST(request: Request) {
   let body: Payload;
@@ -120,58 +104,19 @@ export async function POST(request: Request) {
     ["Landing page", clean(body.landing_page, 300)],
   ];
 
-  const text = rows
-    .filter(([, v]) => v)
-    .map(([k, v]) => `${k}: ${v}`)
-    .join("\n");
-
-  const html = `
-    <div style="font-family:ui-sans-serif,system-ui,sans-serif;background:#08090b;color:#e8eaed;padding:32px">
-      <p style="font-family:ui-monospace,monospace;letter-spacing:0.1em;text-transform:uppercase;color:#ff4a1c;font-size:12px;margin:0 0 16px">
-        ${isFreeOffer ? `Free offer request &middot; ${esc(offer || "unspecified")}` : "New qualification enquiry"}
-      </p>
-      <table style="border-collapse:collapse;width:100%;max-width:640px">
-        ${rows
-          .filter(([, v]) => v)
-          .map(
-            ([k, v]) => `
-          <tr>
-            <td style="padding:10px 16px 10px 0;border-bottom:1px solid rgba(245,242,234,0.12);color:#a8a49a;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;vertical-align:top;white-space:nowrap">${esc(k)}</td>
-            <td style="padding:10px 0;border-bottom:1px solid rgba(245,242,234,0.12);color:#f5f2ea;font-size:14px">${esc(v).replace(/\n/g, "<br>")}</td>
-          </tr>`,
-          )
-          .join("")}
-      </table>
-    </div>`;
-
-  if (!process.env.RESEND_API_KEY) {
-    // Log the lead so it is not lost if email is not configured yet.
-    console.error("[contact] RESEND_API_KEY not set. Enquiry received:\n" + text);
-    return NextResponse.json(
-      { error: "Email delivery is not configured yet. Please email zak@tallynz.co directly." },
-      { status: 503 },
-    );
+  const result = await sendLeadEmail({
+    tag: "contact",
+    eyebrow: isFreeOffer
+      ? `Free offer request &middot; ${esc(offer || "unspecified")}`
+      : "New qualification enquiry",
+    subject: isFreeOffer
+      ? `Tally · FREE ${(offer || "request").toUpperCase()}: ${company} (${industry})`
+      : `Tally enquiry: ${company} (${industry})`,
+    replyTo: email,
+    rows,
+  });
+  if (!result.ok) {
+    return NextResponse.json({ error: result.error }, { status: result.status });
   }
-
-  try {
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    const { error } = await resend.emails.send({
-      from: FROM,
-      to: TO,
-      replyTo: email,
-      subject: isFreeOffer
-        ? `Tally · FREE ${(offer || "request").toUpperCase()}: ${company} (${industry})`
-        : `Tally enquiry: ${company} (${industry})`,
-      text,
-      html,
-    });
-    if (error) {
-      console.error("[contact] Resend error:", error);
-      return NextResponse.json({ error: "Could not send your enquiry. Please try again." }, { status: 502 });
-    }
-    return NextResponse.json({ ok: true });
-  } catch (err) {
-    console.error("[contact] send failed:", err);
-    return NextResponse.json({ error: "Could not send your enquiry. Please try again." }, { status: 500 });
-  }
+  return NextResponse.json({ ok: true });
 }

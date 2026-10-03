@@ -321,6 +321,7 @@ An operate-mode product surface exists under `app/admin/**` and `components/admi
 ### Don't:
 - **Don't** add a box shadow, a lifted card, a glow, or any elevation. Depth is tonal and linear only.
 - **Don't** invert a section to a light or warm ground, or reintroduce the cream and terracotta palette. The ground recedes, it never flips.
+- **Exception:** `/audit` (the paid-traffic landing page) deliberately runs a warm palette (#0b0b0a, cream #F2EDE4, amber #D9711A) and a Source Serif 4 heading face, scoped by `.audit-sheet` in globals.css and `app/audit/layout.tsx`. It is a decision, not drift; do not spread it to other routes, and do not "fix" it back without asking.
 - **Don't** put an eyebrow or kicker above a section heading. The five section kickers that were shipped in an earlier pass were removed for restating the heading; do not bring them back, and do not treat the `.mono-label` face as licence to reintroduce them.
 - **Don't** use signal orange for labels, arrows, rules, dividers, hover states or decoration, and don't use it on a figure that is not contractually guaranteed.
 - **Don't** add a third typeface, a serif, or a system display face. General Sans and Alliance No.1 are the whole set.

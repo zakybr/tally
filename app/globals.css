@@ -716,3 +716,50 @@ body {
   user-select: none;
   white-space: nowrap;
 }
+
+/* ============================================================
+   /audit, the paid-traffic landing page.
+   A deliberate, scoped exception to the cold sheet above: warm near-black,
+   cream ink, amber signal and a serif for headings, on this route only.
+   Redefining the tokens here re-points every shared primitive (pills, rules,
+   mono labels, Nav) without touching them. Do not spread this beyond
+   app/audit; the rest of the site stays on the General Arrangement palette.
+   ============================================================ */
+.audit-sheet {
+  --sheet: #0b0b0a;
+  --sheet-2: #141412;
+  --sheet-3: #1c1b18;
+  --ink: #f2ede4;
+  --ink-2: #bab3a7;
+  /* 5.4:1 on #0b0b0a */
+  --ink-3: #8c867b;
+  /* 4.9:1 on #0b0b0a, fine for large figures and labels. */
+  --signal: #d9711a;
+  --signal-dim: #5a2f0b;
+  --w-hair: rgba(242, 237, 228, 0.1);
+  --w-med: rgba(242, 237, 228, 0.18);
+  --w-heavy: rgba(242, 237, 228, 0.34);
+
+  --bg-primary: var(--sheet);
+  --bg-secondary: var(--sheet-3);
+  --text-primary: var(--ink);
+  --text-secondary: var(--ink-2);
+  --accent-amber: var(--signal);
+  --accent-amber-dim: var(--signal-dim);
+  --border-hairline: var(--w-hair);
+
+  background: var(--sheet);
+  color: var(--ink);
+  min-height: 100svh;
+}
+
+.audit-sheet ::selection {
+  background: var(--signal);
+  color: var(--sheet);
+}
+
+.audit-serif {
+  font-family: var(--font-audit-serif), Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}

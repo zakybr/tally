@@ -15,9 +15,10 @@ import { useLeadCapture } from "@/components/LeadCapture";
   not a form. Keeping both directors reachable from any scroll position is worth
   more here than another button would be.
 
-  Suppressed on the contact page and the legal pages, where it would be noise.
+  Suppressed on the contact page, the legal pages and the /audit landing page,
+  where it would be noise or pull paid traffic away from the form.
 */
-const SUPPRESSED = ["/contact", "/privacy", "/terms"];
+const SUPPRESSED = ["/contact", "/privacy", "/terms", "/audit", "/audit/thanks"];
 
 export default function StickyCta() {
   const pathname = usePathname();

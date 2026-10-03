@@ -2,9 +2,9 @@
 
 import Script from "next/script";
 import { usePathname } from "next/navigation";
+import { CONSENT_KEY } from "@/lib/consent";
 
 export const GA_MEASUREMENT_ID = "G-M7YPGSC1R8";
-export const CONSENT_KEY = "tally_cookie_consent";
 
 /*
   GA4 behind Google Consent Mode v2.

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
 };
 
-const UPDATED = "24 August 2026";
+const UPDATED = "28 September 2026";
 
 const clauses: Clause[] = [
   {
@@ -82,7 +82,7 @@ const clauses: Clause[] = [
     ),
   },
   {
-    heading: "Analytics and cookies",
+    heading: "Analytics, advertising and cookies",
     body: (
       <>
         <p>
@@ -98,8 +98,20 @@ const clauses: Clause[] = [
           cookieless ping it cannot tie to a returning visitor.
         </p>
         <p>
-          We set no advertising cookies at all, and we do not use the site to build advertising
-          audiences. IP addresses are anonymised before Google stores them.
+          IP addresses are anonymised before Google stores them.
+        </p>
+        <p>
+          We also use the Meta pixel to measure whether our Facebook and Instagram ads lead to
+          enquiries. It is covered by the same notice: the pixel is not loaded and no Meta cookie
+          is set until you choose Accept. Once accepted, it records which pages you view and
+          whether you send an enquiry.
+        </p>
+        <p>
+          When you request a free enquiry audit, we tell Meta that an enquiry was made, whatever
+          your cookie choice, so we can see which ads work. This goes from our server, not your
+          browser, and your email address and phone number are scrambled with a one-way hash
+          (SHA-256) before they leave us, so Meta can match them to an existing account but cannot
+          read them. We do not send your name, business or anything you write in the form.
         </p>
         <p>
           Your choice is stored in your browser under <strong>tally_cookie_consent</strong>. To
@@ -148,6 +160,10 @@ const clauses: Clause[] = [
           </li>
           <li>
             <strong>Google Analytics</strong>: usage measurement, as described above
+          </li>
+          <li>
+            <strong>Meta</strong>: advertising measurement through the Meta pixel and Conversions
+            API, as described above
           </li>
           <li>
             <strong>Calendly</strong>: only if you choose to book a call, and only the details you

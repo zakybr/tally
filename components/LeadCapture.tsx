@@ -28,7 +28,7 @@ import { attributionPayload, trackEvent } from "@/lib/analytics";
 */
 
 const STORAGE_KEY = "tally_free_offer";
-const SUPPRESSED = ["/contact", "/privacy", "/terms"];
+const SUPPRESSED = ["/contact", "/privacy", "/terms", "/audit", "/audit/thanks"];
 
 type Choice = { id: string; label: string; blurb: string };
 

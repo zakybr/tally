@@ -8,6 +8,7 @@ export type UtmParams = {
   utm_content?: string;
   gclid?: string;
   msclkid?: string;
+  fbclid?: string;
   referrer?: string;
   landing_page?: string;
 };
@@ -20,6 +21,7 @@ const UTM_KEYS = [
   "utm_content",
   "gclid",
   "msclkid",
+  "fbclid",
 ] as const;
 
 const STORAGE_KEY = "tally_attribution";
