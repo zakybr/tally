@@ -5,7 +5,7 @@ import { createHash } from "node:crypto";
 
   Sends the same event the browser pixel sends, with the same event_id, so Meta
   counts it once. The server copy still lands when the pixel was blocked or the
-  visitor declined cookies, which is the whole point of sending both.
+  visitor opted out, which is the whole point of sending both.
 
   Env:
     META_PIXEL_ID          the dataset / pixel ID (same value as NEXT_PUBLIC_META_PIXEL_ID)

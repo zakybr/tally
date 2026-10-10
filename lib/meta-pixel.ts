@@ -1,9 +1,11 @@
+import { isOptedOut } from "@/lib/consent";
+
 /*
   Browser side of the Meta pixel.
 
   The pixel ID comes from NEXT_PUBLIC_META_PIXEL_ID. When it is unset, or the
-  visitor has not accepted cookies, fbq is never defined and every call here is
-  a silent no-op, so callers never need to check first.
+  visitor has opted out, fbq is never defined (or is revoked) and every call
+  here is a silent no-op, so callers never need to check first.
 */
 
 export const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID?.trim() ?? "";
@@ -25,7 +27,7 @@ declare global {
 
 /* Meta's standard base code, unchanged apart from types, minus the auto PageView. */
 export function loadMetaPixel(pixelId: string) {
-  if (typeof window === "undefined" || window.fbq) return;
+  if (typeof window === "undefined" || window.fbq || isOptedOut()) return;
   const n = function (...args: unknown[]) {
     if (n.callMethod) n.callMethod(...args);
     else n.queue!.push(args);
@@ -50,6 +52,7 @@ export function loadMetaPixel(pixelId: string) {
 */
 export function trackMeta(event: string, params?: Record<string, unknown>, eventId?: string) {
   if (typeof window === "undefined" || typeof window.fbq !== "function") return;
+  if (isOptedOut()) return;
   if (eventId) window.fbq("track", event, params ?? {}, { eventID: eventId });
   else window.fbq("track", event, params ?? {});
 }

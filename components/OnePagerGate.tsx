@@ -82,7 +82,7 @@ export default function OnePagerGate() {
           </p>
         </div>
       ) : (
-        <form onSubmit={onSubmit} className="mt-8 space-y-4" noValidate>
+        <form method="post" onSubmit={onSubmit} className="mt-8 space-y-4" noValidate>
           <input
             type="text"
             name="website"

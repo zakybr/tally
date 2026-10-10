@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
 };
 
-const UPDATED = "28 September 2026";
+const UPDATED = "10 October 2026";
 
 const clauses: Clause[] = [
   {
@@ -86,37 +86,37 @@ const clauses: Clause[] = [
     body: (
       <>
         <p>
-          We use Google Analytics 4 to understand how the site is used: pages viewed, approximate
-          location derived from IP address, device and browser type, how you arrived, and
-          interactions such as opening the one-pager or clicking through to book a call.
+          <strong>What we collect.</strong> We use Google Analytics 4 to see how the site is used:
+          pages viewed, approximate location derived from IP address, device and browser type, how
+          you arrived, and interactions such as opening the one-pager or clicking through to book
+          a call. IP addresses are anonymised before Google stores them. We also use the Meta
+          pixel, which records the pages you view and whether you send an enquiry, and sets a
+          Meta cookie to do so.
         </p>
         <p>
-          Analytics cookies are switched off until you accept them. On your first visit a notice
-          appears at the bottom of the screen, and until you choose, Google Consent Mode holds
-          analytics storage in a denied state: no analytics cookie is written and nothing is read
-          from your device. Choosing Decline keeps it that way, and Google receives only a
-          cookieless ping it cannot tie to a returning visitor.
+          <strong>Why.</strong> To count visits, to see which pages get read, and to tell whether
+          our Facebook and Instagram ads bring in real enquiries, so we only keep paying for the
+          ones that do.
         </p>
         <p>
-          IP addresses are anonymised before Google stores them.
+          Both load when you visit. A notice at the bottom of the screen on your first visit says
+          so and offers an opt-out.
         </p>
         <p>
-          We also use the Meta pixel to measure whether our Facebook and Instagram ads lead to
-          enquiries. It is covered by the same notice: the pixel is not loaded and no Meta cookie
-          is set until you choose Accept. Once accepted, it records which pages you view and
-          whether you send an enquiry.
+          When you request a free enquiry audit, we also tell Meta that an enquiry was made, so we
+          can see which ads work. This goes from our server, not your browser, so it happens
+          whether or not you have opted out. Your email address and phone number are scrambled
+          with a one-way hash (SHA-256) before they leave us, so Meta can match them to an
+          existing account but cannot read them. We do not send your name, business or anything
+          you write in the form.
         </p>
         <p>
-          When you request a free enquiry audit, we tell Meta that an enquiry was made, whatever
-          your cookie choice, so we can see which ads work. This goes from our server, not your
-          browser, and your email address and phone number are scrambled with a one-way hash
-          (SHA-256) before they leave us, so Meta can match them to an existing account but cannot
-          read them. We do not send your name, business or anything you write in the form.
-        </p>
-        <p>
-          Your choice is stored in your browser under <strong>tally_cookie_consent</strong>. To
-          change it, clear this site&apos;s data in your browser and the notice will appear again.
-          You can also block the cookies outright in your browser settings or install Google&apos;s{" "}
+          <strong>How to opt out.</strong> Choose Opt out on the notice. Your choice is stored in
+          your browser under <strong>tally_cookie_consent</strong>, and from then on neither
+          Google Analytics nor the Meta pixel loads on this site in that browser. Opting out does
+          not delete cookies already set; clear this site&apos;s data in your browser to remove
+          them, which also brings the notice back so you can choose again. You can also block
+          these cookies in your browser settings or install Google&apos;s{" "}
           <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener" target="_blank">
             opt-out browser add-on
           </a>

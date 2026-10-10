@@ -1,37 +1,30 @@
 "use client";
 
-import { useEffect, useSyncExternalStore } from "react";
+import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { readConsent, subscribeConsent } from "@/lib/consent";
+import { isOptedOut } from "@/lib/consent";
 import { META_PIXEL_ID, loadMetaPixel, trackMeta } from "@/lib/meta-pixel";
 
 /*
-  Meta pixel, site-wide, behind the same cookie choice as GA4.
+  Meta pixel, site-wide, on by default with a remembered opt-out.
 
-  Nothing is requested from Meta until the visitor accepts. After that the
-  base code loads once and a PageView fires for the current route and again
-  on every client-side route change. Accepting mid-visit loads it on the spot,
-  so that pageview still counts.
+  The base code loads on the first page view and a PageView fires for it, then
+  again on every client-side route change, since Next.js navigations do not
+  reload the page. A visitor who pressed Opt out never loads it: the check
+  reads localStorage directly inside the effect, not a React snapshot, so the
+  server-rendered default cannot slip a load through during hydration.
 
   Skipped entirely when NEXT_PUBLIC_META_PIXEL_ID is unset. The admin portal
   never renders this: SiteChrome leaves it out.
-
-  There is no <noscript> image fallback. It would fire a PageView before any
-  consent choice could be read.
 */
-
-const getServerSnapshot = () => "";
-
 export default function MetaPixel() {
   const pathname = usePathname();
-  const consent = useSyncExternalStore(subscribeConsent, readConsent, getServerSnapshot);
-  const enabled = Boolean(META_PIXEL_ID) && consent === "granted";
 
   useEffect(() => {
-    if (!enabled) return;
+    if (!META_PIXEL_ID || isOptedOut()) return;
     loadMetaPixel(META_PIXEL_ID);
     trackMeta("PageView");
-  }, [enabled, pathname]);
+  }, [pathname]);
 
   return null;
 }

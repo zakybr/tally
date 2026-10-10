@@ -2,24 +2,33 @@
 
 import { useCallback, useSyncExternalStore } from "react";
 import Link from "next/link";
-import { CONSENT_EVENT, CONSENT_KEY, readConsent, subscribeConsent } from "@/lib/consent";
+import { GA_MEASUREMENT_ID } from "@/components/Analytics";
+import {
+  CONSENT_EVENT,
+  CONSENT_KEY,
+  OPTED_OUT,
+  readConsent,
+  subscribeConsent,
+} from "@/lib/consent";
 
 /*
-  Cookie notice for GA4 and the Meta pixel.
+  Measurement notice for GA4 and the Meta pixel.
 
-  Analytics storage is already denied by default from the layout head, and the
-  pixel script is not requested at all until Accept, so nothing is written
-  before this is answered. Accepting fires a Consent Mode
-  update on the live page rather than reloading, so the visit is counted from
-  that point. Declining records the choice so the notice does not reappear on
-  every route.
+  Both load by default (see Analytics.tsx and MetaPixel.tsx). This tells the
+  visitor so and offers an opt-out. OK records the choice so the notice stops
+  appearing. Opt out records it too, and every loader checks it before
+  requesting anything, so nothing loads on later visits.
+
+  Opting out mid-visit also stops what is already running on this page: GA's
+  per-property disable flag, and the pixel's consent revoke, which holds back
+  every further event. Existing cookies are left in place; the privacy policy
+  explains how to clear them.
 
   localStorage is an external store, so it is read through useSyncExternalStore
   rather than an effect. That keeps the server and first client render in
   agreement without writing state from inside an effect.
 
-  Deliberately not a modal. It does not trap focus or block the page: this is a
-  measurement cookie on a marketing site, not a gate.
+  Deliberately not a modal. It does not trap focus or block the page.
 */
 
 /* The server cannot know the choice, so it renders the notice closed. */
@@ -28,14 +37,15 @@ const getServerSnapshot = () => "denied";
 export default function CookieNotice() {
   const consent = useSyncExternalStore(subscribeConsent, readConsent, getServerSnapshot);
 
-  const decide = useCallback((value: "granted" | "denied") => {
+  const decide = useCallback((value: "granted" | typeof OPTED_OUT) => {
     try {
       window.localStorage.setItem(CONSENT_KEY, value);
     } catch {
-      /* Nothing to persist to. The denied default stands for this session. */
+      /* Nothing to persist to. The choice holds for this page only. */
     }
-    if (value === "granted") {
-      window.gtag?.("consent", "update", { analytics_storage: "granted" });
+    if (value === OPTED_OUT) {
+      (window as unknown as Record<string, unknown>)[`ga-disable-${GA_MEASUREMENT_ID}`] = true;
+      window.fbq?.("consent", "revoke");
     }
     window.dispatchEvent(new Event(CONSENT_EVENT));
   }, []);
@@ -45,12 +55,11 @@ export default function CookieNotice() {
   return (
     <div
       role="region"
-      aria-label="Cookie notice"
+      aria-label="Analytics notice"
       className="fixed bottom-0 left-0 z-[70] w-full border-t rule-med bg-sheet-2 p-5 shadow-[0_-12px_32px_rgba(0,0,0,0.5)] sm:bottom-5 sm:left-5 sm:w-[26rem] sm:border sm:p-6"
     >
       <p className="text-[0.875rem] leading-[1.6] text-ink-2">
-        We use Google Analytics to count visits, and the Meta pixel to measure our Facebook and
-        Instagram ads. Neither sets a cookie until you accept. See our{" "}
+        We use Google Analytics and the Meta pixel to measure visits and our ads. See our{" "}
         <Link href="/privacy" className="text-ink underline underline-offset-4 hover:text-ink-2">
           privacy policy
         </Link>
@@ -62,14 +71,14 @@ export default function CookieNotice() {
           onClick={() => decide("granted")}
           className="pill pill-solid pill-sm mono-label inline-flex"
         >
-          Accept
+          OK
         </button>
         <button
           type="button"
-          onClick={() => decide("denied")}
+          onClick={() => decide(OPTED_OUT)}
           className="pill pill-outline pill-sm mono-label inline-flex"
         >
-          Decline
+          Opt out
         </button>
       </div>
     </div>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import BookCall from "@/components/BookCall";
 import { attributionPayload, trackEvent } from "@/lib/analytics";
+import { newEventId, trackMeta } from "@/lib/meta-pixel";
 import { INDUSTRY_OPTIONS } from "@/lib/offer";
 
 const companySizes = ["Just me", "2-10", "11-50", "51-200", "201-500", "500+"];
@@ -58,6 +59,9 @@ export default function ContactForm() {
         currency: "NZD",
         ...attribution,
       });
+      /* Browser-only Lead: /api/contact has no Conversions API call yet. The
+         eventId is generated anyway so a server copy can share it later. */
+      trackMeta("Lead", { content_name: "Contact form" }, newEventId());
       setStatus("success");
       form.reset();
     } catch (err) {
@@ -95,7 +99,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="max-w-2xl">
+    <form method="post" onSubmit={onSubmit} noValidate className="max-w-2xl">
       <input
         type="text"
         name="website"

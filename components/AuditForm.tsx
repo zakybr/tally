@@ -77,7 +77,7 @@ export default function AuditForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="space-y-6">
+    <form method="post" onSubmit={onSubmit} noValidate className="space-y-6">
       {/* Honeypot. Not named "website", which is a real field here. */}
       <input
         type="text"

@@ -2,24 +2,20 @@
 
 import Script from "next/script";
 import { usePathname } from "next/navigation";
-import { CONSENT_KEY } from "@/lib/consent";
+import { CONSENT_KEY, OPTED_OUT } from "@/lib/consent";
 
 export const GA_MEASUREMENT_ID = "G-M7YPGSC1R8";
 
 /*
-  GA4 behind Google Consent Mode v2.
+  GA4, on by default, with a remembered opt-out.
 
-  Analytics storage defaults to denied and stays denied until the visitor
-  accepts, so no analytics cookie is written on a first visit and nothing is
-  read from the device without a choice being made. Accepting fires a consent
-  update rather than a page reload, so the current pageview is still counted.
+  The opt-out is checked first, before gtag.js is requested: a visitor who
+  pressed Opt out on an earlier visit gets no GA request at all. Everyone else
+  gets GA with analytics storage granted. Advertising signals stay denied in
+  Consent Mode, since GA is only used here to count visits.
 
-  dataLayer is an ordered queue, so the denied default only has to be pushed
-  before the config command, not before the library loads. Keeping both in one
-  script guarantees that ordering without depending on script-strategy timing.
-
-  Declining is a real decline: the default is never lifted, and GA receives only
-  cookieless pings.
+  The library is injected from the same inline script rather than a separate
+  <Script src>, so the opt-out check and the load cannot run out of order.
 
   The admin portal is excluded outright. It is internal traffic and would skew
   every report.
@@ -29,13 +25,12 @@ export default function Analytics() {
   if (pathname?.startsWith("/admin")) return null;
 
   return (
-    <>
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
+    <Script id="google-analytics" strategy="afterInteractive">
+      {`
+        (function () {
+          try {
+            if (localStorage.getItem('${CONSENT_KEY}') === '${OPTED_OUT}') return;
+          } catch (e) {}
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           window.gtag = gtag;
@@ -43,19 +38,18 @@ export default function Analytics() {
             ad_storage: 'denied',
             ad_user_data: 'denied',
             ad_personalization: 'denied',
-            analytics_storage: 'denied',
+            analytics_storage: 'granted',
             functionality_storage: 'granted',
             security_storage: 'granted'
           });
-          try {
-            if (localStorage.getItem('${CONSENT_KEY}') === 'granted') {
-              gtag('consent', 'update', { analytics_storage: 'granted' });
-            }
-          } catch (e) {}
           gtag('js', new Date());
           gtag('config', '${GA_MEASUREMENT_ID}', { anonymize_ip: true });
-        `}
-      </Script>
-    </>
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}';
+          document.head.appendChild(s);
+        })();
+      `}
+    </Script>
   );
 }

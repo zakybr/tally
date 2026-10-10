@@ -298,7 +298,7 @@ export function LeadCaptureProvider({ children }: { children: React.ReactNode })
                 </div>
               </div>
             ) : (
-              <form onSubmit={onSubmit} noValidate className="p-6 md:p-8">
+              <form method="post" onSubmit={onSubmit} noValidate className="p-6 md:p-8">
                 <input
                   type="text"
                   name="website"
