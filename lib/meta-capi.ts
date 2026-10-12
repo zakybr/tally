@@ -35,6 +35,29 @@ export function normalisePhone(phone: string) {
   return d;
 }
 
+function readCookie(header: string | null, name: string) {
+  if (!header) return "";
+  const m = header.match(new RegExp(`(?:^|;\\s*)${name}=([^;]+)`));
+  return m ? decodeURIComponent(m[1]) : "";
+}
+
+/*
+  The browser signals Meta matches on, read from the form's request: IP, user
+  agent, and the _fbp / _fbc cookies. With no _fbc cookie, an fbclid captured
+  on landing is turned into one in Meta's documented fb.1.<time>.<fbclid> form.
+*/
+export function requestMatchData(request: Request, fbclid?: string) {
+  const h = request.headers;
+  const cookie = h.get("cookie");
+  const fbc = readCookie(cookie, "_fbc") || (fbclid ? `fb.1.${Date.now()}.${fbclid}` : "");
+  return {
+    ip: h.get("x-forwarded-for")?.split(",")[0]?.trim() || undefined,
+    userAgent: h.get("user-agent") || undefined,
+    fbp: readCookie(cookie, "_fbp") || undefined,
+    fbc: fbc || undefined,
+  };
+}
+
 export type MetaLeadInput = {
   eventName: string;
   eventId: string;

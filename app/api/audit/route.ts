@@ -1,7 +1,7 @@
 import { NextResponse, after } from "next/server";
 import { SPEND_RANGES } from "@/lib/audit";
 import { clean, escapeHtml as esc, isEmail, sendLeadEmail, type LeadRow } from "@/lib/lead-email";
-import { sendMetaEvent } from "@/lib/meta-capi";
+import { requestMatchData, sendMetaEvent } from "@/lib/meta-capi";
 
 export const runtime = "nodejs";
 
@@ -40,12 +40,6 @@ type Payload = {
   referrer?: string;
   landing_page?: string;
 };
-
-function readCookie(header: string | null, name: string) {
-  if (!header) return "";
-  const m = header.match(new RegExp(`(?:^|;\\s*)${name}=([^;]+)`));
-  return m ? decodeURIComponent(m[1]) : "";
-}
 
 export async function POST(request: Request) {
   let body: Payload;
@@ -119,21 +113,16 @@ export async function POST(request: Request) {
 
   const eventId = clean(body.eventId, 100);
   if (eventId) {
-    const headers = request.headers;
-    const cookie = headers.get("cookie");
-    const fbcCookie = readCookie(cookie, "_fbc");
+    const match = requestMatchData(request, fbclid || undefined);
+    const referer = request.headers.get("referer");
     after(() =>
       sendMetaEvent({
         eventName: "Lead",
         eventId,
-        eventSourceUrl:
-          clean(body.pageUrl, 500) || headers.get("referer") || "https://tallynz.co/audit",
+        eventSourceUrl: clean(body.pageUrl, 500) || referer || "https://tallynz.co/audit",
         email,
         phone,
-        ip: headers.get("x-forwarded-for")?.split(",")[0]?.trim() || undefined,
-        userAgent: headers.get("user-agent") || undefined,
-        fbp: readCookie(cookie, "_fbp") || undefined,
-        fbc: fbcCookie || (fbclid ? `fb.1.${Date.now()}.${fbclid}` : undefined),
+        ...match,
         customData: { content_name: "enquiry_audit", monthly_spend: monthlySpend },
       }),
     );

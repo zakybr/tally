@@ -78,7 +78,15 @@ export async function sendLeadEmail({
 
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
-    const { error } = await resend.emails.send({ from: FROM, to: TO, replyTo, subject, text, html });
+    const { error } = await resend.emails.send({
+      from: FROM,
+      to: TO,
+      /* Phone-only leads have no address to reply to. */
+      ...(replyTo ? { replyTo } : {}),
+      subject,
+      text,
+      html,
+    });
     if (error) {
       console.error(`[${tag}] Resend error:`, error);
       return { ok: false, status: 502, error: "Could not send your enquiry. Please try again." };

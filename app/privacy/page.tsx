@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
 };
 
-const UPDATED = "10 October 2026";
+const UPDATED = "12 October 2026";
 
 const clauses: Clause[] = [
   {
@@ -157,6 +157,10 @@ const clauses: Clause[] = [
           </li>
           <li>
             <strong>Resend</strong>: delivers your form submission to our inboxes as an email
+          </li>
+          <li>
+            <strong>HubSpot</strong>: keeps the details you send through the contact form, and
+            how you found the site, as a contact record so we can follow up
           </li>
           <li>
             <strong>Google Analytics</strong>: usage measurement, as described above

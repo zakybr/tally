@@ -24,11 +24,10 @@ export const metadata: Metadata = {
   },
 };
 
-const qualify = [
-  "A real outcome to move: vacancies, reach, enquiries or bookings",
-  "A baseline that exists, or one we set together in discovery",
-  "Someone who can decide and come back to us inside 48 hours",
-  "An operation that is sound, so content amplifies it rather than its flaws",
+const next = [
+  "You send this. It takes 30 seconds.",
+  "Zak or Jonty replies within two working days.",
+  "If it's a fit, we agree the number before you pay anything.",
 ];
 
 export default function ContactPage() {
@@ -37,71 +36,76 @@ export default function ContactPage() {
       <Nav />
 
       <section className="mx-auto max-w-[1440px] px-6 pb-24 pt-32 md:px-12 md:pt-40 lg:px-20">
-        <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
-          {/* Intro + qualification criteria */}
-          <div>
+        {/*
+          Three blocks. On a phone they stack intro, form, people, so the form is
+          reached before the contact cards. From lg the people sit under the
+          intro in the left column and the form spans the right.
+        */}
+        <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-x-20 lg:gap-y-10">
+          {/* Intro + what happens next */}
+          <div className="lg:col-start-1 lg:row-start-1">
             <h1 className="font-sans text-4xl font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl">
               Tell us the number.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-[1.6] text-ink-2">
-              One conversation, whatever the size of the operation. We only take briefs we can
-              guarantee, so this is where we work out whether yours is one of them. Answer honestly;
-              it saves us both time.
+              Tell us what you need more of and we&apos;ll come back within two working days with an
+              honest read on whether we can guarantee it. No cost, no obligation.
             </p>
 
             <div className="mt-12 border-t rule-hair pt-8">
-              <div className="mono-label mb-6 text-ink-3">You&apos;ll qualify if:</div>
-              <ul className="space-y-5">
-                {qualify.map((item) => (
-                  <li
-                    key={item}
-                    className="flex gap-4 text-[0.9375rem] leading-[1.7] text-ink-2"
-                  >
-                    <span className="mt-0.5 font-mono text-ink-3" aria-hidden="true">
-                      ✓
+              <div className="mono-label mb-6 text-ink-3">What happens next</div>
+              <ol className="space-y-5">
+                {next.map((item, i) => (
+                  <li key={item} className="flex gap-4 text-[0.9375rem] leading-[1.7] text-ink-2">
+                    <span className="mt-0.5 font-mono tnum text-ink-3" aria-hidden="true">
+                      {i + 1}.
                     </span>
                     {item}
                   </li>
                 ))}
-              </ul>
-              <div className="mt-10 grid gap-6 border-t rule-hair pt-8 sm:grid-cols-2">
-                {PEOPLE.map((p) => (
-                  <div key={p.email}>
-                    <div className="font-sans text-lg font-semibold tracking-[-0.02em] text-ink">
-                      {p.name}
-                    </div>
-                    <div className="mono-label mt-1 text-ink-3">{p.role}</div>
-                    <a
-                      href={`tel:${p.phone}`}
-                      className="mt-4 block font-mono text-[1.0625rem] tnum text-ink transition-colors hover:text-signal"
-                    >
-                      {p.phoneDisplay}
-                    </a>
-                    <a
-                      href={`mailto:${p.email}`}
-                      className="mono-label link-wipe mt-2 inline-block text-ink-2 hover:text-ink"
-                    >
-                      {p.email}
-                    </a>
-                  </div>
-                ))}
-              </div>
-
-              <p className="mt-8 max-w-md text-sm leading-[1.7] text-ink-2">
-                Prefer a calendar slot?{" "}
-                <BookCall
-                  source="contact_intro"
-                  className="text-ink-3 underline-offset-4 hover:underline"
-                  label="Book a call"
-                />
-                . Either of us will pick up.
-              </p>
+              </ol>
             </div>
           </div>
 
-          {/* The questionnaire */}
-          <div>
+          {/* The form */}
+          <div className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
             <ContactForm />
+          </div>
+
+          {/* The people */}
+          <div className="lg:col-start-1 lg:row-start-2">
+            <div className="grid gap-6 border-t rule-hair pt-8 sm:grid-cols-2">
+              {PEOPLE.map((p) => (
+                <div key={p.email}>
+                  <div className="font-sans text-lg font-semibold tracking-[-0.02em] text-ink">
+                    {p.name}
+                  </div>
+                  <div className="mono-label mt-1 text-ink-3">{p.role}</div>
+                  <a
+                    href={`tel:${p.phone}`}
+                    className="mt-4 block font-mono text-[1.0625rem] tnum text-ink transition-colors hover:text-signal"
+                  >
+                    {p.phoneDisplay}
+                  </a>
+                  <a
+                    href={`mailto:${p.email}`}
+                    className="mono-label link-wipe mt-2 inline-block text-ink-2 hover:text-ink"
+                  >
+                    {p.email}
+                  </a>
+                </div>
+              ))}
+            </div>
+
+            <p className="mt-8 max-w-md text-sm leading-[1.7] text-ink-2">
+              Prefer a calendar slot?{" "}
+              <BookCall
+                source="contact_intro"
+                className="text-ink-3 underline-offset-4 hover:underline"
+                label="Book a call"
+              />
+              . Either of us will pick up.
+            </p>
           </div>
         </div>
       </section>

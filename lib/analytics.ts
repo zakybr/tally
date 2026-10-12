@@ -59,6 +59,18 @@ export function readUtmsFromUrl(search = ""): UtmParams {
   return out;
 }
 
+/* The page that sent the visitor here, ignoring this site's own pages. */
+function externalReferrer(): string | undefined {
+  const ref = document.referrer;
+  if (!ref) return undefined;
+  try {
+    if (new URL(ref).host === window.location.host) return undefined;
+  } catch {
+    return undefined;
+  }
+  return ref.slice(0, 500);
+}
+
 export function captureAttribution(): UtmParams {
   if (typeof window === "undefined") return {};
   const fromUrl = readUtmsFromUrl(window.location.search);
@@ -67,7 +79,7 @@ export function captureAttribution(): UtmParams {
   const next: UtmParams = {
     ...existing,
     ...(hasNew ? fromUrl : {}),
-    referrer: existing.referrer || document.referrer?.slice(0, 500) || undefined,
+    referrer: existing.referrer || externalReferrer(),
     landing_page: existing.landing_page || `${window.location.pathname}${window.location.search}`,
   };
   try {
