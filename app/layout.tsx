@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Barlow_Condensed } from "next/font/google";
-import Script from "next/script";
 import Analytics from "@/components/Analytics";
 import { INTRO_SKIP } from "@/components/home/Intro";
 import CookieNotice from "@/components/CookieNotice";
@@ -114,10 +113,8 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Decides before first paint whether the homepage intro plays; sets data-intro on <html>. */}
-        <Script id="intro-skip" strategy="beforeInteractive">
-          {INTRO_SKIP}
-        </Script>
+        {/* Plain inline script so it runs while <head> parses, before first paint: next/script's beforeInteractive only runs once the Next runtime boots. Sets data-intro on <html>. */}
+        <script id="intro-skip" dangerouslySetInnerHTML={{ __html: INTRO_SKIP }} />
         <Analytics />
       </head>
       <body>

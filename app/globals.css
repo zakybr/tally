@@ -798,38 +798,52 @@ body {
   inset: 0;
   z-index: 70;
   pointer-events: none;
+  /* One frame unit in px under preserveAspectRatio slice. */
+  --u: max(100vw / 1600, 100vh / 1000);
   animation: intro-out 0.01s linear 2.05s forwards;
 }
 #intro svg {
   display: block;
   width: 100%;
   height: 100%;
+  /* Dive origin: the first stroke's upper middle (frame 733.5, 472), clear of the slash. */
+  transform-origin: calc(50% - var(--u) * 66.5) calc(50% - var(--u) * 28);
+  animation: intro-zoom 0.8s cubic-bezier(0.7, 0, 0.84, 0) 1.2s forwards;
+  will-change: transform;
 }
 html[data-intro="off"] #intro {
   display: none;
 }
-.intro-bar {
+.intro-shutter {
   transform-box: fill-box;
-  transform-origin: 50% 100%;
-  transform: scaleY(0);
-  animation: intro-bar 0.42s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: 50% 0%;
+  animation: intro-shutter 0.42s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 .intro-slash {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
+  stroke-dasharray: 208;
+  stroke-dashoffset: 208;
   animation:
     intro-slash 0.32s cubic-bezier(0.65, 0, 0.35, 1) 0.72s forwards,
     intro-fade 0.18s linear 1.22s forwards;
 }
-/* Dive into the first stroke: origin is that stroke's upper middle, clear of the slash. */
-.intro-zoom {
-  transform-box: view-box;
-  transform-origin: 733.5px 472px;
-  animation: intro-zoom 0.8s cubic-bezier(0.7, 0, 0.84, 0) 1.2s forwards;
+/* Reduced motion: the mark is simply there, then the sheet fades. No dive. */
+html[data-intro="calm"] #intro {
+  animation: intro-fade 0.6s ease 0.9s forwards, intro-out 0.01s linear 1.5s forwards;
 }
-@keyframes intro-bar {
+html[data-intro="calm"] #intro svg {
+  animation: none;
+}
+html[data-intro="calm"] .intro-shutter {
+  animation: none;
+  display: none;
+}
+html[data-intro="calm"] .intro-slash {
+  animation: none;
+  stroke-dashoffset: 0;
+}
+@keyframes intro-shutter {
   to {
-    transform: scaleY(1);
+    transform: scaleY(0);
   }
 }
 @keyframes intro-slash {
