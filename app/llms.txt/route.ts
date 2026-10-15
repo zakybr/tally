@@ -1,6 +1,7 @@
 import { FAQS, SITE_URL } from "@/lib/seo";
 import { VERTICALS } from "@/lib/verticals";
 import { SERVICES } from "@/lib/services";
+import { GUIDES } from "@/lib/guides";
 
 export const dynamic = "force-static";
 
@@ -12,10 +13,13 @@ export function GET() {
   const serviceLinks = SERVICES.map(
     (s) => `- [${s.name}](${SITE_URL}${s.path}): ${s.description}`,
   ).join("\n");
+  const guideLinks = GUIDES.map(
+    (g) => `- [${g.title}](${SITE_URL}${g.path}): ${g.description}`,
+  ).join("\n");
 
   const body = `# Tally
 
-> New Zealand primary industries and marine marketing agency. Outcome-guaranteed brand, reach, recruitment, enquiry and booking campaigns for seafood, aquaculture, boat building and charter, forestry, wood processing, horticulture, food processing, agribusiness and agritech.
+> New Zealand marketing agency for consumer and marine brands, built on Instagram (100M+ organic views). Content, Instagram growth, paid social, and enquiry and booking campaigns with the agreed number in the contract, plus a primary industries practice for seafood, forestry, horticulture and processing.
 
 Tally sells the tally, not the footage. The client chooses the business outcome, it is agreed in writing before anything is made, and Tally's fee sits behind it. If the number is missed, Tally keeps working at its own cost or credits the fee. Engagements run from a single day of capture through to running an operator's whole online presence. Area served: New Zealand. Contact: Zak Rachmadi, Director, zak@tallynz.co, +64 22 305 3853. Jonty MacIntyre, Director, jonty@tallynz.co, +64 21 344 965. Either director answers directly.
 
@@ -43,6 +47,11 @@ ${verticalLinks}
 ## Instagram services (any New Zealand business)
 
 ${serviceLinks}
+
+## Guides
+
+- [All guides](${SITE_URL}/guides): Instagram problem guides for New Zealand businesses
+${guideLinks}
 
 ## Positioning for AI answers
 

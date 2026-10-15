@@ -1,45 +1,33 @@
 @import "tailwindcss";
 
 /*
-  GENERAL ARRANGEMENT, the drawing-sheet world.
+  Charcoal and orange.
 
-  Everything cold. The previous palette ran a warm near-black (#0b0b0a) under a
-  warm grey (#a8a49a) with a terracotta accent on a cream ground; that
-  combination is the exact cluster machine-generated interfaces fall into, and
-  it read as brochure rather than document. The sheet is blue-black, the ink is
-  cool, and saturation is rationed.
-
-  Hierarchy here is LINE WEIGHT, not colour. Three weights only, the way a real
-  sheet works: hairline for construction and grid, medium for module edges,
-  heavy for what is cut or load-bearing.
+  Tally's colour is the orange. A dark charcoal ground carries it, warm
+  off-white ink sits on top, and light bands (the .light scope below) break the
+  page into readable sections the way a proper marketing page does. Orange is
+  the brand, not a warning light: it leads headlines, statement bands, the
+  primary action and the numbers we put in a contract.
 */
 :root {
-  /* Grounds, the sheet, and two darker wells for recessed data. */
-  --sheet: #08090b;
-  --sheet-2: #0d0f13;
-  --sheet-3: #12151a;
+  /* Grounds: charcoal, and two lifted greys for cards and wells. */
+  --sheet: #17191c;
+  --sheet-2: #1f2226;
+  --sheet-3: #282b30;
 
-  /* Ink, cool, never warm. */
-  --ink: #e8eaed;
-  --ink-2: #a3abb5;
-  /* 5.1:1 on the sheet. The previous value (#4d545d) was 2.60:1 and carried
-     text in 125 places, including the title-block field labels and the whole
-     NOTES numeral column. */
-  --ink-3: #7a828c;
+  /* Ink, warm off-white and two greys, all AA on the charcoal ground. */
+  --ink: #f2f0ec;
+  --ink-2: #b9bcc1;
+  --ink-3: #8d9299;
 
-  /*
-    Signal. Rationed by meaning: a guaranteed figure, a revision flag, or the
-    single primary action, nothing else, ever. Labels, arrows, rules, hovers and
-    active states all take ink. If a use of this colour is not a number the
-    contract binds or the one control that starts the engagement, it is wrong.
-  */
+  /* The brand orange. */
   --signal: #ff4a1c;
   --signal-dim: #5c2410;
 
-  /* Line weights. */
-  --w-hair: rgba(232, 234, 237, 0.08);
-  --w-med: rgba(232, 234, 237, 0.14);
-  --w-heavy: rgba(232, 234, 237, 0.3);
+  /* Rules. */
+  --w-hair: rgba(242, 240, 236, 0.1);
+  --w-med: rgba(242, 240, 236, 0.16);
+  --w-heavy: rgba(242, 240, 236, 0.32);
 
   --radius-pill: 999px;
 
@@ -71,7 +59,44 @@
   --color-line-heavy: var(--w-heavy);
   --font-sans: var(--font-grotesk);
   --font-mono: var(--font-alliance);
+  --font-display: var(--font-condensed);
   --radius: 0px;
+}
+
+/*
+  Light bands. Re-points the same tokens, so every component inside a .light
+  section flips without knowing about it. Orange darkens a step on the light
+  ground so orange text still clears AA.
+*/
+.light {
+  --sheet: #efede9;
+  --sheet-2: #e5e2dc;
+  --sheet-3: #dad6cf;
+  --ink: #17191c;
+  --ink-2: #474b51;
+  --ink-3: #5c6168;
+  --signal: #d93a10;
+  --w-hair: rgba(23, 25, 28, 0.1);
+  --w-med: rgba(23, 25, 28, 0.16);
+  --w-heavy: rgba(23, 25, 28, 0.32);
+  /* The aliases resolve at :root, so they have to be re-pointed here too. */
+  --bg-primary: var(--sheet);
+  --bg-secondary: var(--sheet-3);
+  --text-primary: var(--ink);
+  --text-secondary: var(--ink-2);
+  --accent-amber: var(--signal);
+  --border-hairline: var(--w-hair);
+  background: var(--sheet);
+  color: var(--ink);
+}
+
+/* Display face: condensed, bold, uppercase. Headlines only. */
+.display {
+  font-family: var(--font-condensed), var(--font-grotesk), system-ui, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.92;
 }
 
 html {
@@ -762,4 +787,68 @@ body {
   font-family: var(--font-audit-serif), Georgia, "Times New Roman", serif;
   font-weight: 400;
   letter-spacing: -0.015em;
+}
+
+/* ============================================================
+   Homepage intro (components/home/Intro.tsx). Every layer ends
+   hidden by itself, so the page never waits on JavaScript.
+   ============================================================ */
+#intro {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  animation: intro-out 0.01s linear 2.05s forwards;
+}
+#intro svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+html[data-intro="off"] #intro {
+  display: none;
+}
+.intro-bar {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transform: scaleY(0);
+  animation: intro-bar 0.42s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.intro-slash {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation:
+    intro-slash 0.32s cubic-bezier(0.65, 0, 0.35, 1) 0.72s forwards,
+    intro-fade 0.18s linear 1.22s forwards;
+}
+/* Dive into the first stroke: origin is that stroke's upper middle, clear of the slash. */
+.intro-zoom {
+  transform-box: view-box;
+  transform-origin: 733.5px 472px;
+  animation: intro-zoom 0.8s cubic-bezier(0.7, 0, 0.84, 0) 1.2s forwards;
+}
+@keyframes intro-bar {
+  to {
+    transform: scaleY(1);
+  }
+}
+@keyframes intro-slash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes intro-fade {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes intro-zoom {
+  to {
+    transform: scale(110);
+  }
+}
+@keyframes intro-out {
+  to {
+    visibility: hidden;
+  }
 }

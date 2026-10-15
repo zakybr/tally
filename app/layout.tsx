@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Barlow_Condensed } from "next/font/google";
+import Script from "next/script";
 import Analytics from "@/components/Analytics";
+import { INTRO_SKIP } from "@/components/home/Intro";
 import CookieNotice from "@/components/CookieNotice";
 import SiteChrome from "@/components/SiteChrome";
 import {
@@ -23,6 +26,14 @@ const grotesk = localFont({
     { path: "./fonts/GeneralSans-Bold.woff2", weight: "700", style: "normal" },
   ],
   variable: "--font-grotesk",
+  display: "swap",
+});
+
+/* Display: condensed bold uppercase headlines. */
+const condensed = Barlow_Condensed({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  variable: "--font-condensed",
   display: "swap",
 });
 
@@ -86,7 +97,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: "#08090b",
+  themeColor: "#17191c",
 };
 
 const jsonLd = [organizationJsonLd(), websiteJsonLd()];
@@ -97,42 +108,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-NZ" className={`${grotesk.variable} ${alliance.variable}`}>
+    <html
+      lang="en-NZ"
+      className={`${grotesk.variable} ${alliance.variable} ${condensed.variable}`}
+      suppressHydrationWarning
+    >
       <head>
+        {/* Decides before first paint whether the homepage intro plays; sets data-intro on <html>. */}
+        <Script id="intro-skip" strategy="beforeInteractive">
+          {INTRO_SKIP}
+        </Script>
         <Analytics />
       </head>
       <body>
-        {/*
-          The direction contract, emitted as a real HTML comment. A JSX comment is
-          compile-time only and never reaches the markup, so this rides in a hidden,
-          inert node instead, greppable in the production build by its seed key.
-        */}
-        <div
-          hidden
-          dangerouslySetInnerHTML={{
-            __html: `<!--
-  THESIS: tally is a drawing sheet, not a brochure. It refuses the agency landing
-  page - centred headline, soft cards, scroll reveals - because an operator trusts
-  a dimensioned document, not a pitch. The guarantee is a specification with
-  numbered notes, not a promise.
-  OWN-WORLD: naval-architecture general arrangement sheet. Cold near-black #08090B
-  ground, cool line-white #E8EAED, cool grey #7D858F. Signal #FF4A1C is rationed
-  by meaning, not by count: it marks guaranteed figures and revision flags, and
-  nothing else, ever. Hierarchy is line weight - hairline, medium, heavy. Title blocks,
-  numbered NOTES, revision triangles, dimension strings. Two faces only: General
-  Sans and Alliance No.1.
-  STORY: an operator sees a document that names a number, dimensions the eight
-  weeks to reach it, and prints who pays if it is missed - then books the call.
-  FIRST VIEWPORT: claim top-left at display scale; title block docked bottom-right
-  carrying PROJECT / SCALE / DRAWN / REV / DATE with the primary action in the
-  issue-stamp position; dimension string running between them.
-  FORM: General Arrangement, candidate 3 of 7, seed key 042cfc18.
-  FINISH: unreviewed and undocumented is unfinished; this build ends with the
-  finish review, the verdict, DESIGN.md, and every shipping raster carrying its
-  provenance.
--->`,
-          }}
-        />
         <SiteChrome>{children}</SiteChrome>
         <CookieNotice />
         <script

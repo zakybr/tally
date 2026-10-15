@@ -33,7 +33,7 @@ export default function Pricing() {
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <h2
               id="pricing-heading"
-              className="max-w-[16ch] text-balance font-sans text-[2rem] font-semibold leading-[1.02] tracking-[-0.035em] text-ink md:text-[2.75rem]"
+              className="display max-w-[16ch] text-balance text-[3rem] text-ink md:text-[4.5rem]"
             >
               Prove it first, then scale.
             </h2>

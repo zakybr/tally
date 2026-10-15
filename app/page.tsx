@@ -1,33 +1,36 @@
 import Nav from "@/components/Nav";
-import Hero from "@/components/Hero";
-import Ticker from "@/components/Ticker";
-import Offer from "@/components/Offer";
-import SeasonBand from "@/components/SeasonBand";
-import Guarantee from "@/components/Guarantee";
+import HeroFilm from "@/components/home/HeroFilm";
+import Intro from "@/components/home/Intro";
+import {
+  Capabilities,
+  Guides,
+  HowItWorks,
+  Sectors,
+  Statement,
+  Stats,
+} from "@/components/home/HomeSections";
 import Pricing from "@/components/Pricing";
-import SeoOverview from "@/components/SeoOverview";
 import FooterCta from "@/components/FooterCta";
 import { FAQS, faqJsonLd } from "@/lib/seo";
 
 /*
-  Reading order is the sales order: the claim, what you get, how the guarantee is
-  dimensioned, the marine season, what it costs, then the coverage register.
-
-  The sector cards are no longer here. They are independent pages reached from
-  the header dropdown, which keeps the homepage to one argument and gives each
-  sector a page that can rank on its own.
+  Reading order is the sales order: the film and the claim, what we believe,
+  what we do, the proof, who it is for, how the guarantee works, what it costs,
+  and what we have written. One argument per band, light and charcoal in turn.
 */
 export default function Home() {
   return (
     <main>
+      <Intro />
       <Nav />
-      <Hero />
-      <Ticker />
-      <Offer />
-      <SeasonBand />
-      <Guarantee />
+      <HeroFilm />
+      <Statement />
+      <Capabilities />
+      <Stats />
+      <Sectors />
+      <HowItWorks />
       <Pricing />
-      <SeoOverview />
+      <Guides />
       <FooterCta />
       <script
         type="application/ld+json"

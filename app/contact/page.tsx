@@ -44,7 +44,7 @@ export default function ContactPage() {
         <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-x-20 lg:gap-y-10">
           {/* Intro + what happens next */}
           <div className="lg:col-start-1 lg:row-start-1">
-            <h1 className="font-sans text-4xl font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl">
+            <h1 className="display text-[3rem] text-ink md:text-[4.5rem]">
               Tell us the number.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-[1.6] text-ink-2">

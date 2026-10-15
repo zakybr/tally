@@ -16,6 +16,7 @@ const instagramLinks = [
   { href: "/instagram-account-recovery", label: "Banned account recovery" },
   { href: "/instagram-username-claims", label: "Username claims" },
   { href: "/instagram-growth", label: "Instagram growth" },
+  { href: "/guides", label: "Guides" },
 ];
 
 const companyLinks = [
@@ -44,8 +45,8 @@ export default function FooterCta() {
       <section id="contact" className="border-t rule-heavy bg-sheet-2 py-24 md:py-32">
         <div className="mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
           <div>
-            <h2 className="max-w-[14ch] font-sans text-[2.75rem] font-semibold leading-[0.98] tracking-[-0.045em] text-ink md:text-[4.5rem]">
-              Hold us to the number.
+            <h2 className="display max-w-[14ch] text-[3.5rem] text-ink md:text-[6rem]">
+              Hold us to the <span className="text-signal">number.</span>
             </h2>
             <p className="mt-7 max-w-[46ch] text-lg leading-[1.6] text-ink-2">
               Tell us what you need moved. We will tell you straight whether we can guarantee it,
@@ -61,11 +62,11 @@ export default function FooterCta() {
                   {p.name.split(" ")[0]}{" "}
                   <a
                     href={`tel:${p.phone}`}
-                    className="font-mono tnum text-ink transition-colors hover:text-signal"
+                    className="inline-block py-3 font-mono tnum text-ink transition-colors hover:text-signal"
                   >
                     {p.phoneDisplay}
                   </a>{" "}
-                  <a href={`mailto:${p.email}`} className="link-wipe text-ink-2 hover:text-ink">
+                  <a href={`mailto:${p.email}`} className="link-wipe inline-block py-3 text-ink-2 hover:text-ink">
                     {p.email}
                   </a>
                 </p>
@@ -86,8 +87,8 @@ export default function FooterCta() {
                 </span>
               </Link>
               <p className="mt-6 max-w-sm text-[0.875rem] leading-[1.7] text-ink-2">
-                Primary industries and marine marketing, New Zealand. Brand, reach, recruitment and
-                bookings, with the agreed number written into the contract.
+                Consumer and marine marketing from New Zealand, built on Instagram. Content, growth
+                and bookings, with the agreed number written into the contract.
               </p>
               <a
                 href="mailto:zak@tallynz.co"

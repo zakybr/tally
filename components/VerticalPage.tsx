@@ -8,6 +8,7 @@ import type { Vertical } from "@/lib/verticals";
 import { VERTICALS } from "@/lib/verticals";
 import type { Service } from "@/lib/services";
 import { SERVICES } from "@/lib/services";
+import { guidesForService } from "@/lib/guides";
 import { SITE_URL, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
 
 /*
@@ -21,6 +22,7 @@ export default function VerticalPage({ vertical }: { vertical: Vertical | Servic
   const others = service
     ? SERVICES.filter((s) => s.slug !== vertical.slug)
     : VERTICALS.filter((v) => v.slug !== vertical.slug);
+  const guides = service ? guidesForService(service.slug) : [];
   const cta = service?.cta ?? { label: "Start the Proof", href: "/contact" };
   const jsonLd = [
     faqJsonLd(vertical.faqs),
@@ -47,7 +49,7 @@ export default function VerticalPage({ vertical }: { vertical: Vertical | Servic
       <Nav />
       <article className="mx-auto max-w-[1440px] px-6 pb-32 pt-36 md:px-12 md:pt-44 lg:px-20">
         <header className="max-w-3xl">
-          <h1 className="max-w-[16ch] font-sans text-[2.5rem] font-semibold leading-[1.0] tracking-[-0.04em] text-ink md:text-[3.5rem]">
+          <h1 className="display max-w-[16ch] text-[3rem] text-ink md:text-[4.5rem]">
             {vertical.title}
           </h1>
           <p className="mt-7 max-w-[52ch] text-lg leading-[1.55] text-ink-2">{vertical.intro}</p>
@@ -126,6 +128,23 @@ export default function VerticalPage({ vertical }: { vertical: Vertical | Servic
           </div>
           {service ? null : <OnePagerGate />}
         </section>
+
+        {guides.length ? (
+          <nav className="mt-24 border-t rule-hair pt-10" aria-label="Guides">
+            <div className="mono-label mb-4 text-ink-2">Guides</div>
+            <div className="flex flex-wrap gap-x-6 gap-y-4">
+              {guides.map((g) => (
+                <Link
+                  key={g.slug}
+                  href={g.path}
+                  className="mono-label link-wipe text-ink-2 transition-colors hover:text-ink"
+                >
+                  {g.shortName}
+                </Link>
+              ))}
+            </div>
+          </nav>
+        ) : null}
 
         <nav
           className="mt-24 border-t rule-hair pt-10"

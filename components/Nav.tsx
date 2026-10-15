@@ -8,267 +8,253 @@ import Pill from "@/components/Pill";
 import { PEOPLE } from "@/lib/contact";
 
 /*
-  Two doors, both on the right. The bar used to carry five flat links plus a
-  sectors dropdown, which made the eye scan six things before reaching the one
-  action. Everything now hangs off Sectors or About, so the bar reads as
-  wordmark, two words, one button.
+  A bar with three things on it, and one door to everything else.
 
-  Hover opens a menu for a pointer. Click and keyboard open it too, because a
-  hover-only menu is unreachable on a touch screen at desktop width.
+  The bar is the wordmark, the primary action and a Menu button. It sits clear
+  over the homepage film and picks up a charcoal ground once the page scrolls.
+  Menu opens a full-screen sheet: the main pages as large words down the left,
+  staggered in, and the smaller routes, the directors' numbers and the action on
+  the right. Same sheet on a phone and a desktop, so there is one menu to learn.
 */
 
-type MenuId = "sectors" | "instagram" | "about";
+const PRIMARY: { href: string; label: string }[] = [
+  { href: "/instagram-growth", label: "Instagram growth" },
+  { href: "/marine-marketing", label: "Marine" },
+  { href: "/primary-industries-marketing", label: "Primary industries" },
+  { href: "/guarantee", label: "The guarantee" },
+  { href: "/guides", label: "Guides" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
 
-const MENUS: { id: MenuId; label: string; blurb: string; links: { href: string; label: string }[] }[] = [
+const SECONDARY: { title: string; links: { href: string; label: string }[] }[] = [
   {
-    id: "sectors",
-    label: "Sectors",
-    blurb: "Every brief opens with the number it has to hit.",
-    links: [
-      { href: "/marine-marketing", label: "Marine, boats & charter" },
-      { href: "/seafood-aquaculture-marketing", label: "Seafood & aquaculture" },
-      { href: "/forestry-marketing", label: "Forestry & wood" },
-      { href: "/horticulture-marketing", label: "Horticulture" },
-      { href: "/primary-industries-marketing", label: "All sectors" },
-    ],
-  },
-  {
-    id: "instagram",
-    label: "Instagram",
-    blurb: "Banned, squatted or stalled. Same team, same straight answer.",
+    title: "Instagram help",
     links: [
       { href: "/instagram-account-recovery", label: "Banned account recovery" },
       { href: "/instagram-username-claims", label: "Username claims" },
-      { href: "/instagram-growth", label: "Instagram growth" },
     ],
   },
   {
-    id: "about",
-    label: "About",
-    blurb: "How the work is scoped, priced and guaranteed.",
+    title: "Sectors",
     links: [
-      { href: "/about", label: "About Tally" },
-      { href: "/#offer", label: "What we run" },
-      { href: "/guarantee", label: "The guarantee" },
+      { href: "/seafood-aquaculture-marketing", label: "Seafood & aquaculture" },
+      { href: "/forestry-marketing", label: "Forestry & wood" },
+      { href: "/horticulture-marketing", label: "Horticulture" },
+    ],
+  },
+  {
+    title: "Working with us",
+    links: [
       { href: "/#pricing", label: "Pricing" },
-      { href: "/proof", label: "Proof" },
+      { href: "/proof", label: "Start the Proof" },
     ],
   },
 ];
 
-/* Root-hash routes need a real anchor so /about to /#offer is a full navigation. */
-function MenuLink({ href, label, tabbable }: { href: string; label: string; tabbable: boolean }) {
-  const cls =
-    "py-2.5 font-sans text-[1.5rem] leading-none tracking-[-0.025em] text-ink-2 transition-colors duration-200 hover:text-ink";
+/* Root-hash routes need a real anchor so /about to /#pricing is a full navigation. */
+function NavLink({
+  href,
+  className,
+  style,
+  tabIndex,
+  children,
+}: {
+  href: string;
+  className: string;
+  style?: React.CSSProperties;
+  tabIndex?: number;
+  children: React.ReactNode;
+}) {
   if (href.startsWith("/#")) {
     return (
-      <a href={href} className={cls} tabIndex={tabbable ? undefined : -1}>
-        {label}
+      <a href={href} className={className} style={style} tabIndex={tabIndex}>
+        {children}
       </a>
     );
   }
   return (
-    <Link href={href} className={cls} tabIndex={tabbable ? undefined : -1}>
-      {label}
+    <Link href={href} className={className} style={style} tabIndex={tabIndex}>
+      {children}
     </Link>
   );
 }
 
 export default function Nav() {
   const pathname = usePathname();
-  const [drawer, setDrawer] = useState(false);
-  const [menu, setMenu] = useState<MenuId | null>(null);
-  const navRef = useRef<HTMLElement>(null);
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const closeRef = useRef<HTMLButtonElement>(null);
 
   /* Close on navigation by adjusting state during render, not in an effect:
      an effect here would cascade an extra render on every route change. */
   const [lastPath, setLastPath] = useState(pathname);
   if (lastPath !== pathname) {
     setLastPath(pathname);
-    setDrawer(false);
-    setMenu(null);
+    setOpen(false);
   }
 
   useEffect(() => {
-    if (!menu) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMenu(null);
-    };
-    const onDown = (e: MouseEvent) => {
-      if (!navRef.current?.contains(e.target as Node)) setMenu(null);
-    };
-    document.addEventListener("keydown", onKey);
-    document.addEventListener("mousedown", onDown);
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.removeEventListener("mousedown", onDown);
-    };
-  }, [menu]);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
-    if (!drawer) return;
+    if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setDrawer(false);
+      if (e.key === "Escape") setOpen(false);
     };
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
     };
-  }, [drawer]);
+  }, [open]);
 
-  const active = MENUS.find((m) => m.id === menu);
+  const tab = open ? undefined : -1;
 
   return (
-    <nav
-      ref={navRef}
-      onMouseLeave={() => setMenu(null)}
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        menu ? "bg-sheet" : "bg-sheet/90 backdrop-blur-md"
-      }`}
-    >
-      <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-6 md:px-12 lg:px-20">
-        <Link href="/" className="flex min-h-[44px] items-center gap-3" aria-label="Tally home">
-          <TallyMark size={22} />
-          <span className="font-sans text-lg font-semibold tracking-tight text-ink">tally</span>
-        </Link>
-
-        <div className="flex items-center gap-8">
-          <div className="hidden items-center gap-8 lg:flex">
-            {MENUS.map((m) => (
-              <button
-                key={m.id}
-                type="button"
-                className={`mono-label link-wipe transition-colors ${
-                  menu === m.id ? "text-ink" : "text-ink-2 hover:text-ink"
-                }`}
-                aria-haspopup="true"
-                aria-expanded={menu === m.id}
-                onMouseEnter={() => setMenu(m.id)}
-                onClick={() => setMenu((v) => (v === m.id ? null : m.id))}
-              >
-                {m.label}
-              </button>
-            ))}
-          </div>
-
-          <Pill
-            variant="outline"
-            size="sm"
-            arrow={false}
-            className="lg:hidden"
-            aria-expanded={drawer}
-            aria-controls="mobile-nav"
-            onClick={() => setDrawer((v) => !v)}
-          >
-            {drawer ? "Close" : "Menu"}
-          </Pill>
-          <Pill href="/contact" size="sm" className="hidden sm:inline-flex">
-            Start the Proof
-          </Pill>
-        </div>
-      </div>
-
-      {/* One panel, contents switched by which door you came through. */}
-      <div
-        className={`absolute inset-x-0 top-full hidden overflow-hidden bg-sheet transition-[max-height,opacity] duration-[420ms] ease-[cubic-bezier(0.16,1,0.3,1)] lg:block ${
-          menu ? "max-h-[34rem] opacity-100" : "pointer-events-none max-h-0 opacity-0"
+    <>
+      <nav
+        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+          scrolled ? "bg-sheet/95 backdrop-blur-md" : "bg-transparent"
         }`}
       >
-        <div className="mx-auto grid max-w-[1440px] grid-cols-[minmax(0,1fr)_auto] items-start gap-20 px-6 pb-20 pt-14 md:px-12 lg:px-20">
-          <div>
-            <span className="mono-label text-ink-3">{active?.label}</span>
-            <p className="mt-6 max-w-[24ch] font-sans text-lg leading-[1.45] text-ink-2">
-              {active?.blurb}
-            </p>
-            <div className="mt-10 space-y-2">
-              {PEOPLE.map((p) => (
-                <a
-                  key={p.email}
-                  href={`tel:${p.phone}`}
-                  className="mono-label block text-ink-3 transition-colors hover:text-ink"
-                >
-                  {p.name.split(" ")[0]}{" "}
-                  <span className="font-mono tnum text-ink-2">{p.phoneDisplay}</span>
-                </a>
-              ))}
-            </div>
-          </div>
+        <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-6 md:h-20 md:px-12 lg:px-20">
+          <Link href="/" className="flex min-h-[44px] items-center gap-3" aria-label="Tally home">
+            <TallyMark size={22} />
+            <span className="font-sans text-lg font-semibold tracking-tight text-ink">tally</span>
+          </Link>
 
-          <div aria-label={active?.label} className="flex flex-col items-end">
-            {active?.links.map((l) => (
-              <MenuLink key={l.href} href={l.href} label={l.label} tabbable={!!menu} />
-            ))}
-          </div>
-        </div>
-        <div className="border-b rule-hair" />
-      </div>
-
-      {/* Scrim: darkens the page so the open menu is the only live layer. */}
-      <div
-        onClick={() => setMenu(null)}
-        aria-hidden="true"
-        className={`fixed inset-0 -z-10 hidden bg-sheet/80 transition-opacity duration-300 lg:block ${
-          menu ? "opacity-100" : "pointer-events-none opacity-0"
-        }`}
-      />
-
-      {drawer && (
-        <div
-          id="mobile-nav"
-          className="max-h-[calc(100svh-4rem)] overflow-y-auto border-t rule-hair bg-sheet lg:hidden"
-        >
-          <div className="mx-auto flex max-w-[1440px] flex-col px-6 pb-8 pt-4">
-            {MENUS.map((m) => (
-              <div key={m.id} className="mb-6">
-                <span className="mono-label text-ink-3">{m.label}</span>
-                {m.links.map((l) =>
-                  l.href.startsWith("/#") ? (
-                    <a
-                      key={l.href}
-                      href={l.href}
-                      className="mono-label block border-b rule-hair py-3.5 text-[0.8125rem] text-ink-2"
-                    >
-                      {l.label}
-                    </a>
-                  ) : (
-                    <Link
-                      key={l.href}
-                      href={l.href}
-                      className="mono-label block border-b rule-hair py-3.5 text-[0.8125rem] text-ink-2"
-                    >
-                      {l.label}
-                    </Link>
-                  ),
-                )}
-              </div>
-            ))}
-
-            <Pill href="/contact" className="mt-2 w-full">
-              Start the Proof
+          <div className="flex items-center gap-3 sm:gap-5">
+            <Pill href="/contact" size="sm" className="hidden sm:inline-flex">
+              Let&apos;s talk
             </Pill>
-            <div className="mt-6 space-y-3">
-              {PEOPLE.map((p) => (
-                <div key={p.email}>
-                  <a
-                    href={`tel:${p.phone}`}
-                    className="mono-label block text-ink transition-colors hover:text-signal"
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              aria-expanded={open}
+              aria-controls="site-menu"
+              className="flex min-h-[44px] items-center gap-3 px-2 text-ink"
+            >
+              <span className="text-[0.9375rem] font-medium">Menu</span>
+              <span aria-hidden="true" className="flex w-6 flex-col gap-[5px]">
+                <span className="block h-[2px] w-full bg-current" />
+                <span className="block h-[2px] w-full bg-current" />
+                <span className="block h-[2px] w-4 self-end bg-signal" />
+              </span>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* The menu sheet. */}
+      <div
+        id="site-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Site menu"
+        aria-hidden={!open}
+        className={`fixed inset-0 z-[60] overflow-y-auto bg-sheet transition-[opacity,visibility] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          open ? "visible opacity-100" : "invisible opacity-0"
+        }`}
+      >
+        <div className="mx-auto flex min-h-full max-w-[1440px] flex-col px-6 md:px-12 lg:px-20">
+          <div className="flex h-16 items-center justify-between md:h-20">
+            <Link href="/" className="flex min-h-[44px] items-center gap-3" aria-label="Tally home" tabIndex={tab}>
+              <TallyMark size={22} />
+              <span className="font-sans text-lg font-semibold tracking-tight text-ink">tally</span>
+            </Link>
+            <button
+              ref={closeRef}
+              type="button"
+              onClick={() => setOpen(false)}
+              tabIndex={tab}
+              className="flex min-h-[44px] items-center gap-3 px-2 text-ink"
+            >
+              <span className="text-[0.9375rem] font-medium">Close</span>
+              <span aria-hidden="true" className="relative block h-5 w-5">
+                <span className="absolute left-0 top-1/2 block h-[2px] w-5 rotate-45 bg-current" />
+                <span className="absolute left-0 top-1/2 block h-[2px] w-5 -rotate-45 bg-current" />
+              </span>
+            </button>
+          </div>
+
+          <div className="grid flex-1 gap-14 pb-14 pt-8 md:pt-14 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:gap-24">
+            <ul className="flex flex-col">
+              {PRIMARY.map((l, i) => (
+                <li key={l.href}>
+                  <NavLink
+                    href={l.href}
+                    tabIndex={tab}
+                    style={{ transitionDelay: open ? `${120 + i * 55}ms` : "0ms" }}
+                    className={`group inline-flex items-baseline gap-4 py-1.5 font-sans text-[2.25rem] font-medium leading-[1.15] tracking-[-0.03em] transition-[opacity,transform,color] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:text-signal sm:text-[3rem] lg:text-[3.5rem] ${
+                      open ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+                    } ${pathname === l.href ? "text-signal" : "text-ink"}`}
                   >
-                    {p.name.split(" ")[0]} <span className="font-mono tnum">{p.phoneDisplay}</span>
-                  </a>
-                  <a
-                    href={`mailto:${p.email}`}
-                    className="mono-label mt-1 block text-ink-3 hover:text-ink"
-                  >
-                    {p.email}
-                  </a>
-                </div>
+                    {l.label}
+                  </NavLink>
+                </li>
               ))}
+            </ul>
+
+            <div
+              className={`flex flex-col gap-10 transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                open ? "translate-y-0 opacity-100 delay-300" : "translate-y-6 opacity-0"
+              }`}
+            >
+              <div>
+                <TallyMark size={28} />
+                <p className="mt-6 max-w-[34ch] text-lg leading-[1.5] text-ink-2">
+                  Consumer and marine marketing from New Zealand, built on Instagram. You name the
+                  number. We write it into the contract.
+                </p>
+                <Pill href="/contact" className="mt-7">
+                  Let&apos;s talk
+                </Pill>
+              </div>
+
+              <div className="grid gap-8 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3">
+                {SECONDARY.map((g) => (
+                  <div key={g.title}>
+                    <div className="mono-label text-ink-3">{g.title}</div>
+                    <ul className="mt-3 space-y-2">
+                      {g.links.map((l) => (
+                        <li key={l.href}>
+                          <NavLink
+                            href={l.href}
+                            tabIndex={tab}
+                            className="text-[0.9375rem] text-ink-2 transition-colors hover:text-ink"
+                          >
+                            {l.label}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+
+              <div className="space-y-2 border-t rule-hair pt-6">
+                {PEOPLE.map((p) => (
+                  <a
+                    key={p.email}
+                    href={`tel:${p.phone}`}
+                    tabIndex={tab}
+                    className="block text-[0.9375rem] text-ink-2 transition-colors hover:text-ink"
+                  >
+                    {p.name.split(" ")[0]} <span className="tnum text-ink">{p.phoneDisplay}</span>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      )}
-    </nav>
+      </div>
+    </>
   );
 }

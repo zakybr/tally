@@ -157,7 +157,7 @@ export default function AboutPage() {
       <article className="mx-auto max-w-[1440px] px-6 pb-28 pt-32 md:px-12 md:pt-40 lg:px-20">
         {/* Section 1, Hero */}
         <header className="max-w-3xl">
-          <h1 className="font-sans text-4xl font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl">
+          <h1 className="display text-[3rem] text-ink md:text-[4.5rem]">
             The outcome is contractual.
           </h1>
           <p className="mt-7 text-lg leading-[1.65] text-ink-2">

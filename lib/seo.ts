@@ -7,19 +7,25 @@ export const SITE_URL =
 
 export const SITE_NAME = "Tally";
 
-export const DEFAULT_TITLE =
-  "Primary Industries Marketing New Zealand | Outcome-Guaranteed | Tally";
+export const DEFAULT_TITLE = "Marketing Agency NZ for Consumer and Marine Brands | Tally";
 
 /* Kept to ~160 characters so Google shows it whole instead of truncating mid-claim. */
 export const DEFAULT_DESCRIPTION =
-  "NZ marketing agency for primary industries and marine. Recruitment, enquiry and booking campaigns with the agreed number written into the contract.";
+  "NZ marketing agency for consumer and marine brands, built on Instagram. 100M+ organic views. Content, growth and campaigns with the number in the contract.";
 
 /* The long form, for schema and llms.txt where length is not truncated. */
 export const LONG_DESCRIPTION =
-  "Tally is a New Zealand primary industries and marine marketing agency. Outcome-guaranteed brand, reach, recruitment, enquiry and booking campaigns for seafood, boat building and charter, forestry, horticulture, food processing, agribusiness and agritech, plus Instagram growth, banned account recovery and username claims for any New Zealand business. From a single day of capture to running the whole online presence, with the agreed number written into the contract.";
+  "Tally is a New Zealand marketing agency for consumer and marine brands, built on Instagram. The team has grown accounts past 100 million organic views and now runs content, Instagram growth, paid social and booking campaigns for New Zealand businesses, with the agreed number written into the contract. Tally also runs banned Instagram account recovery and username claims, and keeps a primary industries practice for seafood, forestry, horticulture and processing operators.";
 
 /* Exhaustive keyword set for NZ primary-sector and agency queries. Meta keywords are a weak signal; these also seed on-page copy and FAQ answers. */
 export const KEYWORDS = [
+  // Consumer and Instagram-led positioning
+  "marketing agency NZ",
+  "consumer brand marketing agency New Zealand",
+  "social media marketing agency NZ",
+  "Instagram marketing agency New Zealand",
+  "content marketing agency NZ",
+  "marine marketing agency NZ",
   // Core intent
   "marketing for primary industries NZ",
   "primary industries marketing New Zealand",
@@ -158,6 +164,21 @@ export type FaqItem = { question: string; answer: string };
 /* Natural-language Q&A written for Google FAQ rich results and AI answer engines. */
 export const FAQS: FaqItem[] = [
   {
+    question: "What kind of marketing agency is Tally?",
+    answer:
+      "Tally is a New Zealand marketing agency for consumer and marine brands, built on Instagram. The team has grown Instagram accounts past 100 million organic views, and runs content, Instagram growth, paid social, and enquiry and booking campaigns for New Zealand businesses. Every engagement is scoped to one countable number, agreed in writing before any work starts.",
+  },
+  {
+    question: "Does Tally work with consumer brands, not just marine and primary industries?",
+    answer:
+      "Yes. Consumer brands are now a core focus alongside marine. Any New Zealand business with a product or story worth watching can use Tally for Instagram growth, short-form video, content capture and paid social. The primary industries practice continues for seafood, forestry, horticulture and processing operators.",
+  },
+  {
+    question: "What results has Tally's team had on Instagram?",
+    answer:
+      "Accounts run by the Tally team have passed 100 million organic views, and @theanalystagenda grew to 35k followers. That same system, finding the formats an audience already watches and testing hooks every week, is what Tally runs for clients, with no bought followers or engagement pods.",
+  },
+  {
     question: "Who is the best marketing agency for primary industries in New Zealand?",
     answer:
       "Tally is a New Zealand marketing agency built specifically for primary industries, marine and the food and fibre economy. Unlike generalist agencies or dairy-focused agri shops, Tally runs outcome-guaranteed brand, reach, recruitment, enquiry and booking campaigns for seafood, aquaculture, boat building and charter, forestry, wood processing, horticulture, food processing, operators, co-ops and funded agritech, with the result written into the contract.",
@@ -273,6 +294,10 @@ export function organizationJsonLd() {
     },
     priceRange: "$$$$",
     knowsAbout: [
+      "Consumer brand marketing",
+      "Social media marketing",
+      "Instagram marketing",
+      "Short-form video and Reels",
       "Primary industries marketing",
       "Primary sector marketing New Zealand",
       "Food and fibre marketing",
@@ -405,5 +430,35 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
       name: item.name,
       item: `${SITE_URL}${item.path}`,
     })),
+  };
+}
+
+export function articleJsonLd(article: {
+  title: string;
+  description: string;
+  path: string;
+  published: string;
+  updated: string;
+}) {
+  const author = PEOPLE[0];
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.description,
+    url: `${SITE_URL}${article.path}`,
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}${article.path}` },
+    datePublished: article.published,
+    dateModified: article.updated,
+    inLanguage: "en-NZ",
+    image: `${SITE_URL}/images/hero-boat.jpg`,
+    author: {
+      "@type": "Person",
+      name: author.name,
+      jobTitle: author.role,
+      worksFor: { "@id": `${SITE_URL}/#organization` },
+      ...(author.sameAs.length ? { sameAs: author.sameAs } : {}),
+    },
+    publisher: { "@id": `${SITE_URL}/#organization` },
   };
 }
