@@ -10,8 +10,13 @@ export const SITE_NAME = "Tally";
 export const DEFAULT_TITLE =
   "Primary Industries Marketing New Zealand | Outcome-Guaranteed | Tally";
 
+/* Kept to ~160 characters so Google shows it whole instead of truncating mid-claim. */
 export const DEFAULT_DESCRIPTION =
-  "Tally is a New Zealand primary industries and marine marketing agency. Outcome-guaranteed brand, reach, recruitment, enquiry and booking campaigns for seafood, boat building and charter, forestry, horticulture, food processing, agribusiness and agritech. From a single day of capture to running the whole online presence, with the agreed number written into the contract.";
+  "NZ marketing agency for primary industries and marine. Recruitment, enquiry and booking campaigns with the agreed number written into the contract.";
+
+/* The long form, for schema and llms.txt where length is not truncated. */
+export const LONG_DESCRIPTION =
+  "Tally is a New Zealand primary industries and marine marketing agency. Outcome-guaranteed brand, reach, recruitment, enquiry and booking campaigns for seafood, boat building and charter, forestry, horticulture, food processing, agribusiness and agritech, plus Instagram growth, banned account recovery and username claims for any New Zealand business. From a single day of capture to running the whole online presence, with the agreed number written into the contract.";
 
 /* Exhaustive keyword set for NZ primary-sector and agency queries. Meta keywords are a weak signal; these also seed on-page copy and FAQ answers. */
 export const KEYWORDS = [
@@ -134,6 +139,13 @@ export const KEYWORDS = [
   "Jonty MacIntyre Tally",
   "Tally NZ marketing agency",
   "Tally marketing New Zealand",
+  // Instagram services, open to any NZ business
+  "Instagram growth agency NZ",
+  "Instagram management New Zealand",
+  "social media management NZ",
+  "banned Instagram account recovery NZ",
+  "Instagram account disabled New Zealand",
+  "Instagram username claim NZ",
   // Service modifiers
   "guaranteed marketing results NZ",
   "lead generation agribusiness NZ",
@@ -221,7 +233,7 @@ export function organizationJsonLd() {
     legalName: "Tally",
     alternateName: ["Tally NZ", "Tally New Zealand"],
     slogan: "We sell the tally, not the footage.",
-    description: DEFAULT_DESCRIPTION,
+    description: LONG_DESCRIPTION,
     url: SITE_URL,
     logo: {
       "@type": "ImageObject",
@@ -285,6 +297,10 @@ export function organizationJsonLd() {
       "Agritech marketing",
       "Agribusiness marketing",
       "Outcome-guaranteed marketing",
+      "Instagram growth",
+      "Instagram account recovery",
+      "Instagram username claims",
+      "Social media management",
     ],
     serviceType: [
       "Primary industries marketing",
@@ -296,6 +312,9 @@ export function organizationJsonLd() {
       "Lead generation and enquiry campaigns",
       "Booking generation campaigns",
       "Performance marketing for agribusiness",
+      "Instagram growth and management",
+      "Banned Instagram account recovery",
+      "Instagram username claims",
     ],
     makesOffer: [
       {

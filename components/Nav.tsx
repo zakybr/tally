@@ -17,7 +17,7 @@ import { PEOPLE } from "@/lib/contact";
   hover-only menu is unreachable on a touch screen at desktop width.
 */
 
-type MenuId = "sectors" | "about";
+type MenuId = "sectors" | "instagram" | "about";
 
 const MENUS: { id: MenuId; label: string; blurb: string; links: { href: string; label: string }[] }[] = [
   {
@@ -30,6 +30,16 @@ const MENUS: { id: MenuId; label: string; blurb: string; links: { href: string; 
       { href: "/forestry-marketing", label: "Forestry & wood" },
       { href: "/horticulture-marketing", label: "Horticulture" },
       { href: "/primary-industries-marketing", label: "All sectors" },
+    ],
+  },
+  {
+    id: "instagram",
+    label: "Instagram",
+    blurb: "Banned, squatted or stalled. Same team, same straight answer.",
+    links: [
+      { href: "/instagram-account-recovery", label: "Banned account recovery" },
+      { href: "/instagram-username-claims", label: "Username claims" },
+      { href: "/instagram-growth", label: "Instagram growth" },
     ],
   },
   {

@@ -6,15 +6,29 @@ import TallyMark from "@/components/TallyMark";
 import OnePagerGate from "@/components/OnePagerGate";
 import type { Vertical } from "@/lib/verticals";
 import { VERTICALS } from "@/lib/verticals";
+import type { Service } from "@/lib/services";
+import { SERVICES } from "@/lib/services";
 import { SITE_URL, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
 
-export default function VerticalPage({ vertical }: { vertical: Vertical }) {
-  const others = VERTICALS.filter((v) => v.slug !== vertical.slug);
+/*
+  One layout for two kinds of page. A sector page sits under primary industries
+  and links across the sectors; a service page (the Instagram work) sits at the
+  root, links across the services, leads with its own CTA and drops the
+  guarantee one-pager, which is written for primary-sector procurement.
+*/
+export default function VerticalPage({ vertical }: { vertical: Vertical | Service }) {
+  const service = "cta" in vertical ? vertical : null;
+  const others = service
+    ? SERVICES.filter((s) => s.slug !== vertical.slug)
+    : VERTICALS.filter((v) => v.slug !== vertical.slug);
+  const cta = service?.cta ?? { label: "Start the Proof", href: "/contact" };
   const jsonLd = [
     faqJsonLd(vertical.faqs),
     breadcrumbJsonLd([
       { name: "Home", path: "/" },
-      { name: "Primary industries marketing", path: "/primary-industries-marketing" },
+      ...(service
+        ? []
+        : [{ name: "Primary industries marketing", path: "/primary-industries-marketing" }]),
       { name: vertical.shortName, path: vertical.path },
     ]),
     {
@@ -38,7 +52,7 @@ export default function VerticalPage({ vertical }: { vertical: Vertical }) {
           </h1>
           <p className="mt-7 max-w-[52ch] text-lg leading-[1.55] text-ink-2">{vertical.intro}</p>
           <div className="mt-9 flex flex-wrap gap-4">
-            <Pill href="/contact">Start the Proof</Pill>
+            <Pill href={cta.href}>{cta.label}</Pill>
             <BookCall source={vertical.slug} />
           </div>
         </header>
@@ -58,7 +72,7 @@ export default function VerticalPage({ vertical }: { vertical: Vertical }) {
 
         <section className="mt-24 border-t rule-hair pt-16">
           <h2 className="font-sans text-3xl font-semibold tracking-tight text-ink">
-            Outcomes we guarantee
+            {service?.outcomesHeading ?? "Outcomes we guarantee"}
           </h2>
           <div className="mt-12 divide-y divide-[var(--w-hair)]">
             {vertical.outcomes.map((o) => (
@@ -96,21 +110,30 @@ export default function VerticalPage({ vertical }: { vertical: Vertical }) {
         <section className="mt-24 grid gap-12 border-t rule-hair pt-16 lg:grid-cols-2 lg:gap-20">
           <div className="bg-sheet-2 p-8 md:p-10">
             <h2 className="font-sans text-2xl font-semibold tracking-tight text-ink">
-              Tell us the number for {vertical.shortName.toLowerCase()}.
+              {service
+                ? "Tell us what happened to the account."
+                : `Tell us the number for ${vertical.shortName.toLowerCase()}.`}
             </h2>
             <p className="mt-4 text-[0.9375rem] leading-[1.7] text-ink-2">
-              Qualify in a few minutes, or book a 30-minute Zoom call via Calendly.
+              {service
+                ? "Call or text Zak on 022 305 3853, or book a 30-minute Zoom call via Calendly. The first read is free."
+                : "Qualify in a few minutes, or book a 30-minute Zoom call via Calendly."}
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <Pill href="/contact">Start the Proof</Pill>
+              <Pill href={cta.href}>{cta.label}</Pill>
               <BookCall source={`${vertical.slug}_cta`} />
             </div>
           </div>
-          <OnePagerGate />
+          {service ? null : <OnePagerGate />}
         </section>
 
-        <nav className="mt-24 border-t rule-hair pt-10" aria-label="Related sectors">
-          <div className="mono-label mb-4 text-ink-2">Related sectors</div>
+        <nav
+          className="mt-24 border-t rule-hair pt-10"
+          aria-label={service ? "Related services" : "Related sectors"}
+        >
+          <div className="mono-label mb-4 text-ink-2">
+            {service ? "Related services" : "Related sectors"}
+          </div>
           <div className="flex flex-wrap gap-4">
             {others.map((v) => (
               <Link
@@ -125,7 +148,7 @@ export default function VerticalPage({ vertical }: { vertical: Vertical }) {
               href="/primary-industries-marketing"
               className="mono-label link-wipe text-ink-3 transition-colors hover:text-ink"
             >
-              All primary industries
+              {service ? "Primary industries marketing" : "All primary industries"}
             </Link>
           </div>
         </nav>

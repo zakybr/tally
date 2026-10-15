@@ -12,6 +12,12 @@ const sectorLinks = [
   { href: "/primary-industries-marketing", label: "All sectors" },
 ];
 
+const instagramLinks = [
+  { href: "/instagram-account-recovery", label: "Banned account recovery" },
+  { href: "/instagram-username-claims", label: "Username claims" },
+  { href: "/instagram-growth", label: "Instagram growth" },
+];
+
 const companyLinks = [
   { href: "/about", label: "About" },
   { href: "/guarantee", label: "The guarantee" },
@@ -94,6 +100,15 @@ export default function FooterCta() {
             <nav aria-label="Sectors">
               <h2 className={colHead}>Sectors</h2>
               {sectorLinks.map((l) => (
+                <Link key={l.href} href={l.href} className={colLink}>
+                  {l.label}
+                </Link>
+              ))}
+            </nav>
+
+            <nav aria-label="Instagram">
+              <h2 className={colHead}>Instagram</h2>
+              {instagramLinks.map((l) => (
                 <Link key={l.href} href={l.href} className={colLink}>
                   {l.label}
                 </Link>

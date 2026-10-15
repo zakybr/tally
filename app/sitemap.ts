@@ -1,9 +1,15 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/seo";
 import { VERTICALS } from "@/lib/verticals";
+import { SERVICES } from "@/lib/services";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  /*
+    A fixed content date, not new Date(). A lastmod that changes on every
+    request tells Google nothing, so it learns to ignore the field. Bump this
+    when page copy actually changes.
+  */
+  const now = new Date("2026-10-15");
   return [
     {
       url: `${SITE_URL}/`,
@@ -19,6 +25,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...VERTICALS.map((v) => ({
       url: `${SITE_URL}${v.path}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    })),
+    ...SERVICES.map((s) => ({
+      url: `${SITE_URL}${s.path}`,
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.9,

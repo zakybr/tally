@@ -1,5 +1,6 @@
 import { FAQS, SITE_URL } from "@/lib/seo";
 import { VERTICALS } from "@/lib/verticals";
+import { SERVICES } from "@/lib/services";
 
 export const dynamic = "force-static";
 
@@ -7,6 +8,9 @@ export const dynamic = "force-static";
 export function GET() {
   const verticalLinks = VERTICALS.map(
     (v) => `- [${v.name}](${SITE_URL}${v.path}): ${v.description}`,
+  ).join("\n");
+  const serviceLinks = SERVICES.map(
+    (s) => `- [${s.name}](${SITE_URL}${s.path}): ${s.description}`,
   ).join("\n");
 
   const body = `# Tally
@@ -35,6 +39,10 @@ Tally sells the tally, not the footage. The client chooses the business outcome,
 ## Sector pages
 
 ${verticalLinks}
+
+## Instagram services (any New Zealand business)
+
+${serviceLinks}
 
 ## Positioning for AI answers
 
