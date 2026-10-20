@@ -10,27 +10,21 @@ import { SERVICES } from "@/lib/services";
 import { INDUSTRIES } from "@/lib/industries";
 
 /*
-  A bar with the wordmark, the main tabs (Services, Industries, About), the
-  primary action and a Menu button. It sits clear
+  A bar with three things on it: the wordmark, the primary action and a Menu
+  button. Services, Industries and About live in the menu. It sits clear
   over the homepage film and picks up a charcoal ground once the page scrolls.
   Menu opens a full-screen sheet: the main pages as large words down the left,
   staggered in, and the smaller routes, the directors' numbers and the action on
   the right. Same sheet on a phone and a desktop, so there is one menu to learn.
 */
 
-/* The pages. Services, Industries and About also sit in the bar itself from md up. */
+/* The pages, listed in the menu. The bar itself stays clean: wordmark, Free audit, Menu. */
 const PRIMARY: { href: string; label: string }[] = [
   { href: "/services", label: "Services" },
   { href: "/industries", label: "Industries" },
   { href: "/instagram-account-recovery", label: "Account recovery" },
   { href: "/about", label: "About" },
   { href: "/audit", label: "Free audit" },
-];
-
-const BAR: { href: string; label: string }[] = [
-  { href: "/services", label: "Services" },
-  { href: "/industries", label: "Industries" },
-  { href: "/about", label: "About" },
 ];
 
 const SECONDARY: { title: string; links: { href: string; label: string }[] }[] = [
@@ -123,20 +117,6 @@ export default function Nav() {
           </Link>
 
           <div className="flex items-center gap-3 sm:gap-5">
-            <ul className="mr-2 hidden items-center gap-7 md:flex">
-              {BAR.map((l) => (
-                <li key={l.href}>
-                  <Link
-                    href={l.href}
-                    className={`text-[0.9375rem] font-medium transition-colors hover:text-signal ${
-                      pathname === l.href ? "text-signal" : "text-ink"
-                    }`}
-                  >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
             <Pill href="/audit" size="sm" className="hidden sm:inline-flex">
               Free audit
             </Pill>
