@@ -6,53 +6,45 @@ import { usePathname } from "next/navigation";
 import TallyMark from "@/components/TallyMark";
 import Pill from "@/components/Pill";
 import { PEOPLE } from "@/lib/contact";
+import { SERVICES } from "@/lib/services";
+import { INDUSTRIES } from "@/lib/industries";
 
 /*
-  A bar with three things on it, and one door to everything else.
-
-  The bar is the wordmark, the primary action and a Menu button. It sits clear
+  A bar with the wordmark, the main tabs (Services, Industries, About), the
+  primary action and a Menu button. It sits clear
   over the homepage film and picks up a charcoal ground once the page scrolls.
   Menu opens a full-screen sheet: the main pages as large words down the left,
   staggered in, and the smaller routes, the directors' numbers and the action on
   the right. Same sheet on a phone and a desktop, so there is one menu to learn.
 */
 
+/* The pages. Services, Industries and About also sit in the bar itself from md up. */
 const PRIMARY: { href: string; label: string }[] = [
-  { href: "/instagram-growth", label: "Instagram growth" },
-  { href: "/marine-marketing", label: "Marine" },
-  { href: "/primary-industries-marketing", label: "Primary industries" },
-  { href: "/audit", label: "Free audit" },
-  { href: "/guides", label: "Guides" },
+  { href: "/services", label: "Services" },
+  { href: "/industries", label: "Industries" },
+  { href: "/instagram-account-recovery", label: "Account recovery" },
   { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "/audit", label: "Free audit" },
+];
+
+const BAR: { href: string; label: string }[] = [
+  { href: "/services", label: "Services" },
+  { href: "/industries", label: "Industries" },
+  { href: "/about", label: "About" },
 ];
 
 const SECONDARY: { title: string; links: { href: string; label: string }[] }[] = [
   {
-    title: "Instagram help",
-    links: [
-      { href: "/instagram-account-recovery", label: "Banned account recovery" },
-      { href: "/instagram-username-claims", label: "Username claims" },
-    ],
+    title: "Services",
+    links: SERVICES.map((sv) => ({ href: `/services#${sv.id}`, label: sv.name })),
   },
   {
-    title: "Sectors",
-    links: [
-      { href: "/seafood-aquaculture-marketing", label: "Seafood & aquaculture" },
-      { href: "/forestry-marketing", label: "Forestry & wood" },
-      { href: "/horticulture-marketing", label: "Horticulture" },
-    ],
-  },
-  {
-    title: "Working with us",
-    links: [
-      { href: "/audit", label: "Get a free audit" },
-      { href: "/contact", label: "Contact" },
-    ],
+    title: "Industries",
+    links: INDUSTRIES.map((i) => ({ href: `/industries#${i.id}`, label: i.name })),
   },
 ];
 
-/* Root-hash routes need a real anchor so /about to /#services is a full navigation. */
+/* Hash routes need a real anchor so cross-page section links are a full navigation. */
 function NavLink({
   href,
   className,
@@ -131,6 +123,20 @@ export default function Nav() {
           </Link>
 
           <div className="flex items-center gap-3 sm:gap-5">
+            <ul className="mr-2 hidden items-center gap-7 md:flex">
+              {BAR.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    className={`text-[0.9375rem] font-medium transition-colors hover:text-signal ${
+                      pathname === l.href ? "text-signal" : "text-ink"
+                    }`}
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
             <Pill href="/audit" size="sm" className="hidden sm:inline-flex">
               Free audit
             </Pill>
@@ -218,7 +224,7 @@ export default function Nav() {
                 </Pill>
               </div>
 
-              <div className="grid gap-8 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3">
+              <div className="grid gap-8 sm:grid-cols-2">
                 {SECONDARY.map((g) => (
                   <div key={g.title}>
                     <div className="mono-label text-ink-3">{g.title}</div>

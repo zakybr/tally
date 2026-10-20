@@ -2,26 +2,22 @@ import Link from "next/link";
 import TallyMark from "@/components/TallyMark";
 import CtaPair from "@/components/CtaPair";
 import { PEOPLE } from "@/lib/contact";
+import { SERVICES } from "@/lib/services";
+import { INDUSTRIES } from "@/lib/industries";
 
-const sectorLinks = [
-  { href: "/seafood-aquaculture-marketing", label: "Seafood & aquaculture" },
-  { href: "/marine-marketing", label: "Marine & charter" },
-  { href: "/forestry-marketing", label: "Forestry & wood" },
-  { href: "/horticulture-marketing", label: "Horticulture" },
-  { href: "/primary-industries-marketing", label: "All sectors" },
-];
+/* Footer columns mirror the menu: services, industries, company. */
+const sectorLinks = INDUSTRIES.map((i) => ({ href: `/industries#${i.id}`, label: i.name }));
 
-const instagramLinks = [
-  { href: "/instagram-account-recovery", label: "Banned account recovery" },
-  { href: "/instagram-username-claims", label: "Username claims" },
-  { href: "/instagram-growth", label: "Instagram growth" },
-  { href: "/guides", label: "Guides" },
-];
+const instagramLinks = SERVICES.map((sv) => ({
+  href: sv.id === "account-recovery" ? "/instagram-account-recovery" : `/services#${sv.id}`,
+  label: sv.name,
+}));
 
 const companyLinks = [
+  { href: "/services", label: "Services" },
+  { href: "/industries", label: "Industries" },
   { href: "/about", label: "About" },
   { href: "/audit", label: "Free audit" },
-  { href: "/contact", label: "Contact" },
 ];
 
 const legalLinks = [
@@ -92,8 +88,8 @@ export default function FooterCta() {
               </a>
             </div>
 
-            <nav aria-label="Sectors">
-              <h2 className={colHead}>Sectors</h2>
+            <nav aria-label="Industries">
+              <h2 className={colHead}>Industries</h2>
               {sectorLinks.map((l) => (
                 <Link key={l.href} href={l.href} className={colLink}>
                   {l.label}
@@ -101,8 +97,8 @@ export default function FooterCta() {
               ))}
             </nav>
 
-            <nav aria-label="Instagram">
-              <h2 className={colHead}>Instagram</h2>
+            <nav aria-label="Services">
+              <h2 className={colHead}>Services</h2>
               {instagramLinks.map((l) => (
                 <Link key={l.href} href={l.href} className={colLink}>
                   {l.label}

@@ -10,15 +10,26 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ["framer-motion", "lenis"],
   },
   /*
-    The guarantee pages are retired: the offer is now a free audit and an
-    outcome picked together. Permanent redirects pass their links and rankings
-    to /audit instead of leaving 404s.
+    Retired pages. Permanent redirects pass their links and rankings to the
+    page or section that replaced them instead of leaving 404s.
   */
   async redirects() {
     return [
       { source: "/guarantee", destination: "/audit", permanent: true },
       { source: "/proof", destination: "/audit", permanent: true },
       { source: "/docs/tally-guarantee-one-pager.pdf", destination: "/audit", permanent: true },
+      /* Site condensed to fewer pages: old URLs land on the section that replaced them. */
+      { source: "/contact", destination: "/audit", permanent: true },
+      { source: "/instagram-growth", destination: "/services#organic-growth", permanent: true },
+      { source: "/instagram-username-claims", destination: "/instagram-account-recovery", permanent: true },
+      { source: "/marine-marketing", destination: "/industries#marine", permanent: true },
+      { source: "/primary-industries-marketing", destination: "/industries#primary-industries", permanent: true },
+      { source: "/seafood-aquaculture-marketing", destination: "/industries#primary-industries", permanent: true },
+      { source: "/forestry-marketing", destination: "/industries#primary-industries", permanent: true },
+      { source: "/horticulture-marketing", destination: "/industries#primary-industries", permanent: true },
+      { source: "/guides/grow-business-instagram-new-zealand", destination: "/services#organic-growth", permanent: true },
+      { source: "/guides/:slug", destination: "/instagram-account-recovery", permanent: true },
+      { source: "/guides", destination: "/instagram-account-recovery", permanent: true },
     ];
   },
 };

@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Arrow from "@/components/Arrow";
 import CtaPair from "@/components/CtaPair";
-import { GUIDES } from "@/lib/guides";
+import { SERVICES } from "@/lib/services";
+import { INDUSTRIES } from "@/lib/industries";
 import tileConsumer from "@/public/images/tile-consumer.jpg";
 import tileMarine from "@/public/images/tile-marine.jpg";
 import tilePrimary from "@/public/images/sector-seafood.jpg";
@@ -74,39 +75,12 @@ export function Stats() {
   );
 }
 
-/* 3. Capabilities, light band, tinted cards. */
-const CAPABILITIES = [
-  {
-    title: "Instagram growth",
-    body: "Organic growth from the team behind 100 million views. We find the formats your audience already watches and test hooks every week.",
-    href: "/instagram-growth",
-  },
-  {
-    title: "Content & capture",
-    body: "We come to the boat, the showroom or the shop floor and shoot the real thing. Reels, stills and ad cuts you own outright.",
-    href: "/audit",
-  },
-  {
-    title: "Paid social",
-    body: "Meta and Instagram ads that run through your own account, transparent to the dollar and judged on enquiries, not clicks.",
-    href: "/audit",
-  },
-  {
-    title: "Bookings & enquiries",
-    body: "Charter bookings, sea trials, quote requests and demo calls. Aimed at the number that pays, not at video output.",
-    href: "/marine-marketing",
-  },
-  {
-    title: "Account recovery",
-    body: "Banned or disabled business account, or someone sitting on your name. We handle it for you through our Meta representatives.",
-    href: "/instagram-account-recovery",
-  },
-  {
-    title: "Recruitment campaigns",
-    body: "Crews, plants, yards and seasonal rosters. Qualified applications for the roles that never quite fill.",
-    href: "/primary-industries-marketing",
-  },
-];
+/* 3. Services, light band, tinted cards, each linking to its section on /services. */
+const CAPABILITIES = SERVICES.map((sv) => ({
+  title: sv.name,
+  body: sv.short,
+  href: sv.id === "account-recovery" ? "/instagram-account-recovery" : `/services#${sv.id}`,
+}));
 
 export function Capabilities() {
   return (
@@ -115,8 +89,8 @@ export function Capabilities() {
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <h2 className="display max-w-[14ch] text-[3rem] text-ink md:text-[4.5rem]">What we do</h2>
           <p className="max-w-[44ch] text-[1.0625rem] leading-[1.6] text-ink-2">
-            Six things, one rule: we pick the outcome that actually moves your business, not a pile
-            of video with no clear return.
+            Six services, one rule: we pick the outcome that actually moves your business, not a
+            pile of video with no clear return.
           </p>
         </div>
         <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -124,7 +98,7 @@ export function Capabilities() {
             <Link
               key={c.title}
               href={c.href}
-              className="group flex min-h-[19rem] flex-col rounded-2xl bg-sheet-2 p-8 transition-colors duration-300 hover:bg-sheet-3 md:p-10"
+              className="group flex min-h-[15rem] flex-col rounded-2xl bg-sheet-2 p-8 transition-colors duration-300 hover:bg-sheet-3 md:p-10"
             >
               <span className="mono-label text-signal">{String(i + 1).padStart(2, "0")}</span>
               <h3 className="display mt-6 text-[2rem] text-ink md:text-[2.375rem]">{c.title}</h3>
@@ -141,30 +115,18 @@ export function Capabilities() {
   );
 }
 
-/* 4. Who it is for, three image tiles. */
-const SECTORS = [
-  {
-    title: "Consumer brands",
-    body: "Products and places worth watching. Reels-first content and Instagram growth.",
-    href: "/instagram-growth",
-    img: tileConsumer,
-    alt: "Orange and blue performance boat seating, shot close for Instagram",
-  },
-  {
-    title: "Marine",
-    body: "Dealers, clubs, charters and yards. Bookings, sea trials and enquiries before summer.",
-    href: "/marine-marketing",
-    img: tileMarine,
-    alt: "White day boat at anchor in a New Zealand bay",
-  },
-  {
-    title: "Primary industries",
-    body: "Seafood, forestry, horticulture and processing. Staff, reach and enquiries.",
-    href: "/primary-industries-marketing",
-    img: tilePrimary,
-    alt: "Commercial fishing crew at work on deck",
-  },
-];
+/* 4. Who it is for, three image tiles, each linking to its section on /industries. */
+const TILE_IMAGES = {
+  consumer: { img: tileConsumer, alt: "Orange and blue performance boat seating, shot close for Instagram" },
+  marine: { img: tileMarine, alt: "White day boat at anchor in a New Zealand bay" },
+  "primary-industries": { img: tilePrimary, alt: "Commercial fishing crew at work on deck" },
+} as const;
+const SECTORS = INDUSTRIES.map((ind) => ({
+  title: ind.name,
+  body: ind.short,
+  href: `/industries#${ind.id}`,
+  ...TILE_IMAGES[ind.id as keyof typeof TILE_IMAGES],
+}));
 
 export function Sectors() {
   return (
@@ -240,42 +202,6 @@ export function HowItWorks() {
           ))}
         </ol>
         <CtaPair source="home_how" className="mt-14" />
-      </div>
-    </section>
-  );
-}
-
-/* 6. Guides, the latest three. */
-export function Guides() {
-  const latest = GUIDES.slice(0, 3);
-  return (
-    <section className="bg-sheet py-24 md:py-32">
-      <div className={wrap}>
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <h2 className="display max-w-[14ch] text-[3rem] text-ink md:text-[4.5rem]">Guides</h2>
-          <TextLink href="/guides" className="text-signal">
-            All guides
-          </TextLink>
-        </div>
-        <div className="mt-14 grid gap-4 md:grid-cols-3">
-          {latest.map((g) => (
-            <Link
-              key={g.slug}
-              href={g.path}
-              className="group flex flex-col rounded-2xl bg-sheet-2 p-8 transition-colors duration-300 hover:bg-sheet-3"
-            >
-              <span className="mono-label text-ink-3">Guide</span>
-              <h3 className="mt-5 text-[1.375rem] font-semibold leading-[1.25] tracking-[-0.02em] text-ink">
-                {g.shortName}
-              </h3>
-              <p className="mt-3 text-[0.9375rem] leading-[1.6] text-ink-2">{g.description}</p>
-              <span className="mt-auto inline-flex items-center gap-3 pt-8 text-[0.9375rem] font-semibold text-ink">
-                Read
-                <Arrow className="transition-transform duration-300 group-hover:translate-x-1" />
-              </span>
-            </Link>
-          ))}
-        </div>
       </div>
     </section>
   );

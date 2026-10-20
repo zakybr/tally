@@ -2,7 +2,6 @@ import Nav from "@/components/Nav";
 import HeroFilm from "@/components/home/HeroFilm";
 import {
   Capabilities,
-  Guides,
   HowItWorks,
   Sectors,
   Statement,
@@ -13,8 +12,8 @@ import { FAQS, faqJsonLd } from "@/lib/seo";
 
 /*
   Reading order is the sales order: the film and the claim, what we believe,
-  what we do, the proof, who it is for, how it works and what we have written,
-  with the free audit and a call never more than a scroll away. One argument per band, light and charcoal in turn.
+  what we do, the proof, who it is for and how it works, with the free audit
+  and a call never more than a scroll away. One argument per band, light and charcoal in turn.
 */
 export default function Home() {
   return (
@@ -26,7 +25,6 @@ export default function Home() {
       <Stats />
       <Sectors />
       <HowItWorks />
-      <Guides />
       <FooterCta />
       <script
         type="application/ld+json"

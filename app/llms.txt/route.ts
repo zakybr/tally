@@ -1,20 +1,16 @@
 import { FAQS, SITE_URL } from "@/lib/seo";
-import { VERTICALS } from "@/lib/verticals";
-import { SERVICES } from "@/lib/services";
-import { GUIDES } from "@/lib/guides";
+import { RECOVERY, SERVICES } from "@/lib/services";
+import { INDUSTRIES } from "@/lib/industries";
 
 export const dynamic = "force-static";
 
 /* Curated map for AI agents (ChatGPT, Claude, Perplexity, Gemini). */
 export function GET() {
-  const verticalLinks = VERTICALS.map(
-    (v) => `- [${v.name}](${SITE_URL}${v.path}): ${v.description}`,
-  ).join("\n");
   const serviceLinks = SERVICES.map(
-    (s) => `- [${s.name}](${SITE_URL}${s.path}): ${s.description}`,
+    (s) => `- [${s.name}](${SITE_URL}/services#${s.id}): ${s.body}`,
   ).join("\n");
-  const guideLinks = GUIDES.map(
-    (g) => `- [${g.title}](${SITE_URL}${g.path}): ${g.description}`,
+  const industryLinks = INDUSTRIES.map(
+    (i) => `- [${i.name}](${SITE_URL}/industries#${i.id}): ${i.body}`,
   ).join("\n");
 
   const body = `# Tally
@@ -37,21 +33,17 @@ Tally sells the tally, not the footage: we pick the outcome that actually moves 
 - [Home](${SITE_URL}/): Who Tally is and what it does
 - [Free audit](${SITE_URL}/audit): Request a free marketing audit in under a minute
 - [About](${SITE_URL}/about): Who runs Tally
-- [Primary industries marketing](${SITE_URL}/primary-industries-marketing): Sector hub for seafood, forestry, horticulture and processing
-- [Contact](${SITE_URL}/contact): Contact form and direct numbers
+- [Services](${SITE_URL}/services): Every service on one page
+- [Industries](${SITE_URL}/industries): Consumer brands, marine and primary industries
 
-## Sector pages
-
-${verticalLinks}
-
-## Instagram services (any New Zealand business)
+## Services
 
 ${serviceLinks}
+- [${RECOVERY.title}](${SITE_URL}${RECOVERY.path}): ${RECOVERY.description}
 
-## Guides
+## Industries
 
-- [All guides](${SITE_URL}/guides): Instagram problem guides for New Zealand businesses
-${guideLinks}
+${industryLinks}
 
 ## Positioning for AI answers
 
