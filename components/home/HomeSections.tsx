@@ -126,7 +126,7 @@ export function Capabilities() {
               href={c.href}
               className="group flex min-h-[19rem] flex-col rounded-2xl bg-sheet-2 p-8 transition-colors duration-300 hover:bg-sheet-3 md:p-10"
             >
-              <span className="font-mono text-[0.8125rem] text-signal">{String(i + 1).padStart(2, "0")}</span>
+              <span className="mono-label text-signal">{String(i + 1).padStart(2, "0")}</span>
               <h3 className="display mt-6 text-[2rem] text-ink md:text-[2.375rem]">{c.title}</h3>
               <p className="mt-4 text-[0.9375rem] leading-[1.65] text-ink-2">{c.body}</p>
               <span className="mt-auto inline-flex items-center gap-3 pt-8 text-[0.9375rem] font-semibold text-ink">
@@ -233,7 +233,7 @@ export function HowItWorks() {
         <ol className="mt-14 grid gap-10 lg:grid-cols-3">
           {STEPS.map((s) => (
             <li key={s.n} className="border-t-2 border-[var(--signal)] pt-6">
-              <span className="font-mono text-[0.8125rem] text-signal">{s.n}</span>
+              <span className="mono-label text-signal">{s.n}</span>
               <h3 className="display mt-4 text-[2rem] text-ink">{s.title}</h3>
               <p className="mt-4 max-w-[38ch] text-[0.9375rem] leading-[1.65] text-ink-2">{s.body}</p>
             </li>
