@@ -19,7 +19,6 @@ const nextConfig: NextConfig = {
       { source: "/proof", destination: "/audit", permanent: true },
       { source: "/docs/tally-guarantee-one-pager.pdf", destination: "/audit", permanent: true },
       /* Site condensed to fewer pages: old URLs land on the section that replaced them. */
-      { source: "/contact", destination: "/audit", permanent: true },
       { source: "/instagram-growth", destination: "/services#organic-growth", permanent: true },
       { source: "/instagram-username-claims", destination: "/instagram-account-recovery", permanent: true },
       { source: "/marine-marketing", destination: "/industries#marine", permanent: true },

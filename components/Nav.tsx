@@ -24,6 +24,7 @@ const PRIMARY: { href: string; label: string }[] = [
   { href: "/industries", label: "Industries" },
   { href: "/instagram-account-recovery", label: "Account recovery" },
   { href: "/about", label: "About" },
+  { href: "/contact", label: "Book a call" },
   { href: "/audit", label: "Free audit" },
 ];
 

@@ -17,6 +17,7 @@ const companyLinks = [
   { href: "/services", label: "Services" },
   { href: "/industries", label: "Industries" },
   { href: "/about", label: "About" },
+  { href: "/contact", label: "Book a call" },
   { href: "/audit", label: "Free audit" },
 ];
 

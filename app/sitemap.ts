@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page("/audit", 0.95),
     page("/industries", 0.9),
     page("/instagram-account-recovery", 0.9),
+    page("/contact", 0.85),
     page("/about", 0.8),
     page("/privacy", 0.2, "yearly"),
     page("/terms", 0.2, "yearly"),
