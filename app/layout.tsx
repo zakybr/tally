@@ -113,7 +113,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Plain inline script so it runs while <head> parses, before first paint: next/script's beforeInteractive only runs once the Next runtime boots. Sets data-intro on <html>. */}
+        {/* Plain inline script so it runs while <head> parses, before first paint: next/script's beforeInteractive only runs once the Next runtime boots. Sets data-intro="calm" on <html> for reduced motion. */}
         <script id="intro-skip" dangerouslySetInnerHTML={{ __html: INTRO_SKIP }} />
         <Analytics />
       </head>

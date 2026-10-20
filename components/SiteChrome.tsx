@@ -6,6 +6,7 @@ import UtmCapture from "@/components/UtmCapture";
 import MetaPixel from "@/components/MetaPixel";
 import StickyCta from "@/components/StickyCta";
 import { LeadCaptureProvider } from "@/components/LeadCapture";
+import Intro from "@/components/home/Intro";
 
 /*
   The marketing site runs Lenis smooth scroll, first-touch UTM capture and the
@@ -19,6 +20,8 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
 
   return (
     <LeadCaptureProvider>
+      {/* Keyed by path so the intro replays on every page change, not just a full load. */}
+      <Intro key={pathname} />
       <UtmCapture />
       <MetaPixel />
       <SmoothScroll>{children}</SmoothScroll>

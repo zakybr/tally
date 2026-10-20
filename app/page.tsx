@@ -1,6 +1,5 @@
 import Nav from "@/components/Nav";
 import HeroFilm from "@/components/home/HeroFilm";
-import Intro from "@/components/home/Intro";
 import {
   Capabilities,
   Guides,
@@ -21,7 +20,6 @@ import { FAQS, faqJsonLd } from "@/lib/seo";
 export default function Home() {
   return (
     <main>
-      <Intro />
       <Nav />
       <HeroFilm />
       <Statement />
