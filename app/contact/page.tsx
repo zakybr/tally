@@ -7,19 +7,20 @@ import TallyMark from "@/components/TallyMark";
 import { PEOPLE } from "@/lib/contact";
 
 export const metadata: Metadata = {
-  title: "Contact | Primary Industries Marketing NZ",
+  title: "Contact Tally | Marketing Agency NZ",
   description:
-    "Qualify for Tally's outcome-guaranteed primary industries marketing in New Zealand. Recruitment, reach and enquiry campaigns for seafood, forestry, horticulture, processing and agritech.",
+    "Contact Tally, a New Zealand marketing agency for consumer and marine brands. Call Zak on 022 305 3853, send a message, or get a free audit.",
   keywords: [
-    "contact primary industries marketing NZ",
+    "contact marketing agency NZ",
+    "Instagram marketing agency contact New Zealand",
     "recruitment marketing agency New Zealand",
     "agribusiness marketing enquiry",
   ],
   alternates: { canonical: "/contact" },
   openGraph: {
-    title: "Contact Tally | Primary Industries Marketing NZ",
+    title: "Contact Tally | Marketing Agency NZ",
     description:
-      "Qualification brief for outcome-guaranteed marketing across New Zealand's primary sector.",
+      "Call, message or get a free audit from Tally, a New Zealand marketing agency.",
     url: "/contact",
   },
 };
@@ -45,11 +46,11 @@ export default function ContactPage() {
           {/* Intro + what happens next */}
           <div className="lg:col-start-1 lg:row-start-1">
             <h1 className="display text-[3rem] text-ink md:text-[4.5rem]">
-              Tell us the number.
+              Let&apos;s talk.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-[1.6] text-ink-2">
-              Tell us what you need more of and we&apos;ll come back within two working days with an
-              honest read on whether we can guarantee it. No cost, no obligation.
+              Tell us what you need more of and we&apos;ll come back within one working day. Or just
+              call, it is usually quicker. No cost, no obligation.
             </p>
 
             <div className="mt-12 border-t rule-hair pt-8">
@@ -116,8 +117,8 @@ export default function ContactPage() {
             <TallyMark size={18} />
           </Link>
           <p className="max-w-2xl font-mono text-[0.6875rem] leading-relaxed text-ink-2">
-            <b className="text-ink">Tally</b>. Primary industries and marine marketing, New Zealand.
-            We guarantee what we control; we never guarantee sales. © 2026 Tally.
+            <b className="text-ink">Tally</b>. Consumer and marine marketing, New Zealand. © 2026
+            Tally.
           </p>
           <nav aria-label="Legal" className="flex flex-wrap gap-x-6 gap-y-2 md:ml-auto">
             <Link

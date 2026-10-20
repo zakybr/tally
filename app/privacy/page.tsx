@@ -44,8 +44,8 @@ const clauses: Clause[] = [
     body: (
       <>
         <p>
-          Our enquiry form asks for the information we need to tell you honestly whether we can
-          guarantee an outcome for your business:
+          Our enquiry form asks for the information we need to understand what your business needs
+          and get back to you:
         </p>
         <ul>
           <li>Your name, email address, company and role</li>
@@ -54,8 +54,8 @@ const clauses: Clause[] = [
           <li>Anything you write in the message field</li>
         </ul>
         <p>
-          The gated guarantee one-pager asks only for a name, work email and company. Everything
-          on both forms is given voluntarily. If you would rather not fill in a form, email{" "}
+          The free audit form asks only for a name and a mobile or email; everything else on it is
+          optional. Everything on our forms is given voluntarily. If you would rather not fill in a form, email{" "}
           <a href="mailto:zak@tallynz.co">zak@tallynz.co</a> or{" "}
           <a href="mailto:jonty@tallynz.co">jonty@tallynz.co</a> directly.
         </p>
@@ -88,7 +88,7 @@ const clauses: Clause[] = [
         <p>
           <strong>What we collect.</strong> We use Google Analytics 4 to see how the site is used:
           pages viewed, approximate location derived from IP address, device and browser type, how
-          you arrived, and interactions such as opening the one-pager or clicking through to book
+          you arrived, and interactions such as sending a form or clicking through to book
           a call. IP addresses are anonymised before Google stores them. We also use the Meta
           pixel, which records the pages you view and whether you send an enquiry, and sets a
           Meta cookie to do so.

@@ -21,7 +21,7 @@ const PRIMARY: { href: string; label: string }[] = [
   { href: "/instagram-growth", label: "Instagram growth" },
   { href: "/marine-marketing", label: "Marine" },
   { href: "/primary-industries-marketing", label: "Primary industries" },
-  { href: "/guarantee", label: "The guarantee" },
+  { href: "/audit", label: "Free audit" },
   { href: "/guides", label: "Guides" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
@@ -46,13 +46,13 @@ const SECONDARY: { title: string; links: { href: string; label: string }[] }[] =
   {
     title: "Working with us",
     links: [
-      { href: "/#pricing", label: "Pricing" },
-      { href: "/proof", label: "Start the Proof" },
+      { href: "/audit", label: "Get a free audit" },
+      { href: "/contact", label: "Contact" },
     ],
   },
 ];
 
-/* Root-hash routes need a real anchor so /about to /#pricing is a full navigation. */
+/* Root-hash routes need a real anchor so /about to /#services is a full navigation. */
 function NavLink({
   href,
   className,
@@ -131,8 +131,8 @@ export default function Nav() {
           </Link>
 
           <div className="flex items-center gap-3 sm:gap-5">
-            <Pill href="/contact" size="sm" className="hidden sm:inline-flex">
-              Let&apos;s talk
+            <Pill href="/audit" size="sm" className="hidden sm:inline-flex">
+              Free audit
             </Pill>
             <button
               type="button"
@@ -210,11 +210,11 @@ export default function Nav() {
               <div>
                 <TallyMark size={28} />
                 <p className="mt-6 max-w-[34ch] text-lg leading-[1.5] text-ink-2">
-                  Consumer and marine marketing from New Zealand, built on Instagram. You name the
-                  number. We write it into the contract.
+                  Consumer and marine marketing from New Zealand, built on 8 years of growing,
+                  monetising and selling Instagram accounts. Start with a free audit, or just call.
                 </p>
-                <Pill href="/contact" className="mt-7">
-                  Let&apos;s talk
+                <Pill href="/audit" className="mt-7">
+                  Get a free audit
                 </Pill>
               </div>
 

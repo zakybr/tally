@@ -7,10 +7,9 @@ import type { Vertical } from "@/lib/verticals";
   and lead with a direct line to Zak, because an owner whose account has just
   gone down wants a person today, not a questionnaire.
 
-  Copy rules for these three. Recovery and handle work is a category full of
-  scams, so every page says plainly what Tally will never do (ask for a
-  password, promise Meta's decision, buy anything from a "Meta insider") and
-  only claims the channels that actually exist.
+  The message on every one: Tally handles the whole process, through our Meta
+  representatives, and the owner does not have to work out the appeal system.
+  Never ask for a password and never promise Meta's decision.
 */
 
 export type Service = Vertical & {
@@ -27,34 +26,31 @@ export const SERVICES: Service[] = [
     eyebrow: "Service · Account recovery",
     title: "Banned Instagram account recovery New Zealand",
     description:
-      "Banned or disabled Instagram business account in New Zealand? Tally runs the appeal through Meta's official channels. Small deposit, success fee only on reinstatement.",
+      "Banned or disabled Instagram business account in New Zealand? Tally handles the whole unban process for you through our Meta representatives. Call now.",
     keywords: [
       "banned Instagram account recovery NZ",
       "Instagram account disabled New Zealand",
       "Instagram business account suspended",
       "recover disabled Instagram account",
       "Instagram account unban service",
-      "Instagram appeal help NZ",
-      "Meta account restricted appeal",
+      "Instagram unban NZ",
+      "Meta account restricted help",
     ],
     intro:
-      "When a business account is disabled, the enquiries, the bookings and years of posts go with it, and Meta's own help pages loop. Tally works banned and disabled Instagram business accounts back through Meta's official appeal and support routes for New Zealand businesses, with a small deposit to open the case and the rest only on reinstatement.",
-    pain: "Most owners get one shot at the in-app appeal, write it in a panic, and get an automated no. Then the internet offers them a stranger who wants the password and a crypto payment. Neither gets an account back. What does is a correctly built case, sent through the right channel, followed up until a human reviews it.",
-    approach:
-      "We start with a free read of the notice you received and tell you on the first call whether the case is worth taking. If it is, we build the appeal evidence, file through the official routes that apply to your account, and chase it. You keep your login the whole time. We never ask for your password, and we never promise Meta's decision, because no one outside Meta can.",
+      "When a business account is banned, the enquiries and years of posts go with it, and Meta's help pages go in circles. You do not have to work it out. Tally handles the whole unban process for you through our Meta representatives, start to finish.",
     outcomesHeading: "What we handle",
     outcomes: [
       {
-        name: "Disabled business accounts",
-        body: "Accounts disabled for a claimed breach of Community Guidelines, including the false positives that catch legitimate businesses.",
+        name: "Banned & disabled accounts",
+        body: "Business accounts disabled for a claimed Community Guidelines breach, including the false positives that catch legitimate businesses.",
       },
       {
-        name: "Suspended and restricted accounts",
-        body: "Accounts that can log in but cannot post, advertise, message or be found, where the restriction is costing you enquiries.",
+        name: "Restricted accounts",
+        body: "Accounts that can log in but cannot post, advertise, message or be found.",
       },
       {
-        name: "Failed first appeals",
-        body: "Cases where the in-app appeal has already come back declined, which is where most owners stop and where a properly built case can still have routes left.",
+        name: "Declined appeals",
+        body: "Cases where you have already appealed and been told no. That is where most owners stop, and where we start.",
       },
     ],
     cta: { label: "Call Zak now", href: "tel:+64223053853" },
@@ -62,42 +58,32 @@ export const SERVICES: Service[] = [
       {
         question: "Can you get my banned Instagram account back?",
         answer:
-          "Often, but no one can promise it, and anyone who does is selling something. Reinstatement is Meta's decision. What Tally controls is the case: reading the notice correctly, building the evidence, filing through every official route open to your account and following up until it is reviewed. That is why most of the fee is paid on reinstatement rather than up front.",
+          "In most cases, yes. We take on the case, prepare it and work it through our Meta representatives until there is a decision. We tell you on the first call whether your case is worth taking, and if it is not, you pay nothing.",
+      },
+      {
+        question: "What do I have to do?",
+        answer:
+          "Very little. Send us the notice you received and answer a few questions on a call. We handle everything after that and keep you updated. You keep your login the whole time and we never ask for your password.",
       },
       {
         question: "How much does Instagram account recovery cost?",
         answer:
-          "A small fixed deposit opens the case and covers assessment and filing. The success fee is only payable if the account is reinstated. Both figures are quoted on the first call, before you pay anything, and depend on the type of account and how far the case has already gone.",
+          "A small deposit opens the case, and the rest is only payable if the account is reinstated. We quote both on the first call before you commit to anything.",
       },
       {
-        question: "Do you need my Instagram password?",
+        question: "How long does it take?",
         answer:
-          "No, and you should not give it to anyone who asks. You keep full control of your login throughout. Appeals are filed by the account owner or through the business's own Meta access, with Tally preparing and managing the case.",
-      },
-      {
-        question: "Why was my Instagram business account disabled?",
-        answer:
-          "Meta usually cites a Community Guidelines or Terms of Use breach and rarely says which post or behaviour triggered it. Common triggers for legitimate businesses include automated detection misreading content, sudden activity spikes, logins from new devices or countries, a linked account being flagged, and third-party apps with access to the account. Knowing which one applies changes how the appeal should be written.",
-      },
-      {
-        question: "How long does it take to recover a disabled Instagram account?",
-        answer:
-          "Anywhere from a few days to several weeks. It depends on the reason given, whether an appeal has already been declined, and which review routes are still open. Tally gives you an honest read of the likely timeline on the first call and updates you as the case moves.",
+          "Anywhere from a few days to a few weeks, depending on why the account was banned and whether an appeal has already been declined. We give you an honest timeline on the first call.",
       },
       {
         question: "My appeal was already rejected. Is it too late?",
         answer:
-          "Not always. A declined in-app appeal closes one route, not necessarily all of them. Whether others remain depends on the account type and the notice, which is exactly what the free first read is for. If no credible route is left, we tell you and you pay nothing.",
+          "Usually not. A declined appeal is the most common situation we take on. Call us and we will tell you straight away whether there is still a way back.",
       },
       {
         question: "Do you handle Facebook pages and Meta ad accounts too?",
         answer:
-          "Ask on the first call. Instagram business accounts are the core of the service. Where a linked Facebook page or Business portfolio is part of the same problem, we will tell you straight away whether it is a case we take.",
-      },
-      {
-        question: "How do I avoid Instagram recovery scams?",
-        answer:
-          "Walk away from anyone who asks for your password or a login code, wants payment in crypto or gift cards, claims to know someone inside Meta, or contacts you first after you posted about being banned. A legitimate service is a named, contactable business, leaves you in control of the account and tells you before you pay whether the case is worth running.",
+          "Yes, where they are part of the same problem. Tell us what is locked on the first call and we will say whether it is a case we take.",
       },
     ],
   },
@@ -109,61 +95,53 @@ export const SERVICES: Service[] = [
     eyebrow: "Service · Username claims",
     title: "Instagram username claims New Zealand",
     description:
-      "Someone holding your business name on Instagram? Tally files username claims for New Zealand businesses through Meta's trademark and impersonation channels. Success-fee based.",
+      "Someone holding your business name on Instagram? Tally handles username claims and impersonation takedowns for New Zealand businesses through our Meta representatives.",
     keywords: [
       "Instagram username claim NZ",
       "claim Instagram handle",
       "get Instagram username back",
       "Instagram trademark username claim",
-      "Instagram impersonation report business",
+      "Instagram impersonation removal business",
       "Instagram handle squatting",
     ],
     intro:
-      "Your business name is on the sign, the website and the trademark register, and someone else is sitting on it on Instagram. Tally files username claims for New Zealand businesses through the routes Meta actually honours, trademark and impersonation, with the case built properly the first time.",
-    pain: "The common advice is to message the holder or ask Instagram to release an inactive handle. The first invites a ransom, and the second is not something Instagram does on request. The routes that work are narrower than people think, and they reward a clean, evidenced filing.",
-    approach:
-      "We check your grounds before you pay anything: whether you hold a registered trademark in New Zealand or elsewhere, whether the account is impersonating your business, and whether it is causing confusion. If there is a credible route, we file it and follow it up. If there is not, we say so, and suggest the handle that will serve you while the brand builds.",
+      "Your business name is on the sign and the website, and someone else is sitting on it on Instagram, or pretending to be you. Tally handles the claim for you through our Meta representatives, so you get your name back without fighting the system yourself.",
     outcomesHeading: "What we handle",
     outcomes: [
       {
-        name: "Trademark-based claims",
-        body: "Handles that use your registered trademark, filed through Meta's intellectual property reporting with the registration evidence assembled for you.",
+        name: "Username claims",
+        body: "Handles that use your business name or registered trademark, claimed back for your business.",
       },
       {
         name: "Impersonation takedowns",
-        body: "Accounts pretending to be your business, using your name, logo or photos to mislead your customers.",
+        body: "Accounts pretending to be your business, using your name, logo or photos to mislead customers.",
       },
       {
-        name: "Grounds check and fallback",
-        body: "An honest read of whether a claim can succeed, and a fallback handle plan when it cannot, so you are not paying to chase a dead end.",
+        name: "A plan B when there is no claim",
+        body: "If the handle cannot be claimed, we tell you straight away and set up the name that will work for you instead.",
       },
     ],
     cta: { label: "Call Zak now", href: "tel:+64223053853" },
     faqs: [
       {
-        question: "Can I get an Instagram username that someone else is using?",
+        question: "Can you get an Instagram username that someone else is using?",
         answer:
-          "Sometimes. Instagram does not hand over a username because it looks inactive or because you want it. It does act where an account infringes a registered trademark or impersonates a business. Tally checks which of those applies to you before any money changes hands.",
+          "Often, yes. Where an account uses your business name or trademark, or is impersonating you, we handle the claim through our Meta representatives. We check your case on the first call before anything is paid.",
       },
       {
-        question: "Do I need a registered trademark to claim a username?",
+        question: "Do I need a registered trademark?",
         answer:
-          "For a trademark claim, yes: a registered mark, in New Zealand through IPONZ or in another country, is the strongest ground. Without one, impersonation is the main route, which only applies if the account is pretending to be your business. If neither fits, we will tell you on the first call.",
+          "It helps, and it is the strongest ground, but it is not the only one. Impersonation cases do not need one. Tell us the handle and we will tell you what applies.",
       },
       {
         question: "How much does a username claim cost?",
         answer:
-          "A small deposit opens the case and covers the grounds check and filing. The success fee is payable only if the username is released or the impersonating account is removed. Both are quoted before you commit.",
+          "A small deposit opens the case, and the rest is only payable if the username is released or the impersonating account is removed. Both are quoted before you commit.",
       },
       {
         question: "Should I just message the person holding my username?",
         answer:
-          "Usually not first. Offering to buy a handle tells the holder it is worth money and can make a later claim harder to argue. Buying and selling usernames also breaks Instagram's terms, which can put the account you end up with at risk.",
-      },
-      {
-        question: "Can you get an inactive Instagram account released?",
-        answer:
-          "Not on request, and be wary of anyone who says they can. Instagram removes inactive accounts on its own schedule and does not take release requests. If the inactive account uses your trademark, a trademark claim may still apply, which is what we check first.",
+          "Usually not. Offering to buy it tells the holder it is worth money and can make the claim harder. Talk to us first.",
       },
     ],
   },
@@ -175,7 +153,7 @@ export const SERVICES: Service[] = [
     eyebrow: "Service · Instagram growth",
     title: "Instagram growth agency New Zealand",
     description:
-      "Instagram growth and management for New Zealand businesses, from a team that has grown accounts past 100 million views. Organic reach, no bought followers, a number agreed upfront.",
+      "Instagram growth and management for New Zealand businesses from a team with 8 years of growing, monetising and selling Instagram accounts. 100M+ views. Free audit.",
     keywords: [
       "Instagram growth agency NZ",
       "Instagram management New Zealand",
@@ -186,56 +164,48 @@ export const SERVICES: Service[] = [
       "organic Instagram growth",
     ],
     intro:
-      "The Tally team has grown Instagram accounts to large followings and past 100 million views, organically. We now run that same system for New Zealand businesses: the strategy, the content, the posting and the weekly read on what is working, aimed at a reach number agreed before we start.",
-    pain: "Most small business accounts post when there is time, measure likes, and wonder why the follower count has not moved in a year. Most social media managers sell a number of posts a month. Neither is a growth system, and posts per month is not a result anyone can bank.",
-    approach:
-      "We find the formats your audience already watches, build a repeatable content system around them, and test hooks every week, killing what underperforms. No bought followers, no engagement pods, nothing that puts the account at risk. You get one update a week against the agreed figure, and the same miss clause as every Tally engagement.",
-    outcomesHeading: "Outcomes we guarantee",
+      "We have spent 8 years growing Instagram accounts, monetising them and selling them, with more than 100 million views along the way. Now we run that system for New Zealand businesses, aimed at the outcome that actually matters to you: enquiries, bookings or sales, not just followers.",
+    outcomesHeading: "What we move",
     outcomes: [
       {
-        name: "Qualified reach",
-        body: "An agreed number of accounts reached in your actual market, measured in Instagram's own insights, not vanity impressions bought elsewhere.",
+        name: "Enquiries & sales from Instagram",
+        body: "DMs, link clicks, bookings and sales traced back to the content that brought them.",
       },
       {
-        name: "Follower growth",
-        body: "Real followers from organic content and Reels, built to keep compounding after the engagement ends.",
+        name: "Reach in your real market",
+        body: "The people who could actually buy from you, measured in Instagram's own insights.",
       },
       {
-        name: "Enquiries from Instagram",
-        body: "Where the account has to sell, a countable number of DMs, link clicks or bookings traced back to content.",
+        name: "Followers that compound",
+        body: "Real followers from organic Reels, built to keep growing after we hand over.",
       },
     ],
-    cta: { label: "Start the Proof", href: "/contact" },
+    cta: { label: "Get a free audit", href: "/audit" },
     faqs: [
       {
         question: "Can you grow my business Instagram account?",
         answer:
-          "That is the service. The team behind Tally has grown accounts to large followings and past 100 million views organically, including @theanalystagenda at 35k followers. We scope a reach or follower figure on the first call and say whether we think it is achievable before you pay anything.",
+          "That is the service. Our team has spent 8 years growing, monetising and selling Instagram accounts, with more than 100 million views. The free audit shows where your account is now and what is worth going after first.",
       },
       {
         question: "Do you buy followers or use engagement pods?",
         answer:
-          "No. Bought followers never engage, so they drag down reach, and they can get an account restricted. Every follower and view we report comes from organic content and is visible in your own Instagram insights.",
+          "No. Bought followers never engage, so they drag reach down, and they can get an account restricted. Everything we report comes from organic content and is visible in your own insights.",
       },
       {
         question: "How much does Instagram management cost in New Zealand?",
         answer:
-          "It depends on the figure being guaranteed and how much content needs making. The engagement starts with a fixed-scope eight-week Proof sprint against one agreed number, then moves to a monthly retainer if it is working. The price is set on the first call, once the target is agreed.",
+          "It depends on the outcome and how much content needs making. We price it on the first call, after the free audit.",
       },
       {
-        question: "How long does it take to grow on Instagram?",
+        question: "Do you only work with marine and primary industries businesses?",
         answer:
-          "Most accounts show movement in reach within the first few weeks of consistent, tested content, and follower growth compounds from there. The eight-week Proof sprint is long enough to see whether the system is working on your account, and short enough that you are not locked in if it is not.",
-      },
-      {
-        question: "Do you only work with primary industries and marine businesses?",
-        answer:
-          "No. Instagram growth is open to any New Zealand business with a product or story worth watching. Primary and marine operators get the added benefit that Tally already shoots on boats, yards, orchards and plants.",
+          "No. Instagram growth is open to any New Zealand business with a product or story worth watching. Consumer brands and marine are where we do most of our work.",
       },
       {
         question: "What if my account has been banned or restricted?",
         answer:
-          "That comes first, because growth on a restricted account is wasted work. Tally also runs banned Instagram account recovery and username claims, so the account can be recovered and then grown by the same team.",
+          "That comes first. We also handle banned account recovery and username claims through our Meta representatives, so the same team can get the account back and then grow it.",
       },
     ],
   },

@@ -5,10 +5,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { attributionPayload, trackEvent } from "@/lib/analytics";
 import { newEventId, trackMeta } from "@/lib/meta-pixel";
-import { SPEND_RANGES } from "@/lib/audit";
+import { AUDIT_GOALS, SPEND_RANGES } from "@/lib/audit";
 
 /*
-  Free enquiry audit request.
+  Free audit request: the one form behind every "free" offer on the site.
+  Only a name and a mobile or email are required, so it takes under a minute;
+  everything else is optional and gets covered on the call.
 
   On success: GA4 audit_request, the Meta Lead with a fresh event_id (the
   server sends the same id to the Conversions API so Meta counts it once),
@@ -64,11 +66,12 @@ export default function AuditForm() {
       }
       trackEvent("audit_request", {
         method: "audit_form",
+        goal: String(data.goal ?? ""),
         monthly_spend: String(data.monthlySpend ?? ""),
         currency: "NZD",
         ...attribution,
       });
-      trackMeta("Lead", { content_name: "enquiry_audit" }, eventId);
+      trackMeta("Lead", { content_name: "free_audit" }, eventId);
       router.push("/audit/thanks");
     } catch (err) {
       setStatus("error");
@@ -96,97 +99,70 @@ export default function AuditForm() {
       </div>
 
       <div>
-        <label className={labelCls} htmlFor="a-business">
-          Business name
+        <label className={labelCls} htmlFor="a-contact">
+          Mobile or email
         </label>
         <input
-          id="a-business"
-          name="businessName"
+          id="a-contact"
+          name="contact"
           required
-          autoComplete="organization"
+          autoComplete="on"
+          placeholder="021 123 4567 or you@business.co.nz"
           className={fieldCls}
         />
       </div>
 
-      <div>
-        <label className={labelCls} htmlFor="a-website">
-          Website
-        </label>
-        <input
-          id="a-website"
-          name="website"
-          type="text"
-          inputMode="url"
-          required
-          autoComplete="url"
-          autoCapitalize="none"
-          spellCheck={false}
-          placeholder="yourbusiness.co.nz"
-          className={fieldCls}
-        />
+      <div className="grid gap-6 sm:grid-cols-2">
+        <div>
+          <label className={labelCls} htmlFor="a-business">
+            Business <span className="normal-case tracking-normal text-ink-3">(optional)</span>
+          </label>
+          <input id="a-business" name="businessName" autoComplete="organization" className={fieldCls} />
+        </div>
+        <div>
+          <label className={labelCls} htmlFor="a-website">
+            Website or Instagram{" "}
+            <span className="normal-case tracking-normal text-ink-3">(optional)</span>
+          </label>
+          <input
+            id="a-website"
+            name="website"
+            autoComplete="url"
+            placeholder="@yourbusiness"
+            className={fieldCls}
+          />
+        </div>
       </div>
 
-      <div>
-        <label className={labelCls} htmlFor="a-email">
-          Email
-        </label>
-        <input
-          id="a-email"
-          name="email"
-          type="email"
-          inputMode="email"
-          required
-          autoComplete="email"
-          autoCapitalize="none"
-          spellCheck={false}
-          className={fieldCls}
-        />
-      </div>
-
-      <div>
-        <label className={labelCls} htmlFor="a-phone">
-          Phone
-        </label>
-        <input
-          id="a-phone"
-          name="phone"
-          type="tel"
-          inputMode="tel"
-          required
-          autoComplete="tel"
-          placeholder="021 123 4567"
-          className={fieldCls}
-        />
-      </div>
-
-      <div>
-        <label className={labelCls} htmlFor="a-enquiry">
-          What counts as an enquiry for you?{" "}
-          <span className="normal-case tracking-normal text-ink-3">(optional)</span>
-        </label>
-        <textarea
-          id="a-enquiry"
-          name="enquiryDefinition"
-          rows={3}
-          placeholder="A quote request, a booked call, a walk-in. Whatever you would count."
-          className={`${fieldCls} resize-y`}
-        />
-      </div>
-
-      <div>
-        <label className={labelCls} htmlFor="a-spend">
-          Monthly marketing spend
-        </label>
-        <select id="a-spend" name="monthlySpend" required defaultValue="" className={fieldCls}>
-          <option value="" disabled>
-            Select a range
-          </option>
-          {SPEND_RANGES.map((v) => (
-            <option key={v} value={v}>
-              {v}
-            </option>
-          ))}
-        </select>
+      <div className="grid gap-6 sm:grid-cols-2">
+        <div>
+          <label className={labelCls} htmlFor="a-goal">
+            What do you want more of?{" "}
+            <span className="normal-case tracking-normal text-ink-3">(optional)</span>
+          </label>
+          <select id="a-goal" name="goal" defaultValue="" className={fieldCls}>
+            <option value="">Choose one</option>
+            {AUDIT_GOALS.map((v) => (
+              <option key={v} value={v}>
+                {v}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label className={labelCls} htmlFor="a-spend">
+            Monthly marketing spend{" "}
+            <span className="normal-case tracking-normal text-ink-3">(optional)</span>
+          </label>
+          <select id="a-spend" name="monthlySpend" defaultValue="" className={fieldCls}>
+            <option value="">Choose a range</option>
+            {SPEND_RANGES.map((v) => (
+              <option key={v} value={v}>
+                {v}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       {status === "error" && (
@@ -200,7 +176,7 @@ export default function AuditForm() {
         disabled={status === "submitting"}
         className="pill pill-solid mono-label inline-flex w-full disabled:cursor-not-allowed disabled:opacity-60"
       >
-        {status === "submitting" ? "Sending" : "Request the free audit"}
+        {status === "submitting" ? "Sending" : "Get my free audit"}
       </button>
       <p className="font-mono text-[0.6875rem] leading-relaxed text-ink-3">
         No cost and no obligation. We use your details to prepare the audit and contact you about

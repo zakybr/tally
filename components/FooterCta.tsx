@@ -1,7 +1,6 @@
 import Link from "next/link";
 import TallyMark from "@/components/TallyMark";
-import BookCall from "@/components/BookCall";
-import Pill from "@/components/Pill";
+import CtaPair from "@/components/CtaPair";
 import { PEOPLE } from "@/lib/contact";
 
 const sectorLinks = [
@@ -21,9 +20,7 @@ const instagramLinks = [
 
 const companyLinks = [
   { href: "/about", label: "About" },
-  { href: "/guarantee", label: "The guarantee" },
-  { href: "/#pricing", label: "Pricing" },
-  { href: "/proof", label: "Proof" },
+  { href: "/audit", label: "Free audit" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -46,16 +43,13 @@ export default function FooterCta() {
         <div className="mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20">
           <div>
             <h2 className="display max-w-[14ch] text-[3.5rem] text-ink md:text-[6rem]">
-              Hold us to the <span className="text-signal">number.</span>
+              Find out what would <span className="text-signal">move the needle.</span>
             </h2>
             <p className="mt-7 max-w-[46ch] text-lg leading-[1.6] text-ink-2">
-              Tell us what you need moved. We will tell you straight whether we can guarantee it,
-              and what it would take. That answer costs you nothing.
+              A free audit of your Instagram, ads and enquiries, and the one outcome worth going
+              after first. Or just call, the detail is easier to cover on the phone.
             </p>
-            <div className="mt-10 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-              <Pill href="/contact">Start the Proof</Pill>
-              <BookCall source="footer_cta" label="Or book a 30-minute call" />
-            </div>
+            <CtaPair source="footer_cta" className="mt-10" />
             <div className="mt-10 flex flex-col gap-2 border-t rule-hair pt-6 sm:flex-row sm:flex-wrap sm:gap-x-10">
               {PEOPLE.map((p) => (
                 <p key={p.email} className="mono-label text-ink-2">

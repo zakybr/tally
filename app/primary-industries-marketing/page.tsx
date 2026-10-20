@@ -1,40 +1,65 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
+import CtaPair from "@/components/CtaPair";
 import TallyMark from "@/components/TallyMark";
-import { SECTORS, TRACKS } from "@/lib/offer";
-import {
-  FAQS,
-  SITE_URL,
-  breadcrumbJsonLd,
-  faqJsonLd,
-} from "@/lib/seo";
+import Arrow from "@/components/Arrow";
+import { VERTICALS } from "@/lib/verticals";
+import { SITE_URL, breadcrumbJsonLd, faqJsonLd, type FaqItem } from "@/lib/seo";
+
+/*
+  Primary industries hub. Short: what we move for primary operators, the four
+  sector pages, a few plain answers for search and AI, then the free audit or
+  a call.
+*/
+
+const DESCRIPTION =
+  "Primary industries marketing in New Zealand: recruitment, reach and enquiry campaigns for seafood, forestry, horticulture and processing, aimed at outcomes. Free audit.";
 
 export const metadata: Metadata = {
   title: "Marketing for Primary Industries NZ",
-  description:
-    "Tally is a primary industries marketing agency in New Zealand. Outcome-guaranteed recruitment, reach and enquiry campaigns for seafood, forestry, horticulture, food processing, agribusiness and agritech.",
+  description: DESCRIPTION,
   keywords: [
     "marketing for primary industries NZ",
     "primary industries marketing New Zealand",
     "primary sector marketing agency",
     "food and fibre marketing NZ",
     "agribusiness marketing agency NZ",
-    "best marketing agencies New Zealand primary sector",
     "seafood marketing New Zealand",
     "forestry marketing NZ",
     "horticulture recruitment marketing",
-    "agritech marketing New Zealand",
   ],
   alternates: { canonical: "/primary-industries-marketing" },
   openGraph: {
     title: "Marketing for Primary Industries NZ | Tally",
     description:
-      "Outcome-guaranteed marketing for New Zealand's primary industries: seafood, forestry, horticulture, processing and agritech.",
+      "Marketing for New Zealand's primary industries aimed at an outcome that moves the business: staff, reach or enquiries.",
     url: "/primary-industries-marketing",
   },
 };
 
+const FAQS: FaqItem[] = [
+  {
+    question: "What is primary industries marketing in New Zealand?",
+    answer:
+      "Marketing for New Zealand's food and fibre sectors: seafood and aquaculture, forestry and wood processing, horticulture, food processing and agribusiness. Most of it is recruitment for hard-to-staff roles, reach with the buyers who decide, and enquiries for suppliers.",
+  },
+  {
+    question: "How is Tally different from other agri marketing agencies?",
+    answer:
+      "Most agri agencies sell creative and monthly content. We start with a free audit, pick the one outcome that would actually move the business, such as qualified applications or enquiries, and aim everything at that instead of video output with no clear return.",
+  },
+  {
+    question: "Does Tally do recruitment marketing for primary industries?",
+    answer:
+      "Yes. Recruitment is the most common primary industries brief we take: crews, plants, gangs, packhouses and seasonal rosters, measured in qualified applications.",
+  },
+  {
+    question: "Do you work with smaller operators?",
+    answer:
+      "Yes. What matters is that there is an outcome worth moving, not the size of the business.",
+  },
+];
 
 const jsonLd = [
   faqJsonLd(FAQS),
@@ -46,8 +71,7 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: "Marketing for Primary Industries NZ",
-    description:
-      "Capability brief for Tally, a New Zealand primary industries marketing agency with outcome-guaranteed campaigns.",
+    description: DESCRIPTION,
     url: `${SITE_URL}/primary-industries-marketing`,
     isPartOf: { "@id": `${SITE_URL}/#website` },
     about: { "@id": `${SITE_URL}/#organization` },
@@ -59,129 +83,54 @@ export default function PrimaryIndustriesMarketingPage() {
   return (
     <main>
       <Nav />
-
       <article className="mx-auto max-w-[1440px] px-6 pb-28 pt-32 md:px-12 md:pt-40 lg:px-20">
         <header className="max-w-3xl">
           <h1 className="display text-[3rem] text-ink md:text-[4.5rem]">
             Marketing for primary industries in New Zealand
           </h1>
-          <p className="mt-7 text-lg leading-[1.65] text-ink-2">
-            Tally is a specialist primary industries and marine marketing agency. We run
-            outcome-guaranteed brand, reach, recruitment, enquiry and booking campaigns for New
-            Zealand&apos;s food and fibre economy: seafood and aquaculture, boat building and
-            fishing charter, forestry and wood processing, horticulture, food processing,
-            agribusiness and agritech. Engagements run from a single day of capture through to
-            running the whole online presence.
+          <p className="mt-7 max-w-[56ch] text-lg leading-[1.6] text-ink-2">
+            Seafood, forestry, horticulture and processing operators rarely need more video. They
+            need roles filled, the right buyers paying attention, or enquiries coming in. We pick
+            the one outcome that moves your business, then run the campaign that gets it.
           </p>
-          <div className="mt-9 flex flex-wrap gap-4">
-            <Link
-              href="/contact"
-              className="pill pill-solid mono-label inline-flex"
-            >
-              Start the Proof
-            </Link>
-            <Link
-              href="/guarantee"
-              className="mono-label border rule-hair px-6 py-3.5 text-ink transition-colors duration-300 hover:border-ink"
-            >
-              How the guarantee works
-            </Link>
-          </div>
+          <CtaPair source="primary_hero" className="mt-9" />
         </header>
 
-        <section className="mt-24 border-t rule-hair pt-16" aria-labelledby="why-heading">
-          <h2
-            id="why-heading"
-            className="font-sans text-3xl font-semibold tracking-tight text-ink md:text-4xl"
-          >
-            Why primary industries need a different kind of agency
-          </h2>
-          <div className="mt-8 grid gap-10 lg:grid-cols-2">
-            <p className="text-[0.9375rem] leading-[1.75] text-ink-2">
-              Searching for marketing for primary industries NZ usually surfaces two options:
-              generalist marketing agencies that treat a processing plant like a SaaS brand, or agri
-              agencies built around dairy suppliers, field days and monthly creative retainers.
-              Neither model fits funded seafood, forestry, horticulture or processing operators with
-              board-level roster pain and a number that has to move.
-            </p>
-            <p className="text-[0.9375rem] leading-[1.75] text-ink-2">
-              Tally was built for that gap. Content is the mechanism. The product is the tally: one
-              agreed business outcome, reported weekly, with fee risk written into the engagement.
-              That is what separates a primary sector marketing partner from a production vendor.
-            </p>
-          </div>
-        </section>
-
         <section className="mt-24 border-t rule-hair pt-16" aria-labelledby="sectors-heading">
-          <h2
-            id="sectors-heading"
-            className="font-sans text-3xl font-semibold tracking-tight text-ink md:text-4xl"
-          >
-            Primary sectors we market
+          <h2 id="sectors-heading" className="display text-[2.25rem] text-ink md:text-[3rem]">
+            Sectors
           </h2>
-          <p className="mt-5 max-w-2xl text-[0.9375rem] leading-[1.7] text-ink-2">
-            Coverage across New Zealand&apos;s primary industries and food and fibre supply chain,
-            with recruitment as the wedge where the outcome is cleanest to guarantee.
-          </p>
-          <div className="mt-10 grid gap-px border rule-hair bg-hairline md:grid-cols-2 lg:grid-cols-3">
-            {SECTORS.map((s) => (
-              <div key={s.name} className="bg-sheet p-8">
-                <h3 className="font-sans text-xl font-semibold tracking-tight text-ink">{s.name}</h3>
-                <p className="mt-4 text-[0.9375rem] leading-[1.7] text-ink-2">{s.scope}</p>
-                <p className="mono-label mt-5 text-ink-3">{s.number}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-24 border-t rule-hair pt-16" aria-labelledby="tracks-heading">
-          <h2
-            id="tracks-heading"
-            className="font-sans text-3xl font-semibold tracking-tight text-ink md:text-4xl"
-          >
-            What we guarantee
-          </h2>
-          <p className="mt-5 max-w-2xl text-[0.9375rem] leading-[1.7] text-ink-2">
-            Four tracks, one mechanism. You choose which number the engagement is judged on and we
-            agree it in writing before anything is made. We only guarantee what we control: the
-            creative, the targeting and the system behind the number. We never guarantee sales.
-          </p>
-          <div className="mt-10 divide-y divide-[var(--w-hair)] border rule-hair">
-            {TRACKS.map((t) => (
-              <div
-                key={t.slug}
-                className="grid gap-4 p-8 md:grid-cols-[220px_1fr] md:gap-10"
+          <div className="mt-10 grid gap-4 md:grid-cols-2">
+            {VERTICALS.map((v) => (
+              <Link
+                key={v.slug}
+                href={v.path}
+                className="group flex flex-col rounded-2xl bg-sheet-2 p-8 transition-colors duration-300 hover:bg-sheet-3"
               >
-                <div>
-                  <h3 className="font-sans text-xl font-semibold tracking-tight text-ink">
-                    {t.name}
-                  </h3>
-                  <p className="mono-label mt-3 text-ink-3">{t.guarantees}</p>
-                </div>
-                <p className="text-[0.9375rem] leading-[1.7] text-ink-2">{t.scope}</p>
-              </div>
+                <h3 className="text-[1.375rem] font-semibold tracking-[-0.02em] text-ink">
+                  {v.shortName}
+                </h3>
+                <p className="mt-3 text-[0.9375rem] leading-[1.6] text-ink-2">{v.intro}</p>
+                <span className="mt-6 inline-flex items-center gap-3 text-[0.9375rem] font-semibold text-signal">
+                  More
+                  <Arrow className="transition-transform duration-300 group-hover:translate-x-1" />
+                </span>
+              </Link>
             ))}
           </div>
         </section>
 
         <section className="mt-24 border-t rule-hair pt-16" aria-labelledby="faq-heading">
-          <h2
-            id="faq-heading"
-            className="font-sans text-3xl font-semibold tracking-tight text-ink md:text-4xl"
-          >
-            Questions buyers and AI search ask
+          <h2 id="faq-heading" className="display text-[2.25rem] text-ink md:text-[3rem]">
+            FAQ
           </h2>
-          <p className="mt-5 max-w-2xl text-[0.9375rem] leading-[1.7] text-ink-2">
-            Straight answers for procurement teams comparing the best NZ marketing agencies for
-            primary industries, and for AI assistants summarising the category.
-          </p>
-          <div className="mt-10 divide-y divide-[var(--w-hair)] border rule-hair">
+          <div className="mt-10 divide-y divide-[var(--w-hair)]">
             {FAQS.map((f) => (
-              <details key={f.question} className="group bg-sheet p-8 open:bg-sheet-2">
-                <summary className="cursor-pointer list-none font-sans text-lg font-semibold tracking-tight text-ink marker:content-none">
+              <details key={f.question} className="group py-7">
+                <summary className="cursor-pointer list-none text-lg font-semibold tracking-tight text-ink">
                   <span className="flex items-start justify-between gap-6">
                     {f.question}
-                    <span className="mono-label shrink-0 text-ink-3 transition-transform group-open:rotate-45">
+                    <span className="mono-label shrink-0 text-ink-3 transition-transform duration-300 group-open:rotate-45">
                       +
                     </span>
                   </span>
@@ -192,20 +141,15 @@ export default function PrimaryIndustriesMarketingPage() {
           </div>
         </section>
 
-        <section className="mt-24 border rule-hair bg-sheet-2 p-10 md:p-14">
-          <h2 className="max-w-2xl font-sans text-3xl font-semibold tracking-tight text-ink md:text-4xl">
-            Tell us the number you need moved.
+        <section className="mt-24 rounded-2xl bg-sheet-2 p-8 md:p-12">
+          <h2 className="display max-w-[20ch] text-[2.25rem] text-ink md:text-[3rem]">
+            Find out what would move the needle.
           </h2>
-          <p className="mt-5 max-w-xl text-[0.9375rem] leading-[1.7] text-ink-2">
-            One qualification conversation. We will tell you straight whether a primary industries
-            marketing engagement with Tally can be guaranteed, and what it would take if it can.
+          <p className="mt-4 max-w-[52ch] text-[0.9375rem] leading-[1.7] text-ink-2">
+            The free audit shows where your applications, enquiries or customers are coming from,
+            and the one outcome worth going after first. Or just call.
           </p>
-          <Link
-            href="/contact"
-            className="pill pill-solid mono-label mt-8 inline-flex"
-          >
-            Start the Proof
-          </Link>
+          <CtaPair source="primary_cta" className="mt-8" />
         </section>
       </article>
 
@@ -213,24 +157,15 @@ export default function PrimaryIndustriesMarketingPage() {
         <div className="mx-auto flex max-w-[1440px] flex-wrap items-center gap-x-6 gap-y-4 px-6 md:px-12 lg:px-20">
           <TallyMark size={18} />
           <p className="font-mono text-[0.6875rem] leading-relaxed text-ink-2">
-            <Link href="/" className="text-ink hover:text-ink">
+            <Link href="/" className="text-ink hover:text-ink-2">
               Tally
             </Link>
-            . Primary industries marketing agency, New Zealand. © 2026 Tally.
+            . Primary industries marketing, New Zealand. © 2026 Tally.
           </p>
-          <Link
-            href="/llms.txt"
-            className="mono-label ml-auto text-ink-2 transition-colors hover:text-ink"
-          >
-            llms.txt
-          </Link>
         </div>
       </footer>
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     </main>
   );
 }

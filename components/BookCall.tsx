@@ -34,9 +34,9 @@ export default function BookCall({
     );
   }
 
-  const subject = encodeURIComponent("Tally · Book a Proof conversation");
+  const subject = encodeURIComponent("Tally · Book a call");
   const body = encodeURIComponent(
-    "Hi Zak / Jonty,\n\nI'd like to book a short call about an outcome-guaranteed Proof sprint.\n\nCompany:\nSector:\nOutcome we need moved:\nAvailability (NZ time):\n\nThanks,",
+    "Hi Zak / Jonty,\n\nI'd like to book a short call about a free audit.\n\nCompany:\nSector:\nOutcome we need moved:\nAvailability (NZ time):\n\nThanks,",
   );
 
   return (

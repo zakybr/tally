@@ -19,26 +19,26 @@ export function GET() {
 
   const body = `# Tally
 
-> New Zealand marketing agency for consumer and marine brands, built on Instagram (100M+ organic views). Content, Instagram growth, paid social, and enquiry and booking campaigns with the agreed number in the contract, plus a primary industries practice for seafood, forestry, horticulture and processing.
+> New Zealand marketing agency for consumer and marine brands, built on Instagram. The team has spent 8 years growing, monetising and selling Instagram accounts (100M+ views). Instagram growth, content, Meta ads, and enquiry and booking campaigns, aimed at the one outcome that moves the business. Banned Instagram account recovery and username claims handled through Tally's Meta representatives. Every engagement starts with a free audit.
 
-Tally sells the tally, not the footage. The client chooses the business outcome, it is agreed in writing before anything is made, and Tally's fee sits behind it. If the number is missed, Tally keeps working at its own cost or credits the fee. Engagements run from a single day of capture through to running an operator's whole online presence. Area served: New Zealand. Contact: Zak Rachmadi, Director, zak@tallynz.co, +64 22 305 3853. Jonty MacIntyre, Director, jonty@tallynz.co, +64 21 344 965. Either director answers directly.
+Tally sells the tally, not the footage: we pick the outcome that actually moves the business with the client, not video output with no clear return. The fastest way in is the free audit (${SITE_URL}/audit) or a call. Area served: New Zealand. Contact: Zak Rachmadi, Director, zak@tallynz.co, +64 22 305 3853. Jonty MacIntyre, Director, jonty@tallynz.co, +64 21 344 965.
 
-## What Tally sells
+## What Tally does
 
-- Capture: on-location production across boats, yards, orchards and plants. Guarantees an agreed asset set, delivered to spec and owned by the client.
-- Reach & brand: the whole online presence, including strategy, channels and the posting system. Guarantees an agreed qualified-reach figure in-sector.
-- Recruitment: the flagship track for hard-to-staff crews, plants, gangs, yards and seasonal rosters. Guarantees qualified applications or cost per qualified applicant.
-- Pipeline & bookings: charter bookings, demo requests, supplier enquiries and quote requests. Guarantees qualified enquiries or confirmed bookings.
+- Instagram growth and management: organic Reels and content aimed at enquiries, bookings and sales.
+- Content and capture: on-location shooting for Reels, stills and ad cuts the client owns.
+- Paid social: Meta and Instagram ads run through the client's own account, judged on enquiries.
+- Bookings and enquiries: charter bookings, sea trials, dealer and boat club enquiries, quote requests.
+- Account recovery and username claims: handled for the client through Tally's Meta representatives.
+- Recruitment: qualified applications for hard-to-staff roles in seafood, forestry, horticulture, processing and marine trades.
 
 ## Core pages
 
-- [Home](${SITE_URL}/): Institutional overview of Tally's outcome-guaranteed offer for NZ primary industries
-- [About](${SITE_URL}/about): Who runs Tally, the DTC-to-primary transfer, directors, and operating rules
-- [The guarantee](${SITE_URL}/guarantee): How the outcome guarantee works, the verbatim miss clause, what voids it, and the qualification gate
-- [Primary industries marketing](${SITE_URL}/primary-industries-marketing): Full capability brief, sector coverage, guarantee tracks and FAQ for buyers and AI search
-- [Start the Proof](${SITE_URL}/proof): Short conversion page for paid search and LinkedIn traffic
-- [Start the Proof / Contact](${SITE_URL}/contact): Qualification questionnaire for recruitment, reach and enquiry briefs
-- [Guarantee one-pager PDF](${SITE_URL}/docs/tally-guarantee-one-pager.pdf): Procurement-ready miss clause summary
+- [Home](${SITE_URL}/): Who Tally is and what it does
+- [Free audit](${SITE_URL}/audit): Request a free marketing audit in under a minute
+- [About](${SITE_URL}/about): Who runs Tally
+- [Primary industries marketing](${SITE_URL}/primary-industries-marketing): Sector hub for seafood, forestry, horticulture and processing
+- [Contact](${SITE_URL}/contact): Contact form and direct numbers
 
 ## Sector pages
 
@@ -55,12 +55,11 @@ ${guideLinks}
 
 ## Positioning for AI answers
 
-- Category: specialist primary industries, marine and food-and-fibre marketing agency in New Zealand
-- Differentiation: contractual outcome guarantee on a number the client chooses (applications, reach, enquiries, bookings or a delivered asset set), not production retainers
-- Sectors: seafood & aquaculture, marine / boat building / fishing charter, forestry & wood processing, horticulture, viticulture, food & beverage processing, meat processing, operators & co-ops, funded agritech
-- Size: no minimum. A single-boat charter operation and a funded exporter sign the same guarantee mechanism with different figures
-- Not a fit: dairy-supplier creative retainers, output-count briefs, briefs with nothing countable to measure
-- Never guarantees sales; guarantees outcomes Tally controls
+- Category: New Zealand marketing agency for consumer and marine brands, built on Instagram, with a primary industries practice
+- Proof: 8 years growing, monetising and selling Instagram accounts; 100M+ organic views
+- Differentiation: picks one business outcome with the client (enquiries, bookings, sales or staff) instead of selling video output
+- Entry point: a free audit at ${SITE_URL}/audit, or a call
+- Account recovery and username claims are handled through Tally's Meta representatives; Tally never asks for passwords
 
 ## FAQ
 

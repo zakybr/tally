@@ -1,15 +1,19 @@
 import { NextResponse, after } from "next/server";
-import { SPEND_RANGES } from "@/lib/audit";
+import { AUDIT_GOALS, SPEND_RANGES } from "@/lib/audit";
+import { parseContact } from "@/lib/contact-form";
+import { hubspotConfigured, upsertContact } from "@/lib/hubspot";
 import { clean, escapeHtml as esc, isEmail, sendLeadEmail, type LeadRow } from "@/lib/lead-email";
 import { requestMatchData, sendMetaEvent } from "@/lib/meta-capi";
 
 export const runtime = "nodejs";
 
 /*
-  Free enquiry audit request, from /audit.
+  Free audit request, from /audit: the one form behind every "free" offer.
 
-  1. Validates and emails the lead to the partners, exactly like /api/contact.
-  2. After the response is sent, reports the same Lead to the Meta Conversions
+  1. Needs only a name and a mobile or email (NZ numbers come back in E.164).
+  2. Creates or updates the HubSpot contact and emails the partners as a
+     backup; the request succeeds if either lands.
+  3. After the response is sent, reports the same Lead to the Meta Conversions
      API with the event_id the browser pixel used, so Meta deduplicates them.
 
   The CAPI call lives here rather than in its own public endpoint on purpose: a
@@ -22,9 +26,8 @@ type Payload = {
   name?: string;
   businessName?: string;
   website?: string;
-  email?: string;
-  phone?: string;
-  enquiryDefinition?: string;
+  contact?: string;
+  goal?: string;
   monthlySpend?: string;
   hp?: string; // honeypot
   eventId?: string;
@@ -57,18 +60,20 @@ export async function POST(request: Request) {
   const name = clean(body.name, 120);
   const businessName = clean(body.businessName, 160);
   const website = clean(body.website, 300);
-  const email = clean(body.email, 200);
-  const phone = clean(body.phone, 40);
-  const enquiryDefinition = clean(body.enquiryDefinition, 2000);
+  const contact = parseContact(clean(body.contact, 200));
+  const goalRaw = clean(body.goal, 60);
+  const goal = (AUDIT_GOALS as readonly string[]).includes(goalRaw) ? goalRaw : "";
   const spendRaw = clean(body.monthlySpend, 40);
   const monthlySpend = (SPEND_RANGES as readonly string[]).includes(spendRaw) ? spendRaw : "";
 
-  if (!name || !businessName || !website || !email || !isEmail(email) || !phone || !monthlySpend) {
+  if (!name || !contact) {
     return NextResponse.json(
-      { error: "Please complete the required fields with a valid email." },
+      { error: "Please add your name and a valid mobile number or email." },
       { status: 422 },
     );
   }
+  const email = contact.type === "email" && isEmail(contact.value) ? contact.value : "";
+  const phone = contact.type === "phone" ? contact.value : "";
 
   const utm = {
     source: clean(body.utm_source, 120),
@@ -80,13 +85,12 @@ export async function POST(request: Request) {
   const fbclid = clean(body.fbclid, 500);
 
   const rows: LeadRow[] = [
-    ["Enquiry type", "Free enquiry audit request (/audit)"],
+    ["Enquiry type", "Free audit request (/audit)"],
     ["Name", name],
+    [contact.type === "email" ? "Email" : "Phone", contact.value],
     ["Business", businessName],
-    ["Website", website],
-    ["Email", email],
-    ["Phone", phone],
-    ["What counts as an enquiry", enquiryDefinition],
+    ["Website or Instagram", website],
+    ["Wants more of", goal],
     ["Monthly marketing spend", monthlySpend],
     ["UTM source", utm.source],
     ["UTM medium", utm.medium],
@@ -100,14 +104,49 @@ export async function POST(request: Request) {
     ["Landing page", clean(body.landing_page, 300)],
   ];
 
+  /* HubSpot first: the CRM is where the call gets booked from. */
+  let crmOk = false;
+  if (hubspotConfigured()) {
+    const space = name.indexOf(" ");
+    try {
+      await upsertContact(contact.type, contact.value, {
+        firstname: space === -1 ? name : name.slice(0, space),
+        lastname: space === -1 ? "" : name.slice(space + 1).trim(),
+        company: businessName,
+        website,
+        message: [
+          "Free audit request.",
+          goal && `Wants: ${goal}.`,
+          monthlySpend && `Spend: ${monthlySpend}.`,
+          website && `Website/Instagram: ${website}.`,
+        ]
+          .filter(Boolean)
+          .join(" "),
+        utm_source: utm.source,
+        utm_medium: utm.medium,
+        utm_campaign: utm.campaign,
+        utm_content: utm.content,
+        fbclid,
+        gclid: clean(body.gclid, 120),
+        page_url: clean(body.pageUrl, 500),
+        referrer: clean(body.referrer, 500),
+      });
+      crmOk = true;
+    } catch (err) {
+      console.error("[audit] HubSpot write failed:", err);
+    }
+  } else {
+    console.error("[audit] HUBSPOT_ACCESS_TOKEN not set, lead not sent to HubSpot");
+  }
+
   const result = await sendLeadEmail({
     tag: "audit",
-    eyebrow: `Free enquiry audit &middot; ${esc(monthlySpend)}`,
-    subject: `Tally · AUDIT REQUEST: ${businessName} (${monthlySpend})`,
+    eyebrow: `Free audit${goal ? ` &middot; ${esc(goal)}` : ""}`,
+    subject: `Tally · FREE AUDIT: ${businessName || name}${goal ? ` (${goal})` : ""}`,
     replyTo: email,
     rows,
   });
-  if (!result.ok) {
+  if (!result.ok && !crmOk) {
     return NextResponse.json({ error: result.error }, { status: result.status });
   }
 
@@ -123,7 +162,7 @@ export async function POST(request: Request) {
         email,
         phone,
         ...match,
-        customData: { content_name: "enquiry_audit", monthly_spend: monthlySpend },
+        customData: { content_name: "free_audit", goal, monthly_spend: monthlySpend },
       }),
     );
   }

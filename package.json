@@ -4,10 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/generate-one-pager.mjs && next build",
+    "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "generate:one-pager": "node scripts/generate-one-pager.mjs"
+    "lint": "eslint"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.4",

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Arrow from "@/components/Arrow";
+import CtaPair from "@/components/CtaPair";
 import { GUIDES } from "@/lib/guides";
 import tileConsumer from "@/public/images/tile-consumer.jpg";
 import tileMarine from "@/public/images/tile-marine.jpg";
@@ -31,8 +32,9 @@ export function Statement() {
     <section className="bg-[#ff4a1c] py-24 md:py-32">
       <div className={wrap}>
         <p className="max-w-[30ch] text-[1.75rem] font-medium leading-[1.25] tracking-[-0.02em] text-[#17191c] md:text-[2.5rem]">
-          Our team has grown Instagram accounts past 100 million organic views. Now we run that
-          system for New Zealand consumer and marine brands, and put the result in the contract.
+          We have spent 8 years growing Instagram accounts, monetising them and selling them. Now we
+          run that system for New Zealand consumer and marine brands, aimed at the outcome that
+          actually moves the business.
         </p>
         <TextLink href="/about" className="mt-10 text-[#17191c]">
           Our story
@@ -44,10 +46,10 @@ export function Statement() {
 
 /* 2. Proof numbers, charcoal over a dimmed still. */
 const STATS = [
+  { figure: "8 years", label: "growing, monetising and selling Instagram accounts" },
   { figure: "100M+", label: "organic views on accounts our team has run" },
-  { figure: "35k", label: "followers on @theanalystagenda, grown organically" },
-  { figure: "8 weeks", label: "from signature to a counted result" },
-  { figure: "1", label: "number in every contract, agreed before we start" },
+  { figure: "1", label: "outcome picked with you, the one that moves the business" },
+  { figure: "Free", label: "audit before you spend a dollar with us" },
 ];
 
 export function Stats() {
@@ -57,7 +59,7 @@ export function Stats() {
       <div className="absolute inset-0 bg-gradient-to-b from-sheet/60 to-sheet" />
       <div className={`${wrap} relative`}>
         <h2 className="display max-w-[16ch] text-[3rem] text-ink md:text-[4.5rem]">
-          Built on Instagram, <span className="text-signal">counted in the contract.</span>
+          Built on Instagram, <span className="text-signal">aimed at results.</span>
         </h2>
         <dl className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {STATS.map((s) => (
@@ -82,26 +84,26 @@ const CAPABILITIES = [
   {
     title: "Content & capture",
     body: "We come to the boat, the showroom or the shop floor and shoot the real thing. Reels, stills and ad cuts you own outright.",
-    href: "/contact",
+    href: "/audit",
   },
   {
     title: "Paid social",
     body: "Meta and Instagram ads that run through your own account, transparent to the dollar and judged on enquiries, not clicks.",
-    href: "/contact",
+    href: "/audit",
   },
   {
     title: "Bookings & enquiries",
-    body: "Charter bookings, sea trials, quote requests and demo calls. One countable number, agreed before anything is made.",
+    body: "Charter bookings, sea trials, quote requests and demo calls. Aimed at the number that pays, not at video output.",
     href: "/marine-marketing",
   },
   {
     title: "Account recovery",
-    body: "Banned or disabled business account, or someone sitting on your name. We work it through Meta's official channels.",
+    body: "Banned or disabled business account, or someone sitting on your name. We handle it for you through our Meta representatives.",
     href: "/instagram-account-recovery",
   },
   {
     title: "Recruitment campaigns",
-    body: "Crews, plants, yards and seasonal rosters. Guaranteed qualified applications for the roles that never quite fill.",
+    body: "Crews, plants, yards and seasonal rosters. Qualified applications for the roles that never quite fill.",
     href: "/primary-industries-marketing",
   },
 ];
@@ -113,8 +115,8 @@ export function Capabilities() {
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <h2 className="display max-w-[14ch] text-[3rem] text-ink md:text-[4.5rem]">What we do</h2>
           <p className="max-w-[44ch] text-[1.0625rem] leading-[1.6] text-ink-2">
-            Six things, one rule: every engagement is aimed at a number you can count, and the
-            number goes in the contract.
+            Six things, one rule: we pick the outcome that actually moves your business, not a pile
+            of video with no clear return.
           </p>
         </div>
         <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -157,7 +159,7 @@ const SECTORS = [
   },
   {
     title: "Primary industries",
-    body: "Seafood, forestry, horticulture and processing. Recruitment and reach with a guarantee.",
+    body: "Seafood, forestry, horticulture and processing. Staff, reach and enquiries.",
     href: "/primary-industries-marketing",
     img: tilePrimary,
     alt: "Commercial fishing crew at work on deck",
@@ -206,18 +208,18 @@ export function Sectors() {
 const STEPS = [
   {
     n: "01",
-    title: "You name the number",
-    body: "Followers, qualified reach, bookings, enquiries or applications. One figure you can count, agreed on the first call.",
+    title: "Free audit",
+    body: "We look at where your enquiries, bookings or customers are coming from now, and where they are leaking.",
   },
   {
     n: "02",
-    title: "We write it into the contract",
-    body: "An eight-week Proof sprint against that figure. One update a week. Media spend stays in your account.",
+    title: "Pick the outcome",
+    body: "Together we pick the one outcome that would actually move the business: enquiries, bookings, sales or staff.",
   },
   {
     n: "03",
-    title: "We count it at week eight",
-    body: "Miss by a little and we keep working at our cost. Miss by more and the fee is credited. Then we scale what worked.",
+    title: "We run it",
+    body: "Content, Instagram and ads aimed at that outcome, with one plain update a week on how it is tracking.",
   },
 ];
 
@@ -237,9 +239,7 @@ export function HowItWorks() {
             </li>
           ))}
         </ol>
-        <TextLink href="/guarantee" className="mt-14 text-ink">
-          Read the guarantee
-        </TextLink>
+        <CtaPair source="home_how" className="mt-14" />
       </div>
     </section>
   );

@@ -5,7 +5,6 @@ import SmoothScroll from "@/components/SmoothScroll";
 import UtmCapture from "@/components/UtmCapture";
 import MetaPixel from "@/components/MetaPixel";
 import StickyCta from "@/components/StickyCta";
-import { LeadCaptureProvider } from "@/components/LeadCapture";
 import Intro from "@/components/home/Intro";
 
 /*
@@ -19,13 +18,13 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
   if (pathname?.startsWith("/admin")) return <>{children}</>;
 
   return (
-    <LeadCaptureProvider>
+    <>
       {/* Keyed by path so the intro replays on every page change, not just a full load. */}
       <Intro key={pathname} />
       <UtmCapture />
       <MetaPixel />
       <SmoothScroll>{children}</SmoothScroll>
       <StickyCta />
-    </LeadCaptureProvider>
+    </>
   );
 }

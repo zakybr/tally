@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Pill from "@/components/Pill";
 import { PEOPLE } from "@/lib/contact";
-import { useLeadCapture } from "@/components/LeadCapture";
 
 /*
   Persistent contact rail. Appears once the hero is behind you and stays for the
@@ -22,7 +21,6 @@ const SUPPRESSED = ["/contact", "/privacy", "/terms", "/audit", "/audit/thanks"]
 
 export default function StickyCta() {
   const pathname = usePathname();
-  const { open } = useLeadCapture();
   const [shown, setShown] = useState(false);
 
   useEffect(() => {
@@ -62,8 +60,8 @@ export default function StickyCta() {
         </div>
 
         <p className="mono-label min-w-0 flex-1 text-ink-2 lg:hidden">
-          Free quote or sector read.
-          <span className="block text-ink">No cost, no obligation.</span>
+          Free audit, under a minute.
+          <span className="block text-ink">Or call Zak.</span>
         </p>
 
         <div className="flex shrink-0 items-center gap-2.5">
@@ -74,8 +72,8 @@ export default function StickyCta() {
           >
             Call
           </a>
-          <Pill onClick={() => open("sticky_rail")} size="sm" className="min-h-[44px] shrink-0">
-            Get it free
+          <Pill href="/audit" size="sm" className="min-h-[44px] shrink-0">
+            Free audit
           </Pill>
         </div>
       </div>

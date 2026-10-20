@@ -9,6 +9,18 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["framer-motion", "lenis"],
   },
+  /*
+    The guarantee pages are retired: the offer is now a free audit and an
+    outcome picked together. Permanent redirects pass their links and rankings
+    to /audit instead of leaving 404s.
+  */
+  async redirects() {
+    return [
+      { source: "/guarantee", destination: "/audit", permanent: true },
+      { source: "/proof", destination: "/audit", permanent: true },
+      { source: "/docs/tally-guarantee-one-pager.pdf", destination: "/audit", permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

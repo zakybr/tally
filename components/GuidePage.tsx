@@ -1,7 +1,6 @@
 import Link from "next/link";
-import Pill from "@/components/Pill";
 import Nav from "@/components/Nav";
-import BookCall from "@/components/BookCall";
+import CtaPair from "@/components/CtaPair";
 import TallyMark from "@/components/TallyMark";
 import type { Guide } from "@/lib/guides";
 import { GUIDES } from "@/lib/guides";
@@ -62,9 +61,11 @@ export default function GuidePage({ guide }: { guide: Guide }) {
         <section className="mt-16 max-w-3xl bg-sheet-2 p-8 md:p-10">
           <h2 className="mono-label text-ink-2">The short answer</h2>
           <p className="mt-4 text-lg leading-[1.6] text-ink">{guide.answer}</p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Pill href={service.path}>{service.name}</Pill>
-          </div>
+          <CtaPair
+            source={`guide_${guide.slug}_answer`}
+            callFirst={service.cta.href.startsWith("tel:")}
+            className="mt-8"
+          />
         </section>
 
         <div className="mt-8 max-w-3xl">
@@ -120,13 +121,14 @@ export default function GuidePage({ guide }: { guide: Guide }) {
             </h2>
             <p className="mt-4 text-[0.9375rem] leading-[1.7] text-ink-2">{service.description}</p>
             <p className="mt-4 text-[0.9375rem] leading-[1.7] text-ink-2">
-              Call or text Zak on 022 305 3853, or book a 30-minute Zoom call via Calendly. The
-              first read is free.
+              Call Zak now, or send the details through the free audit form. We tell you straight
+              away whether we can help.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Pill href={service.path}>See {service.shortName.toLowerCase()}</Pill>
-              <BookCall source={`guide_${guide.slug}`} />
-            </div>
+            <CtaPair
+              source={`guide_${guide.slug}`}
+              callFirst={service.cta.href.startsWith("tel:")}
+              className="mt-8"
+            />
           </div>
         </section>
 

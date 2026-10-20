@@ -49,19 +49,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     })),
     {
-      url: `${SITE_URL}/guarantee`,
+      url: `${SITE_URL}/audit`,
       lastModified: now,
       changeFrequency: "monthly" as const,
-      priority: 0.9,
+      priority: 0.95,
     },
     {
       url: `${SITE_URL}/about`,
-      lastModified: now,
-      changeFrequency: "monthly" as const,
-      priority: 0.85,
-    },
-    {
-      url: `${SITE_URL}/proof`,
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.85,

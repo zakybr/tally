@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Arrow from "@/components/Arrow";
+import CtaPair from "@/components/CtaPair";
 
 /*
   The homepage hero: the b-roll film full bleed, one claim, two text links.
@@ -82,25 +82,10 @@ export default function HeroFilm() {
           We make brands people <span className="text-signal">stop scrolling for.</span>
         </h1>
         <p className="mt-8 max-w-[46ch] text-[1.0625rem] leading-[1.55] text-ink md:text-lg">
-          Consumer and marine marketing from New Zealand, built on Instagram. You name the number.
-          We write it into the contract.
+          Consumer and marine marketing from New Zealand, built on 8 years of growing, monetising
+          and selling Instagram accounts. Start with a free audit.
         </p>
-        <div className="mt-9 flex flex-wrap gap-x-10 gap-y-4">
-          <a
-            href="#services"
-            className="group inline-flex min-h-[44px] items-center gap-3 text-[0.9375rem] font-semibold text-ink"
-          >
-            See what we do
-            <Arrow className="transition-transform duration-300 group-hover:translate-x-1" />
-          </a>
-          <a
-            href="/contact"
-            className="group inline-flex min-h-[44px] items-center gap-3 text-[0.9375rem] font-semibold text-signal"
-          >
-            Let&apos;s talk
-            <Arrow className="transition-transform duration-300 group-hover:translate-x-1" />
-          </a>
-        </div>
+        <CtaPair source="home_hero" className="mt-9" />
       </div>
     </header>
   );

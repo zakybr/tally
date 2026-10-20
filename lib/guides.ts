@@ -2,14 +2,13 @@ import type { FaqItem } from "@/lib/seo";
 
 /*
   The /guides section. Each guide answers one urgent problem search a New
-  Zealand business owner types when Instagram goes wrong, and hands them to
-  the matching service page in lib/services.ts.
+  Zealand business owner types when Instagram goes wrong, gives them the few
+  things worth doing straight away, and makes clear that Tally handles the rest
+  for them through our Meta representatives. Each one hands off to its service
+  page in lib/services.ts.
 
-  Same copy rules as the services: NZ English, no em dashes, never promise
-  Meta's decision, never suggest sharing a password or login code, and only
-  name channels Meta actually runs (in-app appeals, Account Status, the
-  Instagram Help Centre, instagram.com/hacked, Meta Business Suite and Meta
-  Verified support).
+  Copy rules: NZ English, no em dashes, never promise Meta's decision, never
+  suggest sharing a password or login code.
 
   `title` is the H1 and the <title>; the root layout appends " | Tally", so
   keep it to 52 characters to land at 60 or under. `description` stays at
@@ -41,13 +40,16 @@ export type Guide = {
   faqs: FaqItem[];
 };
 
+const HANDLE_IT =
+  "Tally handles banned and disabled business accounts for New Zealand businesses through our Meta representatives. You send us the notice, we take the case from there and keep you updated. A small deposit opens it, the rest is only payable if the account comes back, and we tell you on the first call whether your case is worth taking.";
+
 export const GUIDES: Guide[] = [
   {
     slug: "instagram-business-account-disabled",
     path: "/guides/instagram-business-account-disabled",
     title: "Instagram business account disabled: what to do",
     description:
-      "Instagram business account disabled in New Zealand? What to check in the first 24 hours, what not to do, and how to keep the business running while you appeal.",
+      "Instagram business account disabled in New Zealand? What to do in the first 24 hours, what not to do, and how Tally handles the unban for you.",
     shortName: "Account disabled: first steps",
     keywords: [
       "Instagram business account disabled what to do",
@@ -58,84 +60,63 @@ export const GUIDES: Guide[] = [
     ],
     service: "instagram-account-recovery",
     published: "2026-10-15",
-    updated: "2026-10-15",
+    updated: "2026-10-20",
     intro:
-      "You open the app and the account that brings in your enquiries is gone, replaced by a notice saying it has been disabled. This guide covers the first 24 hours: working out what has actually happened, the mistakes that make recovery harder, and how to keep the business trading while the case runs.",
+      "You open the app and the account that brings in your enquiries is gone, replaced by a notice saying it has been disabled. Here is what to do in the first 24 hours, and how to hand the rest to people who do this every week.",
     answer:
-      "Do not rush the appeal. First confirm whether the account is disabled, suspended, restricted or hacked, because each has a different route. Screenshot the notice, check Account Status if you can still log in, secure your email and linked Facebook assets, then file one careful appeal through the in-app option on the notice.",
+      "Do not rush an appeal. Screenshot the notice, secure the email and Facebook accounts linked to it, and do not open a replacement account. Then call Tally: we handle the unban process for you through our Meta representatives, so you can get back to running the business.",
     sections: [
       {
-        heading: "Work out which problem you actually have",
+        heading: "Work out which problem you have",
         body: [
-          "Owners often use \"banned\" for four different situations, and the right next step depends on which one it is. Read the exact wording on the notice before doing anything else.",
+          "Read the exact wording on the notice. It tells you which of four situations you are in, and each one is handled differently.",
         ],
         steps: [
-          "Disabled: you cannot log in and the notice says the account was disabled for not following the Community Guidelines or Terms of Use. This is the most serious case and goes through the appeal option on the notice.",
-          "Suspended: the notice says the account is suspended and usually offers a way to disagree with the decision within a set period. Act inside that window.",
-          "Restricted: you can log in but cannot post, comment, message, advertise or appear in search. Account Status in the app shows what is limited and why.",
-          "Hacked: your password, email or phone number has changed, or you see posts and messages you did not make. That is a security problem, not a ban, and starts at instagram.com/hacked.",
+          "Disabled: you cannot log in and the notice says the account broke the Community Guidelines or Terms of Use.",
+          "Suspended: the notice gives you a set period to disagree with the decision. Do not let it run out.",
+          "Restricted: you can log in but cannot post, message, advertise or appear in search.",
+          "Hacked: your password, email or phone number has changed, or there are posts you did not make.",
         ],
       },
       {
-        heading: "Record everything before it changes",
-        body: [
-          "Take screenshots of the full notice, including any date, reference or deadline it gives. Note when you last logged in, what you posted or changed in the days before, and any new device, location, app or staff member that had access. If the account was linked to Meta Business Suite or an ad account, screenshot what you see there too.",
-          "This record does two jobs. It tells you which of the common triggers is likely, and it becomes the evidence for the appeal. Notices can disappear once a decision is made, so capture them now.",
-        ],
-      },
-      {
-        heading: "Secure the things that are still yours",
-        body: [
-          "Change the password on the email address attached to the account and turn on two-factor authentication for it. Do the same for the Facebook profile that administers any linked Page or Business portfolio. Remove third-party apps and scheduling tools you no longer use from those accounts.",
-          "If anyone you do not recognise has access to your Business portfolio, remove them. A compromised linked asset is a common reason for an otherwise clean business account being caught up in enforcement.",
-        ],
-      },
-      {
-        heading: "What not to do in the first 24 hours",
-        body: [
-          "Most failed recoveries are made worse in the first day. Avoid these.",
-        ],
+        heading: "Do these three things now",
+        body: [],
         steps: [
-          "Do not fire off several appeals in a panic. One well-built appeal reads better than five angry ones, and some routes only allow one attempt.",
-          "Do not open a new account and start posting as the business straight away. Creating new accounts to get around enforcement can count against you and the new account.",
-          "Do not give your password, a login code or your two-factor backup codes to anyone, including people who say they can get the account back.",
-          "Do not pay anyone who contacts you first offering recovery, especially in crypto or gift cards. Our scam guide covers the warning signs.",
+          "Screenshot the full notice, including any date or deadline.",
+          "Change the password on the email linked to the account and turn on two-factor authentication. Do the same for the Facebook profile that runs any linked Page.",
+          "Write down what changed in the days before: new staff logins, new devices, apps with access, or a burst of posting.",
         ],
       },
       {
-        heading: "Keep the business trading while you wait",
-        body: [
-          "A disabled account can take days or weeks to resolve, and some are never reinstated. Put a short note on your website and Google Business Profile saying Instagram is temporarily unavailable and how customers can reach you instead. Tell regular customers by email or text. Move any paid campaigns you control to channels that are still working.",
-          "If you are planning a temporary profile so customers can find you, make it clearly temporary, do not copy the old handle or imply it is the original account, and wait until the appeal is filed.",
+        heading: "What not to do",
+        body: [],
+        steps: [
+          "Do not fire off several appeals in a panic. It usually makes the case harder.",
+          "Do not open a new account and start posting as the business.",
+          "Do not give your password or login codes to anyone, including people who say they can get the account back.",
+          "Do not pay strangers who message you offering recovery.",
         ],
       },
       {
-        heading: "Then file the appeal properly",
-        body: [
-          "Once you know what you are dealing with and have your record, file through the option on the notice itself. Our step-by-step appeal guide covers what to write and what to expect. If the first appeal has already been declined, or the account carries the business's income, that is the point at which a properly managed case is worth paying for.",
-        ],
+        heading: "Let us handle it",
+        body: [HANDLE_IT],
       },
     ],
     faqs: [
       {
         question: "Why was my Instagram business account disabled with no warning?",
         answer:
-          "Meta's notices rarely name the post or behaviour that triggered enforcement. For legitimate businesses the usual causes are automated detection misreading content, a sudden change in activity, logins from new devices or countries, a linked account being flagged, or a third-party app with access to the account. Your own record of the days before the notice is the best clue.",
+          "Meta rarely says which post or behaviour triggered it. For legitimate businesses the usual causes are automated detection misreading content, a sudden change in activity, logins from new devices or countries, a flagged linked account, or a third-party app with access.",
       },
       {
         question: "Is a disabled Instagram account deleted?",
         answer:
-          "Not immediately. A disabled account is hidden and locked while the decision stands. The notice explains whether you can disagree with the decision and how long you have to do it. If no review is requested in that window, or a review is declined, the account can be permanently removed.",
+          "Not straight away. It is hidden and locked while the decision stands, but it can be removed permanently if nothing is done in time. That is why it is worth getting the case started early.",
       },
       {
-        question: "Can I contact Instagram by phone in New Zealand?",
+        question: "Can someone handle the unban for me?",
         answer:
-          "Instagram does not run a public phone line for account problems. The official channels are the appeal and review options inside the app and on the notice, Account Status, the Instagram Help Centre forms, instagram.com/hacked for compromised accounts, and support through Meta Verified or Meta Business Suite where your account has access to them. Anyone else claiming to be Instagram support by phone is not.",
-      },
-      {
-        question: "Should I start a new Instagram account for my business?",
-        answer:
-          "Not straight away. Creating accounts to get around enforcement is against Instagram's terms and can lead to the new account being removed too. Use your website, Google Business Profile and email to stay in touch with customers while the appeal is open.",
+          "Yes. Tally handles the whole process for New Zealand businesses through our Meta representatives. You keep your login, we take the case.",
       },
     ],
   },
@@ -144,8 +125,8 @@ export const GUIDES: Guide[] = [
     path: "/guides/appeal-disabled-instagram-account",
     title: "How to appeal a disabled Instagram account in NZ",
     description:
-      "How to appeal a disabled Instagram account in New Zealand: the official review options, what to write, how long it takes and what to do if it is declined.",
-    shortName: "How to appeal a disabled account",
+      "Appealing a disabled Instagram account in New Zealand: what the appeal asks for, why most get declined, and how Tally handles the case for you.",
+    shortName: "Appealing a disabled account",
     keywords: [
       "how to appeal a disabled Instagram account",
       "Instagram appeal disabled account",
@@ -155,56 +136,29 @@ export const GUIDES: Guide[] = [
     ],
     service: "instagram-account-recovery",
     published: "2026-10-15",
-    updated: "2026-10-15",
+    updated: "2026-10-20",
     intro:
-      "Most owners get one look at the appeal screen, write something in a panic and get an automated no. This guide walks through the official review routes for a disabled Instagram account, how to write the appeal, and what is still possible after a decline.",
+      "Most owners get one look at the appeal screen, write something in a panic and get an automated no. Here is what the appeal involves, why so many fail, and the faster option: having us handle it.",
     answer:
-      "Appeal through the disagree or request a review option shown when you try to log in, before the deadline on the notice. Keep it factual: who the business is, why the account is legitimate, and the likely cause if you know it. Complete any identity check Meta asks for, then wait for the result rather than refiling.",
+      "The in-app appeal asks you to disagree with the decision, confirm who you are and explain the account, usually once. Most self-written appeals are declined. Tally handles the whole case for you through our Meta representatives, including accounts where the first appeal has already been rejected.",
     sections: [
       {
-        heading: "The official routes, and only those",
+        heading: "What the appeal involves",
         body: [
-          "There is no secret appeal form and no one inside Meta who can be paid to look at your case. The legitimate review routes are these, and which ones are open depends on the type of account and the notice you received.",
-        ],
-        steps: [
-          "The disagree or request a review option on the notice you see when you try to log in to the disabled account.",
-          "Account Status in the app, for accounts that can still log in, which lists enforcement against the account and offers a review where one is available.",
-          "The Instagram Help Centre, which links to the relevant forms for disabled accounts and identity confirmation.",
-          "Meta Business Suite, where restrictions on a linked Facebook Page, ad account or Business portfolio are reviewed separately.",
-          "Support through Meta Verified, where the business already subscribes and the subscription is still active.",
+          "When you try to log in, the notice offers a way to disagree with the decision before a deadline. You may be asked to confirm a phone number or email, or record a short video selfie to prove you are a real person who owns the account. There is usually one text box to explain yourself.",
         ],
       },
       {
-        heading: "Step by step: filing the review",
+        heading: "Why most appeals get declined",
         body: [
-          "The exact screens change from time to time, but the order is consistent.",
-        ],
-        steps: [
-          "Try to log in to the disabled account on the Instagram app with your normal details.",
-          "On the notice, choose the option to disagree with the decision or request a review. Note the deadline it gives.",
-          "Follow the prompts. You may be asked to confirm a phone number or email address, or to record a short video selfie so Meta can check you are a real person who owns the account.",
-          "Where there is a free-text field, use it to explain the business and why the account is genuine.",
-          "Submit once, screenshot the confirmation, and watch the email address on the account for a reply.",
+          "Owners write it in a rush, argue instead of explaining, miss the likely cause, or submit several times and clog their own case. Once it is declined, most people assume that is the end.",
         ],
       },
       {
-        heading: "What to write in the appeal",
+        heading: "The faster option: we handle it",
         body: [
-          "Reviewers and automated systems both respond better to a short, specific, calm explanation. Write as the business owner, not as an angry customer.",
-          "Say who you are and what the business does, with your trading name and NZBN or company number if you have one. Explain that the account is used to run a legitimate New Zealand business. If you know what probably triggered the action, such as a new staff member logging in from overseas or a scheduling app that posted in a burst, say so plainly. Do not argue about other accounts, threaten legal action or paste in long policy quotes.",
-        ],
-      },
-      {
-        heading: "How long a review takes",
-        body: [
-          "Some reviews come back within a day or two. Others take several weeks, especially where an identity check is involved. Refiling the same appeal does not speed it up and can push it back in the queue. Use the time to keep the business trading through other channels.",
-        ],
-      },
-      {
-        heading: "If the appeal is declined",
-        body: [
-          "A declined review is final for that route, but it is not always the end of the case. A linked Facebook Page or Business portfolio may have its own review in Meta Business Suite. Meta Verified support may be available if the business already had it. And if the original notice was a suspension rather than a disable, the options are different again.",
-          "This is the point where most owners stop, and where a properly built case still sometimes has a route left. It is also where scammers find people, so read the scam guide before paying anyone.",
+          HANDLE_IT,
+          "Declined appeals are the most common case we take on. If you have already been told no, call us before you try anything else.",
         ],
       },
     ],
@@ -212,22 +166,17 @@ export const GUIDES: Guide[] = [
       {
         question: "How many times can I appeal a disabled Instagram account?",
         answer:
-          "Usually once per decision through the notice. Some accounts see further options in Account Status or the Help Centre, but repeatedly submitting the same appeal does not help and can slow things down. Make the first one count.",
+          "Usually once through the notice, and refiling the same appeal does not help. That is why it is worth getting it right first time, or having us handle it.",
       },
       {
-        question: "How long do I have to appeal?",
+        question: "My appeal was rejected. What now?",
         answer:
-          "The notice on the disabled account states the deadline, and it varies by case. Screenshot it as soon as you see it. If the window closes without a review being requested, the account can be permanently removed.",
+          "A rejected appeal is not always the end. Tally takes on declined cases through our Meta representatives. Call us with the notice and we will tell you whether there is still a way back.",
       },
       {
-        question: "Why does Instagram ask for a video selfie?",
+        question: "Can anyone guarantee my account will be reinstated?",
         answer:
-          "It is one of the ways Meta confirms that a real person who owns the account is asking for the review. Meta says the video is used for that check. Complete it in the app only, never on a website someone sent you.",
-      },
-      {
-        question: "Can someone guarantee my Instagram account will be reinstated?",
-        answer:
-          "No. Reinstatement is Meta's decision and no one outside Meta can promise it. A legitimate service will tell you the decision is Meta's, leave you in control of your login, and explain what it controls: the reading of the notice, the evidence, the filing and the follow-up.",
+          "No, and you should be wary of anyone who does. What we can tell you, on the first call, is whether your case is worth taking. If it is not, you pay nothing.",
       },
     ],
   },
@@ -236,7 +185,7 @@ export const GUIDES: Guide[] = [
     path: "/guides/instagram-account-recovery-scams",
     title: "Instagram recovery scams: how to spot them",
     description:
-      "Lost your Instagram and getting offers of help? How to spot account recovery scams, which channels Meta actually runs, and what a real service looks like.",
+      "Lost your Instagram and getting offers of help? How to spot account recovery scams, and what a real New Zealand recovery service looks like.",
     shortName: "Spotting recovery scams",
     keywords: [
       "Instagram account recovery scam",
@@ -247,57 +196,35 @@ export const GUIDES: Guide[] = [
     ],
     service: "instagram-account-recovery",
     published: "2026-10-15",
-    updated: "2026-10-15",
+    updated: "2026-10-20",
     intro:
-      "Post publicly that your Instagram has been banned or hacked and the offers arrive within the hour. Most of them are scams that take money, the account or both. This guide sets out the warning signs, the channels Meta actually runs, and what separates a real recovery service from the rest.",
+      "Post publicly that your Instagram has been banned or hacked and the offers arrive within the hour. Most of them are scams. Here is how to tell the difference.",
     answer:
-      "Treat anyone who contacts you first, asks for your password or a login code, wants payment in crypto or gift cards, or claims a contact inside Meta as a scam. Meta's own channels are the in-app appeal, Account Status, the Instagram Help Centre, instagram.com/hacked and Meta Verified support. A legitimate service never needs your login.",
+      "Walk away from anyone who messages you first, asks for your password or a login code, or wants payment in crypto or gift cards. A real service is a named New Zealand business you can call, leaves you in control of your login, and tells you the cost before you commit.",
     sections: [
       {
         heading: "The warning signs",
-        body: [
-          "Any one of these is enough to walk away.",
-        ],
+        body: ["Any one of these is enough to walk away."],
         steps: [
-          "They found you. A comment, DM or email arrives after you posted about losing the account. Real services do not cold-message people in distress.",
-          "They want your password, a six-digit login code, your two-factor backup codes or access to your email. Nobody recovering an account through Meta's channels needs any of these.",
-          "They want payment in crypto, gift cards or a transfer to a personal overseas account.",
-          "They claim to work at Meta, know someone who does, or have a special portal or \"backend access\".",
-          "They promise a guaranteed result or a time frame in hours.",
-          "They have no business name you can check, no New Zealand phone number and no physical presence, only a handle and testimonials you cannot verify.",
+          "They found you. A comment or DM arrives after you posted about losing the account.",
+          "They want your password, a login code or your two-factor backup codes.",
+          "They want payment in crypto, gift cards or to a personal overseas account.",
+          "They offer to hack the account back. A disabled account is locked by Meta, there is nothing to break into.",
+          "They promise it back within hours.",
+          "There is no business name, phone number or address you can check.",
         ],
       },
       {
-        heading: "How the common scams work",
+        heading: "What a real service looks like",
         body: [
-          "The fake hacker asks for a deposit to \"break back in\", then for more money for each stage, and stops replying when you refuse. The fake Meta agent sends a link to a page styled like Meta that harvests your login and code, and then takes the account you still had access to. The fake reinstatement service files the same free appeal you could have filed, charges for it, and disappears when Meta says no.",
-          "Messages that say your account will be deleted unless you act within hours are also a pattern. Meta's notices do give deadlines, but they appear in the app and on the official notice, not in a DM from a stranger.",
-        ],
-      },
-      {
-        heading: "The channels Meta actually runs",
-        body: [
-          "These are the only official routes. All of them are free to use, and none ask you to hand over your login to a third party.",
-        ],
-        steps: [
-          "The appeal or request a review option on the notice inside the Instagram app.",
-          "Account Status in Instagram's settings, for accounts you can still log in to.",
-          "The Instagram Help Centre at help.instagram.com and the forms it links to.",
-          "instagram.com/hacked for accounts that have been taken over.",
-          "Meta Business Suite for linked Pages, ad accounts and Business portfolios.",
-          "Support through Meta Verified, for subscribed accounts.",
-        ],
-      },
-      {
-        heading: "What a legitimate service looks like",
-        body: [
-          "A real service is a named, contactable business you can look up. It leaves you in control of your login the whole time, works only through the official channels above, tells you before you pay whether the case is worth taking, and says plainly that reinstatement is Meta's decision. The fee structure is written down before you commit, and most of it should depend on the result.",
+          "A named, contactable New Zealand business. It never needs your login, tells you on the first call whether your case is worth taking, and puts the price in writing before you commit, with most of it payable only on success.",
+          HANDLE_IT,
         ],
       },
       {
         heading: "If you have already been scammed",
         body: [
-          "Change the password on your email and any account that shared it, and turn on two-factor authentication everywhere. If you gave someone access to the Instagram account, start at instagram.com/hacked. Contact your bank straight away if you paid by card or bank transfer. In New Zealand, report the scam to Netsafe and, if money was lost, to the Police.",
+          "Change the password on your email and any account that shared it, and turn on two-factor authentication. Call your bank if you paid by card or transfer. Report it to Netsafe, and to the Police if you lost money.",
         ],
       },
     ],
@@ -305,22 +232,17 @@ export const GUIDES: Guide[] = [
       {
         question: "Are Instagram account recovery services legit?",
         answer:
-          "Some are, most of the ones that message you are not. A legitimate service is a named business you can contact, never asks for your password or login codes, works only through Meta's official channels, and tells you that reinstatement is Meta's decision rather than guaranteeing it.",
+          "Some are, most of the ones that message you are not. Look for a named New Zealand business you can call, that never asks for your password, and that tells you the cost and your chances before you pay.",
       },
       {
         question: "Can a hacker get my banned Instagram account back?",
         answer:
-          "No. A disabled account is locked by Meta, not by a password, so there is nothing to break into. People offering to hack an account back are after a deposit or your other logins.",
-      },
-      {
-        question: "Does Meta ever contact you by DM about your account?",
-        answer:
-          "Meta communicates about enforcement through notices in the app, Account Status and email from Meta's own domains. Treat a DM or comment from an account claiming to be Meta or Instagram support as a scam, however official it looks.",
+          "No. A disabled account is locked by Meta, not by a password. People offering to hack it back are after a deposit or your other logins.",
       },
       {
         question: "Where do I report an Instagram scam in New Zealand?",
         answer:
-          "Report the scam account to Instagram in the app. Report the scam to Netsafe, and to the Police if you lost money. If you paid by card or transfer, call your bank immediately, as the sooner they know the better the chance of stopping the payment.",
+          "Report the scam account in the app, then report it to Netsafe, and to the Police if you lost money. Call your bank straight away if you paid.",
       },
     ],
   },
@@ -329,7 +251,7 @@ export const GUIDES: Guide[] = [
     path: "/guides/instagram-username-taken-inactive-account",
     title: "Instagram username taken by an inactive account?",
     description:
-      "Business name taken on Instagram by an account that never posts? What Instagram will and will not do, and when a trademark or impersonation claim works.",
+      "Business name taken on Instagram by an account that never posts? When a username can be claimed back, and how Tally handles the claim for you.",
     shortName: "Username taken by inactive account",
     keywords: [
       "Instagram username taken by inactive account",
@@ -340,45 +262,33 @@ export const GUIDES: Guide[] = [
     ],
     service: "instagram-username-claims",
     published: "2026-10-15",
-    updated: "2026-10-15",
+    updated: "2026-10-20",
     intro:
-      "The handle that matches your business name belongs to an account with three posts from 2016. It feels like it should be yours. This guide explains what Instagram actually does with inactive usernames, the two routes that can release a handle, and what to do if neither applies.",
+      "The handle that matches your business name belongs to an account with three posts from 2016. It feels like it should be yours. Here is when it can be claimed back, and how we handle that for you.",
     answer:
-      "Instagram does not hand over a username because the account holding it looks inactive, and it does not take release requests. A handle can be released if the account infringes your registered trademark or impersonates your business, through Meta's official reporting forms. If neither applies, pick a strong alternative and build the brand there.",
+      "A username that uses your business name or registered trademark, or an account impersonating your business, can often be claimed back. Tally handles username claims for New Zealand businesses through our Meta representatives. If your handle cannot be claimed, we tell you on the first call and help you set up the best alternative.",
     sections: [
       {
-        heading: "What Instagram will not do",
-        body: [
-          "Instagram does not reassign usernames on request, and an account that has not posted for years is not treated as abandoned just because it looks that way. Instagram may remove inactive accounts on its own schedule, but there is no form to ask for that to happen to a specific account, and no way to be told when a handle frees up.",
-          "Anyone who offers to get an inactive handle released for a fee, without asking about your trademark, is selling something Meta does not offer.",
-        ],
-      },
-      {
-        heading: "Route one: a registered trademark",
-        body: [
-          "If the username uses a trademark you have registered, in New Zealand through IPONZ or in another country, you can report it through the trademark form linked from the Instagram Help Centre. This applies even if the account is inactive.",
-          "A strong report includes the registration number, the country of registration, the goods and services it covers, and a clear explanation of how the account uses the mark. A pending application, a company name on the Companies Office register or a domain name is not a registered trademark, so it is weaker ground.",
-        ],
-      },
-      {
-        heading: "Route two: impersonation",
-        body: [
-          "If the account is pretending to be your business, using your name with your logo, photos or contact details to mislead people, report it through Instagram's impersonation route. This does not need a trademark, but it does need the account to be actively passing itself off as you. An account that simply holds the same word and never posts is not impersonation.",
+        heading: "When a username can be claimed",
+        body: [],
+        steps: [
+          "The account uses your registered trademark, in New Zealand through IPONZ or overseas.",
+          "The account is pretending to be your business, with your name, logo or photos.",
         ],
       },
       {
         heading: "What not to do",
         body: [],
         steps: [
-          "Do not offer to buy the handle. Buying and selling usernames breaks Instagram's terms and can put the account you end up with at risk.",
-          "Do not message the holder demanding they hand it over. It tells them the name has value and rarely ends well.",
-          "Do not use a service that wants your login or the holder's login to \"transfer\" the name.",
+          "Do not offer to buy the handle. It tells the holder the name is worth money and can make the claim harder.",
+          "Do not message the holder demanding it.",
+          "Do not hand your login to anyone offering to transfer it.",
         ],
       },
       {
-        heading: "If neither route applies",
+        heading: "We handle the claim",
         body: [
-          "Most businesses are better served by a clear alternative than a long fight. Add a short descriptor that customers would search for, such as a place or what you sell, or a simple suffix like nz or co. Keep it consistent with your website and other socials, and put the same display name on the profile so search still finds you. Then, if the business does not already have one, look at registering a trademark, which strengthens any future claim.",
+          "Tell us the handle and your business details on a call. We check whether there is a claim, then handle it through our Meta representatives and keep you updated. A small deposit opens the case and the rest is only payable if the name is released.",
         ],
       },
     ],
@@ -386,22 +296,17 @@ export const GUIDES: Guide[] = [
       {
         question: "How long does an Instagram account have to be inactive before the username is released?",
         answer:
-          "There is no published period. Instagram may remove inactive accounts on its own schedule but does not release usernames on request or notify anyone when a handle becomes available.",
+          "There is no published period, and inactive handles are not released on request. Claims work where the account uses your trademark or impersonates your business, which is what we check first.",
       },
       {
-        question: "Can I get a username if my business name is registered with the Companies Office?",
+        question: "Can I get a username if my business is registered with the Companies Office?",
         answer:
-          "A company registration alone is not a trademark, so it is not grounds for a trademark claim. It can support an impersonation report if the account is pretending to be your business. A registered trademark through IPONZ is the stronger position.",
+          "A company registration helps with an impersonation case. A registered trademark through IPONZ is the strongest position. Either way, call us and we will tell you what applies.",
       },
       {
-        question: "Is it legal to buy an Instagram username?",
+        question: "Do I need a lawyer to claim an Instagram username?",
         answer:
-          "Buying and selling usernames breaks Instagram's terms of use. The account you end up with can be reclaimed or removed, which is a poor outcome after paying for it.",
-      },
-      {
-        question: "Do I need a lawyer to file a trademark report on Instagram?",
-        answer:
-          "No. The rights holder or an authorised representative can file through Meta's official form. What matters is that the registration details and the explanation of the infringement are accurate and complete.",
+          "No. Tally handles the claim for you through our Meta representatives.",
       },
     ],
   },
@@ -421,54 +326,39 @@ export const GUIDES: Guide[] = [
     ],
     service: "instagram-growth",
     published: "2026-10-15",
-    updated: "2026-10-15",
+    updated: "2026-10-20",
     intro:
-      "New Zealand is a small market, which works in your favour on Instagram: fewer accounts compete for the same local audience, and people here engage with businesses they recognise. This guide is the system the Tally team uses to grow accounts organically, adapted for a New Zealand business.",
+      "New Zealand is a small market, which works in your favour on Instagram: fewer accounts compete for the same local audience. This is the short version of the system our team has used for 8 years to grow, monetise and sell Instagram accounts.",
     answer:
-      "Grow a New Zealand business account by posting short video in formats your audience already watches, testing a new hook every week, using location tags and local collaborations for discovery, and measuring reach and non-follower views rather than likes. Never buy followers or join engagement pods, as both suppress reach and risk the account.",
+      "Post short video in formats your audience already watches, test a new hook every week, use location tags and local collaborations, and measure reach and enquiries rather than likes. Never buy followers. If you would rather it was done for you, book a free audit.",
     sections: [
       {
         heading: "Start from what people already watch",
         body: [
-          "Before making anything, spend an hour on the Reels and Explore feeds your customers use. Note the formats that keep coming up in your category: the behind-the-scenes walkthrough, the before and after, the quick how-to, the answer to a common question. Your first job is to make the best New Zealand version of a format that already works, not to invent a new one.",
-          "Primary industries and trades have an advantage here. A boat coming out of the water, a packhouse at full speed or a crew at first light is content most people never see.",
+          "Spend an hour on the Reels your customers watch and note the formats that keep coming up: behind the scenes, before and after, quick how-to. Make the best New Zealand version of a format that already works.",
         ],
       },
       {
-        heading: "Build a repeatable weekly system",
-        body: [
-          "Accounts grow from consistency more than inspiration. A simple system for a small business:",
-        ],
+        heading: "Build a weekly system",
+        body: [],
         steps: [
-          "Pick two or three formats and make them recurring series, so each post is quicker to produce and followers know what to expect.",
-          "Shoot in batches. One morning of capture can supply two weeks of Reels.",
-          "Write the first second first. The hook decides whether anyone sees the rest, so test a new one every week.",
-          "Post on a fixed rhythm you can keep, three to five times a week for most businesses, rather than daily for a fortnight and then nothing.",
-          "Review every Monday and drop the format that underperformed.",
+          "Pick two or three formats and make them recurring series.",
+          "Shoot in batches. One morning can supply two weeks of Reels.",
+          "Test a new hook in the first second every week.",
+          "Post three to five times a week on New Zealand time.",
+          "Drop whatever underperformed every Monday.",
         ],
       },
       {
-        heading: "Post for New Zealand time",
+        heading: "Measure what pays",
         body: [
-          "If your customers are here, post when they are scrolling here. Scheduling tools and agencies set up overseas often default to another time zone. Check that your posts go out on New Zealand time, adjust when daylight saving changes, and use the Most active times view in your own Instagram Insights rather than a generic best time to post chart.",
+          "Likes and followers lag. Watch reach, views from non-followers, watch time, shares, profile visits, and above all the DMs, clicks and bookings that came from content. That is the number that actually moves the business.",
         ],
       },
       {
-        heading: "Use local discovery",
+        heading: "Or have us run it",
         body: [
-          "Tag a specific location on posts and Reels, use a few hashtags that describe the place and what you do rather than thirty generic ones, and collaborate with other local businesses through Collab posts so the content appears on both accounts. Reply to comments quickly in the first hour, and answer DMs, because conversation is one of the clearest signals that a post deserves wider reach.",
-        ],
-      },
-      {
-        heading: "Measure the right numbers",
-        body: [
-          "Likes and follower count are lagging signals. Each week, look at reach, the share of views from non-followers, average watch time on Reels, shares and saves, and profile visits. If the account has to sell, track the DMs, link clicks and bookings that came from content. These tell you whether the system is working long before the follower count moves.",
-        ],
-      },
-      {
-        heading: "What to avoid",
-        body: [
-          "Bought followers never engage, which tells Instagram your content is not worth showing, and they can get an account restricted. Engagement pods and follow-unfollow tools carry the same risk. Reposting other people's content without permission invites copyright strikes. If your account is already restricted or disabled, fix that first, because growth on a limited account is wasted work.",
+          "If the account matters to revenue and nobody has time to run it properly, book a free audit. We will show you where the account is now and what is worth going after first.",
         ],
       },
     ],
@@ -476,22 +366,17 @@ export const GUIDES: Guide[] = [
       {
         question: "How often should a New Zealand business post on Instagram?",
         answer:
-          "Three to five times a week suits most small businesses, with Reels making up most of it. A rhythm you can keep for months beats a burst of daily posts followed by silence.",
+          "Three to five times a week suits most small businesses, mostly Reels. A rhythm you can keep beats a burst of daily posts followed by silence.",
       },
       {
         question: "How long does it take to grow a business Instagram?",
         answer:
-          "Most accounts posting tested, consistent content see reach move within a few weeks, with follower growth compounding over the following months. If nothing has moved after eight weeks, the formats or hooks need to change, not just the posting frequency.",
-      },
-      {
-        question: "Should I pay for Instagram ads to grow followers?",
-        answer:
-          "Ads are useful for reaching a defined audience with an offer, but paying for follows rarely builds an engaged account. Grow reach with organic content first, then use ads to put your best-performing posts in front of the right people.",
+          "Reach usually moves within a few weeks of consistent, tested content, and followers compound from there. If nothing moves after two months, change the formats and hooks, not just the frequency.",
       },
       {
         question: "Is it worth hiring an Instagram agency in New Zealand?",
         answer:
-          "It is worth it when the account matters to revenue and nobody in the business has the time to produce and test content every week. Look for an agency that agrees a measurable figure, such as reach or enquiries, rather than a number of posts per month, and that never buys followers.",
+          "When the account matters to revenue and nobody has time to run it every week, yes. Pick one that aims at enquiries or sales, not a number of posts per month, and never buys followers.",
       },
     ],
   },

@@ -42,7 +42,6 @@ export const KEYWORDS = [
   "marketing agencies New Zealand primary sector",
   "specialist marketing agency New Zealand",
   "performance marketing agency NZ",
-  "outcome guaranteed marketing agency",
   // Recruitment / employer brand
   "recruitment marketing New Zealand",
   "employer brand primary sector",
@@ -121,15 +120,10 @@ export const KEYWORDS = [
   "food and beverage marketing New Zealand",
   "agritech marketing New Zealand",
   "agtech marketing NZ",
-  // Guarantee-led positioning, the category Tally is trying to own
-  "guarantee based marketing agency",
-  "guaranteed marketing agency New Zealand",
-  "performance guaranteed marketing NZ",
-  "results guaranteed marketing agency",
-  "pay on results marketing New Zealand",
+  // Outcome and free audit intent
+  "free marketing audit NZ",
+  "free Instagram audit New Zealand",
   "outcome based marketing agency NZ",
-  "marketing agency that guarantees results",
-  "risk reversal marketing agency",
   // Capture and production
   "video capture marketing New Zealand",
   "video production marketing agency NZ",
@@ -153,7 +147,6 @@ export const KEYWORDS = [
   "Instagram account disabled New Zealand",
   "Instagram username claim NZ",
   // Service modifiers
-  "guaranteed marketing results NZ",
   "lead generation agribusiness NZ",
   "enquiry campaigns agritech",
   "reach campaigns primary sector",
@@ -166,82 +159,42 @@ export const FAQS: FaqItem[] = [
   {
     question: "What kind of marketing agency is Tally?",
     answer:
-      "Tally is a New Zealand marketing agency for consumer and marine brands, built on Instagram. The team has grown Instagram accounts past 100 million organic views, and runs content, Instagram growth, paid social, and enquiry and booking campaigns for New Zealand businesses. Every engagement is scoped to one countable number, agreed in writing before any work starts.",
+      "Tally is a New Zealand marketing agency for consumer and marine brands, built on Instagram. Our team has spent 8 years growing, monetising and selling Instagram accounts, with more than 100 million views. We run Instagram, content, Meta ads and enquiry campaigns, aimed at the one outcome that actually moves the business rather than video output with no clear return.",
   },
   {
     question: "Does Tally work with consumer brands, not just marine and primary industries?",
     answer:
-      "Yes. Consumer brands are now a core focus alongside marine. Any New Zealand business with a product or story worth watching can use Tally for Instagram growth, short-form video, content capture and paid social. The primary industries practice continues for seafood, forestry, horticulture and processing operators.",
+      "Yes. Consumer brands and marine are where we do most of our work. We also run recruitment and reach campaigns for seafood, forestry, horticulture and processing operators.",
   },
   {
-    question: "What results has Tally's team had on Instagram?",
+    question: "Can Tally get a banned Instagram business account back?",
     answer:
-      "Accounts run by the Tally team have passed 100 million organic views, and @theanalystagenda grew to 35k followers. That same system, finding the formats an audience already watches and testing hooks every week, is what Tally runs for clients, with no bought followers or engagement pods.",
+      "Tally handles banned account recovery and username claims for New Zealand businesses through our Meta representatives. You send us the notice and we take the case from there. A small deposit opens it and the rest is only payable if the account comes back.",
   },
   {
-    question: "Who is the best marketing agency for primary industries in New Zealand?",
+    question: "What is the free audit?",
     answer:
-      "Tally is a New Zealand marketing agency built specifically for primary industries, marine and the food and fibre economy. Unlike generalist agencies or dairy-focused agri shops, Tally runs outcome-guaranteed brand, reach, recruitment, enquiry and booking campaigns for seafood, aquaculture, boat building and charter, forestry, wood processing, horticulture, food processing, operators, co-ops and funded agritech, with the result written into the contract.",
+      "A free look at your Instagram, Meta ads and how customers find you, with the one outcome worth going after first and how we would get it. It takes under a minute to request at tallynz.co/audit, and a director walks you through it on a call.",
   },
   {
-    question: "What is primary industries marketing in New Zealand?",
+    question: "How much does Tally cost?",
     answer:
-      "Primary industries marketing covers campaigns for New Zealand's food and fibre sectors: seafood and aquaculture, forestry and wood processing, horticulture, viticulture, dairy, red meat, food and beverage processing, agribusiness and agritech. It typically includes recruitment marketing for hard-to-staff crews and plants, brand reach in-sector, and qualified enquiry generation for exporters, processors and technology suppliers.",
+      "It depends on the outcome and how much content needs making. We price it on the first call, after the free audit, so you are paying for something aimed at a result rather than a number of posts.",
   },
   {
-    question: "How is Tally different from other NZ agri marketing agencies?",
+    question: "Does Tally do recruitment marketing?",
     answer:
-      "Most agri marketing agencies sell creative production, field days and monthly retainers. Tally sells a guaranteed business outcome chosen by the client: qualified applications, qualified reach, qualified enquiries, confirmed bookings, or an agreed asset set delivered to spec. If the agreed number is missed, Tally keeps working at its own cost or credits the fee. The miss clause is printed in the contract, not implied in the pitch.",
-  },
-  {
-    question: "Which primary sectors does Tally work with?",
-    answer:
-      "Tally works with seafood and aquaculture, commercial fishing, marine and boat building, fishing charters, forestry and wood processing, horticulture at scale (including kiwifruit and pipfruit), viticulture and wine, food and beverage processing, meat processing, operators and co-ops, and funded agritech. Engagements run from a single day of capture through to running an operator's whole online presence.",
-  },
-  {
-    question: "Does Tally offer recruitment marketing for seafood, forestry and horticulture?",
-    answer:
-      "Yes. Recruitment marketing is Tally's flagship track. Campaigns target hard-to-staff roles across fisheries crews, processing lines, forestry gangs and seasonal horticulture, with a guaranteed number of qualified applications or a cost-per-qualified-applicant, agreed before production starts.",
-  },
-  {
-    question: "Can Tally guarantee marketing results?",
-    answer:
-      "Tally guarantees outcomes it controls: creative, targeting and the system that turns them into an agreed number. It never guarantees sales. Misses of 20% or less trigger a free 30-day extension. Larger misses trigger a fee credit or partial refund. Client-attributable failures such as late assets or a broken operation void the guarantee and are named in the contract.",
-  },
-  {
-    question: "Does Tally work with fishing charters and boat builders?",
-    answer:
-      "Yes. Marine is a core Tally sector, covering boat builders, refit yards and marine trades on the recruitment side, and fishing charter and tourism operators on the bookings side. Charter briefs are usually a guaranteed number of qualified booking enquiries ahead of the summer season; yard briefs are usually guaranteed qualified applications for shipwrights, fabricators, marine engineers and apprentices.",
-  },
-  {
-    question: "Does Tally work with smaller operators, or only large companies?",
-    answer:
-      "Both. The guarantee is tied to the number rather than the size of the business, so a two-boat charter operation and a funded exporter sign the same mechanism with different figures. What Tally needs is an outcome that can be counted and an operation that content will amplify rather than expose.",
-  },
-  {
-    question: "Can Tally just do the filming, or does it have to be a full campaign?",
-    answer:
-      "Either. Capture is sold on its own: Tally comes to the boat, yard, orchard or plant, shoots the real thing, and hands over an agreed asset set the client owns outright. From there the same footage can feed a reach and brand programme where Tally runs the strategy, channels and posting system against a guaranteed qualified-reach figure.",
-  },
-  {
-    question: "What is guarantee-based marketing?",
-    answer:
-      "Guarantee-based marketing ties the agency's fee to a business outcome the client chooses, agreed in writing before any work begins. Tally agrees one countable number, such as qualified applications, confirmed bookings, qualified enquiries or an asset set delivered to spec, and puts its fee behind it. A miss of 20% or less means work continues for 30 days at Tally's cost. A larger miss triggers a fee credit or partial refund. The conditions are printed in the engagement contract rather than implied in a pitch.",
-  },
-  {
-    question: "Does Tally do video capture and production?",
-    answer:
-      "Yes. Capture is sold as a standalone track. Tally shoots on location across boats, yards, orchards, packhouses and processing plants in New Zealand, and delivers an agreed asset set the client owns outright with no expiry and no per-use fee. The same library can then feed recruitment, reach and enquiry campaigns rather than being shot three separate times.",
+      "Yes, for hard-to-staff roles across seafood, forestry, horticulture, processing and marine trades, measured in qualified applications.",
   },
   {
     question: "Who runs Tally?",
     answer:
-      "Tally is run by two directors, Zak Rachmadi and Jonty MacIntyre. Both sign every guarantee number alongside the client, and both are reachable directly: Zak on +64 22 305 3853 or zak@tallynz.co, Jonty on +64 21 344 965 or jonty@tallynz.co.",
+      "Tally is run by two directors, Zak Rachmadi and Jonty MacIntyre. Call Zak on +64 22 305 3853 or email zak@tallynz.co, or Jonty on +64 21 344 965 or jonty@tallynz.co.",
   },
   {
-    question: "Where is Tally based and who does it serve?",
+    question: "Where is Tally based?",
     answer:
-      "Tally is a New Zealand marketing agency serving primary-sector and marine operators nationwide, from single-boat charter businesses through to funded exporters, co-ops and processors. Engagements are scoped to a measurable outcome rather than an output count of videos per month.",
+      "Tally is a New Zealand agency working with businesses nationwide, and most first conversations happen on the phone.",
   },
 ];
 
@@ -321,7 +274,7 @@ export function organizationJsonLd() {
       "Meat processing recruitment",
       "Agritech marketing",
       "Agribusiness marketing",
-      "Outcome-guaranteed marketing",
+      "Instagram account recovery",
       "Instagram growth",
       "Instagram account recovery",
       "Instagram username claims",
@@ -357,7 +310,7 @@ export function organizationJsonLd() {
           "@type": "Service",
           name: "Pipeline & Bookings campaigns",
           description:
-            "Guaranteed qualified enquiries or confirmed bookings for charter operators, marine yards, agritech and agri-suppliers in New Zealand.",
+            "Qualified enquiries and bookings for charter operators, boat dealers, clubs and marine businesses in New Zealand.",
         },
       },
       {
@@ -366,7 +319,7 @@ export function organizationJsonLd() {
           "@type": "Service",
           name: "Recruitment / Applications campaigns",
           description:
-            "Outcome-guaranteed qualified applications for hard-to-staff primary-sector roles across seafood, forestry, horticulture and processing.",
+            "Qualified applications for hard-to-staff roles across seafood, forestry, horticulture and processing.",
         },
       },
       {
@@ -375,7 +328,7 @@ export function organizationJsonLd() {
           "@type": "Service",
           name: "Reach / Attention campaigns",
           description:
-            "Guaranteed qualified reach and engagement in-sector for primary industries brands in New Zealand.",
+            "Reach with the people who actually buy, in New Zealand.",
         },
       },
       {
@@ -384,7 +337,7 @@ export function organizationJsonLd() {
           "@type": "Service",
           name: "Pipeline / Enquiry campaigns",
           description:
-            "Guaranteed qualified enquiries and demo bookings for agritech and agri-suppliers.",
+            "Enquiries and demo bookings for suppliers and B2B businesses.",
         },
       },
     ],

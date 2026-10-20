@@ -1,36 +1,38 @@
 /*
-  Everything on /audit that is likely to be swapped lives here, so a headline
-  test or a new floor number is a one-line change.
+  The free audit: the one form every "free" offer on the site leads to.
+  Copy and options live here so the page, the form and /api/audit agree.
 */
 
-/* The H1. Swap freely. */
-export const AUDIT_HEADLINE = "Enquiries, guaranteed in writing";
-
-/* PLACEHOLDER: the guarantee floor. Replace with the real figure before running ads. */
-export const GUARANTEE_FLOOR = "00";
-export const GUARANTEE_FLOOR_UNIT = "qualified enquiries a month";
-
-/* PLACEHOLDER images. Set a path under /public (e.g. "/images/audit-sample.jpg") to replace the frame. */
-export const SAMPLE_AUDIT_IMAGE: string | null = null;
-export const FOUNDER_PHOTO: string | null = null;
+export const AUDIT_HEADLINE = "Free marketing audit";
 
 export const AUDIT_CHECKS: { title: string; body: string }[] = [
   {
-    title: "Google Business Profile and Maps",
-    body: "Your listing set against three local competitors: categories, reviews, photos, and where each of you appears when a customer searches nearby.",
+    title: "Instagram and Meta ads",
+    body: "What your account and ads are doing now, what is wasted, and what would bring in enquiries or sales.",
   },
   {
-    title: "Whether the website can record an enquiry",
-    body: "Forms, call buttons and booking links, tested end to end, and whether each one is tracked so a real enquiry can be counted at all.",
+    title: "How people find you",
+    body: "Google, Maps and social, set against a couple of local competitors.",
   },
   {
     title: "Where enquiries leak",
-    body: "The points where a ready customer gives up: slow pages on a phone, dead links, unanswered calls, forms that ask too much.",
+    body: "Slow pages on a phone, forms that ask too much, calls and DMs that go unanswered.",
   },
   {
-    title: "Three ranked fixes and one number",
-    body: "The three changes most likely to lift enquiries, in order, and the single monthly figure Tally would put in writing and guarantee.",
+    title: "The outcome worth going after",
+    body: "The one thing that would actually move the business, and how we would get it. Not a pile of video with no clear return.",
   },
 ];
+
+/* What the visitor wants more of. Stored as text in the lead, not a HubSpot enum. */
+export const AUDIT_GOALS = [
+  "More enquiries",
+  "More bookings",
+  "More sales",
+  "More staff",
+  "Grow our Instagram",
+  "Banned account or username",
+  "Not sure yet",
+] as const;
 
 export const SPEND_RANGES = ["Under $500", "$500-$1,500", "$1,500-$3,000", "$3,000+"] as const;

@@ -1,207 +1,86 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Nav from "@/components/Nav";
 import AuditForm from "@/components/AuditForm";
-import { AuditFooter, AuditHeader } from "@/components/AuditChrome";
+import FooterCta from "@/components/FooterCta";
 import { PEOPLE } from "@/lib/contact";
-import {
-  AUDIT_CHECKS,
-  AUDIT_HEADLINE,
-  FOUNDER_PHOTO,
-  GUARANTEE_FLOOR,
-  GUARANTEE_FLOOR_UNIT,
-  SAMPLE_AUDIT_IMAGE,
-} from "@/lib/audit";
+import { AUDIT_CHECKS } from "@/lib/audit";
 
 /*
-  Free enquiry audit, the paid-traffic landing page.
-
-  Not linked from the main navigation. Laid out for a phone first, since most
-  of the traffic is Auckland mobile: one column, the form reachable from the
-  first screen, two columns only from lg up. Copy constants live in lib/audit.ts.
+  The free audit: where every "free" offer on the site and the Meta ads land.
+  One screen that does one job. The claim and the form share the first view on
+  desktop and sit one under the other on a phone, with Zak's number for anyone
+  who would rather just call.
 */
 
 export const metadata: Metadata = {
-  title: "Free enquiry audit",
+  title: "Free marketing audit for New Zealand businesses",
   description:
-    "A free audit of how your business turns searches into enquiries: your Google Business Profile against three local competitors, where enquiries leak, and the one number Tally would guarantee.",
+    "Free audit of your Instagram, Meta ads and how customers find you, with the one outcome worth going after first. Takes under a minute to request.",
   alternates: { canonical: "/audit" },
   openGraph: {
-    title: "Free enquiry audit | Tally",
+    title: "Free marketing audit | Tally",
     description:
-      "Where your enquiries leak, three ranked fixes, and the one number Tally would guarantee in writing.",
+      "Your Instagram, ads and enquiries looked at properly, and the one outcome worth going after first. Free.",
     url: "/audit",
   },
 };
 
-const eyebrow = "mono-label text-ink-3";
-const sectionCls = "mx-auto max-w-[1100px] px-4 sm:px-6";
-
-/* A dimensioned empty frame where a real image will go. */
-function Placeholder({ label, ratio }: { label: string; ratio: string }) {
-  return (
-    <div
-      className="relative flex w-full items-center justify-center border border-dashed rule-heavy bg-sheet-2"
-      style={{ aspectRatio: ratio }}
-    >
-      <span className="mono-label px-4 text-center text-ink-3">{label}</span>
-    </div>
-  );
-}
-
 export default function AuditPage() {
-  const founder = PEOPLE[0];
+  const zak = PEOPLE[0];
 
   return (
     <main>
-      <AuditHeader />
-
-      {/* 01 Claim */}
-      <section className={`${sectionCls} pb-12 pt-10 sm:pt-16 lg:pb-20`}>
-        <div className="flex items-center gap-3">
-          <span className={eyebrow}>Free enquiry audit</span>
-          <span className="h-px flex-1 bg-[var(--w-med)]" aria-hidden="true" />
-          <span className={`${eyebrow} tnum`}>Sheet 01</span>
+      <Nav />
+      {/* Phone order: claim, form, details. Desktop: claim and details left, form right. */}
+      <section className="mx-auto grid max-w-[1440px] gap-12 px-6 pb-24 pt-32 md:px-12 md:pt-40 lg:grid-cols-[1fr_minmax(0,34rem)] lg:gap-x-20 lg:gap-y-0 lg:px-20">
+        <div className="lg:col-start-1 lg:row-start-1">
+          <h1 className="display max-w-[12ch] text-[3rem] text-ink md:text-[4.5rem]">
+            Free <span className="text-signal">marketing audit</span>
+          </h1>
+          <p className="mt-7 max-w-[46ch] text-lg leading-[1.55] text-ink-2">
+            We look at your Instagram, your ads and how customers find you, then tell you the one
+            outcome that would actually move the business and how we would get it. No cost, no
+            obligation.
+          </p>
         </div>
-        <h1 className="audit-serif mt-6 max-w-[16ch] text-[2.5rem] leading-[1.05] text-ink sm:text-6xl lg:text-7xl">
-          {AUDIT_HEADLINE}
-        </h1>
-        <p className="mt-6 max-w-xl text-[1.0625rem] leading-[1.6] text-ink-2">
-          We look at how customers find you, whether your website can record the enquiry, and where
-          the rest go missing. You get three ranked fixes and the one number we would put in
-          writing.
-        </p>
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <a href="#request" className="pill pill-solid mono-label inline-flex w-full sm:w-auto">
-            Request the free audit
-          </a>
-          <span className="font-mono text-[0.6875rem] text-ink-3">
-            No cost. No obligation. A director reads every request.
-          </span>
-        </div>
-      </section>
 
-      {/* 02 What the audit checks */}
-      <section className="border-t rule-hair py-12 lg:py-20">
-        <div className={sectionCls}>
-          <span className={eyebrow}>What the audit checks</span>
-          <ol className="mt-6 border-t rule-med">
+        <div
+          id="request"
+          className="scroll-mt-24 self-start rounded-2xl bg-sheet-2 p-6 sm:p-8 md:p-10 lg:col-start-2 lg:row-span-2 lg:row-start-1"
+        >
+          <h2 className="display text-[2rem] text-ink md:text-[2.5rem]">Get your free audit</h2>
+          <p className="mt-3 text-[0.9375rem] leading-[1.6] text-ink-2">
+            Two fields required. We get back to you within one working day.
+          </p>
+          <div className="mt-8">
+            <AuditForm />
+          </div>
+        </div>
+        <div className="lg:col-start-1 lg:row-start-2">
+          <ol className="max-w-xl lg:mt-12 divide-y divide-[var(--w-hair)] border-y rule-hair">
             {AUDIT_CHECKS.map((c, i) => (
-              <li
-                key={c.title}
-                className="grid grid-cols-[2.25rem_1fr] gap-x-3 border-b rule-hair py-5 sm:grid-cols-[3rem_1fr_1.4fr] sm:gap-x-6"
-              >
-                <span className="font-mono text-sm tnum text-signal">
+              <li key={c.title} className="grid grid-cols-[2.5rem_1fr] gap-x-3 py-5">
+                <span className="mono-label pt-1 text-signal">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h2 className="audit-serif text-xl leading-snug text-ink sm:text-2xl">{c.title}</h2>
-                <p className="col-start-2 mt-2 text-[0.9375rem] leading-[1.6] text-ink-2 sm:col-start-3 sm:mt-0">
-                  {c.body}
-                </p>
+                <div>
+                  <h2 className="text-[1.0625rem] font-semibold text-ink">{c.title}</h2>
+                  <p className="mt-1.5 text-[0.9375rem] leading-[1.6] text-ink-2">{c.body}</p>
+                </div>
               </li>
             ))}
           </ol>
-        </div>
-      </section>
 
-      {/* 03 Sample audit */}
-      <section className="border-t rule-hair py-12 lg:py-20">
-        <div className={sectionCls}>
-          <div className="flex items-baseline justify-between gap-4">
-            <span className={eyebrow}>A sample audit</span>
-            <span className={`${eyebrow} tnum`}>Fig. 1</span>
-          </div>
-          <div className="mt-6">
-            {SAMPLE_AUDIT_IMAGE ? (
-              <Image
-                src={SAMPLE_AUDIT_IMAGE}
-                alt="A sample Tally enquiry audit"
-                width={1600}
-                height={1000}
-                sizes="(min-width: 1100px) 1052px, 100vw"
-                className="h-auto w-full border rule-med"
-              />
-            ) : (
-              <Placeholder label="Sample audit image" ratio="4 / 3" />
-            )}
-          </div>
-          <p className="mt-4 max-w-xl text-sm leading-[1.6] text-ink-3">
-            Names and figures changed. Yours comes back in the same format.
+          <p className="mt-10 text-[0.9375rem] text-ink-2">
+            Rather just talk?{" "}
+            <a href={`tel:${zak.phone}`} className="font-semibold text-signal hover:text-ink">
+              Call Zak on {zak.phoneDisplay}
+            </a>
           </p>
         </div>
-      </section>
 
-      {/* 04 Guarantee floor */}
-      <section className="border-t rule-hair py-12 lg:py-20">
-        <div className={`${sectionCls} grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:items-end`}>
-          <div>
-            <span className={eyebrow}>The guarantee floor</span>
-            <div className="mt-4 flex items-baseline gap-3">
-              <span className="font-mono text-[4.5rem] leading-none tnum text-signal sm:text-[6rem]">
-                {GUARANTEE_FLOOR}
-              </span>
-            </div>
-            <span className="mono-label mt-3 block text-ink-2">{GUARANTEE_FLOOR_UNIT}</span>
-          </div>
-          <p className="max-w-xl text-[1.0625rem] leading-[1.6] text-ink-2">
-            The audit ends with one number: the monthly enquiry floor we would sign to. It is set
-            from your market and your baseline, not from a template, and it goes into the contract.
-            If we cannot find a number we would stand behind, the audit says so.
-          </p>
-        </div>
       </section>
-
-      {/* 05 Who does it */}
-      <section className="border-t rule-hair py-12 lg:py-20">
-        <div className={`${sectionCls} grid gap-8 sm:grid-cols-[minmax(0,14rem)_1fr] sm:items-center`}>
-          <div className="max-w-[14rem]">
-            {FOUNDER_PHOTO ? (
-              <Image
-                src={FOUNDER_PHOTO}
-                alt={founder.name}
-                width={448}
-                height={560}
-                className="h-auto w-full border rule-med"
-              />
-            ) : (
-              <Placeholder label="Founder photo" ratio="4 / 5" />
-            )}
-          </div>
-          <div>
-            <span className={eyebrow}>Who reads your audit</span>
-            <p className="audit-serif mt-4 text-2xl leading-snug text-ink sm:text-3xl">
-              {founder.name}
-            </p>
-            <span className="mono-label mt-1 block text-ink-3">{founder.role}, Tally</span>
-            <p className="mt-5 max-w-xl text-[0.9375rem] leading-[1.6] text-ink-2">
-              Every audit is put together and signed off by a director, and the same person walks
-              you through it on a call. If a question comes up first, ring{" "}
-              <a href={`tel:${founder.phone}`} className="font-mono tnum text-ink hover:text-signal">
-                {founder.phoneDisplay}
-              </a>
-              .
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 06 Form */}
-      <section id="request" className="scroll-mt-4 border-t rule-med bg-sheet-2 py-12 lg:py-20">
-        <div className={`${sectionCls} grid gap-10 lg:grid-cols-[1fr_1.1fr]`}>
-          <div>
-            <span className={eyebrow}>Request the audit</span>
-            <h2 className="audit-serif mt-4 text-3xl leading-tight text-ink sm:text-4xl">
-              Seven questions. About two minutes.
-            </h2>
-            <p className="mt-4 max-w-md text-[0.9375rem] leading-[1.6] text-ink-2">
-              We reply within two working days to book a short call and walk you through what we
-              found.
-            </p>
-          </div>
-          <AuditForm />
-        </div>
-      </section>
-
-      <AuditFooter />
+      <FooterCta />
     </main>
   );
 }
