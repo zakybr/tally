@@ -861,8 +861,11 @@ html[data-intro="calm"] .intro-slash {
     transform: scale(110);
   }
 }
+/* Both keyframes hidden: a lone `to` keyframe for visibility does not reliably hold under fill-mode in Chrome. */
 @keyframes intro-out {
+  from,
   to {
     visibility: hidden;
+    opacity: 0;
   }
 }
