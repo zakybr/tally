@@ -40,8 +40,8 @@ export default function OpengraphImage() {
             letterSpacing: "-0.02em",
           }}
         >
-          <span>The outcome</span>
-          <span>is contractual.</span>
+          <span>Pick the outcome.</span>
+          <span>We run it.</span>
         </div>
         <div
           style={{

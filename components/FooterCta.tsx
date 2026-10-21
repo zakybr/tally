@@ -78,8 +78,8 @@ export default function FooterCta() {
                 </span>
               </Link>
               <p className="mt-6 max-w-sm text-[0.875rem] leading-[1.7] text-ink-2">
-                Consumer and marine marketing from New Zealand, built on Instagram. Content, growth
-                and bookings, with the agreed number written into the contract.
+                Consumer and marine marketing from New Zealand, built on Instagram. A free audit
+                first, then we run the work that moves the number that matters.
               </p>
               <a
                 href="mailto:zak@tallynz.co"

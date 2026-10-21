@@ -11,11 +11,11 @@ export const DEFAULT_TITLE = "Marketing Agency NZ for Consumer and Marine Brands
 
 /* Kept to ~160 characters so Google shows it whole instead of truncating mid-claim. */
 export const DEFAULT_DESCRIPTION =
-  "NZ marketing agency for consumer and marine brands, built on Instagram. 100M+ organic views. Content, growth and campaigns with the number in the contract.";
+  "NZ marketing agency for consumer and marine brands, built on Instagram. 100M+ organic views. Free audit, then we run the work that moves your numbers.";
 
 /* The long form, for schema and llms.txt where length is not truncated. */
 export const LONG_DESCRIPTION =
-  "Tally is a New Zealand marketing agency for consumer and marine brands, built on Instagram. The team has grown accounts past 100 million organic views and now runs content, Instagram growth, paid social and booking campaigns for New Zealand businesses, with the agreed number written into the contract. Tally also runs banned Instagram account recovery and username claims, and keeps a primary industries practice for seafood, forestry, horticulture and processing operators.";
+  "Tally is a New Zealand marketing agency for consumer and marine brands, built on Instagram. The team has grown accounts past 100 million organic views and now runs content, Instagram growth, paid social and booking campaigns for New Zealand businesses, starting from a free audit that picks the outcome worth moving. Tally also runs banned Instagram account recovery and username claims, and keeps a primary industries practice for seafood, forestry, horticulture and processing operators.";
 
 /* Exhaustive keyword set for NZ primary-sector and agency queries. Meta keywords are a weak signal; these also seed on-page copy and FAQ answers. */
 export const KEYWORDS = [
