@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
 };
 
-const UPDATED = "24 August 2026";
+const UPDATED = "22 October 2026";
 
 const clauses: Clause[] = [
   {
@@ -28,8 +28,8 @@ const clauses: Clause[] = [
         </p>
         <p>
           They are <strong>not</strong> the terms of a Tally engagement. Paid work is governed by a
-          separate written agreement covering scope, price, the guaranteed outcome and the miss
-          clause. Where that agreement and these terms differ, the signed agreement applies.
+          separate written agreement covering scope, price, the outcome we are working towards
+          and how it is measured. Where that agreement and these terms differ, the signed agreement applies.
         </p>
       </>
     ),
@@ -73,20 +73,20 @@ const clauses: Clause[] = [
     body: (
       <p>
         The text, design, brand marks and documents on this site belong to Tally unless stated
-        otherwise. Documents we make available, such as the guarantee one-pager, are provided so
+        otherwise. Documents we make available, such as a free audit, are provided so
         you can evaluate working with us. You may share them inside your own organisation. Please
         do not republish or redistribute them publicly without asking.
       </p>
     ),
   },
   {
-    heading: "Figures, results and the guarantee",
+    heading: "Figures and results",
     body: (
       <>
         <p>
-          Where this site describes an outcome guarantee, it is describing the shape of a
-          commercial offer. What is actually binding is the number, the measurement method and the
-          miss clause written into a signed engagement, not a page on a website.
+          A free audit is our view of where your marketing stands and which outcome is worth
+          moving first. It is advice, not a promise of a result. What we will do, and how progress
+          is measured, is set out in a signed engagement, not on a page on a website.
         </p>
         <p>
           Figures shown are sourced or marked as illustrative. Results from previous work do not
@@ -175,7 +175,7 @@ export default function TermsPage() {
       <LegalDoc
         eyebrow="Terms of service"
         title="The terms, in plain words."
-        lede="These cover the website. The work itself is governed by a signed agreement with the number and the miss clause written into it."
+        lede="These cover the website. The work itself is governed by a signed agreement setting out the scope, the price and the outcome we are working towards."
         updated={UPDATED}
         clauses={clauses}
       />
