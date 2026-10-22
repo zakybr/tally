@@ -9,13 +9,13 @@ import jontyImg from "@/public/images/jonty.png";
 import zakImg from "@/public/images/zak.png";
 
 /*
-  About, kept short: who we are, how we work in three lines, the two directors,
+  About, kept short: who we are, how we work in three lines, the team,
   and the two actions. The person entities stay, because they are what lets a
-  search for either director's name land here.
+  search for either person's name land here.
 */
 
 const DESCRIPTION =
-  "Tally is a New Zealand marketing agency for consumer and marine brands, built on 8 years of growing, monetising and selling Instagram accounts. Meet the directors.";
+  "Tally is a New Zealand marketing agency for consumer and marine brands, built on 8 years of growing, monetising and selling Instagram accounts. Meet the team.";
 
 export const metadata: Metadata = {
   title: "About Tally | Instagram and Marketing Agency NZ",
@@ -46,7 +46,7 @@ const PRINCIPLES = [
   },
   {
     k: "Straight answers",
-    body: "One plain update a week, media spend in your own account, and a director on the phone when you need one.",
+    body: "One plain update a week, media spend in your own account, and one of us on the phone when you need one.",
   },
 ];
 
@@ -55,7 +55,7 @@ const directors = [
     img: jontyImg,
     alt: "Jonty MacIntyre standing outside an industrial building in New Zealand, wearing a navy suit and light blue tie",
     name: "Jonty MacIntyre",
-    role: "Director",
+    role: "Partner",
     bio: "Came out of paid social and direct-to-consumer, where the only metric that counted was a purchase. Inside Tally he runs the creative system: the content, the test cadence and the call to drop what is not working.",
   },
   {
@@ -67,7 +67,7 @@ const directors = [
   },
 ];
 
-/* Person entities for both directors, each with a stable @id, tied to the organisation. */
+/* Person entities for Zak and Jonty, each with a stable @id, tied to the organisation. */
 const people = PEOPLE.map((p) => ({
   "@context": "https://schema.org",
   "@type": "Person",
@@ -140,7 +140,7 @@ export default function AboutPage() {
         </section>
 
         <section className="mt-24 border-t rule-hair pt-16">
-          <h2 className="display text-[2.25rem] text-ink md:text-[3rem]">Directors</h2>
+          <h2 className="display text-[2.25rem] text-ink md:text-[3rem]">The team</h2>
           <div className="mt-10 grid gap-10 md:grid-cols-2">
             {directors.map((d) => {
               const person = PEOPLE.find((p) => p.name === d.name);

@@ -7,7 +7,7 @@ import { breadcrumbJsonLd } from "@/lib/seo";
 
 /*
   Contact: book a Zoom call straight from the page (Calendly, inline), or call
-  or email a director. The free audit form is one link away for anyone who
+  or email Zak or Jonty. The free audit form is one link away for anyone who
   would rather write.
 */
 

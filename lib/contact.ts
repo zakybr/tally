@@ -1,7 +1,7 @@
 /*
   Single source of truth for how to reach Tally.
 
-  Both directors are listed everywhere a visitor might look, because the site
+  Zak and Jonty are both listed everywhere a visitor might look, because the site
   sells a contract and the buyer wants a person on the end of it, not a form.
   Phone numbers are stored in two shapes: E.164 for tel: links and schema, and
   the spaced local form people actually read.
@@ -35,7 +35,7 @@ export const PEOPLE: Person[] = [
   },
   {
     name: "Jonty MacIntyre",
-    role: "Director",
+    role: "Partner",
     /* TODO: add Jonty's LinkedIn here once we have the URL. */
     email: "jonty@tallynz.co",
     sameAs: [],

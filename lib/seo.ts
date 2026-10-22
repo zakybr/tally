@@ -132,7 +132,7 @@ export const KEYWORDS = [
   "employer brand video NZ",
   "recruitment video production New Zealand",
   "commercial photography primary industries NZ",
-  // Named directors, for brand and person queries
+  // Named people, for brand and person queries
   "Zak Rachmadi",
   "Jonty MacIntyre",
   "Zak Rachmadi Tally",
@@ -174,7 +174,7 @@ export const FAQS: FaqItem[] = [
   {
     question: "What is the free audit?",
     answer:
-      "A free look at your Instagram, Meta ads and how customers find you, with the one outcome worth going after first and how we would get it. It takes under a minute to request at tallynz.co/audit, and a director walks you through it on a call.",
+      "A free look at your Instagram, Meta ads and how customers find you, with the one outcome worth going after first and how we would get it. It takes under a minute to request at tallynz.co/audit, and one of us walks you through it on a call.",
   },
   {
     question: "How much does Tally cost?",
@@ -189,7 +189,7 @@ export const FAQS: FaqItem[] = [
   {
     question: "Who runs Tally?",
     answer:
-      "Tally is run by two directors, Zak Rachmadi and Jonty MacIntyre. Call Zak on +64 22 305 3853 or email zak@tallynz.co, or Jonty on +64 21 344 965 or jonty@tallynz.co.",
+      "Tally is run by Zak Rachmadi, director, and Jonty MacIntyre, partner. Call Zak on +64 22 305 3853 or email zak@tallynz.co, or Jonty on +64 21 344 965 or jonty@tallynz.co.",
   },
   {
     question: "Where is Tally based?",
