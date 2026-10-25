@@ -6,16 +6,18 @@ import { usePathname } from "next/navigation";
 import TallyMark from "@/components/TallyMark";
 import Pill from "@/components/Pill";
 import { PEOPLE } from "@/lib/contact";
-import { SERVICES } from "@/lib/services";
-import { INDUSTRIES } from "@/lib/industries";
+import { SERVICE_LINKS } from "@/lib/services";
+import { INDUSTRY_PAGES } from "@/lib/industries";
 
 /*
   A bar with three things on it: the wordmark, the primary action and a Menu
   button. Services, Industries and About live in the menu. It sits clear
   over the homepage film and picks up a charcoal ground once the page scrolls.
   Menu opens a full-screen sheet: the main pages as large words down the left,
-  staggered in, and the smaller routes, the directors' numbers and the action on
-  the right. Same sheet on a phone and a desktop, so there is one menu to learn.
+  staggered in, and on the right the service and industry pages, the phone
+  numbers and the action. The Services list there is the services dropdown:
+  every service page plus account recovery. Same sheet on a phone and a desktop.
+  When closed the sheet is `inert`, so nothing inside it can take focus.
 */
 
 /* The pages, listed in the menu. The bar itself stays clean: wordmark, Free audit, Menu. */
@@ -31,11 +33,11 @@ const PRIMARY: { href: string; label: string }[] = [
 const SECONDARY: { title: string; links: { href: string; label: string }[] }[] = [
   {
     title: "Services",
-    links: SERVICES.map((sv) => ({ href: `/services#${sv.id}`, label: sv.name })),
+    links: SERVICE_LINKS.map((sv) => ({ href: sv.href, label: sv.name })),
   },
   {
     title: "Industries",
-    links: INDUSTRIES.map((i) => ({ href: `/industries#${i.id}`, label: i.name })),
+    links: INDUSTRY_PAGES.map((i) => ({ href: `/industries/${i.slug}`, label: i.name })),
   },
 ];
 
@@ -145,7 +147,7 @@ export default function Nav() {
         role="dialog"
         aria-modal="true"
         aria-label="Site menu"
-        aria-hidden={!open}
+        inert={!open}
         className={`fixed inset-0 z-[60] overflow-y-auto bg-sheet transition-[opacity,visibility] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           open ? "visible opacity-100" : "invisible opacity-0"
         }`}
@@ -197,8 +199,9 @@ export default function Nav() {
               <div>
                 <TallyMark size={28} />
                 <p className="mt-6 max-w-[34ch] text-lg leading-[1.5] text-ink-2">
-                  Consumer and marine marketing from New Zealand, built on 8 years of growing,
-                  monetising and selling Instagram accounts. Start with a free audit, or just call.
+                  Social media marketing from Auckland for consumer and marine brands across New
+                  Zealand, built on 8 years of growing, monetising and selling Instagram accounts.
+                  Start with a free audit, or just call.
                 </p>
                 <Pill href="/audit" className="mt-7">
                   Get a free audit

@@ -5,15 +5,7 @@ import Analytics from "@/components/Analytics";
 import { INTRO_SKIP } from "@/components/home/Intro";
 import CookieNotice from "@/components/CookieNotice";
 import SiteChrome from "@/components/SiteChrome";
-import {
-  DEFAULT_DESCRIPTION,
-  DEFAULT_TITLE,
-  KEYWORDS,
-  SITE_NAME,
-  SITE_URL,
-  organizationJsonLd,
-  websiteJsonLd,
-} from "@/lib/seo";
+import { SITE_NAME, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
 /* Headline and body grotesk: General Sans, self-hosted (Fontshare FFL). */
@@ -48,36 +40,18 @@ const alliance = localFont({
   display: "swap",
 });
 
+/*
+  Site-wide defaults only. Every page sets its own title, description,
+  canonical, Open Graph and Twitter tags through routeMetadata(), so nothing
+  here leaks onto a page that forgot to set its own.
+*/
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: {
-    default: DEFAULT_TITLE,
-    template: "%s | Tally",
-  },
-  description: DEFAULT_DESCRIPTION,
-  keywords: KEYWORDS,
+  title: { default: SITE_NAME, template: "%s | Tally" },
   applicationName: SITE_NAME,
   authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,
   publisher: SITE_NAME,
-  category: "Marketing",
-  alternates: {
-    canonical: "/",
-    languages: { "en-NZ": "/", en: "/" },
-  },
-  openGraph: {
-    type: "website",
-    locale: "en_NZ",
-    url: "/",
-    siteName: SITE_NAME,
-    title: DEFAULT_TITLE,
-    description: DEFAULT_DESCRIPTION,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: DEFAULT_TITLE,
-    description: DEFAULT_DESCRIPTION,
-  },
   robots: {
     index: true,
     follow: true,
@@ -90,16 +64,14 @@ export const metadata: Metadata = {
     },
   },
   other: {
-    "geo.region": "NZ",
-    "geo.placename": "New Zealand",
+    "geo.region": "NZ-AUK",
+    "geo.placename": "Auckland",
   },
 };
 
 export const viewport = {
   themeColor: "#17191c",
 };
-
-const jsonLd = [organizationJsonLd(), websiteJsonLd()];
 
 export default function RootLayout({
   children,
@@ -120,10 +92,6 @@ export default function RootLayout({
       <body>
         <SiteChrome>{children}</SiteChrome>
         <CookieNotice />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
       </body>
     </html>
   );

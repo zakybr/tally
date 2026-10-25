@@ -39,7 +39,7 @@ export default function StickyCta() {
          attribute does not decide the winner. */
       style={{ transform: shown ? "translateY(0)" : "translateY(100%)" }}
       className="fixed inset-x-0 bottom-0 z-40 border-t rule-med bg-sheet/95 backdrop-blur-md transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
-      aria-hidden={!shown}
+      inert={!shown}
     >
       <div className="mx-auto flex max-w-[1440px] items-center gap-4 px-5 py-3 md:px-12 md:py-3.5 lg:px-20">
         {/* Phones first on desktop. On a phone they collapse to one tap target

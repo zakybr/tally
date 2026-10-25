@@ -2,16 +2,13 @@ import Link from "next/link";
 import TallyMark from "@/components/TallyMark";
 import CtaPair from "@/components/CtaPair";
 import { PEOPLE } from "@/lib/contact";
-import { SERVICES } from "@/lib/services";
-import { INDUSTRIES } from "@/lib/industries";
+import { SERVICE_LINKS } from "@/lib/services";
+import { INDUSTRY_PAGES } from "@/lib/industries";
 
-/* Footer columns mirror the menu: services, industries, company. */
-const sectorLinks = INDUSTRIES.map((i) => ({ href: `/industries#${i.id}`, label: i.name }));
+/* Footer columns mirror the menu: every service page, every industry page, company. */
+const sectorLinks = INDUSTRY_PAGES.map((i) => ({ href: `/industries/${i.slug}`, label: i.name }));
 
-const instagramLinks = SERVICES.map((sv) => ({
-  href: sv.id === "account-recovery" ? "/instagram-account-recovery" : `/services#${sv.id}`,
-  label: sv.name,
-}));
+const instagramLinks = SERVICE_LINKS.map((sv) => ({ href: sv.href, label: sv.name }));
 
 const companyLinks = [
   { href: "/services", label: "Services" },
@@ -78,8 +75,9 @@ export default function FooterCta() {
                 </span>
               </Link>
               <p className="mt-6 max-w-sm text-[0.875rem] leading-[1.7] text-ink-2">
-                Consumer and marine marketing from New Zealand, built on Instagram. A free audit
-                first, then we run the work that moves the number that matters.
+                Social media marketing agency based in Auckland, working with consumer and marine
+                brands across New Zealand. A free audit first, then we run the work that moves the
+                number that matters.
               </p>
               <a
                 href="mailto:zak@tallynz.co"
@@ -120,7 +118,7 @@ export default function FooterCta() {
           {/* Legal sits on its own rule so it is findable rather than buried in the link soup. */}
           <div className="mt-12 flex flex-col gap-4 border-t rule-hair pt-6 md:flex-row md:items-center md:justify-between">
             <p className="font-mono text-[0.6875rem] text-ink-2">
-              © 2026 Tally. All rights reserved.
+              © 2026 Tally Marketing Limited. NZBN 9429053993519. Auckland, New Zealand.
             </p>
             <nav aria-label="Legal" className="flex flex-wrap gap-x-6 gap-y-2">
               {legalLinks.map((l) => (

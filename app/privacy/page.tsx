@@ -1,19 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import LegalDoc, { type Clause } from "@/components/LegalDoc";
-import { breadcrumbJsonLd } from "@/lib/seo";
+import { routeMetadata } from "@/lib/routes";
+import { breadcrumbNode, webPageNode } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description:
-    "How Tally collects, uses and protects personal information through tallynz.co, under the New Zealand Privacy Act 2020.",
-  alternates: { canonical: "/privacy" },
-  openGraph: {
-    title: "Privacy Policy | Tally",
-    description: "What Tally collects, why, who processes it, and how to ask for it.",
-    url: "/privacy",
-  },
-};
+export const metadata: Metadata = routeMetadata("/privacy");
 
 const UPDATED = "12 October 2026";
 
@@ -258,18 +249,20 @@ const clauses: Clause[] = [
 ];
 
 export default function PrivacyPage() {
-  const jsonLd = breadcrumbJsonLd([
+  const crumbs = [
     { name: "Home", path: "/" },
     { name: "Privacy Policy", path: "/privacy" },
-  ]);
+  ];
+  const nodes = [
+    webPageNode({ path: "/privacy", name: "Privacy Policy", description: String(metadata.description ?? "") }),
+    breadcrumbNode("/privacy", crumbs),
+  ];
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
       <LegalDoc
+        crumbs={crumbs}
+        nodes={nodes}
         eyebrow="Privacy"
         title="What we collect, and why."
         lede="Tally is a small agency. We collect the information we need to answer your enquiry honestly, and almost nothing else. This page says exactly what that is."

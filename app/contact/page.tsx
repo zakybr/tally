@@ -3,7 +3,10 @@ import Nav from "@/components/Nav";
 import FooterCta from "@/components/FooterCta";
 import CalendlyEmbed from "@/components/CalendlyEmbed";
 import { PEOPLE } from "@/lib/contact";
-import { breadcrumbJsonLd } from "@/lib/seo";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import JsonLd from "@/components/JsonLd";
+import { routeMetadata } from "@/lib/routes";
+import { breadcrumbNode, businessNode, webPageNode } from "@/lib/seo";
 
 /*
   Contact: book a Zoom call straight from the page (Calendly, inline), or call
@@ -11,21 +14,18 @@ import { breadcrumbJsonLd } from "@/lib/seo";
   would rather write.
 */
 
-const DESCRIPTION =
-  "Book a free Zoom call with Tally straight from this page, or call Zak on 022 305 3853. New Zealand marketing for consumer and marine brands.";
 
-export const metadata: Metadata = {
-  title: "Contact Tally | Book a Zoom Call",
-  description: DESCRIPTION,
-  alternates: { canonical: "/contact" },
-  openGraph: { title: "Contact | Tally", description: DESCRIPTION, url: "/contact" },
-};
+export const metadata: Metadata = routeMetadata("/contact");
 
-const jsonLd = [
-  breadcrumbJsonLd([
-    { name: "Home", path: "/" },
-    { name: "Contact", path: "/contact" },
-  ]),
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "Contact", path: "/contact" },
+];
+
+const nodes = [
+  webPageNode({ path: "/contact", name: "Contact Tally", description: String(metadata.description ?? "") }),
+  businessNode(),
+  breadcrumbNode("/contact", crumbs),
 ];
 
 export default function ContactPage() {
@@ -34,12 +34,17 @@ export default function ContactPage() {
       <Nav />
       <article className="mx-auto max-w-[1440px] px-6 pb-24 pt-32 md:px-12 md:pt-40 lg:px-20">
         <header className="max-w-3xl">
+          <Breadcrumbs crumbs={crumbs} className="mb-8" />
           <h1 className="display text-[3rem] text-ink md:text-[4.5rem]">
             Book a <span className="text-signal">call</span>
           </h1>
           <p className="mt-7 max-w-[52ch] text-lg leading-[1.6] text-ink-2">
             Pick a time below for a free 30-minute Zoom call. We will look at what you need moved and
             tell you straight what we would do. Rather talk now? Just ring.
+          </p>
+          <p className="mt-5 max-w-[52ch] text-[0.9375rem] leading-[1.6] text-ink-2">
+            Tally is based in Auckland and works with businesses across New Zealand. We do not have
+            a shopfront, so meetings and shoots are by arrangement, in Auckland or wherever you are.
           </p>
         </header>
 
@@ -77,7 +82,7 @@ export default function ContactPage() {
         </div>
       </article>
       <FooterCta />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <JsonLd nodes={nodes} />
     </main>
   );
 }

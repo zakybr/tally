@@ -2,8 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import Arrow from "@/components/Arrow";
 import CtaPair from "@/components/CtaPair";
-import { SERVICES } from "@/lib/services";
-import { INDUSTRIES } from "@/lib/industries";
+import { FaqList } from "@/components/PageShell";
+import { SERVICE_LINKS } from "@/lib/services";
+import { INDUSTRY_PAGES } from "@/lib/industries";
+import { HOME_FAQS } from "@/lib/home";
 import tileConsumer from "@/public/images/tile-consumer.jpg";
 import tileMarine from "@/public/images/tile-marine.jpg";
 import tilePrimary from "@/public/images/sector-seafood.jpg";
@@ -11,7 +13,7 @@ import bandInstagram from "@/public/images/band-instagram.jpg";
 
 /*
   The homepage below the film, in reading order: what we believe, the proof,
-  what we do, who we do it for, how it works, what we have written. Bands
+  what we do, who we do it for, how it works, the common questions. Bands
   alternate charcoal and light so each section reads as its own page, and the
   orange carries the headline words and the numbers.
 */
@@ -34,8 +36,8 @@ export function Statement() {
       <div className={wrap}>
         <p className="max-w-[30ch] text-[1.75rem] font-medium leading-[1.25] tracking-[-0.02em] text-[#17191c] md:text-[2.5rem]">
           We have spent 8 years growing Instagram accounts, monetising them and selling them. Now we
-          run that system for New Zealand consumer and marine brands, aimed at the outcome that
-          actually moves the business.
+          run that system from Auckland for consumer and marine brands across New Zealand, aimed at
+          the outcome that actually moves the business.
         </p>
         <TextLink href="/about" className="mt-10 text-[#17191c]">
           Our story
@@ -75,11 +77,12 @@ export function Stats() {
   );
 }
 
-/* 3. Services, light band, tinted cards, each linking to its section on /services. */
-const CAPABILITIES = SERVICES.map((sv) => ({
+/* 3. Services, light band, tinted cards, each linking to the service's own page. */
+const CAPABILITIES = SERVICE_LINKS.map((sv) => ({
   title: sv.name,
   body: sv.short,
-  href: sv.id === "account-recovery" ? "/instagram-account-recovery" : `/services#${sv.id}`,
+  href: sv.href,
+  cta: sv.linkText,
 }));
 
 export function Capabilities() {
@@ -89,8 +92,9 @@ export function Capabilities() {
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <h2 className="display max-w-[14ch] text-[3rem] text-ink md:text-[4.5rem]">What we do</h2>
           <p className="max-w-[44ch] text-[1.0625rem] leading-[1.6] text-ink-2">
-            Six services, one rule: we pick the outcome that actually moves your business, not a
-            pile of video with no clear return.
+            Five services and account recovery, run from Auckland for businesses across New Zealand.
+            One rule: we pick the outcome that actually moves your business, not a pile of video
+            with no clear return.
           </p>
         </div>
         <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -104,7 +108,7 @@ export function Capabilities() {
               <h3 className="display mt-6 text-[2rem] text-ink md:text-[2.375rem]">{c.title}</h3>
               <p className="mt-4 text-[0.9375rem] leading-[1.65] text-ink-2">{c.body}</p>
               <span className="mt-auto inline-flex items-center gap-3 pt-8 text-[0.9375rem] font-semibold text-ink">
-                Learn more
+                {c.cta}
                 <Arrow className="transition-transform duration-300 group-hover:translate-x-1" />
               </span>
             </Link>
@@ -115,17 +119,18 @@ export function Capabilities() {
   );
 }
 
-/* 4. Who it is for, three image tiles, each linking to its section on /industries. */
+/* 4. Who it is for, three image tiles, each linking to the industry page. */
 const TILE_IMAGES = {
   consumer: { img: tileConsumer, alt: "Orange and blue performance boat seating, shot close for Instagram" },
   marine: { img: tileMarine, alt: "White day boat at anchor in a New Zealand bay" },
   "primary-industries": { img: tilePrimary, alt: "Commercial fishing crew at work on deck" },
 } as const;
-const SECTORS = INDUSTRIES.map((ind) => ({
+const SECTORS = INDUSTRY_PAGES.map((ind) => ({
   title: ind.name,
   body: ind.short,
-  href: `/industries#${ind.id}`,
-  ...TILE_IMAGES[ind.id as keyof typeof TILE_IMAGES],
+  href: `/industries/${ind.slug}`,
+  cta: ind.linkText,
+  ...TILE_IMAGES[ind.anchor as keyof typeof TILE_IMAGES],
 }));
 
 export function Sectors() {
@@ -154,7 +159,7 @@ export function Sectors() {
                 <h3 className="display text-[2.5rem] text-ink">{s.title}</h3>
                 <p className="mt-3 max-w-[34ch] text-[0.9375rem] leading-[1.55] text-ink-2">{s.body}</p>
                 <span className="mt-6 inline-flex items-center gap-3 text-[0.9375rem] font-semibold text-signal">
-                  Explore
+                  {s.cta}
                   <Arrow className="transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
               </div>
@@ -202,6 +207,17 @@ export function HowItWorks() {
           ))}
         </ol>
         <CtaPair source="home_how" className="mt-14" />
+      </div>
+    </section>
+  );
+}
+
+/* 6. Common questions, light band, mirrored in the homepage FAQPage node. */
+export function HomeFaq() {
+  return (
+    <section className="light pb-24 md:pb-32">
+      <div className={wrap}>
+        <FaqList faqs={HOME_FAQS} heading="Common questions" />
       </div>
     </section>
   );

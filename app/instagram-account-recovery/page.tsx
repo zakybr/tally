@@ -1,57 +1,49 @@
 import type { Metadata } from "next";
 import PageShell, { FaqList } from "@/components/PageShell";
-import { RECOVERY } from "@/lib/services";
-import { SITE_URL, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
+import { CallZak, CaseGrid, LinkGrid, Prose, StepList } from "@/components/Sections";
+import { routeMetadata } from "@/lib/routes";
+import { RECOVERY, getService } from "@/lib/services";
+import { breadcrumbNode, faqNode, serviceNode, webPageNode } from "@/lib/seo";
 
 /*
-  Instagram account recovery and username claims: the one service with its own
-  page, because these are urgent searches. Leads with the call. Absorbs the old
-  username-claims page and the recovery guides, which redirect here.
+  Instagram account recovery, username claims and disabled Meta ad accounts:
+  its own long-standing URL, because these are urgent searches. Leads with the
+  call. Absorbs the old username-claims page and the recovery guides.
 */
 
-export const metadata: Metadata = {
-  title: RECOVERY.title,
-  description: RECOVERY.description,
-  alternates: { canonical: RECOVERY.path },
-  openGraph: { title: `${RECOVERY.title} | Tally`, description: RECOVERY.description, url: RECOVERY.path },
-};
+const PATH = RECOVERY.path;
 
-const jsonLd = [
-  faqJsonLd(RECOVERY.faqs),
-  breadcrumbJsonLd([
-    { name: "Home", path: "/" },
-    { name: "Services", path: "/services" },
-    { name: "Account recovery", path: RECOVERY.path },
-  ]),
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: "Instagram account recovery and username claims",
-    description: RECOVERY.description,
-    url: `${SITE_URL}${RECOVERY.path}`,
-    provider: { "@id": `${SITE_URL}/#organization` },
-    areaServed: { "@type": "Country", name: "New Zealand" },
-  },
+export const metadata: Metadata = routeMetadata(PATH);
+
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "Account recovery", path: PATH },
 ];
+
+const nodes = [
+  webPageNode({ path: PATH, name: RECOVERY.title, description: RECOVERY.description }),
+  serviceNode({ path: PATH, name: RECOVERY.name, serviceType: RECOVERY.serviceType, description: RECOVERY.intro }),
+  breadcrumbNode(PATH, crumbs),
+  faqNode(PATH, RECOVERY.faqs),
+];
+
+const related = RECOVERY.related.flatMap((slug) => {
+  const s = getService(slug);
+  return s ? [{ href: `/services/${s.slug}`, label: s.linkText, body: s.short }] : [];
+});
 
 export default function RecoveryPage() {
   return (
     <PageShell
-      title="Banned Instagram account?"
-      accent="We handle it."
+      title={RECOVERY.h1}
+      accent={RECOVERY.h1Accent}
       intro={RECOVERY.intro}
       source="recovery_hero"
       callFirst
-      jsonLd={jsonLd}
+      crumbs={crumbs}
+      nodes={nodes}
     >
-      <section className="mt-20 grid gap-4 md:grid-cols-3">
-        {RECOVERY.handles.map((h) => (
-          <div key={h.name} className="rounded-2xl bg-sheet-2 p-8">
-            <h2 className="text-[1.375rem] font-semibold tracking-[-0.02em] text-ink">{h.name}</h2>
-            <p className="mt-3 text-[0.9375rem] leading-[1.6] text-ink-2">{h.body}</p>
-          </div>
-        ))}
-      </section>
+      <CaseGrid heading="What we handle" cases={RECOVERY.handles} />
 
       <section className="mt-24 border-t rule-hair pt-16">
         <h2 className="display text-[2.25rem] text-ink md:text-[3rem]">Banned today? Do this</h2>
@@ -65,7 +57,13 @@ export default function RecoveryPage() {
         </ol>
       </section>
 
-      <FaqList faqs={RECOVERY.faqs} />
+      <StepList heading="How a recovery case works" items={RECOVERY.steps} />
+      <Prose heading={RECOVERY.adAccounts.heading} body={RECOVERY.adAccounts.body} />
+      <Prose heading={RECOVERY.scams.heading} body={RECOVERY.scams.body}>
+        <CallZak lead="Not sure whether your case is worth taking?" />
+      </Prose>
+      <FaqList faqs={RECOVERY.faqs} heading="Account recovery FAQ" />
+      <LinkGrid heading="Once the account is back" links={related} />
     </PageShell>
   );
 }

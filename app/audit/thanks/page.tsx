@@ -3,16 +3,21 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import BookCall from "@/components/BookCall";
 import { PEOPLE } from "@/lib/contact";
+import { pageMetadata } from "@/lib/seo";
 
 /*
   Where /audit sends a successful request. Offers the call straight away:
   Calendly through BookCall, or Zak's number. Kept out of search results.
 */
 
-export const metadata: Metadata = {
-  title: "Audit requested",
-  robots: { index: false, follow: false },
-};
+export const metadata: Metadata = pageMetadata({
+  path: "/audit/thanks",
+  title: "Audit requested | Tally",
+  description: "Your free audit request is in. Book a call now or ring Zak, and we will be in touch within one working day.",
+  ogAlt: "Tally free marketing audit",
+  ogPath: "/audit",
+  noindex: true,
+});
 
 export default function AuditThanksPage() {
   const zak = PEOPLE[0];

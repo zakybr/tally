@@ -1,12 +1,27 @@
 import { ImageResponse } from "next/og";
+import { ROUTES } from "@/lib/routes";
 
-export const alt =
-  "Tally: consumer and marine marketing agency New Zealand, built on Instagram";
-export const size = { width: 1200, height: 630 };
-export const contentType = "image/png";
+/*
+  One social card per page, prerendered at build: /og/home for the homepage,
+  /og/<path> for everything else. Each page's metadata points here with its
+  own alt text, so shares of an inner page never show the homepage card.
+*/
 
-/* Branded social card, generated at the edge. Dark theme, amber eyebrow, headline. */
-export default function OpengraphImage() {
+export const dynamic = "force-static";
+export const dynamicParams = false;
+
+const size = { width: 1200, height: 630 };
+
+export function generateStaticParams() {
+  return ROUTES.map((r) => ({ path: r.path === "/" ? ["home"] : r.path.slice(1).split("/") }));
+}
+
+export async function GET(_req: Request, { params }: { params: Promise<{ path: string[] }> }) {
+  const { path } = await params;
+  const joined = path.join("/");
+  const route = ROUTES.find((r) => (joined === "home" ? r.path === "/" : r.path === `/${joined}`));
+  if (!route) return new Response("Not found", { status: 404 });
+
   return new ImageResponse(
     (
       <div
@@ -29,31 +44,22 @@ export default function OpengraphImage() {
             fontFamily: "monospace",
           }}
         >
-          Primary Industries Marketing · New Zealand
+          {route.eyebrow}
         </div>
         <div
           style={{
             display: "flex",
-            flexDirection: "column",
-            fontSize: 92,
-            lineHeight: 1.02,
+            fontSize: route.headline.length > 34 ? 76 : 92,
+            lineHeight: 1.04,
             color: "#ffffff",
             fontWeight: 700,
             letterSpacing: "-0.02em",
+            maxWidth: 1000,
           }}
         >
-          <span>We sell the tally,</span>
-          <span>not the footage.</span>
+          {route.headline}
         </div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 24,
-            fontSize: 28,
-            color: "#a8a49a",
-          }}
-        >
+        <div style={{ display: "flex", alignItems: "center", gap: 24, fontSize: 28, color: "#a8a49a" }}>
           <div style={{ display: "flex", alignItems: "flex-end", gap: 8 }}>
             <div style={{ width: 6, height: 40, background: "#ffffff" }} />
             <div style={{ width: 6, height: 40, background: "#ffffff" }} />
@@ -71,7 +77,7 @@ export default function OpengraphImage() {
             />
           </div>
           <span style={{ color: "#ffffff", fontWeight: 600 }}>tally</span>
-          <span>tallynz.co</span>
+          <span>tallynz.co · Auckland, New Zealand</span>
         </div>
       </div>
     ),

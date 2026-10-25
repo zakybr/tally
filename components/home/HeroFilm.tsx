@@ -78,12 +78,17 @@ export default function HeroFilm() {
       </button>
 
       <div className="relative mx-auto w-full max-w-[1440px] px-6 pb-16 pt-32 md:px-12 md:pb-24 lg:px-20">
-        <h1 className="display max-w-[12ch] text-[clamp(3.25rem,min(10vw,11.5vh),8.5rem)] text-ink">
-          We make brands people <span className="text-signal">stop scrolling for.</span>
+        {/* One H1 carrying both the plain description (the search phrase) and the brand line. */}
+        <h1>
+          <span className="mono-label block text-ink">Social media marketing agency in Auckland</span>
+          <span className="display mt-5 block max-w-[12ch] text-[clamp(3.25rem,min(10vw,11.5vh),8.5rem)] text-ink">
+            We make brands people <span className="text-signal">stop scrolling for.</span>
+          </span>
         </h1>
         <p className="mt-8 max-w-[46ch] text-[1.0625rem] leading-[1.55] text-ink md:text-lg">
-          Consumer and marine marketing from New Zealand, built on 8 years of growing, monetising
-          and selling Instagram accounts. Start with a free audit.
+          Instagram marketing, Meta ads, social media video and websites for consumer and marine
+          brands, from our base in Auckland and across New Zealand. Built on 8 years of growing,
+          monetising and selling Instagram accounts. Start with a free audit.
         </p>
         <CtaPair source="home_hero" className="mt-9" />
       </div>

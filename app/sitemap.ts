@@ -1,28 +1,17 @@
 import type { MetadataRoute } from "next";
+import { ROUTES } from "@/lib/routes";
 import { SITE_URL } from "@/lib/seo";
 
 /*
-  The whole site. Kept deliberately short: every old page redirects into one of
-  these (see next.config.ts), so search consolidates on fewer, stronger URLs.
-  `lastModified` is a fixed content date; bump it when copy actually changes.
+  Every indexable page, from the route registry in lib/routes.ts. `lastModified`
+  is each page's own content date, so it only moves when that page's words do.
+  Noindex pages (/audit/thanks, /admin) are not in the registry.
 */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const updated = new Date("2026-10-20");
-  const page = (path: string, priority: number, changeFrequency: "weekly" | "monthly" | "yearly" = "monthly") => ({
-    url: `${SITE_URL}${path}`,
-    lastModified: updated,
-    changeFrequency,
-    priority,
-  });
-  return [
-    page("/", 1, "weekly"),
-    page("/services", 0.95),
-    page("/audit", 0.95),
-    page("/industries", 0.9),
-    page("/instagram-account-recovery", 0.9),
-    page("/contact", 0.85),
-    page("/about", 0.8),
-    page("/privacy", 0.2, "yearly"),
-    page("/terms", 0.2, "yearly"),
-  ];
+  return ROUTES.map((r) => ({
+    url: `${SITE_URL}${r.path === "/" ? "" : r.path}`,
+    lastModified: new Date(r.updated),
+    changeFrequency: r.changeFrequency,
+    priority: r.priority,
+  }));
 }

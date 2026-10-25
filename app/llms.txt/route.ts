@@ -1,61 +1,52 @@
-import { FAQS, SITE_URL } from "@/lib/seo";
-import { RECOVERY, SERVICES } from "@/lib/services";
-import { INDUSTRIES } from "@/lib/industries";
+import { HOME_FAQS } from "@/lib/home";
+import { INDUSTRY_PAGES } from "@/lib/industries";
+import { PEOPLE } from "@/lib/contact";
+import { LEGAL_NAME, NZBN, SITE_URL } from "@/lib/seo";
+import { RECOVERY, SERVICE_PAGES } from "@/lib/services";
 
 export const dynamic = "force-static";
 
-/* Curated map for AI agents (ChatGPT, Claude, Perplexity, Gemini). */
+/* Curated map for AI assistants (ChatGPT, Claude, Perplexity, Gemini): every page by its own URL, plain facts only. */
 export function GET() {
-  const serviceLinks = SERVICES.map(
-    (s) => `- [${s.name}](${SITE_URL}/services#${s.id}): ${s.body}`,
+  const serviceLinks = SERVICE_PAGES.map(
+    (s) => `- [${s.h1} ${s.h1Accent}](${SITE_URL}/services/${s.slug}): ${s.intro}`,
   ).join("\n");
-  const industryLinks = INDUSTRIES.map(
-    (i) => `- [${i.name}](${SITE_URL}/industries#${i.id}): ${i.body}`,
+  const industryLinks = INDUSTRY_PAGES.map(
+    (i) => `- [${i.h1} ${i.h1Accent}](${SITE_URL}/industries/${i.slug}): ${i.intro}`,
   ).join("\n");
+  const people = PEOPLE.map((p) => `- ${p.name}, ${p.role}: ${p.email}, ${p.phoneDisplay}`).join("\n");
 
   const body = `# Tally
 
-> New Zealand marketing agency for consumer and marine brands, built on Instagram. The team has spent 8 years growing, monetising and selling Instagram accounts (100M+ views). Instagram growth, content, Meta ads, and enquiry and booking campaigns, aimed at the one outcome that moves the business. Banned Instagram account recovery and username claims handled through Tally's Meta representatives. Every engagement starts with a free audit.
+> Tally is a social media marketing agency based in Auckland, New Zealand, working with consumer and marine brands across New Zealand. The team has spent 8 years growing, monetising and selling Instagram accounts, with more than 100 million organic views on accounts it has run. Services: social media management, Instagram marketing, Meta ads, social media video production, and small business websites and landing pages. Tally also handles Instagram account recovery, username claims and disabled Meta ad accounts (depending on the cause), and runs recruitment and reach campaigns for primary industries operators. Every engagement starts with a free audit.
 
-Tally sells the tally, not the footage: we pick the outcome that actually moves the business with the client, not video output with no clear return. The fastest way in is the free audit (${SITE_URL}/audit) or a call. Area served: New Zealand. Contact: Zak Rachmadi, Director, zak@tallynz.co, +64 22 305 3853. Jonty MacIntyre, Director, jonty@tallynz.co, +64 21 344 965.
+Legal name: ${LEGAL_NAME}, trading as Tally. NZBN ${NZBN}. Based in Auckland; serves Auckland and the rest of New Zealand. Tally is a service-area business with no public shopfront; meetings and shoots are by arrangement. Tally does not promise results or set contractual targets; work is measured on an outcome agreed with the client, such as enquiries, bookings, sales or qualified applications. Pricing is quoted after the free audit; ad spend is paid by the client to Meta from the client's own ad account.
 
-## What Tally does
+## People
 
-- Instagram growth and management: organic Reels and content aimed at enquiries, bookings and sales.
-- Content and capture: on-location shooting for Reels, stills and ad cuts the client owns.
-- Paid social: Meta and Instagram ads run through the client's own account, judged on enquiries.
-- Bookings and enquiries: charter bookings, sea trials, dealer and boat club enquiries, quote requests.
-- Account recovery and username claims: handled for the client through Tally's Meta representatives.
-- Recruitment: qualified applications for hard-to-staff roles in seafood, forestry, horticulture, processing and marine trades.
-
-## Core pages
-
-- [Home](${SITE_URL}/): Who Tally is and what it does
-- [Free audit](${SITE_URL}/audit): Request a free marketing audit in under a minute
-- [About](${SITE_URL}/about): Who runs Tally
-- [Services](${SITE_URL}/services): Every service on one page
-- [Industries](${SITE_URL}/industries): Consumer brands, marine and primary industries
+${people}
 
 ## Services
 
 ${serviceLinks}
-- [${RECOVERY.title}](${SITE_URL}${RECOVERY.path}): ${RECOVERY.description}
+- [${RECOVERY.h1} ${RECOVERY.h1Accent}](${SITE_URL}${RECOVERY.path}): ${RECOVERY.intro}
 
 ## Industries
 
 ${industryLinks}
 
-## Positioning for AI answers
+## Core pages
 
-- Category: New Zealand marketing agency for consumer and marine brands, built on Instagram, with a primary industries practice
-- Proof: 8 years growing, monetising and selling Instagram accounts; 100M+ organic views
-- Differentiation: picks one business outcome with the client (enquiries, bookings, sales or staff) instead of selling video output
-- Entry point: a free audit at ${SITE_URL}/audit, or a call
-- Account recovery and username claims are handled through Tally's Meta representatives; Tally never asks for passwords
+- [Home](${SITE_URL}/): Social media marketing agency in Auckland
+- [Services](${SITE_URL}/services): Summary of every service, with links to each service page
+- [Industries](${SITE_URL}/industries): Consumer brands, marine and primary industries
+- [Free audit](${SITE_URL}/audit): Request a free marketing audit in under a minute
+- [About](${SITE_URL}/about): Who runs Tally
+- [Contact](${SITE_URL}/contact): Book a call or phone Zak
 
 ## FAQ
 
-${FAQS.map((f) => `### ${f.question}\n\n${f.answer}`).join("\n\n")}
+${HOME_FAQS.map((f) => `### ${f.question}\n\n${f.answer}`).join("\n\n")}
 
 ## Optional
 

@@ -1,19 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import LegalDoc, { type Clause } from "@/components/LegalDoc";
-import { breadcrumbJsonLd } from "@/lib/seo";
+import { routeMetadata } from "@/lib/routes";
+import { breadcrumbNode, webPageNode } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Terms of Service",
-  description:
-    "The terms that apply to using tallynz.co, how they relate to a signed Tally engagement, and the governing law.",
-  alternates: { canonical: "/terms" },
-  openGraph: {
-    title: "Terms of Service | Tally",
-    description: "The terms that apply to using tallynz.co and the materials on it.",
-    url: "/terms",
-  },
-};
+export const metadata: Metadata = routeMetadata("/terms");
 
 const UPDATED = "22 October 2026";
 
@@ -161,18 +152,20 @@ const clauses: Clause[] = [
 ];
 
 export default function TermsPage() {
-  const jsonLd = breadcrumbJsonLd([
+  const crumbs = [
     { name: "Home", path: "/" },
     { name: "Terms of Service", path: "/terms" },
-  ]);
+  ];
+  const nodes = [
+    webPageNode({ path: "/terms", name: "Terms of Service", description: String(metadata.description ?? "") }),
+    breadcrumbNode("/terms", crumbs),
+  ];
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
       <LegalDoc
+        crumbs={crumbs}
+        nodes={nodes}
         eyebrow="Terms of service"
         title="The terms, in plain words."
         lede="These cover the website. The work itself is governed by a signed agreement setting out the scope, the price and the outcome we are working towards."
