@@ -29,6 +29,10 @@ const nextConfig: NextConfig = {
       { source: "/guides/grow-business-instagram-new-zealand", destination: "/services/instagram-marketing", permanent: true },
       { source: "/guides/:slug", destination: "/instagram-account-recovery", permanent: true },
       { source: "/guides", destination: "/instagram-account-recovery", permanent: true },
+      /* Hero film files renamed to descriptive names. */
+      { source: "/video/hero-poster.jpg", destination: "/video/tally-brand-film-poster.jpg", permanent: true },
+      { source: "/video/hero.mp4", destination: "/video/tally-brand-film-1080p.mp4", permanent: true },
+      { source: "/video/hero-720.mp4", destination: "/video/tally-brand-film-720p.mp4", permanent: true },
       /* Short service and industry URLs people guess at. */
       { source: "/services/instagram", destination: "/services/instagram-marketing", permanent: true },
       { source: "/services/paid-ads", destination: "/services/meta-ads", permanent: true },

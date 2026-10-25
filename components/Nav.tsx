@@ -20,13 +20,13 @@ import { INDUSTRY_PAGES } from "@/lib/industries";
   When closed the sheet is `inert`, so nothing inside it can take focus.
 */
 
-/* The pages, listed in the menu. The bar itself stays clean: wordmark, Free audit, Menu. */
+/* The pages, listed in the menu. The bar itself stays short: wordmark, Contact, Free audit, Menu. */
 const PRIMARY: { href: string; label: string }[] = [
   { href: "/services", label: "Services" },
   { href: "/industries", label: "Industries" },
   { href: "/instagram-account-recovery", label: "Account recovery" },
   { href: "/about", label: "About" },
-  { href: "/contact", label: "Book a call" },
+  { href: "/contact", label: "Contact" },
   { href: "/audit", label: "Free audit" },
 ];
 
@@ -120,6 +120,16 @@ export default function Nav() {
           </Link>
 
           <div className="flex items-center gap-3 sm:gap-5">
+            {/* Contact sits in the bar itself, on every screen size, so nobody has to open the menu to find it. */}
+            <Link
+              href="/contact"
+              aria-current={pathname === "/contact" ? "page" : undefined}
+              className={`flex min-h-[44px] items-center px-2 text-[0.9375rem] font-medium transition-colors hover:text-signal ${
+                pathname === "/contact" ? "text-signal" : "text-ink"
+              }`}
+            >
+              Contact
+            </Link>
             <Pill href="/audit" size="sm" className="hidden sm:inline-flex">
               Free audit
             </Pill>

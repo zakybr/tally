@@ -90,6 +90,16 @@
   color: var(--ink);
 }
 
+/*
+  Small orange labels (step numbers, card indices) on a light band. At 12px the
+  brand orange reads 3.6:1 on the light grounds, under WCAG AA's 4.5:1, so the
+  small text alone takes a deeper shade (4.9:1 or better). Large orange
+  headline words keep the brand orange, which passes at display size.
+*/
+.light .mono-label.text-signal {
+  color: #b0300c;
+}
+
 /* Display face: condensed, bold, uppercase. Headlines only. */
 .display {
   font-family: var(--font-condensed), var(--font-grotesk), system-ui, sans-serif;

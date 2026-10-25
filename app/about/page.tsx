@@ -8,8 +8,8 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import { routeMetadata } from "@/lib/routes";
 import { breadcrumbNode, personNodes, webPageNode } from "@/lib/seo";
-import jontyImg from "@/public/images/jonty.png";
-import zakImg from "@/public/images/zak.png";
+import jontyImg from "@/public/images/jonty-macintyre-tally-partner.png";
+import zakImg from "@/public/images/zak-rachmadi-tally-director.png";
 
 /*
   About, kept short: who we are, how we work in three lines, the team,

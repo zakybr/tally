@@ -42,6 +42,31 @@ All other existing redirects are unchanged. Every redirect is a single hop.
 - **Sticky CTA bar:** uses `inert` when hidden, for the same accessibility fix.
 - **llms.txt:** rewritten. It covers the Auckland base, legal name and NZBN, both people, every service and industry page by its own URL, a "no promised results" line, and the homepage FAQ. It no longer has anchors or "nationwide".
 
+## Follow-up changes (25 Oct, after review)
+
+- **Images renamed to descriptive names.** The old URLs for the three video files redirect to the new ones. The renamed files are:
+
+| Old | New |
+|---|---|
+| `images/tile-consumer.jpg` | `images/performance-boat-cockpit-seating-content-shoot.jpg` |
+| `images/tile-marine.jpg` | `images/day-boat-at-anchor-new-zealand-bay.jpg` |
+| `images/sector-seafood.jpg` | `images/commercial-fishing-crew-on-deck.jpg` |
+| `images/band-instagram.jpg` | `images/outboard-engines-close-up-boat-content-shoot.jpg` |
+| `images/zak.png` | `images/zak-rachmadi-tally-director.png` |
+| `images/jonty.png` | `images/jonty-macintyre-tally-partner.png` |
+| `video/hero*.mp4` and the poster | `video/tally-brand-film-{1080p,720p}.mp4`, `video/tally-brand-film-poster.jpg` |
+
+  The other files in `public/images` are not used by any page, so they were left alone.
+- **Contact in the top bar.** A Contact link now sits in the bar on every screen size, next to Free audit and Menu. "Book a call" is renamed to "Contact" in the menu and the footer.
+- **Footer "Follow Tally" section.** It has line icons for Instagram, Facebook and LinkedIn (`components/SocialIcons.tsx`, Feather shapes, MIT). Each is a 44px target with an aria-label, linked with `rel="me"`.
+- **Homepage contrast.** Small orange labels on light bands now use #b0300c (4.9:1 or better). Large orange headline words keep the brand orange. Homepage accessibility is now 100. Lighthouse mobile after this round:
+
+| Page | Performance | Accessibility | Best practices | SEO |
+|---|---|---|---|---|
+| `/` | 80 | 100 | 100 | 100 |
+| `/services/meta-ads` | 85 | 100 | 100 | 100 |
+| `/instagram-account-recovery` | 85 | 100 | 100 | 100 |
+
 ## Page by page
 
 | Page | Title | H1 | Body words* | Notes |
@@ -96,5 +121,4 @@ Please check these:
 - **GBP link.** `share.google/…` is a share link. Swap it for the profile's `maps.google.com/?cid=` URL (see OFFSITE.md).
 - **Case studies.** No client names are allowed yet, so each service and industry page has a TODO comment where one will go.
 - **Intro animation.** Untouched, as instructed. It still accounts for most of the LCP time on every page.
-- **Colour contrast on the homepage.** Small orange step numbers on light bands (#d93a10 on #e5e2dc) fail WCAG AA at 3.55:1. The fix is to darken the light-theme `--signal` to about #b8300d. I left it because it changes the brand colour.
 - **`lib/offer.ts` and `lib/contact-form.ts`** have your own uncommitted changes. They are not in these commits. `lib/offer.ts` still uses "guarantees" field names, but nothing imports it, so it is not shown on any page.

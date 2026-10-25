@@ -45,7 +45,7 @@ export default function HeroFilm() {
       <video
         ref={ref}
         className="absolute inset-0 h-full w-full object-cover"
-        poster="/video/hero-poster.jpg"
+        poster="/video/tally-brand-film-poster.jpg"
         muted
         autoPlay
         loop
@@ -54,8 +54,8 @@ export default function HeroFilm() {
         aria-hidden="true"
       >
         {/* Phones get the 720p encode (2.5 MB); everything else the 1080p (5.2 MB). */}
-        <source src="/video/hero-720.mp4" type="video/mp4" media="(max-width: 767px)" />
-        <source src="/video/hero.mp4" type="video/mp4" />
+        <source src="/video/tally-brand-film-720p.mp4" type="video/mp4" media="(max-width: 767px)" />
+        <source src="/video/tally-brand-film-1080p.mp4" type="video/mp4" />
       </video>
       <div className="absolute inset-0 bg-gradient-to-t from-sheet via-sheet/55 to-sheet/25" />
 

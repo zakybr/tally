@@ -6,10 +6,10 @@ import { FaqList } from "@/components/PageShell";
 import { SERVICE_LINKS } from "@/lib/services";
 import { INDUSTRY_PAGES } from "@/lib/industries";
 import { HOME_FAQS } from "@/lib/home";
-import tileConsumer from "@/public/images/tile-consumer.jpg";
-import tileMarine from "@/public/images/tile-marine.jpg";
-import tilePrimary from "@/public/images/sector-seafood.jpg";
-import bandInstagram from "@/public/images/band-instagram.jpg";
+import tileConsumer from "@/public/images/performance-boat-cockpit-seating-content-shoot.jpg";
+import tileMarine from "@/public/images/day-boat-at-anchor-new-zealand-bay.jpg";
+import tilePrimary from "@/public/images/commercial-fishing-crew-on-deck.jpg";
+import bandInstagram from "@/public/images/outboard-engines-close-up-boat-content-shoot.jpg";
 
 /*
   The homepage below the film, in reading order: what we believe, the proof,
