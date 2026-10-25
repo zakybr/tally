@@ -1,6 +1,6 @@
 # SEO rebuild: what changed
 
-Branch `seo-rebuild`, 25 October 2026. Not deployed, not pushed. Follows SEO_BRIEF.md, with the FACTS answers given on 25 Oct and the keyword changes accepted from AUDIT.md.
+Branch `seo-rebuild`, 25 October 2026. Not deployed. Follows SEO_BRIEF.md, with the FACTS answers given on 25 Oct and the revised keyword map (with Keyword Planner volumes) from Zak's updated brief. That map moves the homepage back to "marketing agency Auckland", marketing management to "social media agency Auckland", content and video to "videographer Auckland", websites to "website design Auckland small business", and the recovery page to "Instagram account disabled".
 
 ## Old to new URL map
 
@@ -46,19 +46,19 @@ All other existing redirects are unchanged. Every redirect is a single hop.
 
 | Page | Title | H1 | Body words* | Notes |
 |---|---|---|---|---|
-| `/` | Social Media Marketing Agency in Auckland, NZ \| Tally | "Social media marketing agency in Auckland" + "We make brands people stop scrolling for." (one H1) | ~970 | Brand line and design kept. The keyword line sits in the H1 as a small label above the brand line. The intro names Auckland and the services. Cards link to each service and industry page with descriptive text. New visible "Common questions" band, so the FAQ markup now matches what is on the page. |
+| `/` | Marketing Agency Auckland: Social, Ads and Video \| Tally | "Marketing agency in Auckland" + "We make brands people stop scrolling for." (one H1) | ~970 | Brand line and design kept. The keyword line sits in the H1 as a small label above the brand line. The intro names Auckland and the services. Cards link to each service and industry page with descriptive text. New visible "Common questions" band, so the FAQ markup now matches what is on the page. |
 | `/services` | Social Media Marketing Services, Auckland and NZ \| Tally | Social media marketing services from Auckland | ~920 | Now a hub: 2 to 3 sentences per service, old anchors kept, each section linking to its page. ItemList in the structured data. |
-| `/services/marketing-management` | Social Media Management Agency in Auckland, NZ \| Tally | Social media management in Auckland | ~1,500 | **New.** 7 FAQs. |
+| `/services/marketing-management` | Social Media Agency in Auckland, Fully Managed \| Tally | Social media agency in Auckland | ~1,500 | **New.** 7 FAQs. |
 | `/services/instagram-marketing` | Instagram Marketing Agency in Auckland, NZ \| Tally | Instagram marketing agency in Auckland | ~1,450 | **New.** Sections on Reels and on what we will not do (no bought followers). 6 FAQs. |
 | `/services/meta-ads` | Meta Ads Agency Auckland: Facebook and Instagram Ads \| Tally | Meta ads agency in Auckland | ~1,420 | **New.** Covers Facebook and Instagram ads run together, and restricted ad accounts. 6 FAQs. |
-| `/services/content-video` | Social Media Video Production Auckland, NZ \| Tally | Social media video production in Auckland | ~1,240 | **New.** Compares hiring a videographer with a team that posts. 5 FAQs. |
-| `/services/websites` | Small Business Website Design Auckland, NZ \| Tally | Small business website design in Auckland | ~1,290 | **New.** Section on landing pages. 5 FAQs. |
-| `/instagram-account-recovery` | Instagram Account Recovery NZ: Banned and Disabled \| Tally | Instagram account recovery in New Zealand | ~1,210 | Expanded. New sections: how a case works, disabled or restricted Meta ad accounts ("depends on the cause"), and avoiding recovery scams, which names the company and its NZBN. "Through our Meta representatives" is kept. 7 FAQs. |
+| `/services/content-video` | Videographer Auckland for Social Media and Reels \| Tally | Social media videographer in Auckland | ~1,240 | **New.** Compares hiring a videographer with a team that posts. 5 FAQs. |
+| `/services/websites` | Website Design Auckland for Small Business, NZ \| Tally | Website design in Auckland for small business | ~1,290 | **New.** Section on landing pages. 5 FAQs. |
+| `/instagram-account-recovery` | Instagram Account Disabled? NZ Account Recovery \| Tally | Instagram account disabled? Recovery for NZ businesses | ~1,210 | Expanded. New sections: how a case works, disabled or restricted Meta ad accounts ("depends on the cause"), and avoiding recovery scams, which names the company and its NZBN. "Through our Meta representatives" is kept. 7 FAQs. |
 | `/industries` | Consumer, Marine and Primary Industry Marketing NZ \| Tally | Marketing for consumer, marine and primary industries | ~630 | Now a hub with the old anchors kept, each section linking to its page. New hub FAQ. |
 | `/industries/consumer-brands` | Consumer Brand Marketing Agency NZ, Auckland \| Tally | Consumer brand marketing agency in New Zealand | ~950 | **New.** Retail and hospitality in Auckland. 5 FAQs. |
 | `/industries/marine` | Marine Marketing Agency NZ: Dealers, Clubs, Charters \| Tally | Marine marketing agency for New Zealand | ~910 | **New.** Dealers, clubs, charters, hire and yards, plus marine trades recruitment. 5 FAQs. |
 | `/industries/primary-industries` | Primary Industries Marketing and Recruitment NZ \| Tally | Primary industries marketing and recruitment | ~950 | **New** (still offered, per FACTS). Notes Meta's employment ad rules. 5 FAQs. |
-| `/about` | About Us: Social Media Marketing Agency, Auckland \| Tally | About Tally | ~470 | Intro names Auckland. Bios unchanged (from the live site). Person and AboutPage nodes are in the page graph. The page-level keywords tag is removed. |
+| `/about` | About Us: Marketing Agency in Auckland, NZ \| Tally | About Tally | ~470 | Intro names Auckland. Bios unchanged (from the live site). Person and AboutPage nodes are in the page graph. The page-level keywords tag is removed. |
 | `/contact` | Contact Us: Book a Call with an Auckland Agency \| Tally | Book a call | ~330 | Adds a line saying Tally is a service-area business in Auckland with no shopfront. Includes the ProfessionalService node. The phone number is written in the same format as the rest of the site. |
 | `/audit` | Free Marketing Audit for Auckland and NZ Businesses \| Tally | Free marketing audit | ~460 | Intro names Auckland. Breadcrumb and page graph added. |
 | `/audit/thanks` | Audit requested \| Tally | unchanged | | Still noindex. Now has its own canonical and description and uses the /audit social card. |

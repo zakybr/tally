@@ -28,11 +28,11 @@ export type RouteInfo = {
 const STATIC: RouteInfo[] = [
   {
     path: "/",
-    title: "Social Media Marketing Agency in Auckland, NZ | Tally",
+    title: "Marketing Agency Auckland: Social, Ads and Video | Tally",
     description:
-      "Social media marketing agency in Auckland for consumer and marine brands across NZ. Instagram, Meta ads, video and websites, built on 100M+ organic views.",
-    ogAlt: "Tally, social media marketing agency in Auckland, New Zealand",
-    eyebrow: "Social media marketing · Auckland, New Zealand",
+      "Marketing agency in Auckland for consumer and marine brands across NZ: Instagram, Meta ads, video and websites, built on 100M+ organic views. Free audit.",
+    ogAlt: "Tally, marketing agency in Auckland, New Zealand",
+    eyebrow: "Marketing agency · Auckland, New Zealand",
     headline: "We make brands people stop scrolling for.",
     updated: "2026-10-25",
     changeFrequency: "weekly",
@@ -87,10 +87,10 @@ const STATIC: RouteInfo[] = [
   },
   {
     path: "/about",
-    title: "About Us: Social Media Marketing Agency, Auckland | Tally",
+    title: "About Us: Marketing Agency in Auckland, NZ | Tally",
     description:
-      "Tally is an Auckland social media marketing agency built on 8 years growing, monetising and selling Instagram accounts. Meet Zak Rachmadi and Jonty MacIntyre.",
-    ogAlt: "About Tally, social media marketing agency in Auckland",
+      "Tally is an Auckland marketing agency built on 8 years growing, monetising and selling Instagram accounts. Meet Zak Rachmadi and Jonty MacIntyre.",
+    ogAlt: "About Tally, marketing agency in Auckland",
     eyebrow: "About · Auckland, New Zealand",
     headline: "About Tally",
     updated: "2026-10-25",
@@ -101,8 +101,8 @@ const STATIC: RouteInfo[] = [
     path: "/contact",
     title: "Contact Us: Book a Call with an Auckland Agency | Tally",
     description:
-      "Book a free Zoom call with Tally, a social media marketing agency based in Auckland, or call Zak on +64 22 305 3853. Working with businesses across NZ.",
-    ogAlt: "Contact Tally, social media marketing agency in Auckland",
+      "Book a free Zoom call with Tally, a digital marketing agency based in Auckland, or call Zak on +64 22 305 3853. Working with businesses across NZ.",
+    ogAlt: "Contact Tally, marketing agency in Auckland",
     eyebrow: "Contact · Auckland, New Zealand",
     headline: "Book a call",
     updated: "2026-10-25",

@@ -18,7 +18,7 @@ export function GET() {
 
   const body = `# Tally
 
-> Tally is a social media marketing agency based in Auckland, New Zealand, working with consumer and marine brands across New Zealand. The team has spent 8 years growing, monetising and selling Instagram accounts, with more than 100 million organic views on accounts it has run. Services: social media management, Instagram marketing, Meta ads, social media video production, and small business websites and landing pages. Tally also handles Instagram account recovery, username claims and disabled Meta ad accounts (depending on the cause), and runs recruitment and reach campaigns for primary industries operators. Every engagement starts with a free audit.
+> Tally is a marketing agency based in Auckland, New Zealand, focused on social media and digital marketing, working with consumer and marine brands across New Zealand. The team has spent 8 years growing, monetising and selling Instagram accounts, with more than 100 million organic views on accounts it has run. Services: social media management, Instagram marketing, Meta ads, social media video production, and small business websites and landing pages. Tally also handles Instagram account recovery, username claims and disabled Meta ad accounts (depending on the cause), and runs recruitment and reach campaigns for primary industries operators. Every engagement starts with a free audit.
 
 Legal name: ${LEGAL_NAME}, trading as Tally. NZBN ${NZBN}. Based in Auckland; serves Auckland and the rest of New Zealand. Tally is a service-area business with no public shopfront; meetings and shoots are by arrangement. Tally does not promise results or set contractual targets; work is measured on an outcome agreed with the client, such as enquiries, bookings, sales or qualified applications. Pricing is quoted after the free audit; ad spend is paid by the client to Meta from the client's own ad account.
 
@@ -44,7 +44,7 @@ ${industryLinks}
 
 ## Core pages
 
-- [Home](${SITE_URL}/): Social media marketing agency in Auckland
+- [Home](${SITE_URL}/): Marketing agency in Auckland
 - [Services](${SITE_URL}/services): Summary of every service, with links to each service page
 - [Industries](${SITE_URL}/industries): Consumer brands, marine and primary industries
 - [Free audit](${SITE_URL}/audit): Request a free marketing audit in under a minute

@@ -25,7 +25,7 @@ import { businessNode, faqNode, webPageNode } from "@/lib/seo";
 export const metadata: Metadata = routeMetadata("/");
 
 const nodes = [
-  webPageNode({ path: "/", name: "Tally, social media marketing agency in Auckland", description: metadata.description ?? "" }),
+  webPageNode({ path: "/", name: "Tally, marketing agency in Auckland", description: metadata.description ?? "" }),
   businessNode(),
   faqNode("/", HOME_FAQS),
 ];

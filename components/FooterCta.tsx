@@ -76,7 +76,7 @@ export default function FooterCta() {
                 </span>
               </Link>
               <p className="mt-6 max-w-sm text-[0.875rem] leading-[1.7] text-ink-2">
-                Social media marketing agency based in Auckland, working with consumer and marine
+                Marketing agency based in Auckland, working with consumer and marine
                 brands across New Zealand. A free audit first, then we run the work that moves the
                 number that matters.
               </p>

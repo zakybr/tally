@@ -63,18 +63,18 @@ export const SERVICE_PAGES: ServicePage[] = [
     name: "Marketing management",
     short: "We run your social media and marketing, aimed at one outcome.",
     hub: "Hand us the lot. We set the strategy, make the content, run Instagram and your Meta ads, and send one plain update a week on the number that matters. One team and one outcome, instead of three suppliers nobody is coordinating.",
-    linkText: "Social media management in Auckland",
+    linkText: "Social media agency in Auckland",
     measuredIn: "Enquiries, bookings or sales",
     serviceType: "Social media management",
     updated: UPDATED,
-    title: "Social Media Management Agency in Auckland, NZ | Tally",
+    title: "Social Media Agency in Auckland, Fully Managed | Tally",
     description:
-      "Social media management from an Auckland team: strategy, content, Instagram and Meta ads run as one, with a weekly update on the number that matters.",
-    ogAlt: "Tally social media management, Auckland and New Zealand",
-    h1: "Social media management",
+      "Social media agency in Auckland running strategy, content, Instagram and Meta ads as one team, with a weekly update on the number that matters. Free audit.",
+    ogAlt: "Tally social media agency, Auckland and New Zealand",
+    h1: "Social media agency",
     h1Accent: "in Auckland",
     intro:
-      "Tally is a social media management agency based in Auckland, working with consumer, marine and primary industries businesses across New Zealand. We take over the whole job: strategy, content, Instagram, Meta ads and reporting, run by one team and aimed at one outcome the business can count, such as enquiries, bookings or sales.",
+      "Tally is a social media agency based in Auckland, working with consumer, marine and primary industries businesses across New Zealand. We take over the whole job: strategy, content, Instagram, Meta ads and reporting, run by one team and aimed at one outcome the business can count, such as enquiries, bookings or sales.",
     whoFor: {
       heading: "Who hands us their social media",
       intro:
@@ -127,7 +127,7 @@ export const SERVICE_PAGES: ServicePage[] = [
       {
         heading: "Working with an Auckland team",
         body: [
-          "We are based in Auckland, so shoots and meetings around the region are easy to arrange at short notice. Most of the management work runs remotely, which is also how we work with businesses elsewhere in New Zealand: calls, shared folders and the weekly update, with shoots planned around where you are.",
+          "As a social media marketing agency based in Auckland, we can arrange shoots and meetings around the region at short notice. Most of the management work runs remotely, which is also how we work with businesses elsewhere in New Zealand: calls, shared folders and the weekly update, with shoots planned around where you are.",
           "You deal with the people doing the work. Zak runs strategy and delivery, Jonty runs the creative system, and either of them will pick up the phone.",
         ],
       },
@@ -471,22 +471,22 @@ export const SERVICE_PAGES: ServicePage[] = [
     name: "Content & video",
     short: "Reels, stills and ad cuts you own, made to be posted.",
     hub: "We come to the boat, the showroom or the shop floor and shoot the real thing: Reels, stills and ad cuts in the formats that perform. You own every frame, and every shoot is planned around what it has to sell.",
-    linkText: "Social media video production in Auckland",
+    linkText: "Social media videographer in Auckland",
     measuredIn: "Watch time, shares and cost per result",
     serviceType: "Social media video production",
     updated: UPDATED,
-    title: "Social Media Video Production Auckland, NZ | Tally",
+    title: "Videographer Auckland for Social Media and Reels | Tally",
     description:
-      "Social media video production in Auckland: Reels, stills and ad cuts shot on location for NZ brands, planned around what they need to sell. You own every frame.",
-    ogAlt: "Tally social media video production and Reels, Auckland",
-    h1: "Social media video production",
+      "Social media videographer in Auckland: Reels, stills and ad cuts shot on location for NZ brands, planned around what they need to sell. You own every frame.",
+    ogAlt: "Tally social media videographer, Reels and video in Auckland",
+    h1: "Social media videographer",
     h1Accent: "in Auckland",
     intro:
-      "Tally plans and shoots social media video in Auckland and across New Zealand: Reels, stills and ad cuts made for Instagram and Facebook. We shoot on the boat, in the showroom or on the shop floor, plan every shoot around what it has to sell, and you own every frame we make.",
+      "Tally is a social media videographer and content team in Auckland, shooting Reels, stills and ad cuts for Instagram and Facebook across New Zealand. We shoot on the boat, in the showroom or on the shop floor, plan every shoot around what it has to sell, and you own every frame we make.",
     whoFor: {
       heading: "Who it is for",
       intro:
-        "Content and video suits businesses that look better moving than in a brochure, and need a steady supply of short pieces rather than one brand film.",
+        "Social media content creation suits businesses that look better moving than in a brochure, and need a steady supply of short pieces rather than one brand film.",
       cases: [
         {
           title: "A brand film that never got posted",
@@ -559,7 +559,7 @@ export const SERVICE_PAGES: ServicePage[] = [
     },
     faqs: [
       {
-        question: "How much does social media video production cost in Auckland?",
+        question: "How much does a social media videographer cost in Auckland?",
         answer:
           "It depends on the number of shoot days, the locations and how many finished pieces you need. We quote after a free audit, once we know what the content has to sell and where it will run. You own every frame we make, so you can keep using the footage in posts, ads and on your website without further cost.",
       },
@@ -593,18 +593,18 @@ export const SERVICE_PAGES: ServicePage[] = [
     name: "Websites & landing pages",
     short: "Small business sites built to turn visits into enquiries.",
     hub: "Fast, simple sites and landing pages that work on a phone, load quickly, rank in search and make it easy to call or enquire. Built to support the ads and content, so the traffic you pay for does not leak.",
-    linkText: "Small business website design in Auckland",
+    linkText: "Website design in Auckland for small business",
     measuredIn: "Enquiries from the site",
     serviceType: "Small business website design",
     updated: UPDATED,
-    title: "Small Business Website Design Auckland, NZ | Tally",
+    title: "Website Design Auckland for Small Business, NZ | Tally",
     description:
-      "Small business website design and landing pages from an Auckland team. Fast, mobile-first sites built to turn ad and Instagram traffic into enquiries.",
-    ogAlt: "Tally small business website design and landing pages, Auckland",
-    h1: "Small business website design",
-    h1Accent: "in Auckland",
+      "Website design in Auckland for small business: fast, mobile-first sites and landing pages built to turn ad and Instagram traffic into enquiries, NZ-wide.",
+    ogAlt: "Tally website design in Auckland for small business",
+    h1: "Website design in Auckland",
+    h1Accent: "for small business",
     intro:
-      "Tally designs small business websites and landing pages in Auckland, for businesses across New Zealand. They are built to load quickly on a phone, rank in search and make it easy to call or enquire, so the visitors your ads and Instagram send do not leave without getting in touch.",
+      "Tally does website design in Auckland for small businesses across New Zealand. We build websites and landing pages that load quickly on a phone, rank in search and make it easy to call or enquire, so the visitors your ads and Instagram send do not leave without getting in touch.",
     whoFor: {
       heading: "Who it is for",
       intro: "Websites are usually part of a wider brief with us, though they do not have to be.",
@@ -729,14 +729,14 @@ export const RECOVERY = {
   measuredIn: "Your account back",
   serviceType: "Instagram account recovery and username claims",
   updated: UPDATED,
-  title: "Instagram Account Recovery NZ: Banned and Disabled | Tally",
+  title: "Instagram Account Disabled? NZ Account Recovery | Tally",
   description:
-    "Banned or disabled Instagram business account, restricted Meta ad account or someone using your name? An Auckland team handles recovery for NZ businesses.",
-  ogAlt: "Tally Instagram account recovery and username claims, New Zealand",
-  h1: "Instagram account recovery",
-  h1Accent: "in New Zealand",
+    "Instagram account disabled, banned or restricted? An Auckland team handles Instagram account recovery, disabled Meta ad accounts and username claims for NZ.",
+  ogAlt: "Tally Instagram account recovery for disabled and banned accounts, New Zealand",
+  h1: "Instagram account disabled?",
+  h1Accent: "Recovery for NZ businesses",
   intro:
-    "Tally handles Instagram account recovery for New Zealand businesses from our base in Auckland: banned, disabled and restricted accounts, username claims and impersonation. We work each case through our Meta representatives from start to finish. You keep your login the whole time, and we never ask for your password.",
+    "If your Instagram account has been disabled, banned or restricted, Tally handles the recovery for New Zealand businesses from our base in Auckland, along with username claims and impersonation. We work each case through our Meta representatives from start to finish. You keep your login the whole time, and we never ask for your password.",
   handles: [
     {
       title: "Banned and disabled accounts",
@@ -791,7 +791,7 @@ export const RECOVERY = {
   },
   faqs: [
     {
-      question: "Can you get my banned Instagram account back?",
+      question: "My Instagram account was disabled. Can you get it back?",
       answer:
         "In most cases, yes. We take on the case and work it through our Meta representatives until there is a decision. We tell you on the first call whether it is worth taking, and if it is not, you pay nothing. You keep your login the whole time, and we never ask for your password or a login code.",
     },

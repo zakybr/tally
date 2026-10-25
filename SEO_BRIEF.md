@@ -96,15 +96,19 @@ KEYWORD MAP (one primary per page; secondaries go in H2s, body and FAQs naturall
 
 | Page | Primary | Secondaries |
 |---|---|---|
-| / | marketing agency Auckland | marketing agency NZ, social media marketing agency Auckland, marketing solutions Auckland, consumer and marine marketing NZ |
-| /services/marketing-management | social media management Auckland | outsourced marketing NZ, social media agency Auckland, marketing management NZ |
+| / | marketing agency Auckland (260/mo NZ) | digital marketing agency Auckland (390/mo), marketing agency NZ (110/mo), consumer and marine marketing NZ |
+| /services/marketing-management | social media agency Auckland (110/mo) | social media marketing agency Auckland, social media management Auckland, outsourced marketing NZ |
 | /services/instagram-marketing | Instagram marketing agency Auckland | Instagram marketing NZ, Instagram growth agency, Instagram Reels marketing, Instagram management Auckland |
 | /services/meta-ads | Meta ads agency Auckland | Meta ads NZ, Facebook ads Auckland, Instagram ads agency NZ, Facebook advertising agency NZ |
-| /services/content-video | social media content creation Auckland | Reels videographer Auckland, video content for Instagram NZ |
+| /services/content-video | videographer Auckland (110/mo, aim at the social video slice) | social media content creation Auckland, Reels videographer Auckland |
 | /services/websites | website design Auckland small business | landing pages NZ, small business website NZ |
-| /instagram-account-recovery | Instagram account recovery NZ | banned Instagram account help, disabled Instagram business account, Instagram username claim NZ |
+| /instagram-account-recovery | Instagram account disabled (70/mo NZ) | Instagram account recovery (70/mo), banned Instagram account help, Instagram username claim NZ |
 | /industries/marine | marine marketing agency NZ | boat dealer marketing, boat club marketing, charter marketing NZ |
 | /industries/consumer-brands | consumer brand marketing agency NZ | retail marketing Auckland, hospitality marketing Auckland |
+
+Volumes are Google Keyword Planner, NZ, Oct 2025 to Sep 2026. The Instagram and Meta ads terms each get about 10 searches a month in NZ; still target them, but the buyers for those services mostly ask AI assistants, which the separate AEO prompt covers.
+
+(Updated 25 Oct 2026 from Zak's revised brief. This map supersedes the AUDIT.md proposals for the homepage, content and video, and websites.)
 
 Check the map against what you found in Phase 0. If search results show a different phrasing has clearer commercial intent in NZ, propose the change in AUDIT.md rather than silently swapping it.
 
