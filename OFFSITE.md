@@ -55,12 +55,31 @@ Open your profile at https://share.google/DFyJrJpXeKvjiLh3f, while signed in as 
 8. **Posts:** one a week. A Reel still, a short note and a link to a service page is enough.
 9. **Copy the profile's long URL** (Share, then open it in a browser, then copy the `maps.google.com/?cid=…` address from the address bar) and send it to me. It replaces the share link in the site's `sameAs`.
 
-## 4. Send me the social URLs
+## 4. Make the social profiles point back to the site (this week)
 
-The FACTS answer for socials came back as the placeholder text. Send the Instagram, Facebook and LinkedIn company page URLs and I will add them to `sameAs` in `lib/seo.ts`. On each profile:
-- Use the name "Tally".
-- Put `https://www.tallynz.co` as the website link.
-- Mention Auckland in the bio.
+AI search tools pair "tallynz.co" with other businesses' Instagram accounts. That happens because nothing ties Tally's profiles and Tally's website together, so they guess by name. "Tally" and "tallynz" are close to many other handles, and a Facebook Page with only a numeric `profile.php?id=` address carries no name at all.
+
+The site now does its half. The Organization schema lists all three profiles in `sameAs`, the footer links them with `rel="me"`, and llms.txt has an "Official profiles" section saying these are the only accounts. The profiles need to do the other half:
+
+1. **Facebook: give the Page a username.** In the Page settings, under Username, choose `tallynz` or `tallynz.co` if it is free. That replaces `profile.php?id=61595118560822` with `facebook.com/tallynz`. Send me the new URL and I'll swap it into `lib/seo.ts`. Also check this is a business Page and not a personal profile. Then set:
+   - Page name: `Tally`
+   - Category: Marketing agency
+   - Website: `https://www.tallynz.co`
+   - Phone: +64 22 305 3853
+   - Location: Auckland (service area)
+2. **Instagram (@tallynz.co):** switch to a Business account if it is not one already. Then set:
+   - Name field: `Tally | Social media marketing, Auckland`
+   - Category: Marketing agency
+   - Website link: `https://www.tallynz.co`
+   - Bio: name Auckland and New Zealand
+   - Link the account to the Facebook Page in Meta Business Suite, so Meta treats them as one business.
+3. **LinkedIn (company/tallynz):**
+   - Website: `https://www.tallynz.co`
+   - Industry: Marketing services
+   - Headquarters: Auckland, New Zealand
+   - Ask Zak and Jonty to set Tally as their current employer, so the people and the company connect.
+4. **Use the same one-line description everywhere.** Use the same sentence on all three profiles and the Google Business Profile, for example "Social media marketing agency in Auckland for consumer and marine brands across New Zealand." Repeating the same description is what helps assistants match the profiles to each other.
+5. **Two weeks after deploying, ask again.** Ask ChatGPT, Perplexity and Google: "What is Tally at tallynz.co, and what are its Instagram and Facebook accounts?" Record the answers in the monthly check sheet. If a wrong account still appears, look at which source it cites. That source is usually a directory listing with old or wrong details, so correct it there.
 
 ## 5. A review process for current clients
 

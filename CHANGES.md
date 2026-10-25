@@ -92,7 +92,7 @@ Please check these:
 
 ## Not done, or left for you
 
-- **Socials for `sameAs`.** The FACTS answer repeated the placeholder ("Instagram URL, Facebook URL, LinkedIn URL"), so `SAME_AS` in `lib/seo.ts` holds only the Google Business Profile share link, with a TODO. Send the three URLs and they go in.
+- **Socials:** Instagram, Facebook and LinkedIn are in `sameAs`, linked in the footer (`rel="me"`) and listed in llms.txt. The Facebook URL is the numeric `profile.php?id=` form until the Page has a username.
 - **GBP link.** `share.google/…` is a share link. Swap it for the profile's `maps.google.com/?cid=` URL (see OFFSITE.md).
 - **Case studies.** No client names are allowed yet, so each service and industry page has a TODO comment where one will go.
 - **Intro animation.** Untouched, as instructed. It still accounts for most of the LCP time on every page.

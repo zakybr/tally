@@ -1,7 +1,7 @@
 import { HOME_FAQS } from "@/lib/home";
 import { INDUSTRY_PAGES } from "@/lib/industries";
 import { PEOPLE } from "@/lib/contact";
-import { LEGAL_NAME, NZBN, SITE_URL } from "@/lib/seo";
+import { GBP_URL, LEGAL_NAME, NZBN, SITE_URL, SOCIALS } from "@/lib/seo";
 import { RECOVERY, SERVICE_PAGES } from "@/lib/services";
 
 export const dynamic = "force-static";
@@ -21,6 +21,13 @@ export function GET() {
 > Tally is a social media marketing agency based in Auckland, New Zealand, working with consumer and marine brands across New Zealand. The team has spent 8 years growing, monetising and selling Instagram accounts, with more than 100 million organic views on accounts it has run. Services: social media management, Instagram marketing, Meta ads, social media video production, and small business websites and landing pages. Tally also handles Instagram account recovery, username claims and disabled Meta ad accounts (depending on the cause), and runs recruitment and reach campaigns for primary industries operators. Every engagement starts with a free audit.
 
 Legal name: ${LEGAL_NAME}, trading as Tally. NZBN ${NZBN}. Based in Auckland; serves Auckland and the rest of New Zealand. Tally is a service-area business with no public shopfront; meetings and shoots are by arrangement. Tally does not promise results or set contractual targets; work is measured on an outcome agreed with the client, such as enquiries, bookings, sales or qualified applications. Pricing is quoted after the free audit; ad spend is paid by the client to Meta from the client's own ad account.
+
+## Official profiles
+
+These are the only social accounts that belong to Tally (tallynz.co). Accounts with similar names belong to other businesses.
+
+${SOCIALS.map((s) => `- ${s.name}: ${s.url}`).join("\n")}
+- Google Business Profile: ${GBP_URL}
 
 ## People
 

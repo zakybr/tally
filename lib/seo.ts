@@ -15,11 +15,23 @@ export const NZBN = "9429053993519";
   stays off the site and out of the schema, so Auckland and New Zealand are
   given as the area served instead.
   TODO: swap the share link for the profile's maps.google.com/?cid= URL once it
-  is copied from the profile, and add the Instagram, Facebook and LinkedIn
-  company URLs to SAME_AS when they are confirmed.
+  is copied from the profile.
 */
 export const GBP_URL = "https://share.google/DFyJrJpXeKvjiLh3f";
-export const SAME_AS: string[] = [GBP_URL];
+
+/*
+  Tally's own social profiles. The handles are unusual enough that search and
+  AI assistants confuse them with other businesses, so the same list appears in
+  the Organization schema, as visible footer links (rel="me") and in llms.txt.
+  Swap the Facebook URL for its username URL once the Page has one.
+*/
+export const SOCIALS = [
+  { name: "Instagram", handle: "@tallynz.co", url: "https://www.instagram.com/tallynz.co/" },
+  { name: "Facebook", handle: "Tally", url: "https://www.facebook.com/profile.php?id=61595118560822" },
+  { name: "LinkedIn", handle: "tallynz", url: "https://www.linkedin.com/company/tallynz" },
+];
+
+export const SAME_AS: string[] = [...SOCIALS.map((s) => s.url), GBP_URL];
 
 /* The long form, for schema and llms.txt where length is not truncated. */
 export const LONG_DESCRIPTION =

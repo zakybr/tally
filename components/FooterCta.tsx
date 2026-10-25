@@ -2,6 +2,7 @@ import Link from "next/link";
 import TallyMark from "@/components/TallyMark";
 import CtaPair from "@/components/CtaPair";
 import { PEOPLE } from "@/lib/contact";
+import { SOCIALS } from "@/lib/seo";
 import { SERVICE_LINKS } from "@/lib/services";
 import { INDUSTRY_PAGES } from "@/lib/industries";
 
@@ -85,6 +86,21 @@ export default function FooterCta() {
               >
                 zak@tallynz.co
               </a>
+              {/* The official profiles, linked with rel="me" so they tie back to this site. */}
+              <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+                {SOCIALS.map((s) => (
+                  <li key={s.url}>
+                    <a
+                      href={s.url}
+                      rel="me noopener"
+                      target="_blank"
+                      className="mono-label link-wipe inline-block py-1.5 text-ink-2 hover:text-ink"
+                    >
+                      Tally on {s.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
 
             <nav aria-label="Industries">
