@@ -9,6 +9,9 @@
 export type Option = { label: string; value: string };
 
 export const NEEDS: Option[] = [
+  { label: "Instagram growth", value: "instagram_growth" },
+  { label: "Banned account recovery", value: "banned_account_recovery" },
+  { label: "Username claim", value: "username_claim" },
   { label: "Bookings", value: "bookings" },
   { label: "Enquiries", value: "enquiries" },
   { label: "Staff", value: "staff" },
@@ -17,6 +20,8 @@ export const NEEDS: Option[] = [
 ];
 
 export const SECTORS: Option[] = [
+  { label: "Consumer brand", value: "consumer_brand" },
+  { label: "Creator or personal account", value: "creator_personal" },
   { label: "Seafood", value: "seafood" },
   { label: "Marine & boat building", value: "marine_boat_building" },
   { label: "Charter & tourism", value: "charter_tourism" },

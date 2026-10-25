@@ -45,7 +45,7 @@ export default function HeroFilm() {
       <video
         ref={ref}
         className="absolute inset-0 h-full w-full object-cover"
-        poster="/video/hero-poster.jpg"
+        poster="/video/tally-brand-film-poster.jpg"
         muted
         autoPlay
         loop
@@ -54,8 +54,8 @@ export default function HeroFilm() {
         aria-hidden="true"
       >
         {/* Phones get the 720p encode (2.5 MB); everything else the 1080p (5.2 MB). */}
-        <source src="/video/hero-720.mp4" type="video/mp4" media="(max-width: 767px)" />
-        <source src="/video/hero.mp4" type="video/mp4" />
+        <source src="/video/tally-brand-film-720p.mp4" type="video/mp4" media="(max-width: 767px)" />
+        <source src="/video/tally-brand-film-1080p.mp4" type="video/mp4" />
       </video>
       <div className="absolute inset-0 bg-gradient-to-t from-sheet via-sheet/55 to-sheet/25" />
 
@@ -78,12 +78,17 @@ export default function HeroFilm() {
       </button>
 
       <div className="relative mx-auto w-full max-w-[1440px] px-6 pb-16 pt-32 md:px-12 md:pb-24 lg:px-20">
-        <h1 className="display max-w-[12ch] text-[clamp(3.25rem,min(10vw,11.5vh),8.5rem)] text-ink">
-          We make brands people <span className="text-signal">stop scrolling for.</span>
+        {/* One H1 carrying both the plain description (the search phrase) and the brand line. */}
+        <h1>
+          <span className="mono-label block text-ink">Marketing agency in Auckland</span>
+          <span className="display mt-5 block max-w-[12ch] text-[clamp(3.25rem,min(10vw,11.5vh),8.5rem)] text-ink">
+            We make brands people <span className="text-signal">stop scrolling for.</span>
+          </span>
         </h1>
         <p className="mt-8 max-w-[46ch] text-[1.0625rem] leading-[1.55] text-ink md:text-lg">
-          Consumer and marine marketing from New Zealand, built on 8 years of growing, monetising
-          and selling Instagram accounts. Start with a free audit.
+          A digital marketing agency for consumer and marine brands: Instagram marketing, Meta ads,
+          social media video and websites, from our base in Auckland and across New Zealand. Built
+          on 8 years of growing, monetising and selling Instagram accounts. Start with a free audit.
         </p>
         <CtaPair source="home_hero" className="mt-9" />
       </div>

@@ -1,5 +1,8 @@
 import Nav from "@/components/Nav";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import FooterCta from "@/components/FooterCta";
+import JsonLd from "@/components/JsonLd";
+import type { Crumb } from "@/lib/seo";
 
 export type Clause = {
   heading: string;
@@ -16,12 +19,16 @@ export default function LegalDoc({
   lede,
   updated,
   clauses,
+  crumbs,
+  nodes,
 }: {
   eyebrow: string;
   title: string;
   lede: string;
   updated: string;
   clauses: Clause[];
+  crumbs: Crumb[];
+  nodes: object[];
 }) {
   return (
     <>
@@ -29,6 +36,7 @@ export default function LegalDoc({
       <main className="pt-16">
         <header className="border-b rule-hair px-6 py-20 md:px-12 md:py-28 lg:px-20">
           <div className="mx-auto max-w-[1440px]">
+            <Breadcrumbs crumbs={crumbs} className="mb-8" />
             <p className="mono-label text-ink-3">{eyebrow}</p>
             <h1 className="max-w-3xl font-sans text-4xl font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl">
               {title}
@@ -62,6 +70,7 @@ export default function LegalDoc({
         </div>
       </main>
       <FooterCta />
+      <JsonLd nodes={nodes} />
     </>
   );
 }

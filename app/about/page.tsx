@@ -4,9 +4,12 @@ import Nav from "@/components/Nav";
 import FooterCta from "@/components/FooterCta";
 import CtaPair from "@/components/CtaPair";
 import { PEOPLE } from "@/lib/contact";
-import { SITE_URL, breadcrumbJsonLd } from "@/lib/seo";
-import jontyImg from "@/public/images/jonty.png";
-import zakImg from "@/public/images/zak.png";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import JsonLd from "@/components/JsonLd";
+import { routeMetadata } from "@/lib/routes";
+import { breadcrumbNode, personNodes, webPageNode } from "@/lib/seo";
+import jontyImg from "@/public/images/jonty-macintyre-tally-partner.png";
+import zakImg from "@/public/images/zak-rachmadi-tally-director.png";
 
 /*
   About, kept short: who we are, how we work in three lines, the team,
@@ -14,26 +17,7 @@ import zakImg from "@/public/images/zak.png";
   search for either person's name land here.
 */
 
-const DESCRIPTION =
-  "Tally is a New Zealand marketing agency for consumer and marine brands, built on 8 years of growing, monetising and selling Instagram accounts. Meet the team.";
-
-export const metadata: Metadata = {
-  title: "About Tally | Instagram and Marketing Agency NZ",
-  description: DESCRIPTION,
-  keywords: [
-    "about Tally NZ",
-    "Instagram marketing agency New Zealand",
-    "consumer and marine marketing agency NZ",
-    "Zak Rachmadi",
-    "Jonty MacIntyre",
-  ],
-  alternates: { canonical: "/about" },
-  openGraph: {
-    title: "About Tally",
-    description: DESCRIPTION,
-    url: "/about",
-  },
-};
+export const metadata: Metadata = routeMetadata("/about");
 
 const PRINCIPLES = [
   {
@@ -67,45 +51,22 @@ const directors = [
   },
 ];
 
-/* Person entities for Zak and Jonty, each with a stable @id, tied to the organisation. */
-const people = PEOPLE.map((p) => ({
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "@id": `${SITE_URL}/about#${p.email.split("@")[0]}`,
-  name: p.name,
-  jobTitle: p.role,
-  email: p.email,
-  telephone: p.phone,
-  worksFor: { "@id": `${SITE_URL}/#organization` },
-  mainEntityOfPage: `${SITE_URL}/about`,
-  knowsAbout: [
-    "Instagram growth",
-    "Paid social",
-    "Consumer brand marketing",
-    "Marine marketing New Zealand",
-    "Recruitment marketing",
-  ],
-  nationality: { "@type": "Country", name: "New Zealand" },
-  ...(p.sameAs.length ? { sameAs: p.sameAs } : {}),
-}));
+/* Person entities for Zak and Jonty, each with a stable @id, tied to the organisation, inside an AboutPage. */
+const crumbs = [
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+];
 
-const jsonLd = [
-  ...people,
-  breadcrumbJsonLd([
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-  ]),
+const people = personNodes();
+
+const nodes = [
   {
-    "@context": "https://schema.org",
+    ...webPageNode({ path: "/about", name: "About Tally", description: String(metadata.description ?? "") }),
     "@type": "AboutPage",
-    name: "About Tally",
-    description: DESCRIPTION,
-    url: `${SITE_URL}/about`,
-    isPartOf: { "@id": `${SITE_URL}/#website` },
-    about: { "@id": `${SITE_URL}/#organization` },
     mainEntity: people.map((p) => ({ "@id": p["@id"] })),
-    inLanguage: "en-NZ",
   },
+  ...people,
+  breadcrumbNode("/about", crumbs),
 ];
 
 export default function AboutPage() {
@@ -114,15 +75,16 @@ export default function AboutPage() {
       <Nav />
       <article className="mx-auto max-w-[1440px] px-6 pb-28 pt-32 md:px-12 md:pt-40 lg:px-20">
         <header className="max-w-3xl">
+          <Breadcrumbs crumbs={crumbs} className="mb-8" />
           <h1 className="display text-[3rem] text-ink md:text-[4.5rem]">
             About <span className="text-signal">Tally</span>
           </h1>
           <p className="mt-7 max-w-[56ch] text-lg leading-[1.6] text-ink-2">
-            Tally is a New Zealand marketing agency for consumer and marine brands. Our team has spent
-            8 years growing Instagram accounts, monetising them and selling them. Now we run that
-            system for New Zealand businesses, aimed at the outcome that actually moves the business
-            rather than video output with no clear return. We also run recruitment and reach for
-            primary industries operators.
+            Tally is a marketing agency based in Auckland, working with consumer and
+            marine brands across New Zealand. Our team has spent 8 years growing Instagram accounts,
+            monetising them and selling them. Now we run that system for New Zealand businesses,
+            aimed at the outcome that actually moves the business rather than video output with no
+            clear return. We also run recruitment and reach for primary industries operators.
           </p>
           <CtaPair source="about_hero" className="mt-9" />
         </header>
@@ -179,7 +141,7 @@ export default function AboutPage() {
         </section>
       </article>
       <FooterCta />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <JsonLd nodes={nodes} />
     </main>
   );
 }
