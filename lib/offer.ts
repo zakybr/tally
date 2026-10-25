@@ -132,6 +132,8 @@ export const SECTORS: SectorRow[] = [
 
 /* Sector options for every lead form on the site: the contact page and the popup. */
 export const INDUSTRY_OPTIONS = [
+  "Consumer brand",
+  "Creator or personal account",
   "Seafood & aquaculture",
   "Boat building & marine trades",
   "Fishing charters & tourism",
