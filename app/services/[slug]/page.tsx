@@ -48,7 +48,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
   const nodes = [
     webPageNode({ path, name: s.title, description: s.description }),
-    serviceNode({ path, name: s.name, serviceType: s.serviceType, description: s.intro }),
+    serviceNode({ path, name: s.name, serviceType: s.serviceType, description: s.intro, priceFrom: s.priceFrom }),
     breadcrumbNode(path, crumbs),
     faqNode(path, s.faqs),
   ];

@@ -28,6 +28,8 @@ export type ServicePage = {
   linkText: string;
   measuredIn: string;
   serviceType: string;
+  /* Published starting price in NZD. Goes into the Service schema as an Offer. */
+  priceFrom?: number;
   /* Content date, used for the sitemap's lastmod. */
   updated: string;
   title: string;
@@ -591,20 +593,21 @@ export const SERVICE_PAGES: ServicePage[] = [
     slug: "websites",
     anchor: "websites",
     name: "Websites & landing pages",
-    short: "Small business sites built to turn visits into enquiries.",
-    hub: "Fast, simple sites and landing pages that work on a phone, load quickly, rank in search and make it easy to call or enquire. Built to support the ads and content, so the traffic you pay for does not leak.",
+    short: "Small business sites from $500, built to turn visits into enquiries.",
+    hub: "Fast, simple sites and landing pages from $500 that work on a phone, load quickly, rank in search and make it easy to call or enquire. Built to support the ads and content, so the traffic you pay for does not leak.",
     linkText: "Website design in Auckland for small business",
     measuredIn: "Enquiries from the site",
     serviceType: "Small business website design",
-    updated: UPDATED,
+    priceFrom: 500,
+    updated: "2026-10-28",
     title: "Website Design Auckland for Small Business, NZ | Tally",
     description:
-      "Website design in Auckland for small business: fast, mobile-first sites and landing pages built to turn ad and Instagram traffic into enquiries, NZ-wide.",
+      "Website design in Auckland from $500: fast, mobile-first small business sites and landing pages built to turn visitors into enquiries, NZ-wide.",
     ogAlt: "Tally website design in Auckland for small business",
     h1: "Website design in Auckland",
     h1Accent: "for small business",
     intro:
-      "Tally does website design in Auckland for small businesses across New Zealand. We build websites and landing pages that load quickly on a phone, rank in search and make it easy to call or enquire, so the visitors your ads and Instagram send do not leave without getting in touch.",
+      "Tally does website design in Auckland for small businesses across New Zealand, with websites and landing pages from $500. We build sites that load quickly on a phone, rank in search and make it easy to call or enquire, so the visitors your ads and Instagram send do not leave without getting in touch.",
     whoFor: {
       heading: "Who it is for",
       intro: "Websites are usually part of a wider brief with us, though they do not have to be.",
@@ -678,15 +681,15 @@ export const SERVICE_PAGES: ServicePage[] = [
     pricing: {
       heading: "What a small business website costs",
       body: [
-        "We quote after the free audit, based on the number of pages, whether you need bookings or online sales, and how much copy and photography has to be produced.",
-        "A single campaign landing page is a much smaller job than a full site, and is often the better first step.",
+        "Websites and landing pages start from $500. The final quote follows the free audit and depends on the number of pages, whether you need bookings or online sales, and how much copy and photography has to be produced.",
+        "A single campaign landing page sits at the bottom of that range and is often the better first step. Larger sites with online sales or bookings cost more, and you get a fixed quote before any work starts.",
       ],
     },
     faqs: [
       {
         question: "How much does a small business website cost in Auckland?",
         answer:
-          "It depends on the number of pages, whether you need bookings or online sales, and how much copy and photography has to be produced. We quote after a free audit, once we know what the site needs to do. A single campaign landing page is a much smaller job than a full site, and is often the better first step.",
+          "Tally builds small business websites and landing pages from $500. The final price depends on the number of pages, whether you need bookings or online sales, and how much copy and photography has to be produced. You get a fixed quote after a free audit, before any work starts. A single landing page is the cheapest place to begin.",
       },
       {
         question: "Do I need a full website or just a landing page?",

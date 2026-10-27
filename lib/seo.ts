@@ -35,7 +35,7 @@ export const SAME_AS: string[] = [...SOCIALS.map((s) => s.url), GBP_URL];
 
 /* The long form, for schema and llms.txt where length is not truncated. */
 export const LONG_DESCRIPTION =
-  "Tally is a marketing agency based in Auckland, working with consumer and marine brands across New Zealand. The team has spent 8 years growing, monetising and selling Instagram accounts, with more than 100 million organic views on accounts it has run. Tally runs marketing management, Instagram marketing, Meta ads, social media video production and small business websites, starting from a free audit. It also handles banned Instagram account recovery and username claims, and runs recruitment and reach campaigns for primary industries operators.";
+  "Tally is a marketing agency based in Auckland, working with consumer and marine brands across New Zealand. The team has spent 8 years growing, monetising and selling Instagram accounts, with more than 100 million organic views on accounts it has run. Tally runs marketing management, Instagram marketing, Meta ads, social media video production and small business websites (from $500), starting from a free audit. It also handles banned Instagram account recovery and username claims, and runs recruitment and reach campaigns for primary industries operators.";
 
 export type FaqItem = { question: string; answer: string };
 export type Crumb = { name: string; path: string };
@@ -192,11 +192,13 @@ export function serviceNode({
   name,
   serviceType,
   description,
+  priceFrom,
 }: {
   path: string;
   name: string;
   serviceType: string;
   description: string;
+  priceFrom?: number;
 }) {
   return {
     "@type": "Service",
@@ -207,6 +209,20 @@ export function serviceNode({
     url: `${SITE_URL}${path}`,
     provider: { "@id": ORG_ID },
     areaServed: AREA_SERVED,
+    ...(priceFrom
+      ? {
+          offers: {
+            "@type": "Offer",
+            url: `${SITE_URL}${path}`,
+            priceCurrency: "NZD",
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              minPrice: priceFrom,
+              priceCurrency: "NZD",
+            },
+          },
+        }
+      : {}),
   };
 }
 
