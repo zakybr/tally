@@ -39,7 +39,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
 
   const nodes = [
     webPageNode({ path, name: ind.title, description: ind.description }),
-    serviceNode({ path, name: `${ind.name} marketing`, serviceType: `${ind.name} marketing`, description: ind.intro }),
+    serviceNode({ path, name: `${ind.name} marketing`, serviceType: `${ind.name} marketing`, description: ind.description }),
     breadcrumbNode(path, crumbs),
     faqNode(path, ind.faqs),
   ];

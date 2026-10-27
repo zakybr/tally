@@ -31,7 +31,7 @@ export default function IndustriesPage() {
     <PageShell
       title="Marketing for consumer, marine"
       accent="and primary industries"
-      intro="Tally is based in Auckland and works with businesses across New Zealand. Consumer brands and marine are where we do most of our work, and we run recruitment and reach campaigns for primary industries operators. Whatever the sector, we pick the outcome that moves the business first."
+      intro="Consumer brands and marine are where we do most of our work, and we run recruitment and reach campaigns for primary industries operators. Whatever the sector, we pick the outcome that moves the business first."
       source="industries_hero"
       crumbs={crumbs}
       nodes={nodes}

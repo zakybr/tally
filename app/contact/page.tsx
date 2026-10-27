@@ -43,8 +43,8 @@ export default function ContactPage() {
             tell you straight what we would do. Rather talk now? Just ring.
           </p>
           <p className="mt-5 max-w-[52ch] text-[0.9375rem] leading-[1.6] text-ink-2">
-            Tally is based in Auckland and works with businesses across New Zealand. We do not have
-            a shopfront, so meetings and shoots are by arrangement, in Auckland or wherever you are.
+            Tally is based in Auckland and works with businesses anywhere in the country or overseas. We do not
+            have a shopfront, so meetings and shoots are by arrangement, wherever you are.
           </p>
         </header>
 

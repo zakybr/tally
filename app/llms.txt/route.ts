@@ -9,10 +9,10 @@ export const dynamic = "force-static";
 /* Curated map for AI assistants (ChatGPT, Claude, Perplexity, Gemini): every page by its own URL, plain facts only. */
 export function GET() {
   const serviceLinks = SERVICE_PAGES.map(
-    (s) => `- [${s.h1} ${s.h1Accent}](${SITE_URL}/services/${s.slug}): ${s.intro}`,
+    (s) => `- [${s.linkText}](${SITE_URL}/services/${s.slug}): ${s.description} ${s.intro}`,
   ).join("\n");
   const industryLinks = INDUSTRY_PAGES.map(
-    (i) => `- [${i.h1} ${i.h1Accent}](${SITE_URL}/industries/${i.slug}): ${i.intro}`,
+    (i) => `- [${i.linkText}](${SITE_URL}/industries/${i.slug}): ${i.description} ${i.intro}`,
   ).join("\n");
   const people = PEOPLE.map((p) => `- ${p.name}, ${p.role}: ${p.email}, ${p.phoneDisplay}`).join("\n");
 
@@ -36,7 +36,7 @@ ${people}
 ## Services
 
 ${serviceLinks}
-- [${RECOVERY.h1} ${RECOVERY.h1Accent}](${SITE_URL}${RECOVERY.path}): ${RECOVERY.intro}
+- [${RECOVERY.linkText}](${SITE_URL}${RECOVERY.path}): ${RECOVERY.description} ${RECOVERY.intro}
 
 ## Industries
 

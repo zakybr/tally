@@ -40,8 +40,8 @@ export default function ServicesPage() {
   return (
     <PageShell
       title="Social media marketing services"
-      accent="from Auckland"
-      intro="Tally is a marketing agency based in Auckland, working with businesses across New Zealand. Five services, plus Instagram account recovery, each aimed at an outcome your business can count: enquiries, bookings, sales or staff. Not sure which you need? Start with the free audit."
+      accent="that move the business"
+      intro="Five services, plus Instagram account recovery, each aimed at an outcome your business can count: enquiries, bookings, sales or staff. Not sure which you need? Start with the free audit."
       source="services_hero"
       crumbs={crumbs}
       nodes={nodes}

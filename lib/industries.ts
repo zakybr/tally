@@ -43,7 +43,7 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
     name: "Consumer brands",
     short: "Retail, hospitality and products worth watching.",
     hub: "Shops, venues, products and services that sell to the public. Reels-first content, Instagram growth and Meta ads, aimed at sales and bookings rather than likes.",
-    linkText: "Consumer brand marketing in New Zealand",
+    linkText: "Consumer brand marketing",
     outcomes: ["Sales and bookings", "Instagram growth", "Enquiries from ads"],
     updated: UPDATED,
     title: "Consumer Brand Marketing Agency NZ, Auckland | Tally",
@@ -51,9 +51,9 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
       "Consumer brand marketing from Auckland for NZ retail, hospitality and product brands. Reels-first Instagram, Meta ads and content aimed at sales and bookings.",
     ogAlt: "Tally consumer brand marketing agency, New Zealand",
     h1: "Consumer brand marketing agency",
-    h1Accent: "in New Zealand",
+    h1Accent: "for brands people buy",
     intro:
-      "Tally is a consumer brand marketing agency based in Auckland, working with retail, hospitality and product brands across New Zealand. We run Reels-first Instagram, Meta ads and content shot on location, aimed at sales and bookings rather than likes, for brands whose customers decide partly on what they see on their phone.",
+      "Tally is a consumer brand marketing agency for retail, hospitality and product brands. We run Reels-first Instagram, Meta ads and content shot on location, aimed at sales and bookings rather than likes, for brands whose customers decide partly on what they see on their phone.",
     who: {
       heading: "Who we work with",
       cases: [
@@ -67,7 +67,7 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
         },
         {
           title: "Product brands",
-          body: "New Zealand products that need to be seen in use, in short video that works as content and as ads.",
+          body: "Products that need to be seen in use, in short video that works as content and as ads.",
         },
         {
           title: "Experiences sold to the public",
@@ -84,9 +84,9 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
         ],
       },
       {
-        heading: "Retail and hospitality marketing in Auckland",
+        heading: "Retail and hospitality marketing",
         body: [
-          "Auckland retail and hospitality businesses can have us on site quickly for shoots around opening hours, menu changes and launches. For consumer brands elsewhere in New Zealand, we plan shoots around travel and run the rest remotely, with the same weekly update.",
+          "Shoots are planned around opening hours, menu changes and launches. Wherever you are, we plan shoots around travel and run the rest remotely, with the same weekly update.",
         ],
       },
     ],
@@ -103,7 +103,7 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
           "It helps a business that sells to the public get attention and turn it into sales or bookings. At Tally that means Instagram content, mostly Reels, Meta ads, on-location video and the landing pages they send people to, run together and judged on sales and bookings rather than likes or follower counts.",
       },
       {
-        question: "How do you market a restaurant or venue in Auckland on Instagram?",
+        question: "How do you market a restaurant or venue on Instagram?",
         answer:
           "Show what it is like to be there: food leaving the kitchen, the room filling up, the view from the table. Post on a steady rhythm, use Reels to reach people who do not follow you yet, and make booking from Instagram easy. Meta ads can then put the best pieces in front of local people likely to book.",
       },
@@ -113,9 +113,9 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
           "Yes. For online stores we run Meta ads and Instagram content tracked through to the sale, and we check that the pixel and checkout events are recorded properly before spending anything. Product video that already works organically is usually the starting point for the ads.",
       },
       {
-        question: "Do you only work with Auckland consumer brands?",
+        question: "Do you only work with local consumer brands?",
         answer:
-          "No. We are based in Auckland and work with consumer brands across New Zealand. Auckland businesses can have us on site at short notice. Elsewhere, we plan shoots around travel and run the rest over calls and the weekly update, so location makes little difference to the work.",
+          "No. We plan shoots around travel and run the rest over calls and the weekly update, so location makes little difference to the work.",
       },
       {
         question: "How much does consumer brand marketing cost?",
@@ -131,7 +131,7 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
     name: "Marine",
     short: "Dealers, clubs, charters, hire and yards.",
     hub: "Boat dealers, boat clubs, charters, hire and yards all live on a season. We shoot on the water, run the Instagram and ads, and aim it all at bookings, sea trials and enquiries before summer.",
-    linkText: "Marine marketing in New Zealand",
+    linkText: "Marine marketing",
     outcomes: ["Charter bookings", "Sea trials and dealer enquiries", "Marine trades recruitment"],
     updated: UPDATED,
     title: "Marine Marketing Agency NZ: Dealers, Clubs, Charters | Tally",
@@ -139,9 +139,9 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
       "Marine marketing agency in Auckland for NZ boat dealers, boat clubs, charters, hire and yards. Instagram, Meta ads and on-water video aimed at bookings.",
     ogAlt: "Tally marine marketing agency for New Zealand boat dealers, clubs and charters",
     h1: "Marine marketing agency",
-    h1Accent: "for New Zealand",
+    h1Accent: "on and off the water",
     intro:
-      "Tally is a marine marketing agency based in Auckland, working with boat dealers, boat clubs, charter and hire operators and yards across New Zealand. We shoot on the water, run Instagram and Meta ads, and aim the work at bookings, sea trials and enquiries, timed to start well before summer.",
+      "Tally is a marine marketing agency for boat dealers, boat clubs, charter and hire operators and yards. We shoot on the water, run Instagram and Meta ads, and aim the work at bookings, sea trials and enquiries, timed to start well before summer.",
     who: {
       heading: "Who we work with on the water",
       cases: [
@@ -186,7 +186,7 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
     },
     faqs: [
       {
-        question: "Do you do marketing for boat dealers in New Zealand?",
+        question: "Do you do marketing for boat dealers?",
         answer:
           "Yes. For dealers we run Instagram, Meta ads and on-water video aimed at sea trials and qualified enquiries for new and used boats. Most of the work is planned around the boat show calendar and the run into summer, so the content and ads are ready when buyers start looking.",
       },
@@ -201,9 +201,9 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
           "By showing the life of a member rather than the boat specifications: days out, how booking works, and what it costs compared with owning. We run that through Instagram and Meta ads aimed at membership enquiries, and make sure the enquiry form or landing page answers the questions people ask before they call.",
       },
       {
-        question: "Do you only work with marine businesses in Auckland?",
+        question: "Do you only work with marine businesses near you?",
         answer:
-          "No. We are based in Auckland, where much of New Zealand's marine industry sits, and work with dealers, clubs and charters around the country. Shoots outside Auckland are planned around the weather and the boats, and the rest of the work runs over calls and the weekly update.",
+          "No. We work with dealers, clubs and charters around the country and overseas. Shoots away from base are planned around the weather and the boats, and the rest of the work runs over calls and the weekly update.",
       },
       {
         question: "What does marine marketing cost?",
@@ -229,7 +229,7 @@ export const INDUSTRY_PAGES: IndustryPage[] = [
     h1: "Primary industries marketing",
     h1Accent: "and recruitment",
     intro:
-      "Tally runs recruitment and reach campaigns for New Zealand primary industries operators from our base in Auckland. Seafood and aquaculture, forestry and wood processing, horticulture and food processing businesses use us to fill crews, plant roles and seasonal rosters, and to reach buyers and partners, measured in qualified applications and enquiries.",
+      "Tally runs recruitment and reach campaigns for primary industries operators. Seafood and aquaculture, forestry and wood processing, horticulture and food processing businesses use us to fill crews, plant roles and seasonal rosters, and to reach buyers and partners, measured in qualified applications and enquiries.",
     who: {
       heading: "Who we work with",
       cases: [
@@ -314,9 +314,9 @@ export const INDUSTRY_FAQS: FaqItem[] = [
       "Mostly consumer brands and marine businesses, with a recruitment and reach practice for primary industries operators. Consumer brands include retail, hospitality, products and experiences. Marine covers dealers, clubs, charters, hire and yards. Primary industries covers seafood, forestry, horticulture and processing. Instagram account recovery is open to any New Zealand business.",
   },
   {
-    question: "Do you work with businesses outside Auckland?",
+    question: "Do you work with businesses nationwide?",
     answer:
-      "Yes. Tally is based in Auckland and works with businesses across New Zealand. Auckland clients can have us on site for shoots and meetings at short notice. Elsewhere, shoots are planned around travel, and the rest of the work runs over calls, shared folders and a weekly update.",
+      "Yes, and overseas too. Tally is based in Auckland, but shoots are planned around travel, and the rest of the work runs over calls, shared folders and a weekly update.",
   },
   {
     question: "When should a seasonal business start marketing?",

@@ -209,8 +209,8 @@ export default function Nav() {
               <div>
                 <TallyMark size={28} />
                 <p className="mt-6 max-w-[34ch] text-lg leading-[1.5] text-ink-2">
-                  Social media marketing from Auckland for consumer and marine brands across New
-                  Zealand, built on 8 years of growing, monetising and selling Instagram accounts.
+                  Social media marketing for consumer and marine brands, wherever they are,
+                  built on 8 years of growing, monetising and selling Instagram accounts.
                   Start with a free audit, or just call.
                 </p>
                 <Pill href="/audit" className="mt-7">

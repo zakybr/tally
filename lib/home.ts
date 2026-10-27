@@ -5,12 +5,12 @@ export const HOME_FAQS: FaqItem[] = [
   {
     question: "What kind of marketing agency is Tally?",
     answer:
-      "Tally is a marketing agency based in Auckland, working with consumer and marine brands across New Zealand. It is a digital marketing agency built around social media: Instagram, Meta ads, video and websites, aimed at enquiries, bookings and sales. Our team has spent 8 years growing, monetising and selling Instagram accounts, with more than 100 million organic views.",
+      "Tally is a marketing agency based in Auckland, working with consumer and marine brands across New Zealand and overseas. It is a digital marketing agency built around social media: Instagram, Meta ads, video and websites, aimed at enquiries, bookings and sales. Our team has spent 8 years growing, monetising and selling Instagram accounts, with more than 100 million organic views.",
   },
   {
     question: "Where is Tally based?",
     answer:
-      "Tally is based in Auckland and works with businesses across New Zealand. Auckland clients can have us on site for shoots and meetings at short notice. For businesses elsewhere, most of the work runs over calls, shared folders and a weekly update, with shoots planned around where you are.",
+      "Tally is based in Auckland and works with businesses nationwide and overseas. Most of the work runs over calls, shared folders and a weekly update, with shoots planned around where you are.",
   },
   {
     question: "What is the free audit?",

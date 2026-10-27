@@ -65,7 +65,7 @@ export const SERVICE_PAGES: ServicePage[] = [
     name: "Marketing management",
     short: "We run your social media and marketing, aimed at one outcome.",
     hub: "Hand us the lot. We set the strategy, make the content, run Instagram and your Meta ads, and send one plain update a week on the number that matters. One team and one outcome, instead of three suppliers nobody is coordinating.",
-    linkText: "Social media agency in Auckland",
+    linkText: "Social media management",
     measuredIn: "Enquiries, bookings or sales",
     serviceType: "Social media management",
     updated: UPDATED,
@@ -74,9 +74,9 @@ export const SERVICE_PAGES: ServicePage[] = [
       "Social media agency in Auckland running strategy, content, Instagram and Meta ads as one team, with a weekly update on the number that matters. Free audit.",
     ogAlt: "Tally social media agency, Auckland and New Zealand",
     h1: "Social media agency",
-    h1Accent: "in Auckland",
+    h1Accent: "that runs the whole job",
     intro:
-      "Tally is a social media agency based in Auckland, working with consumer, marine and primary industries businesses across New Zealand. We take over the whole job: strategy, content, Instagram, Meta ads and reporting, run by one team and aimed at one outcome the business can count, such as enquiries, bookings or sales.",
+      "Tally is a social media agency for consumer, marine and primary industries businesses. We take over the whole job: strategy, content, Instagram, Meta ads and reporting, run by one team and aimed at one outcome the business can count, such as enquiries, bookings or sales.",
     whoFor: {
       heading: "Who hands us their social media",
       intro:
@@ -127,9 +127,9 @@ export const SERVICE_PAGES: ServicePage[] = [
     },
     extra: [
       {
-        heading: "Working with an Auckland team",
+        heading: "Working with us from anywhere",
         body: [
-          "As a social media marketing agency based in Auckland, we can arrange shoots and meetings around the region at short notice. Most of the management work runs remotely, which is also how we work with businesses elsewhere in New Zealand: calls, shared folders and the weekly update, with shoots planned around where you are.",
+          "Most of the management work runs remotely: calls, shared folders and the weekly update, with shoots planned around where you are. That is how we work with businesses all over the country and overseas, and close to home we can be on site at short notice.",
           "You deal with the people doing the work. Zak runs strategy and delivery, Jonty runs the creative system, and either of them will pick up the phone.",
         ],
       },
@@ -157,7 +157,7 @@ export const SERVICE_PAGES: ServicePage[] = [
     },
     faqs: [
       {
-        question: "How much does social media management cost in Auckland?",
+        question: "How much does social media management cost?",
         answer:
           "It depends on the outcome, how much content needs making and whether ads are included, so we quote after the free audit rather than from a price list. Ad spend is separate and paid from your own Meta ad account. The quote covers the work itself and is agreed before anything starts, so you can compare it fairly with a hire or another agency.",
       },
@@ -169,7 +169,7 @@ export const SERVICE_PAGES: ServicePage[] = [
       {
         question: "Which social media platforms do you manage?",
         answer:
-          "Instagram and Facebook, where most New Zealand consumer and marine customers already are, and the Meta ads that run across both. We would rather run two platforms well than five badly. If another platform suits your customers and your outcome better, the free audit will say so plainly.",
+          "Instagram and Facebook, where most consumer and marine customers already are, and the Meta ads that run across both. We would rather run two platforms well than five badly. If another platform suits your customers and your outcome better, the free audit will say so plainly.",
       },
       {
         question: "Do I have to approve every post?",
@@ -182,9 +182,9 @@ export const SERVICE_PAGES: ServicePage[] = [
           "Expect the first few weeks to go on setting up and testing, and a few months of consistent work before the trend in enquiries or bookings is clear. Ads can produce enquiries sooner than organic content, which builds more slowly. The weekly update shows what is moving from the first week, so you are never waiting blind.",
       },
       {
-        question: "Do you only manage social media for Auckland businesses?",
+        question: "Do you only work with local businesses?",
         answer:
-          "No. We are based in Auckland and work with businesses across New Zealand. Auckland clients can have us on site for shoots and meetings at short notice. For everyone else, most of the work runs over calls, shared folders and the weekly update, with shoots planned around where you are.",
+          "No. Most of our clients are not down the road. The work runs over calls, shared folders and the weekly update, with shoots planned around where you are.",
       },
       {
         question: "Who owns the accounts and the content?",
@@ -201,7 +201,7 @@ export const SERVICE_PAGES: ServicePage[] = [
     name: "Instagram marketing",
     short: "Instagram and Reels that grow an account and sell.",
     hub: "Built on 8 years of growing, monetising and selling Instagram accounts, and more than 100 million organic views. We find the formats your customers already watch, post on a rhythm and test a new hook every week. No bought followers.",
-    linkText: "Instagram marketing in Auckland",
+    linkText: "Instagram marketing",
     measuredIn: "Reach, follows, DMs and sales",
     serviceType: "Instagram marketing",
     updated: UPDATED,
@@ -210,9 +210,9 @@ export const SERVICE_PAGES: ServicePage[] = [
       "Instagram marketing from an Auckland team with 8 years growing and selling accounts and 100M+ organic views. Reels, growth and management for NZ brands.",
     ogAlt: "Tally Instagram marketing agency, Auckland and New Zealand",
     h1: "Instagram marketing agency",
-    h1Accent: "in Auckland",
+    h1Accent: "built on real accounts",
     intro:
-      "Tally is an Instagram marketing agency based in Auckland. We grow and manage Instagram accounts for consumer and marine brands across New Zealand, using Reels and posts built on 8 years of growing, monetising and selling accounts of our own. The aim is enquiries, bookings and sales from the account, not followers for their own sake.",
+      "Tally is an Instagram marketing agency. We grow and manage Instagram accounts for consumer and marine brands, using Reels and posts built on 8 years of growing, monetising and selling accounts of our own. The aim is enquiries, bookings and sales from the account, not followers for their own sake.",
     whoFor: {
       heading: "Who it is for",
       intro:
@@ -232,7 +232,7 @@ export const SERVICE_PAGES: ServicePage[] = [
         },
         {
           title: "A business that sells in the DMs",
-          body: "Plenty of New Zealand businesses take bookings and orders in Instagram messages. Growth there means more of the right people starting a conversation.",
+          body: "Plenty of businesses take bookings and orders in Instagram messages. Growth there means more of the right people starting a conversation.",
         },
       ],
     },
@@ -299,7 +299,7 @@ export const SERVICE_PAGES: ServicePage[] = [
     },
     faqs: [
       {
-        question: "How much does an Instagram marketing agency cost in New Zealand?",
+        question: "How much does an Instagram marketing agency cost?",
         answer:
           "It depends mainly on how much content has to be made. We quote after a free audit rather than from a package list, so you pay for the work your account actually needs. An account where you supply the footage costs less to run than one where we shoot every week. Any ad spend is separate and goes to Meta from your own ad account.",
       },
@@ -314,12 +314,12 @@ export const SERVICE_PAGES: ServicePage[] = [
           "Expect the first month to go on finding the formats that work, with clearer growth after a few months of consistent posting and weekly testing. Some Reels travel quickly and most do not, so we judge the trend rather than single posts. Accounts with an interesting product and a steady rhythm tend to move fastest.",
       },
       {
-        question: "Do you manage Instagram for businesses outside Auckland?",
+        question: "Can you manage our Instagram if we are not nearby?",
         answer:
-          "Yes. We are based in Auckland and manage Instagram accounts for businesses across New Zealand. Content can come from our shoots, from footage you send, or both, and the planning and reporting happen over calls and the weekly update. Auckland businesses can have us on site for shoots at shorter notice.",
+          "Yes. We manage Instagram accounts for businesses all over the country and overseas. Content can come from our shoots, from footage you send, or both, and the planning and reporting happen over calls and the weekly update.",
       },
       {
-        question: "Is Instagram still worth it for a small business in New Zealand?",
+        question: "Is Instagram still worth it for a small business?",
         answer:
           "For most consumer businesses, yes, because it is where many customers check a business before they buy or book. It is less useful for businesses whose buyers are not on it. The free audit looks at your category and your customers and tells you plainly whether Instagram should be your main channel, a support channel or not worth your time.",
       },
@@ -338,7 +338,7 @@ export const SERVICE_PAGES: ServicePage[] = [
     name: "Meta ads",
     short: "Facebook and Instagram ads judged on enquiries.",
     hub: "Facebook and Instagram ads that run through your own ad account, so every dollar is visible to you. We build the creative, the audiences and the tracking, then judge it on enquiries and sales, not clicks or impressions.",
-    linkText: "Meta ads in Auckland",
+    linkText: "Meta ads management",
     measuredIn: "Cost per enquiry or sale",
     serviceType: "Meta advertising (Facebook and Instagram ads)",
     updated: UPDATED,
@@ -347,9 +347,9 @@ export const SERVICE_PAGES: ServicePage[] = [
       "Meta ads agency in Auckland running Facebook and Instagram ads for NZ businesses, judged on enquiries and sales. Runs in your own ad account. Free audit.",
     ogAlt: "Tally Meta ads agency, Facebook and Instagram ads in Auckland",
     h1: "Meta ads agency",
-    h1Accent: "in Auckland",
+    h1Accent: "judged on enquiries",
     intro:
-      "Tally is a Meta ads agency based in Auckland, running Facebook and Instagram ads for consumer, marine and primary industries businesses across New Zealand. Campaigns run through your own ad account, so you can see every dollar, and we judge them on enquiries, bookings and sales rather than clicks or impressions.",
+      "Tally is a Meta ads agency running Facebook and Instagram ads for consumer, marine and primary industries businesses. Campaigns run through your own ad account, so you can see every dollar, and we judge them on enquiries, bookings and sales rather than clicks or impressions.",
     whoFor: {
       heading: "Who it is for",
       intro: "Meta ads suit businesses that can describe their customer and have something worth showing them.",
@@ -401,7 +401,7 @@ export const SERVICE_PAGES: ServicePage[] = [
       {
         heading: "Facebook ads and Instagram ads, run together",
         body: [
-          "Facebook and Instagram ads are bought through the same Meta ad account, and they usually work best together, with Meta placing each ad where it performs. For most Auckland and New Zealand businesses we run them as one campaign and let the results decide the split, rather than treating Facebook advertising and Instagram ads as two separate jobs.",
+          "Facebook and Instagram ads are bought through the same Meta ad account, and they usually work best together, with Meta placing each ad where it performs. For most businesses we run them as one campaign and let the results decide the split, rather than treating Facebook advertising and Instagram ads as two separate jobs.",
         ],
       },
       {
@@ -434,7 +434,7 @@ export const SERVICE_PAGES: ServicePage[] = [
     },
     faqs: [
       {
-        question: "How much should a small business spend on Meta ads in New Zealand?",
+        question: "How much should a small business spend on Meta ads?",
         answer:
           "Enough to get a clear read within a few weeks, which depends on what an enquiry or sale is worth to you and what clicks cost in your category. We would rather start smaller with sound tracking and good creative than spend heavily on a campaign that cannot be measured. The free audit gives a starting budget with the reasoning behind it.",
       },
@@ -473,7 +473,7 @@ export const SERVICE_PAGES: ServicePage[] = [
     name: "Content & video",
     short: "Reels, stills and ad cuts you own, made to be posted.",
     hub: "We come to the boat, the showroom or the shop floor and shoot the real thing: Reels, stills and ad cuts in the formats that perform. You own every frame, and every shoot is planned around what it has to sell.",
-    linkText: "Social media videographer in Auckland",
+    linkText: "Social media video production",
     measuredIn: "Watch time, shares and cost per result",
     serviceType: "Social media video production",
     updated: UPDATED,
@@ -482,9 +482,9 @@ export const SERVICE_PAGES: ServicePage[] = [
       "Social media videographer in Auckland: Reels, stills and ad cuts shot on location for NZ brands, planned around what they need to sell. You own every frame.",
     ogAlt: "Tally social media videographer, Reels and video in Auckland",
     h1: "Social media videographer",
-    h1Accent: "in Auckland",
+    h1Accent: "who shoots to sell",
     intro:
-      "Tally is a social media videographer and content team in Auckland, shooting Reels, stills and ad cuts for Instagram and Facebook across New Zealand. We shoot on the boat, in the showroom or on the shop floor, plan every shoot around what it has to sell, and you own every frame we make.",
+      "Tally is a social media videographer and content team, shooting Reels, stills and ad cuts for Instagram and Facebook. We shoot on the boat, in the showroom or on the shop floor, plan every shoot around what it has to sell, and you own every frame we make.",
     whoFor: {
       heading: "Who it is for",
       intro:
@@ -533,7 +533,7 @@ export const SERVICE_PAGES: ServicePage[] = [
       {
         heading: "A Reels videographer, or a team that posts it",
         body: [
-          "An Auckland Reels videographer will film and edit what you ask for, which works well if you already know what performs and have someone to post it. We plan the content around a result, shoot it, and can post and advertise it too, so the footage is judged on what it does after it goes up.",
+          "A Reels videographer will film and edit what you ask for, which works well if you already know what performs and have someone to post it. We plan the content around a result, shoot it, and can post and advertise it too, so the footage is judged on what it does after it goes up.",
           "Both are reasonable choices. The free audit will tell you which one your business needs.",
         ],
       },
@@ -561,7 +561,7 @@ export const SERVICE_PAGES: ServicePage[] = [
     },
     faqs: [
       {
-        question: "How much does a social media videographer cost in Auckland?",
+        question: "How much does a social media videographer cost?",
         answer:
           "It depends on the number of shoot days, the locations and how many finished pieces you need. We quote after a free audit, once we know what the content has to sell and where it will run. You own every frame we make, so you can keep using the footage in posts, ads and on your website without further cost.",
       },
@@ -571,9 +571,9 @@ export const SERVICE_PAGES: ServicePage[] = [
           "Usually far more than a brand film would give you, because we plan for short pieces from the start. The exact number depends on the location, the product and how many formats we are testing. We agree the deliverables before the shoot, so you know what you are getting before anyone turns up.",
       },
       {
-        question: "Do you film outside Auckland?",
+        question: "Do you travel for shoots?",
         answer:
-          "Yes. We are based in Auckland and shoot across New Zealand, from marinas and showrooms to orchards and processing plants. Shoots outside Auckland are planned around the travel, so we get as much as possible from each day on site and you are not paying for a second trip.",
+          "Yes. We shoot all over the country and overseas, from marinas and showrooms to orchards and processing plants. Shoots away from base are planned around the travel, so we get as much as possible from each day on site and you are not paying for a second trip.",
       },
       {
         question: "Do I own the footage you shoot?",
@@ -595,7 +595,7 @@ export const SERVICE_PAGES: ServicePage[] = [
     name: "Websites & landing pages",
     short: "Small business sites from $500, built to turn visits into enquiries.",
     hub: "Fast, simple sites and landing pages from $500 that work on a phone, load quickly, rank in search and make it easy to call or enquire. Built to support the ads and content, so the traffic you pay for does not leak.",
-    linkText: "Website design in Auckland for small business",
+    linkText: "Small business website design",
     measuredIn: "Enquiries from the site",
     serviceType: "Small business website design",
     priceFrom: 500,
@@ -604,10 +604,10 @@ export const SERVICE_PAGES: ServicePage[] = [
     description:
       "Website design in Auckland from $500: fast, mobile-first small business sites and landing pages built to turn visitors into enquiries, NZ-wide.",
     ogAlt: "Tally website design in Auckland for small business",
-    h1: "Website design in Auckland",
+    h1: "Website design",
     h1Accent: "for small business",
     intro:
-      "Tally does website design in Auckland for small businesses across New Zealand, with websites and landing pages from $500. We build sites that load quickly on a phone, rank in search and make it easy to call or enquire, so the visitors your ads and Instagram send do not leave without getting in touch.",
+      "Tally designs websites and landing pages for small businesses, from $500. We build sites that load quickly on a phone, rank in search and make it easy to call or enquire, so the visitors your ads and Instagram send do not leave without getting in touch.",
     whoFor: {
       heading: "Who it is for",
       intro: "Websites are usually part of a wider brief with us, though they do not have to be.",
@@ -657,7 +657,7 @@ export const SERVICE_PAGES: ServicePage[] = [
     },
     extra: [
       {
-        heading: "Landing pages for New Zealand campaigns",
+        heading: "Landing pages for campaigns",
         body: [
           "A landing page is a single page built for one offer and one action, usually as the destination for an ad. It strips out the menu and everything else that competes for attention, and answers the questions a visitor has before they enquire.",
           "For businesses running Meta ads, a landing page is often the quickest improvement available, and it is a much smaller job than a full website.",
@@ -687,7 +687,7 @@ export const SERVICE_PAGES: ServicePage[] = [
     },
     faqs: [
       {
-        question: "How much does a small business website cost in Auckland?",
+        question: "How much does a small business website cost?",
         answer:
           "Tally builds small business websites and landing pages from $500. The final price depends on the number of pages, whether you need bookings or online sales, and how much copy and photography has to be produced. You get a fixed quote after a free audit, before any work starts. A single landing page is the cheapest place to begin.",
       },
@@ -702,9 +702,9 @@ export const SERVICE_PAGES: ServicePage[] = [
           "A well-built site is eligible to rank, but nobody can honestly promise positions. We set up the basics properly: page titles, descriptions, fast loading, structured data and a clear page for each service. Rankings then depend on competition and on things off the site, such as your Google Business Profile, reviews and links from other sites.",
       },
       {
-        question: "Do you build websites for businesses outside Auckland?",
+        question: "Do you build websites for businesses anywhere?",
         answer:
-          "Yes. We are based in Auckland and build small business websites for businesses across New Zealand. Most of the work happens over calls and shared documents, so location makes little difference to the build. Photography can be arranged where you are, or we can work with images you already have.",
+          "Yes, wherever you are. Most of the work happens over calls and shared documents, so location makes little difference to the build. Photography can be arranged where you are, or we can work with images you already have.",
       },
       {
         question: "Why does a website matter if most customers find us on Instagram?",
@@ -728,7 +728,7 @@ export const RECOVERY = {
   name: "Account recovery & username claims",
   short: "Banned account, disabled ad account or stolen name, handled.",
   hub: "Banned, disabled or restricted business account, or someone sitting on your name? We handle the whole case through our Meta representatives. A small deposit opens it and the rest is only payable if it works.",
-  linkText: "Instagram account recovery in New Zealand",
+  linkText: "Instagram account recovery",
   measuredIn: "Your account back",
   serviceType: "Instagram account recovery and username claims",
   updated: UPDATED,
@@ -737,9 +737,9 @@ export const RECOVERY = {
     "Instagram account disabled, banned or restricted? An Auckland team handles Instagram account recovery, disabled Meta ad accounts and username claims for NZ.",
   ogAlt: "Tally Instagram account recovery for disabled and banned accounts, New Zealand",
   h1: "Instagram account disabled?",
-  h1Accent: "Recovery for NZ businesses",
+  h1Accent: "Here is how recovery works",
   intro:
-    "If your Instagram account has been disabled, banned or restricted, Tally handles the recovery for New Zealand businesses from our base in Auckland, along with username claims and impersonation. We work each case through our Meta representatives from start to finish. You keep your login the whole time, and we never ask for your password.",
+    "If your Instagram account has been disabled, banned or restricted, Tally handles the recovery, along with username claims and impersonation. We work each case through our Meta representatives from start to finish. You keep your login the whole time, and we never ask for your password.",
   handles: [
     {
       title: "Banned and disabled accounts",
@@ -876,8 +876,8 @@ export const SERVICE_FAQS: FaqItem[] = [
       "You do. Ads run through your own ad account, your social accounts stay in your business's name, and you own every photo and video we make. We work inside your accounts with our own access, so if you stop working with us there is nothing to hand back or rebuild.",
   },
   {
-    question: "Do you work outside Auckland and outside marine?",
+    question: "Do you work outside marine, and outside your home region?",
     answer:
-      "Yes to both. We are based in Auckland and work with businesses across New Zealand. Consumer brands and marine are where we do most of our work, and we also run recruitment and reach campaigns for primary industries operators, and Instagram account recovery for any New Zealand business.",
+      "Yes to both. Consumer brands and marine are where we do most of our work, and we also run recruitment and reach campaigns for primary industries operators, and Instagram account recovery for any business.",
   },
 ];

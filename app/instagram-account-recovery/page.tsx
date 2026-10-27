@@ -22,7 +22,7 @@ const crumbs = [
 
 const nodes = [
   webPageNode({ path: PATH, name: RECOVERY.title, description: RECOVERY.description }),
-  serviceNode({ path: PATH, name: RECOVERY.name, serviceType: RECOVERY.serviceType, description: RECOVERY.intro }),
+  serviceNode({ path: PATH, name: RECOVERY.name, serviceType: RECOVERY.serviceType, description: RECOVERY.description }),
   breadcrumbNode(PATH, crumbs),
   faqNode(PATH, RECOVERY.faqs),
 ];

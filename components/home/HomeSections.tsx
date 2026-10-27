@@ -19,10 +19,27 @@ import bandInstagram from "@/public/images/outboard-engines-close-up-boat-conten
 */
 
 const wrap = "mx-auto w-full max-w-[1440px] px-6 md:px-12 lg:px-20";
+/* Headings and running text sit one column in from the logo line, as on
+   tracta.co.nz, so the eye reads down a narrow column; card grids keep the full width. */
+const inset = "lg:pl-[8.333%]";
+/* The one lead-paragraph style, under a section heading. */
+const lead =
+  "mt-6 max-w-[52ch] text-[1.1875rem] font-normal leading-[1.6] text-ink-2 md:text-[1.375rem]";
 
-function TextLink({ href, children, className = "" }: { href: string; children: React.ReactNode; className?: string }) {
+function TextLink({
+  href,
+  children,
+  className = "",
+}: {
+  href: string;
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <Link href={href} className={`group inline-flex min-h-[44px] items-center gap-3 text-[0.9375rem] font-semibold ${className}`}>
+    <Link
+      href={href}
+      className={`group inline-flex min-h-[44px] items-center gap-3 text-[0.9375rem] font-semibold ${className}`}
+    >
       {children}
       <Arrow className="transition-transform duration-300 group-hover:translate-x-1" />
     </Link>
@@ -34,14 +51,20 @@ export function Statement() {
   return (
     <section className="bg-[#ff4a1c] py-24 md:py-32">
       <div className={wrap}>
-        <p className="max-w-[30ch] text-[1.75rem] font-medium leading-[1.25] tracking-[-0.02em] text-[#17191c] md:text-[2.5rem]">
-          We have spent 8 years growing Instagram accounts, monetising them and selling them. Now we
-          run that system from Auckland for consumer and marine brands across New Zealand, aimed at
-          the outcome that actually moves the business.
-        </p>
-        <TextLink href="/about" className="mt-10 text-[#17191c]">
-          Our story
-        </TextLink>
+        <div className={inset}>
+          <h2 className="mono-label text-[#17191c]">
+            Digital marketing agency in Auckland
+          </h2>
+          <p className="mt-6 max-w-[34ch] text-[1.75rem] font-normal leading-[1.3] tracking-[-0.01em] text-[#17191c] md:text-[2.75rem]">
+            We have spent 8 years growing Instagram accounts, monetising them
+            and selling them. Now we run that system for consumer and marine
+            brands, aimed at the outcome that
+            actually moves the business.
+          </p>
+          <TextLink href="/about" className="mt-10 text-[#17191c]">
+            Our story
+          </TextLink>
+        </div>
       </div>
     </section>
   );
@@ -49,26 +72,45 @@ export function Statement() {
 
 /* 2. Proof numbers, charcoal over a dimmed still. */
 const STATS = [
-  { figure: "8 years", label: "growing, monetising and selling Instagram accounts" },
+  {
+    figure: "8 years",
+    label: "growing, monetising and selling Instagram accounts",
+  },
   { figure: "100M+", label: "organic views on accounts our team has run" },
-  { figure: "1", label: "outcome picked with you, the one that moves the business" },
+  {
+    figure: "1",
+    label: "outcome picked with you, the one that moves the business",
+  },
   { figure: "Free", label: "audit before you spend a dollar with us" },
 ];
 
 export function Stats() {
   return (
     <section className="relative overflow-hidden bg-sheet py-24 md:py-32">
-      <Image src={bandInstagram} alt="" fill sizes="100vw" className="object-cover opacity-20" />
+      <Image
+        src={bandInstagram}
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover opacity-20"
+      />
       <div className="absolute inset-0 bg-gradient-to-b from-sheet/60 to-sheet" />
       <div className={`${wrap} relative`}>
-        <h2 className="display max-w-[16ch] text-[3rem] text-ink md:text-[4.5rem]">
-          Built on Instagram, <span className="text-signal">aimed at results.</span>
+        <h2
+          className={`display max-w-[16ch] text-[3rem] text-ink md:text-[4.5rem] ${inset}`}
+        >
+          Built on Instagram,{" "}
+          <span className="text-signal">aimed at results.</span>
         </h2>
         <dl className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {STATS.map((s) => (
             <div key={s.figure} className="border-t rule-med pt-6">
-              <dt className="display text-[3.5rem] text-signal md:text-[4.5rem]">{s.figure}</dt>
-              <dd className="mt-3 max-w-[26ch] text-[0.9375rem] leading-[1.55] text-ink-2">{s.label}</dd>
+              <dt className="display text-[3.5rem] text-signal md:text-[4.5rem]">
+                {s.figure}
+              </dt>
+              <dd className="mt-3 max-w-[26ch] text-[1.0625rem] font-normal leading-[1.55] text-ink-2">
+                {s.label}
+              </dd>
             </div>
           ))}
         </dl>
@@ -82,19 +124,21 @@ const CAPABILITIES = SERVICE_LINKS.map((sv) => ({
   title: sv.name,
   body: sv.short,
   href: sv.href,
-  cta: sv.linkText,
+  cta: "Learn more",
 }));
 
 export function Capabilities() {
   return (
     <section id="services" className="light scroll-mt-20 py-24 md:py-32">
       <div className={wrap}>
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <h2 className="display max-w-[14ch] text-[3rem] text-ink md:text-[4.5rem]">What we do</h2>
-          <p className="max-w-[44ch] text-[1.0625rem] leading-[1.6] text-ink-2">
-            Five services and account recovery, run from Auckland for businesses across New Zealand.
-            One rule: we pick the outcome that actually moves your business, not a pile of video
-            with no clear return.
+        <div className={inset}>
+          <h2 className="display max-w-[14ch] text-[3rem] text-ink md:text-[4.5rem]">
+            What we do
+          </h2>
+          <p className={lead}>
+            Five services and account recovery, each aimed at the outcome that
+            moves your
+            business.
           </p>
         </div>
         <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -104,9 +148,15 @@ export function Capabilities() {
               href={c.href}
               className="group flex min-h-[15rem] flex-col rounded-2xl bg-sheet-2 p-8 transition-colors duration-300 hover:bg-sheet-3 md:p-10"
             >
-              <span className="mono-label text-signal">{String(i + 1).padStart(2, "0")}</span>
-              <h3 className="display mt-6 text-[2rem] text-ink md:text-[2.375rem]">{c.title}</h3>
-              <p className="mt-4 text-[0.9375rem] leading-[1.65] text-ink-2">{c.body}</p>
+              <span className="mono-label text-signal">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 className="display mt-6 text-[2rem] text-ink md:text-[2.375rem]">
+                {c.title}
+              </h3>
+              <p className="mt-4 max-w-[34ch] text-[1.0625rem] font-normal leading-[1.6] text-ink-2">
+                {c.body}
+              </p>
               <span className="mt-auto inline-flex items-center gap-3 pt-8 text-[0.9375rem] font-semibold text-ink">
                 {c.cta}
                 <Arrow className="transition-transform duration-300 group-hover:translate-x-1" />
@@ -121,15 +171,24 @@ export function Capabilities() {
 
 /* 4. Who it is for, three image tiles, each linking to the industry page. */
 const TILE_IMAGES = {
-  consumer: { img: tileConsumer, alt: "Orange and blue performance boat seating, shot close for Instagram" },
-  marine: { img: tileMarine, alt: "White day boat at anchor in a New Zealand bay" },
-  "primary-industries": { img: tilePrimary, alt: "Commercial fishing crew at work on deck" },
+  consumer: {
+    img: tileConsumer,
+    alt: "Orange and blue performance boat seating, shot close for Instagram",
+  },
+  marine: {
+    img: tileMarine,
+    alt: "White day boat at anchor in a New Zealand bay",
+  },
+  "primary-industries": {
+    img: tilePrimary,
+    alt: "Commercial fishing crew at work on deck",
+  },
 } as const;
 const SECTORS = INDUSTRY_PAGES.map((ind) => ({
   title: ind.name,
   body: ind.short,
   href: `/industries/${ind.slug}`,
-  cta: ind.linkText,
+  cta: "Learn more",
   ...TILE_IMAGES[ind.anchor as keyof typeof TILE_IMAGES],
 }));
 
@@ -137,7 +196,9 @@ export function Sectors() {
   return (
     <section className="bg-sheet py-24 md:py-32">
       <div className={wrap}>
-        <h2 className="display max-w-[16ch] text-[3rem] text-ink md:text-[4.5rem]">
+        <h2
+          className={`display max-w-[16ch] text-[3rem] text-ink md:text-[4.5rem] ${inset}`}
+        >
           Who we <span className="text-signal">work with</span>
         </h2>
         <div className="mt-14 grid gap-4 lg:grid-cols-3">
@@ -157,7 +218,9 @@ export function Sectors() {
               <div className="absolute inset-0 bg-gradient-to-t from-sheet via-sheet/40 to-transparent" />
               <div className="relative">
                 <h3 className="display text-[2.5rem] text-ink">{s.title}</h3>
-                <p className="mt-3 max-w-[34ch] text-[0.9375rem] leading-[1.55] text-ink-2">{s.body}</p>
+                <p className="mt-3 max-w-[34ch] text-[1.0625rem] font-normal leading-[1.55] text-ink-2">
+                  {s.body}
+                </p>
                 <span className="mt-6 inline-flex items-center gap-3 text-[0.9375rem] font-semibold text-signal">
                   {s.cta}
                   <Arrow className="transition-transform duration-300 group-hover:translate-x-1" />
@@ -194,7 +257,9 @@ export function HowItWorks() {
   return (
     <section className="light py-24 md:py-32">
       <div className={wrap}>
-        <h2 className="display max-w-[16ch] text-[3rem] text-ink md:text-[4.5rem]">
+        <h2
+          className={`display max-w-[16ch] text-[3rem] text-ink md:text-[4.5rem] ${inset}`}
+        >
           How it <span className="text-signal">works</span>
         </h2>
         <ol className="mt-14 grid gap-10 lg:grid-cols-3">
@@ -202,11 +267,13 @@ export function HowItWorks() {
             <li key={s.n} className="border-t-2 border-[var(--signal)] pt-6">
               <span className="mono-label text-signal">{s.n}</span>
               <h3 className="display mt-4 text-[2rem] text-ink">{s.title}</h3>
-              <p className="mt-4 max-w-[38ch] text-[0.9375rem] leading-[1.65] text-ink-2">{s.body}</p>
+              <p className="mt-4 max-w-[34ch] text-[1.0625rem] font-normal leading-[1.6] text-ink-2">
+                {s.body}
+              </p>
             </li>
           ))}
         </ol>
-        <CtaPair source="home_how" className="mt-14" />
+        <CtaPair source="home_how" className={`mt-14 ${inset}`} />
       </div>
     </section>
   );

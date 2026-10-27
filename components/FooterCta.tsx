@@ -77,8 +77,8 @@ export default function FooterCta() {
                 </span>
               </Link>
               <p className="mt-6 max-w-sm text-[0.875rem] leading-[1.7] text-ink-2">
-                Marketing agency based in Auckland, working with consumer and marine
-                brands across New Zealand. A free audit first, then we run the work that moves the
+                Based in Auckland. Working with consumer and marine brands nationwide
+                and overseas. A free audit first, then we run the work that moves the
                 number that matters.
               </p>
               <a
@@ -143,7 +143,7 @@ export default function FooterCta() {
           {/* Legal sits on its own rule so it is findable rather than buried in the link soup. */}
           <div className="mt-12 flex flex-col gap-4 border-t rule-hair pt-6 md:flex-row md:items-center md:justify-between">
             <p className="font-mono text-[0.6875rem] text-ink-2">
-              © 2026 Tally Marketing Limited. NZBN 9429053993519. Auckland, New Zealand.
+              © 2026 Tally Marketing Limited. NZBN 9429053993519.
             </p>
             <nav aria-label="Legal" className="flex flex-wrap gap-x-6 gap-y-2">
               {legalLinks.map((l) => (

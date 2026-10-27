@@ -37,7 +37,7 @@ export default function AuditPage() {
             Free <span className="text-signal">marketing audit</span>
           </h1>
           <p className="mt-7 max-w-[46ch] text-lg leading-[1.55] text-ink-2">
-            For Auckland and New Zealand businesses. We look at your Instagram, your ads and how
+            We look at your Instagram, your ads and how
             customers find you, then tell you the one outcome that would actually move the business
             and how we would get it. No cost, no obligation.
           </p>

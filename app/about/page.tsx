@@ -80,9 +80,9 @@ export default function AboutPage() {
             About <span className="text-signal">Tally</span>
           </h1>
           <p className="mt-7 max-w-[56ch] text-lg leading-[1.6] text-ink-2">
-            Tally is a marketing agency based in Auckland, working with consumer and
-            marine brands across New Zealand. Our team has spent 8 years growing Instagram accounts,
-            monetising them and selling them. Now we run that system for New Zealand businesses,
+            Tally is a marketing agency for consumer and marine brands, based in Auckland and
+            working nationwide and overseas. Our team has spent 8 years growing Instagram accounts,
+            monetising them and selling them. Now we run that system for other businesses,
             aimed at the outcome that actually moves the business rather than video output with no
             clear return. We also run recruitment and reach for primary industries operators.
           </p>
