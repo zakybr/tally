@@ -8,13 +8,12 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import { routeMetadata } from "@/lib/routes";
 import { breadcrumbNode, personNodes, webPageNode } from "@/lib/seo";
-import jontyImg from "@/public/images/jonty-macintyre-tally-partner.png";
 import zakImg from "@/public/images/zak-rachmadi-tally-director.png";
 
 /*
   About, kept short: who we are, how we work in three lines, the team,
-  and the two actions. The person entities stay, because they are what lets a
-  search for either person's name land here.
+  and the two actions. The person entity stays, because they are what lets a
+  search for his name land here.
 */
 
 export const metadata: Metadata = routeMetadata("/about");
@@ -36,13 +35,6 @@ const PRINCIPLES = [
 
 const directors = [
   {
-    img: jontyImg,
-    alt: "Jonty MacIntyre standing outside an industrial building in New Zealand, wearing a navy suit and light blue tie",
-    name: "Jonty MacIntyre",
-    role: "Partner",
-    bio: "Came out of paid social and direct-to-consumer, where the only metric that counted was a purchase. Inside Tally he runs the creative system: the content, the test cadence and the call to drop what is not working.",
-  },
-  {
     img: zakImg,
     alt: "Zak Rachmadi standing outside an industrial building in New Zealand, wearing a navy suit and striped tie",
     name: "Zak Rachmadi",
@@ -51,7 +43,7 @@ const directors = [
   },
 ];
 
-/* Person entities for Zak and Jonty, each with a stable @id, tied to the organisation, inside an AboutPage. */
+/* The person entity for Zak, with a stable @id, tied to the organisation, inside an AboutPage. */
 const crumbs = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
@@ -103,7 +95,7 @@ export default function AboutPage() {
 
         <section className="mt-24 border-t rule-hair pt-16">
           <h2 className="display text-[2.25rem] text-ink md:text-[3rem]">The team</h2>
-          <div className="mt-10 grid gap-10 md:grid-cols-2">
+          <div className="mt-10 grid max-w-md gap-10">
             {directors.map((d) => {
               const person = PEOPLE.find((p) => p.name === d.name);
               return (
@@ -113,7 +105,7 @@ export default function AboutPage() {
                       src={d.img}
                       alt={d.alt}
                       fill
-                      sizes="(min-width: 768px) 45vw, 100vw"
+                      sizes="(min-width: 768px) 28rem, 100vw"
                       className="object-cover"
                       placeholder="blur"
                     />

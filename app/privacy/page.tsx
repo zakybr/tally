@@ -47,8 +47,7 @@ const clauses: Clause[] = [
         <p>
           The free audit form asks only for a name and a mobile or email; everything else on it is
           optional. Everything on our forms is given voluntarily. If you would rather not fill in a form, email{" "}
-          <a href="mailto:zak@tallynz.co">zak@tallynz.co</a> or{" "}
-          <a href="mailto:jonty@tallynz.co">jonty@tallynz.co</a> directly.
+          <a href="mailto:zak@tallynz.co">zak@tallynz.co</a> directly.
         </p>
       </>
     ),
@@ -194,8 +193,7 @@ const clauses: Clause[] = [
         <p>
           Under the Privacy Act 2020 you may ask us what personal information we hold about you,
           ask for a copy, and ask us to correct anything wrong. Email{" "}
-          <a href="mailto:zak@tallynz.co">zak@tallynz.co</a> or{" "}
-          <a href="mailto:jonty@tallynz.co">jonty@tallynz.co</a> and we will respond within 20 working
+          <a href="mailto:zak@tallynz.co">zak@tallynz.co</a> and we will respond within 20 working
           days.
         </p>
         <p>
@@ -239,8 +237,7 @@ const clauses: Clause[] = [
         </p>
         <p>
           Questions about privacy, or a request about your information:{" "}
-          <a href="mailto:zak@tallynz.co">zak@tallynz.co</a> or{" "}
-          <a href="mailto:jonty@tallynz.co">jonty@tallynz.co</a>. Our terms of service are at{" "}
+          <a href="mailto:zak@tallynz.co">zak@tallynz.co</a>. Our terms of service are at{" "}
           <Link href="/terms">tallynz.co/terms</Link>.
         </p>
       </>

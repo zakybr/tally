@@ -30,6 +30,6 @@ export const HOME_FAQS: FaqItem[] = [
   {
     question: "Who runs Tally?",
     answer:
-      "Tally is run by Zak Rachmadi, director, and Jonty MacIntyre, partner. Call Zak on +64 22 305 3853 or email zak@tallynz.co, or Jonty on +64 21 344 965 or jonty@tallynz.co. Most first conversations happen on the phone.",
+      "Tally is run by Zak Rachmadi, director. Call Zak on +64 22 305 3853 or email zak@tallynz.co. Most first conversations happen on the phone.",
   },
 ];

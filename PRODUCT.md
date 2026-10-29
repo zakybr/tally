@@ -81,9 +81,8 @@ are independent pages reached from a header dropdown, not sections of the
 homepage. They carry their own metadata, FAQPage/Service/Breadcrumb schema and
 keyword coverage, which must be preserved.
 
-Contact is direct to either director, by phone or email, plus a booked
-30-minute call. Zak Rachmadi (zak@tallynz.co, +64 22 305 3853) and Jonty
-MacIntyre (jonty@tallynz.co, +64 21 344 965). Both are published on the site,
+Contact is direct to the director, by phone or email, plus a booked
+30-minute call. Zak Rachmadi (zak@tallynz.co, +64 22 305 3853), published on the site,
 carried in the persistent contact rail, and exposed as ContactPoint and founder
 entries in the Organization schema so search and answer engines can surface a
 way of getting in touch. No physical address and no social accounts are

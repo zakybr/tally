@@ -1,7 +1,7 @@
 /*
   Single source of truth for how to reach Tally.
 
-  Zak and Jonty are both listed everywhere a visitor might look, because the site
+  Zak is listed everywhere a visitor might look, because the site
   sells a contract and the buyer wants a person on the end of it, not a form.
   Phone numbers are stored in two shapes: E.164 for tel: links and schema, and
   the spaced local form people actually read.
@@ -33,16 +33,7 @@ export const PEOPLE: Person[] = [
     phone: "+64223053853",
     phoneDisplay: "+64 22 305 3853",
   },
-  {
-    name: "Jonty MacIntyre",
-    role: "Partner",
-    /* TODO: add Jonty's LinkedIn here once we have the URL. */
-    email: "jonty@tallynz.co",
-    sameAs: [],
-    phone: "+6421344965",
-    phoneDisplay: "+64 21 344 965",
-  },
-];
+  ];
 
 /* The address a general enquiry should go to when no person is named. */
 export const PRIMARY_EMAIL = PEOPLE[0].email;

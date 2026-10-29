@@ -51,7 +51,7 @@ Open your profile at https://share.google/DFyJrJpXeKvjiLh3f, while signed in as 
    - Instagram account recovery
    - Primary industries recruitment marketing
 6. **Description (750 characters max):** adapt the homepage intro. Use no phone numbers or URLs in it.
-7. **Photos:** logo, cover image, Zak and Jonty, and real shoot stills. Aim for 10 or more.
+7. **Photos:** logo, cover image, Zak, and real shoot stills. Aim for 10 or more.
 8. **Posts:** one a week. A Reel still, a short note and a link to a service page is enough.
 9. **Copy the profile's long URL** (Share, then open it in a browser, then copy the `maps.google.com/?cid=…` address from the address bar) and send it to me. It replaces the share link in the site's `sameAs`.
 
@@ -77,7 +77,7 @@ The site now does its half. The Organization schema lists all three profiles in 
    - Website: `https://www.tallynz.co`
    - Industry: Marketing services
    - Headquarters: Auckland, New Zealand
-   - Ask Zak and Jonty to set Tally as their current employer, so the people and the company connect.
+   - Ask Zak to set Tally as their current employer, so the people and the company connect.
 4. **Use the same one-line description everywhere.** Use the same sentence on all three profiles and the Google Business Profile, for example "Social media marketing agency in Auckland for consumer and marine brands across New Zealand." Repeating the same description is what helps assistants match the profiles to each other.
 5. **Two weeks after deploying, ask again.** Ask ChatGPT, Perplexity and Google: "What is Tally at tallynz.co, and what are its Instagram and Facebook accounts?" Record the answers in the monthly check sheet. If a wrong account still appears, look at which source it cites. That source is usually a directory listing with old or wrong details, so correct it there.
 
@@ -87,7 +87,7 @@ Google reviews are the biggest local ranking factor you control, and none exist 
 
 1. Get the review link: in the GBP dashboard, go to **Ask for reviews** and copy the link.
 2. Ask at a moment of proof: the week a client sees a good number in the weekly update, or the day an account recovery comes through.
-3. Ask personally, by text or email from Zak or Jonty, with the link and one line: "Would you mind leaving a quick Google review about working with us? It helps other NZ businesses find us." Name the service, so the review text mentions it naturally (for example "Meta ads" or "got our Instagram back").
+3. Ask personally, by text or email from Zak, with the link and one line: "Would you mind leaving a quick Google review about working with us? It helps other NZ businesses find us." Name the service, so the review text mentions it naturally (for example "Meta ads" or "got our Instagram back").
 4. Never offer discounts or gifts for reviews, never write them yourselves, and never review-gate (only asking happy clients through a filter). All of these breach Google's policy.
 5. Reply to every review within a few days.
 6. Keep a simple log: client, date asked, date reviewed.

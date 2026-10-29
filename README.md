@@ -63,7 +63,7 @@ Set these environment variables in Vercel (Project → Settings → Environment 
 | --- | --- | --- |
 | `RESEND_API_KEY` | Yes | API key from resend.com. Without it **both** forms return a "not configured" message (HTTP 503) and the lead is only logged server-side. This is also why neither form sends from `localhost` unless you add the key to `.env.local`. |
 | `CONTACT_FROM` | Recommended | Verified sender, e.g. `Tally <noreply@tallynz.co>`. Requires verifying `tallynz.co` in Resend (add the DNS records they provide). Falls back to Resend's shared `onboarding@resend.dev`. |
-| `CONTACT_TO` | Optional | Comma-separated recipients. Defaults to `zak@tallynz.co,jonty@tallynz.co`. |
+| `CONTACT_TO` | Optional | Comma-separated recipients. Defaults to `zak@tallynz.co`. |
 
 Submissions set `reply-to` to the enquirer's email, so replying goes straight back to them.
 

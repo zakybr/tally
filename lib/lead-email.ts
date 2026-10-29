@@ -11,7 +11,7 @@ import { Resend } from "resend";
     CONTACT_TO       comma-separated recipients (optional; defaults to the two partner inboxes)
 */
 
-const TO = (process.env.CONTACT_TO ?? "zak@tallynz.co,jonty@tallynz.co")
+const TO = (process.env.CONTACT_TO ?? "zak@tallynz.co")
   .split(",")
   .map((s) => s.trim())
   .filter(Boolean);

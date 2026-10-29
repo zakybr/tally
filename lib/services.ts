@@ -130,7 +130,7 @@ export const SERVICE_PAGES: ServicePage[] = [
         heading: "Working with us from anywhere",
         body: [
           "Most of the management work runs remotely: calls, shared folders and the weekly update, with shoots planned around where you are. That is how we work with businesses all over the country and overseas, and close to home we can be on site at short notice.",
-          "You deal with the people doing the work. Zak runs strategy and delivery, Jonty runs the creative system, and either of them will pick up the phone.",
+          "You deal with the people doing the work. Zak runs strategy and delivery himself and will pick up the phone.",
         ],
       },
     ],

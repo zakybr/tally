@@ -89,7 +89,7 @@ const STATIC: RouteInfo[] = [
     path: "/about",
     title: "About Us: Marketing Agency in Auckland, NZ | Tally",
     description:
-      "Tally is an Auckland marketing agency built on 8 years growing, monetising and selling Instagram accounts. Meet Zak Rachmadi and Jonty MacIntyre.",
+      "Tally is an Auckland marketing agency built on 8 years growing, monetising and selling Instagram accounts. Meet Zak Rachmadi, director.",
     ogAlt: "About Tally, marketing agency in Auckland",
     eyebrow: "About · Auckland, New Zealand",
     headline: "About Tally",
